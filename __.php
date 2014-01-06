@@ -57,7 +57,7 @@ final class __
      *
      * @arrays @compact
      */
-    public function compact($array = null)
+    public static function compact($array = null)
     {
         $result = array();
 
@@ -84,7 +84,7 @@ final class __
      *
      * @arrays @difference
      */
-    public function difference($array = null, $values = null)
+    public static function difference($array = null, $values = null)
     {
         $result = array();
 
@@ -118,7 +118,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function findIndex($array = null, $iterator = null)
+    public static function findIndex($array = null, $iterator = null)
     {
         $index = -1;
         $length = count($array);
@@ -149,7 +149,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function findLastIndex($array = null, $iterator = null)
+    public static function findLastIndex($array = null, $iterator = null)
     {
         $index = count($array);
 
@@ -179,7 +179,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function first($array = null, $limit = 1, $iterator = null)
+    public static function first($array = null, $limit = 1, $iterator = null)
     {
         $result = array();
 
@@ -214,7 +214,7 @@ final class __
      *
      * @arrays @flatten
      */
-    public function flatten($array = null)
+    public static function flatten($array = null)
     {
         $result = array();
 
@@ -239,7 +239,7 @@ final class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    public function indexOf($array = null, $value = null)
+    public static function indexOf($array = null, $value = null)
     {
         $index = -1;
         $length = count($array);
@@ -270,7 +270,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function last($array = null, $limit = 1, $iterator = null)
+    public static function last($array = null, $limit = 1, $iterator = null)
     {
 
         $result = array();
@@ -310,7 +310,7 @@ final class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    public function lastIndexOf($array = null, $value = null)
+    public static function lastIndexOf($array = null, $value = null)
     {
         $index = count($array);
 
@@ -342,7 +342,7 @@ final class __
      *
      * TODO: Add negative progressing. (Now it's only positive)
      */
-    public function range($start = 0, $end = 0, $step = 1)
+    public static function range($start = 0, $end = 0, $step = 1)
     {
         $result = array();
 
@@ -371,7 +371,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function remove($array = null, $iterator = null)
+    public static function remove($array = null, $iterator = null)
     {
         $result = array();
 
@@ -402,7 +402,7 @@ final class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    public function filter($array = null, $iterator = null)
+    public static function filter($array = null, $iterator = null)
     {
         $result = array();
 
@@ -431,7 +431,7 @@ final class __
      *
      * @arrays @union
      */
-    public function union()
+    public static function union()
     {
         $result = array();
 
@@ -457,7 +457,7 @@ final class __
      *
      * @arrays @uniq
      */
-    public function uniq($array = null)
+    public static function uniq($array = null)
     {
         $result = array();
 
@@ -482,7 +482,7 @@ final class __
      * 
      * TODO: Create new function @unzip (Now it's only @zip)
      */
-    public function zip()
+    public static function zip()
     {
         $result = array();
 
@@ -501,7 +501,7 @@ final class __
        ========================================================================== */
 
     // [object], [iterator]
-    public function tap($object, $iterator)
+    public static function tap($object, $iterator)
     {
         $result = array();
 
@@ -514,7 +514,7 @@ final class __
        ========================================================================== */
     
     // [array], [indexes]
-    public function at($array = null, $indexes = null) 
+    public static function at($array = null, $indexes = null) 
     {    
         $result = array();
 
@@ -526,7 +526,7 @@ final class __
     }
 
     // [array], [value]
-    public function contains($array = null, $value = null) 
+    public static function contains($array = null, $value = null) 
     {    
         $result = array();
 
@@ -540,7 +540,7 @@ final class __
     }
 
     // [array], [field]
-    public function pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
+    public static function pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
     {
         $result = array();
 
@@ -572,7 +572,7 @@ final class __
     }
 
     // [array], [iterator]
-    public function find($array = null, $iterator = null) 
+    public static function find($array = null, $iterator = null) 
     {    
         $result = array();
 
@@ -582,7 +582,7 @@ final class __
     }
 
     // [array], [iterator]
-    public function findLast($array = null, $iterator = null) 
+    public static function findLast($array = null, $iterator = null) 
     {    
         $result = array();
 
@@ -592,7 +592,7 @@ final class __
     }
 
     // [array], [iterator]
-    public function map($array = null, $iterator = null) 
+    public static function map($array = null, $iterator = null) 
     {    
         $result = array();
 
