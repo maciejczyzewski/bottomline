@@ -27,8 +27,10 @@ require '__.php';
 To call a function from library, simply use:
 
 ```php
-$index = __::indexOf(array(1, 2, 3), 2) // 1
+$index = __::indexOf(array(1, 2, 3), 2); // 1
 ```
+
+
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaciejCzyzewski/__/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/MaciejCzyzewski/__.png?branch=master)](https://travis-ci.org/MaciejCzyzewski/__)
