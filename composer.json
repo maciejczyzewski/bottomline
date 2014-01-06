@@ -3,4 +3,15 @@
 	"description": "A utility library delivering consistency, customization, performance, & extras.",
 	"keywords": ["__", "library", "utility", "functions"],
 	"license": "MIT",
+    "authors": [
+        {
+            "name": "Maciej Czyzewski",
+            "email": "pozer.maciek@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "pozer.maciek@gmail.com",
+        "irc": "irc://irc.freenode.org/__"
+    }
 }
