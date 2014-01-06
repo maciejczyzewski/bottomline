@@ -29,21 +29,9 @@
  * Copyright (c) 2014 Maciej Czyżewski             *
 \***************************************************/
 
-/** Returns an instance of __ for OO-style calls (Object-Oriented) */
-function __($object = null) 
-{
-    return new __($object);
-}
-
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
-class __
+final class __
 {
-
-    /* ==========================================================================
-       Variables
-       ========================================================================== */
-
-    private static $__ = null;
 
     /* ==========================================================================
        Functions
@@ -65,7 +53,7 @@ class __
      *
      * @arrays @compact
      */
-    private static function __compact($array = null)
+    public function compact($array = null)
     {
         $result = array();
 
@@ -92,7 +80,7 @@ class __
      *
      * @arrays @difference
      */
-    private static function __difference($array = null, $values = null)
+    public function difference($array = null, $values = null)
     {
         $result = array();
 
@@ -126,7 +114,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __findIndex($array = null, $iterator = null)
+    public function findIndex($array = null, $iterator = null)
     {
         $index = -1;
         $length = count($array);
@@ -157,7 +145,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __findLastIndex($array = null, $iterator = null)
+    public function findLastIndex($array = null, $iterator = null)
     {
         $index = count($array);
 
@@ -187,7 +175,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __first($array = null, $limit = 1, $iterator = null)
+    public function first($array = null, $limit = 1, $iterator = null)
     {
         $result = array();
 
@@ -222,7 +210,7 @@ class __
      *
      * @arrays @flatten
      */
-    private static function __flatten($array = null)
+    public function flatten($array = null)
     {
         $result = array();
 
@@ -247,7 +235,7 @@ class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    private static function __indexOf($array = null, $value = null)
+    public function indexOf($array = null, $value = null)
     {
         $index = -1;
         $length = count($array);
@@ -278,7 +266,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __last($array = null, $limit = 1, $iterator = null)
+    public function last($array = null, $limit = 1, $iterator = null)
     {
 
         $result = array();
@@ -318,7 +306,7 @@ class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    private static function __lastIndexOf($array = null, $value = null)
+    public function lastIndexOf($array = null, $value = null)
     {
         $index = count($array);
 
@@ -350,7 +338,7 @@ class __
      *
      * TODO: Add negative progressing. (Now it's only positive)
      */
-    private static function __range($start = 0, $end = 0, $step = 1)
+    public function range($start = 0, $end = 0, $step = 1)
     {
         $result = array();
 
@@ -379,7 +367,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __remove($array = null, $iterator = null)
+    public function remove($array = null, $iterator = null)
     {
         $result = array();
 
@@ -410,7 +398,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private static function __filter($array = null, $iterator = null)
+    public function filter($array = null, $iterator = null)
     {
         $result = array();
 
@@ -439,7 +427,7 @@ class __
      *
      * @arrays @union
      */
-    private static function __union()
+    public function union()
     {
         $result = array();
 
@@ -449,7 +437,7 @@ class __
             $result = array_merge($result, $value);
         }
 
-        return self::__uniq($result);
+        return self::uniq($result);
     }
 
     /**
@@ -465,7 +453,7 @@ class __
      *
      * @arrays @uniq
      */
-    private static function __uniq($array = null)
+    public function uniq($array = null)
     {
         $result = array();
 
@@ -490,7 +478,7 @@ class __
      * 
      * TODO: Create new function @unzip (Now it's only @zip)
      */
-    private static function __zip()
+    public function zip()
     {
         $result = array();
 
@@ -509,7 +497,7 @@ class __
        ========================================================================== */
 
     // [object], [iterator]
-    private static function __tap($object, $iterator)
+    public function tap($object, $iterator)
     {
         $result = array();
 
@@ -522,7 +510,7 @@ class __
        ========================================================================== */
     
     // [array], [indexes]
-    private static function __at($array = null, $indexes = null) 
+    public function at($array = null, $indexes = null) 
     {    
         $result = array();
 
@@ -534,11 +522,11 @@ class __
     }
 
     // [array], [value]
-    private static function __contains($array = null, $value = null) 
+    public function contains($array = null, $value = null) 
     {    
         $result = array();
 
-        if( self::__indexOf($array, $value) < 0 ){
+        if( self::indexOf($array, $value) < 0 ){
             return false;
         }else{
             return true;
@@ -548,7 +536,7 @@ class __
     }
 
     // [array], [field]
-    private static function __pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
+    public function pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
     {
         $result = array();
 
@@ -580,27 +568,27 @@ class __
     }
 
     // [array], [iterator]
-    private static function __find($array = null, $iterator = null) 
+    public function find($array = null, $iterator = null) 
     {    
         $result = array();
 
-        $result = $array[self::__findIndex($array, $iterator)];
+        $result = $array[self::findIndex($array, $iterator)];
 
         return $result;
     }
 
     // [array], [iterator]
-    private static function __findLast($array = null, $iterator = null) 
+    public function findLast($array = null, $iterator = null) 
     {    
         $result = array();
 
-        $result = $array[self::__findLastIndex($array, $iterator)];
+        $result = $array[self::findLastIndex($array, $iterator)];
 
         return $result;
     }
 
     // [array], [iterator]
-    private static function __map($array = null, $iterator = null) 
+    public function map($array = null, $iterator = null) 
     {    
         $result = array();
 
@@ -619,32 +607,5 @@ class __
     
     /* Utilities
        ========================================================================== */
-
-    /* ==========================================================================
-       Initialize
-       ========================================================================== */
     
-    /**
-     * 1. Save arguments to global varieble.
-     * 2. Call to method, prepare with prefix `__`.
-     */
-
-    /* Call to method by function or OO-style */
-    public function __construct($arguments)
-    {
-        self::$__ = $arguments; /* 1 */
-    }
-
-    public function __call($method, $arguments = null)
-    {
-        return call_user_func_array(__CLASS__ . '::__' . $method, array(self::$__)); /* 2 */
-    }
-
-    /* Call to method by static */
-    public static function __callStatic($method, $arguments)
-    {
-        self::$__ = $arguments; /* 1 */
-        return call_user_func_array(__CLASS__ . '::__' . $method, self::$__); /* 2 */
-    }
-
 }
