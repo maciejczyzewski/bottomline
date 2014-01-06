@@ -37,6 +37,6 @@ $index = __::indexOf(array(1, 2, 3), 2); // 1
 ```
 
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaciejCzyzewski/__/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Latest Stable Version](https://poser.pugx.org/maciejczyzewski/bottomline/v/stable.png)](https://packagist.org/packages/maciejczyzewski/bottomline)
 [![Build Status](https://travis-ci.org/MaciejCzyzewski/__.png?branch=master)](https://travis-ci.org/MaciejCzyzewski/__)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaciejCzyzewski/__/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
