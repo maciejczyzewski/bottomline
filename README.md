@@ -2,12 +2,12 @@ A utility library delivering consistency, customization, performance, & extras.
 
 #### Using composer
 
-Put the require statement for `functional-php` in your `composer.json` file and run `php composer.phar install`:
+Put the require statement for `__` in your `composer.json` file and run `php composer.phar install`:
 
 ```json
 {
     "require": {
-        "lstrojny/functional-php": "*"
+        "maciejczyzewski/bottomline": "*"
     }
 }
 ```
