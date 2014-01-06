@@ -29,12 +29,12 @@
  * Copyright (c) 2014 Maciej Czyżewski             *
 \***************************************************/
 
-if (version_compare(PHP_VERSION, '5.4.0', '=<')) {
-    throw new Exception("Your PHP installation is too old. __ requires at least PHP 5.4.0", 1);
+if (version_compare(PHP_VERSION, '5.3.0', '=<')) {
+    throw new Exception("Your PHP installation is too old. __ requires at least PHP 5.3.0", 1);
 }
 
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
-trait Bottomline
+final class __
 {
 
     /* ==========================================================================
@@ -612,9 +612,4 @@ trait Bottomline
     /* Utilities
        ========================================================================== */
     
-}
-
-final class __ 
-{
-    use Bottomline;
 }
