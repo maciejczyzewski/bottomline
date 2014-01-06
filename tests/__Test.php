@@ -7,11 +7,11 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testCompact()
     {
         $object = array(
-        	0, 1, false, 2, '', 3
+            0, 1, false, 2, '', 3
         );
 
         $return = array(
-        	1, 2, 3
+            1, 2, 3
         );
 
         $result = __::compact($object);
@@ -23,12 +23,12 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testDifference()
     {
         $object = array(
-        	array(1, 2, 3, 4, 5), 
-        	array(5, 2, 10)
+            array(1, 2, 3, 4, 5), 
+            array(5, 2, 10)
         );
 
         $return = array(
-        	1, 3, 4
+            1, 3, 4
         );
 
         $result = __::difference($object[0], $object[1]);
@@ -40,19 +40,19 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testFindIndex()
     {
         $object = array(
-  			array('name' => 'barney',  'age' => 36, 'blocked' => false ),
-  			array('name' => 'joe',  'age' => 50, 'blocked' => true ),
-  			array('name' => 'anton',  'age' => 2, 'blocked' => false )
-		);
+            array('name' => 'barney',  'age' => 36, 'blocked' => false ),
+            array('name' => 'joe',  'age' => 50, 'blocked' => true ),
+            array('name' => 'anton',  'age' => 2, 'blocked' => false )
+        );
 
         $return = 2;
 
         $result = __::findIndex($object, function($row){
-        	if( $row['age'] < 10 ){
-        		return true;
-        	}else{
-        		return false;
-        	}
+            if( $row['age'] < 10 ){
+                return true;
+            }else{
+                return false;
+            }
         });
 
         $this->assertEquals($return, $result);
@@ -62,19 +62,19 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testFindLastIndex()
     {
         $object = array(
-  			array('name' => 'barney',  'age' => 36, 'blocked' => false ),
-  			array('name' => 'joe',  'age' => 50, 'blocked' => true ),
-  			array('name' => 'anton',  'age' => 2, 'blocked' => false )
-		);
+            array('name' => 'barney',  'age' => 36, 'blocked' => false ),
+            array('name' => 'joe',  'age' => 50, 'blocked' => true ),
+            array('name' => 'anton',  'age' => 2, 'blocked' => false )
+        );
 
         $return = 1;
 
         $result = __::findLastIndex($object, function($row){
-        	if( $row['age'] > 10 ){
-        		return true;
-        	}else{
-        		return false;
-        	}
+            if( $row['age'] > 10 ){
+                return true;
+            }else{
+                return false;
+            }
         });
 
         $this->assertEquals($return, $result);
@@ -84,19 +84,19 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testFirst()
     {
         $object = array(
-  			5, 10 , 15, 20, 25, 30
-		);
+            5, 10 , 15, 20, 25, 30
+        );
 
         $return = array(
-  			15, 20
-		);
+            15, 20
+        );
 
         $result = __::first($object, 2, function($row){
-        	if( $row > 10 ){
-        		return true;
-        	}else{
-        		return false;
-        	}
+            if( $row > 10 ){
+                return true;
+            }else{
+                return false;
+            }
         });
 
         $this->assertEquals($return, $result);
@@ -106,12 +106,12 @@ class __Test extends PHPUnit_Framework_TestCase
     public function testFlatten()
     {
         $object = array(
-  			array(1,2,array(3,array(4,5)),6)
-		);
+            array(1,2,array(3,array(4,5)),6)
+        );
 
         $return = array(
-  			1, 2, 3, 4, 5, 6
-		);
+            1, 2, 3, 4, 5, 6
+        );
 
         $result = __::flatten($object);
 

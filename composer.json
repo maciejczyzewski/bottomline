@@ -1,8 +1,8 @@
 {
-	"name": "maciejczyzewski/bottomline",
-	"description": "A utility library delivering consistency, customization, performance, & extras.",
-	"keywords": ["__", "bottomline", "library", "utility", "functions"],
-	"license": "MIT",
+    "name": "maciejczyzewski/bottomline",
+    "description": "A utility library delivering consistency, customization, performance, & extras.",
+    "keywords": ["__", "bottomline", "library", "utility", "functions"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Maciej Czyzewski",
