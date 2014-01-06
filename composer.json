@@ -1,7 +1,7 @@
 {
-	"name": "maciejczyzewski/__.php",
+	"name": "maciejczyzewski/bottomline",
 	"description": "A utility library delivering consistency, customization, performance, & extras.",
-	"keywords": ["__", "library", "utility", "functions"],
+	"keywords": ["__", "bottomline", "library", "utility", "functions"],
 	"license": "MIT",
     "authors": [
         {
