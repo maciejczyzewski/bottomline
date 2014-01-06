@@ -34,7 +34,7 @@ if (version_compare(PHP_VERSION, '5.3.0', '=<')) {
 }
 
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
-final class __
+abstract class __
 {
 
     /* ==========================================================================
