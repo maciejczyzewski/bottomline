@@ -10,8 +10,5 @@
             "role": "Developer"
         }
     ],
-    "support": {
-        "email": "pozer.maciek@gmail.com",
-        "irc": "irc://irc.freenode.org/__"
-    }
+    "version": "0.0.1"
 }
