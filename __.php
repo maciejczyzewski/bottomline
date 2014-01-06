@@ -65,7 +65,7 @@ class __
      *
      * @arrays @compact
      */
-    private function __compact($array = null)
+    private static function __compact($array = null)
     {
         $result = array();
 
@@ -92,7 +92,7 @@ class __
      *
      * @arrays @difference
      */
-    private function __difference($array = null, $values = null)
+    private static function __difference($array = null, $values = null)
     {
         $result = array();
 
@@ -126,7 +126,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __findIndex($array = null, $iterator = null)
+    private static function __findIndex($array = null, $iterator = null)
     {
         $index = -1;
         $length = count($array);
@@ -157,7 +157,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __findLastIndex($array = null, $iterator = null)
+    private static function __findLastIndex($array = null, $iterator = null)
     {
         $index = count($array);
 
@@ -187,7 +187,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __first($array = null, $limit = 1, $iterator = null)
+    private static function __first($array = null, $limit = 1, $iterator = null)
     {
         $result = array();
 
@@ -222,7 +222,7 @@ class __
      *
      * @arrays @flatten
      */
-    private function __flatten($array = null)
+    private static function __flatten($array = null)
     {
         $result = array();
 
@@ -247,7 +247,7 @@ class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    private function __indexOf($array = null, $value = null)
+    private static function __indexOf($array = null, $value = null)
     {
         $index = -1;
         $length = count($array);
@@ -278,7 +278,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __last($array = null, $limit = 1, $iterator = null)
+    private static function __last($array = null, $limit = 1, $iterator = null)
     {
 
         $result = array();
@@ -318,7 +318,7 @@ class __
      * TODO: If the array is already sorted providing true, 
      *   will run a faster binary search. (Now it's slow!)
      */
-    private function __lastIndexOf($array = null, $value = null)
+    private static function __lastIndexOf($array = null, $value = null)
     {
         $index = count($array);
 
@@ -350,7 +350,7 @@ class __
      *
      * TODO: Add negative progressing. (Now it's only positive)
      */
-    private function __range($start = 0, $end = 0, $step = 1)
+    private static function __range($start = 0, $end = 0, $step = 1)
     {
         $result = array();
 
@@ -379,7 +379,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __remove($array = null, $iterator = null)
+    private static function __remove($array = null, $iterator = null)
     {
         $result = array();
 
@@ -410,7 +410,7 @@ class __
      *
      * TODO: Repair broken callbacks. (Now it's only a function!)
      */
-    private function __filter($array = null, $iterator = null)
+    private static function __filter($array = null, $iterator = null)
     {
         $result = array();
 
@@ -439,7 +439,7 @@ class __
      *
      * @arrays @union
      */
-    private function __union()
+    private static function __union()
     {
         $result = array();
 
@@ -465,7 +465,7 @@ class __
      *
      * @arrays @uniq
      */
-    private function __uniq($array = null)
+    private static function __uniq($array = null)
     {
         $result = array();
 
@@ -490,7 +490,7 @@ class __
      * 
      * TODO: Create new function @unzip (Now it's only @zip)
      */
-    private function __zip()
+    private static function __zip()
     {
         $result = array();
 
@@ -509,7 +509,7 @@ class __
        ========================================================================== */
 
     // [object], [iterator]
-    private function __tap($object, $iterator)
+    private static function __tap($object, $iterator)
     {
         $result = array();
 
@@ -522,7 +522,7 @@ class __
        ========================================================================== */
     
     // [array], [indexes]
-    private function __at($array = null, $indexes = null) 
+    private static function __at($array = null, $indexes = null) 
     {    
         $result = array();
 
@@ -534,7 +534,7 @@ class __
     }
 
     // [array], [value]
-    private function __contains($array = null, $value = null) 
+    private static function __contains($array = null, $value = null) 
     {    
         $result = array();
 
@@ -548,7 +548,7 @@ class __
     }
 
     // [array], [field]
-    private function __pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
+    private static function __pluck($array = null, $field = null, $preserve_keys = TRUE, $remove_nomatches = TRUE )
     {
         $result = array();
 
@@ -580,7 +580,7 @@ class __
     }
 
     // [array], [iterator]
-    private function __find($array = null, $iterator = null) 
+    private static function __find($array = null, $iterator = null) 
     {    
         $result = array();
 
@@ -590,7 +590,7 @@ class __
     }
 
     // [array], [iterator]
-    private function __findLast($array = null, $iterator = null) 
+    private static function __findLast($array = null, $iterator = null) 
     {    
         $result = array();
 
@@ -600,7 +600,7 @@ class __
     }
 
     // [array], [iterator]
-    private function __map($array = null, $iterator = null) 
+    private static function __map($array = null, $iterator = null) 
     {    
         $result = array();
 
