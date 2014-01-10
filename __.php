@@ -15,7 +15,7 @@
  tap
 
  ** Collections
- at, contains, pluck, find, findLast, map
+ at, contains, pluck, find, findLast, map, each
 
  ** Functions
 
@@ -600,6 +600,18 @@ abstract class __
             $result[$key] = call_user_func($iterator, $value);
         }
 
+        return $result;
+    }
+
+    // [array], [iterator]
+    public static function each($array = null, $iterator = null)
+    {
+        $result = array();
+
+        foreach ($list as $key => $value) {
+            call_user_func($iterator, $value, $key, $result);
+        }
+    
         return $result;
     }
     
