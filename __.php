@@ -56,6 +56,9 @@ abstract class __
      * (Array): Returns a new array of filtered values.
      *
      * @arrays @compact
+     *
+     ** Testing `Hashes` generator
+     ** Some some some piece of code...
      */
     public static function compact($array = null)
     {
@@ -72,13 +75,13 @@ abstract class __
 
     /**
      * Creates an array excluding all values of the provided arrays.
-     *
+     * 
      * Using strict equality for comparisons, i.e. ===.
-     *
+     * 
      * Arguments:
      * (Array): The array to process.
      * (Array): The arrays of values to exclude.
-     *
+     * 
      * Returns:
      * (Array): Returns a new array of filtered values.
      *
@@ -230,6 +233,7 @@ abstract class __
      *
      * Arguments:
      * (Array): The array to search.
+     * (*): The value to search for.
      * 
      * Returns:
      * (Number): Returns the index of the matched value or -1.
@@ -301,6 +305,7 @@ abstract class __
      *
      * Arguments:
      * (Array): The array to search.
+     * (*): The value to search for.
      * 
      * Returns:
      * (Number): Returns the index of the matched value or -1.
