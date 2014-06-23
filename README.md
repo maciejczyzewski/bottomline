@@ -13,15 +13,15 @@ It's a utility library delivering consistency, customization, performance & extr
 ## Features
 
 * Arrays
-  - [__::compact](src/arrays/compact.php)
-  - [__::range](src/arrays/range.php)
-  - [__::repeat](src/arrays/repeat.php)
+  - [__::compact](src/__/arrays/compact.php)
+  - [__::range](src/__/arrays/range.php)
+  - [__::repeat](src/__/arrays/repeat.php)
 
 * Chaining
 
 * Collections
-  - [__::filter](src/collections/filter.php)
-  - [__::map](src/collections/map.php)
+  - [__::filter](src/__/collections/filter.php)
+  - [__::map](src/__/collections/map.php)
 
 * Objects 
 
