@@ -1,43 +1,28 @@
-<p align="center">
- 	<img src="https://raw.github.com/MaciejCzyzewski/__/gh-pages/__.png" alt="__"/>
-</p>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot.png"/>
+</div>
 
+# bottomline [![Build Status](https://travis-ci.org/MaciejCzyzewski/bottomline.png)](https://travis-ci.org/MaciejCzyzewski/bottomline) 
 
+Useful feature pack.
 
-A utility library delivering consistency, customization, performance, & extras.
+## Introduction
 
-### Installation
+It's a utility library delivering consistency, customization, performance & extras.
 
-#### Using composer
+## Features
 
-Put the require statement for `__` in your `composer.json` file and run `php composer.phar install`:
+* Arrays
+  - [__::compact](src/arrays/compact.php)
+  - [__::range](src/arrays/range.php)
+  - [__::repeat](src/arrays/repeat.php)
 
-```json
-{
-    "require": {
-        "maciejczyzewski/bottomline": "*"
-    }
-}
-```
+* Chaining
 
-#### Using file
+* Collections
+  - [__::filter](src/collections/filter.php)
+  - [__::map](src/collections/map.php)
 
-Put the require statement for `__` in your code:
+* Objects 
 
-```php
-require '__.php';
-```
-
-### Usage
-
-To call a function from library, simply use:
-
-```php
-$index = __::indexOf(array(1, 2, 3), 2); // 1
-```
-
-
-[![Latest Stable Version](https://poser.pugx.org/maciejczyzewski/bottomline/v/stable.png)](https://packagist.org/packages/maciejczyzewski/bottomline)
-[![Build Status](https://travis-ci.org/MaciejCzyzewski/Bottomline.png?branch=master)](https://travis-ci.org/MaciejCzyzewski/Bottomline)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/MaciejCzyzewski/bottomline/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
+* Utilities
