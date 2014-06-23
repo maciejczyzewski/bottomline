@@ -14,7 +14,7 @@
         }
     ],
     "autoload": {
+        "files": ["bottomline.php"],
         "psr-4": {"__\\": "src/"}
-    },
-    "version": "0.0.4"
+    }
 }
