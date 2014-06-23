@@ -47,9 +47,8 @@ class __
             {
                 foreach(glob(__DIR__ .'/'. $value .'/*.php', GLOB_BRACE) as $function) 
                 {
-                    $alias = str_replace('/', '\\', array_shift(explode('.', 
-                        str_replace(__DIR__ .'/', '', $function)))
-                    );
+                    $path = explode('.', str_replace(__DIR__ .'/', '', $function));
+                    $alias = str_replace('/', '\\', array_shift($path));
 
                     if(!function_exists($alias))
                     {
