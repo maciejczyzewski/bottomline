@@ -39,7 +39,7 @@ class __
 
     static $functions = array();
 
-    public function __loader($name, $arguments)
+    static public function __loader($name, $arguments)
     {
         if(empty(self::$functions))
         {
