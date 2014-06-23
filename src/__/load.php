@@ -47,10 +47,15 @@ class __
             {
                 foreach(glob(__DIR__ .'/'. $value .'/*.php', GLOB_BRACE) as $function) 
                 {
-                    require $function;
-                    self::$functions[] = str_replace('/', '\\', array_shift(explode('.', 
+                    $alias = str_replace('/', '\\', array_shift(explode('.', 
                         str_replace(__DIR__ .'/', '', $function)))
                     );
+
+                    if(!function_exists($alias))
+                    {
+                        self::$functions[] = $alias;
+                        require $function;
+                    }
                 }
             }
         }
