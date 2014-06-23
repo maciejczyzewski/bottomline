@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(-1);
-
 require __DIR__ . '/src/__/load.php';
 
 /**
