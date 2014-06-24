@@ -2,6 +2,10 @@
 
 namespace collections;
 
+/**
+ * @collections @pluck
+ */
+
 function pluck($collection = array(), $property = '')
 {
     $plucked = array_map(function ($value) use ($property) {

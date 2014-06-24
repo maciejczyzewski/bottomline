@@ -2,6 +2,13 @@
 
 namespace arrays;
 
+/**
+ * @arrays @get
+ *
+ ** __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
+ ** // → 'ter'
+ */
+
 function get($collection = array(), $key = '', $default = null)
 {
     if(is_null($key)) return $collection;

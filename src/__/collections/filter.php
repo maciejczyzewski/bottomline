@@ -2,6 +2,10 @@
 
 namespace collections;
 
+/**
+ * @collections @filter
+ */
+
 function filter(array $array = array(), \Closure $closure)
 {
     if(!$closure)
