@@ -77,7 +77,7 @@ It's a utility library delivering consistency, customization, performance & extr
 	```
 
   - [__::pluck](src/__/collections/pluck.php)
-  
+
 	```php
 	$a = [
 	    ['foo' => 'bar',  'bis' => 'ter' ],
@@ -91,3 +91,13 @@ It's a utility library delivering consistency, customization, performance & extr
 * Objects 
 
 * Utilities
+
+## Contributing
+
+Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
+
+[![Gitter chat](https://badges.gitter.im/MaciejCzyzewski/bottomline.png)](https://gitter.im/MaciejCzyzewski/bottomline)
+
+## License
+
+See LICENSE file in this repository.
