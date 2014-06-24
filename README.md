@@ -14,6 +14,7 @@ It's a utility library delivering consistency, customization, performance & extr
 
 * Arrays
   - [__::compact](src/__/arrays/compact.php)
+  - [__::get](src/__/arrays/get.php)
   - [__::range](src/__/arrays/range.php)
   - [__::repeat](src/__/arrays/repeat.php)
 
@@ -22,6 +23,9 @@ It's a utility library delivering consistency, customization, performance & extr
 * Collections
   - [__::filter](src/__/collections/filter.php)
   - [__::map](src/__/collections/map.php)
+  - [__::max](src/__/collections/max.php)
+  - [__::min](src/__/collections/min.php)
+  - [__::pluck](src/__/collections/pluck.php)
 
 * Objects 
 

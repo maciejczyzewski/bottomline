@@ -65,5 +65,20 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(1, $x);
     }
 
+    public function testPluck()
+    {
+        // Arrange
+        $a = [
+            ['foo' => 'bar',  'bis' => 'ter' ],
+            ['foo' => 'bar2', 'bis' => 'ter2'],
+        ];
+
+        // Act
+        $x = __::pluck($a, 'foo');
+
+        // Assert
+        $this->assertEquals(['bar', 'bar2'], $x);
+    }
+
     // ...
 }
