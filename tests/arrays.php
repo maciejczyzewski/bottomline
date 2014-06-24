@@ -4,6 +4,18 @@ class ArraysTest extends PHPUnit_Framework_TestCase
 {
     // ...
 
+    public function testAppend()
+    {
+        // Arrange
+        $a = [1, 2, 3];
+
+        // Act
+        $x = __::append($a, 4);
+
+        // Assert
+        $this->assertEquals([1, 2, 3, 4], $x);
+    }
+
     public function testCompact()
     {
         // Arrange
@@ -26,6 +38,18 @@ class ArraysTest extends PHPUnit_Framework_TestCase
 
         // Assert
         $this->assertEquals('ter', $x);
+    }
+
+    public function testPrepend()
+    {
+        // Arrange
+        $a = [1, 2, 3];
+
+        // Act
+        $x = __::prepend($a, 4);
+
+        // Assert
+        $this->assertEquals([4, 1, 2, 3], $x);
     }
 
     public function testRange()

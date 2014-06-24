@@ -10,9 +10,22 @@ Useful feature pack.
 
 It's a utility library delivering consistency, customization, performance & extras.
 
+#### More reading:
+
+- [Features](#features): List of functions.
+- [Contributing](#contributing): Explanation of how you can join the project.
+- [License](#license): Clarification of certain rules.
+
 ## Features
 
 * Arrays
+  - [__::append](src/__/arrays/append.php)
+
+	```php
+	__::append([1, 2, 3], 4);
+	// → [1, 2, 3, 4]
+	```
+
   - [__::compact](src/__/arrays/compact.php)
 
 	```php
@@ -25,6 +38,13 @@ It's a utility library delivering consistency, customization, performance & extr
 	```php
 	__::get(['foo' => ['bar' => 'ter']], 'foo.bar');
 	// → 'ter'
+	```
+
+  - [__::prepend](src/__/arrays/prepend.php)
+
+	```php
+	__::prepend([1, 2, 3], 4);
+	// → [4, 1, 2, 3]
 	```
 
   - [__::range](src/__/arrays/range.php)
