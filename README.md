@@ -83,6 +83,12 @@ require 'bottomline/bottomline.php';
   ```
 
 * Chaining
+  - [__::slug](src/__/chaining/slug.php)
+
+  ```php
+  __::slug('Jakieś zdanie z dużą ilością obcych znaków!');
+  // → 'jakies-zdanie-z-duza-iloscia-obcych-znakow'
+  ```
 
 * Collections
   - [__::filter](src/__/collections/filter.php)
