@@ -116,5 +116,20 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['bar', 'bar2'], $x);
     }
 
+    public function testWhere()
+    {
+        // Arrange
+        $a = [
+            ['name' => 'fred',   'age' => 32],
+            ['name' => 'maciej', 'age' => 16]
+        ];
+
+        // Act
+        $x = __::where($a, ['age' => 16]);
+
+        // Assert
+        $this->assertEquals([$a[1]], $x);
+    }
+
     // ...
 }

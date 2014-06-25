@@ -60,7 +60,7 @@ require 'bottomline/bottomline.php';
   __::compact([0, 1, false, 2, '', 3]);
   // → [1, 2, 3]
   ```
-  
+
   - [__::flatten](src/__/arrays/flatten.php)
 
   ```php
@@ -108,10 +108,15 @@ require 'bottomline/bottomline.php';
   - [__::filter](src/__/collections/filter.php)
 
   ```php
-  __::filter([1, 2, 3, 4, 5], function($n) {
-      return $n > 3;
+  $a = [
+      ['name' => 'fred',   'age' => 32],
+      ['name' => 'maciej', 'age' => 16]
+  ];
+
+  __::filter($a, function($n) {
+      return $n['age'] > 24;
   });
-  // → [4, 5]
+  // → [['name' => 'fred', 'age' => 32]]
   ```
 
   - [__::first](src/__/collections/first.php)
@@ -168,6 +173,18 @@ require 'bottomline/bottomline.php';
 
   __::pluck($a, 'foo');
   // → ['bar', 'bar2']
+  ```
+
+  - [__::where](src/__/collections/where.php)
+
+  ```php
+  $a = [
+      ['name' => 'fred',   'age' => 32],
+      ['name' => 'maciej', 'age' => 16]
+  ];
+
+  __::where($a, ['age' => 16]);
+  // → [['name' => 'maciej', 'age' => 16]]
   ```
 
 * Objects 
