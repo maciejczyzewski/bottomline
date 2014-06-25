@@ -12,158 +12,186 @@ It's a utility library delivering consistency, customization, performance & extr
 
 #### More reading:
 
-- [Features](#features): List of functions.
+- [Installation](#installation): Step-by-step instructions for getting bottomline running on your computer.
+- [Usage](#usage): List of commands.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
 
-## Features
+## Installation
+
+Binary installers for the latest released version are available at the [Packagist
+package index.](https://packagist.org/packages/maciejczyzewski/bottomline)
+
+### Composer
+
+Put the require statement in your `composer.json` file and run `composer install`:
+
+```json
+{
+    "require": {
+        ...
+        "maciejczyzewski/bottomline": "*"
+        ...
+    }
+}
+```
+
+### File
+
+Put the require statement in your code:
+
+```php
+require 'bottomline/bottomline.php';
+```
+
+## Usage
 
 * Arrays
   - [__::append](src/__/arrays/append.php)
 
-	```php
-	__::append([1, 2, 3], 4);
-	// → [1, 2, 3, 4]
-	```
+  ```php
+  __::append([1, 2, 3], 4);
+  // → [1, 2, 3, 4]
+  ```
 
   - [__::compact](src/__/arrays/compact.php)
 
-	```php
-	__::compact([0, 1, false, 2, '', 3]);
-	// → [1, 2, 3]
-	```
+  ```php
+  __::compact([0, 1, false, 2, '', 3]);
+  // → [1, 2, 3]
+  ```
 
   - [__::prepend](src/__/arrays/prepend.php)
 
-	```php
-	__::prepend([1, 2, 3], 4);
-	// → [4, 1, 2, 3]
-	```
+  ```php
+  __::prepend([1, 2, 3], 4);
+  // → [4, 1, 2, 3]
+  ```
 
   - [__::range](src/__/arrays/range.php)
 
-	```php
-	__::range(1, 10, 2);
-	// → [1, 3, 5, 7, 9]
-	```
+  ```php
+  __::range(1, 10, 2);
+  // → [1, 3, 5, 7, 9]
+  ```
 
   - [__::repeat](src/__/arrays/repeat.php)
 
-	```php
-	__::repeat('foo', 3);
-	// → ['foo', 'foo', 'foo']
-	```
+  ```php
+  __::repeat('foo', 3);
+  // → ['foo', 'foo', 'foo']
+  ```
 
 * Chaining
 
 * Collections
   - [__::filter](src/__/collections/filter.php)
 
-	```php
-	__::filter([1, 2, 3, 4, 5], function($n) {
-	    return $n > 3;
-	});
-	// → [4, 5]
-	```
+  ```php
+  __::filter([1, 2, 3, 4, 5], function($n) {
+      return $n > 3;
+  });
+  // → [4, 5]
+  ```
 
   - [__::first](src/__/collections/first.php)
 
-	```php
-	__::first([1, 2, 3, 4, 5], 2);
-	// → [1, 2]
-	```
+  ```php
+  __::first([1, 2, 3, 4, 5], 2);
+  // → [1, 2]
+  ```
 
   - [__::get](src/__/collections/get.php)
 
-	```php
-	__::get(['foo' => ['bar' => 'ter']], 'foo.bar');
-	// → 'ter'
-	```
+  ```php
+  __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
+  // → 'ter'
+  ```
 
   - [__::last](src/__/collections/last.php)
 
-	```php
-	__::last([1, 2, 3, 4, 5], 2);
-	// → [4, 5]
-	```
+  ```php
+  __::last([1, 2, 3, 4, 5], 2);
+  // → [4, 5]
+  ```
 
   - [__::map](src/__/collections/map.php)
 
-	```php
-	__::map([1, 2, 3], function($n) {
-	    return $n * 3;
-	});
-	// → [3, 6, 9]
-	```
+  ```php
+  __::map([1, 2, 3], function($n) {
+      return $n * 3;
+  });
+  // → [3, 6, 9]
+  ```
 
   - [__::max](src/__/collections/max.php)
 
-	```php
-	__::max([1, 2, 3]);
-	// → 3
-	```
+  ```php
+  __::max([1, 2, 3]);
+  // → 3
+  ```
 
   - [__::min](src/__/collections/min.php)
 
-	```php
-	__::min([1, 2, 3]);
-	// → 1
-	```
+  ```php
+  __::min([1, 2, 3]);
+  // → 1
+  ```
 
   - [__::pluck](src/__/collections/pluck.php)
 
-	```php
-	$a = [
-	    ['foo' => 'bar',  'bis' => 'ter' ],
-	    ['foo' => 'bar2', 'bis' => 'ter2'],
-	];
+  ```php
+  $a = [
+      ['foo' => 'bar',  'bis' => 'ter' ],
+      ['foo' => 'bar2', 'bis' => 'ter2'],
+  ];
 
-	__::pluck($a, 'foo');
-	// → ['bar', 'bar2']
-	```
+  __::pluck($a, 'foo');
+  // → ['bar', 'bar2']
+  ```
 
 * Objects 
   - [__::isArray](src/__/objects/isArray.php)
 
-	```php
-	__::isArray([1, 2, 3]);
-	// → true
-	```
+  ```php
+  __::isArray([1, 2, 3]);
+  // → true
+  ```
 
   - [__::isFunction](src/__/objects/isFunction.php)
 
-	```php
-	__::isFunction(function ($a) { return $a + 2; });
-	// → true
-	```
+  ```php
+  __::isFunction(function ($a) { return $a + 2; });
+  // → true
+  ```
 
   - [__::isNull](src/__/objects/isNull.php)
 
-	```php
-	__::isNull(null);
-	// → true
-	```
+  ```php
+  __::isNull(null);
+  // → true
+  ```
 
   - [__::isNumber](src/__/objects/isNumber.php)
 
-	```php
-	__::isNumber(123);
-	// → true
-	```
+  ```php
+  __::isNumber(123);
+  // → true
+  ```
 
   - [__::isObject](src/__/objects/isObject.php)
 
-	```php
-	__::isObject('fred');
-	// → false
-	```
+  ```php
+  __::isObject('fred');
+  // → false
+  ```
 
   - [__::isString](src/__/objects/isString.php)
 
-	```php
-	__::isString('fred');
-	// → true
-	```
+  ```php
+  __::isString('fred');
+  // → true
+  ```
 
 * Utilities
 
