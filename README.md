@@ -90,6 +90,13 @@ require 'bottomline/bottomline.php';
   // → 'jakies-zdanie-z-duza-iloscia-obcych-znakow'
   ```
 
+  - [__::truncate](src/__/chaining/truncate.php)
+
+  ```php
+  __::truncate('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.');
+  // → 'Lorem ipsum dolor sit amet, ...'
+  ```
+
 * Collections
   - [__::filter](src/__/collections/filter.php)
 
