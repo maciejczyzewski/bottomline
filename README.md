@@ -171,6 +171,13 @@ require 'bottomline/bottomline.php';
   // → true
   ```
 
+  - [__::isEmail](src/__/objects/isEmail.php)
+
+  ```php
+  __::isEmail('test@test.com');
+  // → true
+  ```
+
   - [__::isFunction](src/__/objects/isFunction.php)
 
   ```php
