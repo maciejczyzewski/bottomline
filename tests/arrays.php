@@ -28,18 +28,6 @@ class ArraysTest extends PHPUnit_Framework_TestCase
         $this->assertEquals([1, 2, 3], $x);
     }
 
-    public function testGet()
-    {
-        // Arrange
-        $a = ['foo' => ['bar' => 'ter']];
-
-        // Act
-        $x = __::get($a, 'foo.bar');
-
-        // Assert
-        $this->assertEquals('ter', $x);
-    }
-
     public function testPrepend()
     {
         // Arrange

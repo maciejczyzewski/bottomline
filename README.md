@@ -33,13 +33,6 @@ It's a utility library delivering consistency, customization, performance & extr
 	// → [1, 2, 3]
 	```
 
-  - [__::get](src/__/arrays/get.php)
-
-	```php
-	__::get(['foo' => ['bar' => 'ter']], 'foo.bar');
-	// → 'ter'
-	```
-
   - [__::prepend](src/__/arrays/prepend.php)
 
 	```php
@@ -70,6 +63,27 @@ It's a utility library delivering consistency, customization, performance & extr
 	__::filter([1, 2, 3, 4, 5], function($n) {
 	    return $n > 3;
 	});
+	// → [4, 5]
+	```
+
+  - [__::first](src/__/collections/first.php)
+
+	```php
+	__::first([1, 2, 3, 4, 5], 2);
+	// → [1, 2]
+	```
+
+  - [__::get](src/__/collections/get.php)
+
+	```php
+	__::get(['foo' => ['bar' => 'ter']], 'foo.bar');
+	// → 'ter'
+	```
+
+  - [__::last](src/__/collections/last.php)
+
+	```php
+	__::last([1, 2, 3, 4, 5], 2);
 	// → [4, 5]
 	```
 

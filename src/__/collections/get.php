@@ -1,9 +1,9 @@
 <?php
 
-namespace arrays;
+namespace collections;
 
 /**
- * @arrays @get
+ * @collections @get
  *
  ** __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
  ** // → 'ter'

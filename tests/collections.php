@@ -26,6 +26,42 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals([$b[1]], $y);
     }
 
+    public function testFirst()
+    {
+        // Arrange
+        $a = [1, 2, 3, 4, 5];
+
+        // Act
+        $x = __::first($a, 2);
+
+        // Assert
+        $this->assertEquals([1, 2], $x);
+    }
+
+    public function testGet()
+    {
+        // Arrange
+        $a = ['foo' => ['bar' => 'ter']];
+
+        // Act
+        $x = __::get($a, 'foo.bar');
+
+        // Assert
+        $this->assertEquals('ter', $x);
+    }
+
+    public function testLast()
+    {
+        // Arrange
+        $a = [1, 2, 3, 4, 5];
+
+        // Act
+        $x = __::last($a, 2);
+
+        // Assert
+        $this->assertEquals([4, 5], $x);
+    }
+
     public function testMap()
     {
         // Arrange
