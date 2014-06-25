@@ -28,6 +28,18 @@ class ArraysTest extends PHPUnit_Framework_TestCase
         $this->assertEquals([1, 2, 3], $x);
     }
 
+    public function testFlatten()
+    {
+        // Arrange
+        $a = [1, 2, [3, [4]]];
+
+        // Act
+        $x = __::flatten($a);
+
+        // Assert
+        $this->assertEquals([1, 2, 3, 4], $x);
+    }
+
     public function testPrepend()
     {
         // Arrange

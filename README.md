@@ -60,6 +60,13 @@ require 'bottomline/bottomline.php';
   __::compact([0, 1, false, 2, '', 3]);
   // → [1, 2, 3]
   ```
+  
+  - [__::flatten](src/__/arrays/flatten.php)
+
+  ```php
+  __::flatten([1, 2, [3, [4]]]);
+  // → [1, 2, 3, 4]
+  ```
 
   - [__::prepend](src/__/arrays/prepend.php)
 
