@@ -123,6 +123,47 @@ It's a utility library delivering consistency, customization, performance & extr
 	```
 
 * Objects 
+  - [__::isArray](src/__/objects/isArray.php)
+
+	```php
+	__::isArray([1, 2, 3]);
+	// → true
+	```
+
+  - [__::isFunction](src/__/objects/isFunction.php)
+
+	```php
+	__::isFunction(function ($a) { return $a + 2; });
+	// → true
+	```
+
+  - [__::isNull](src/__/objects/isNull.php)
+
+	```php
+	__::isNull(null);
+	// → true
+	```
+
+  - [__::isNumber](src/__/objects/isNumber.php)
+
+	```php
+	__::isNumber(123);
+	// → true
+	```
+
+  - [__::isObject](src/__/objects/isObject.php)
+
+	```php
+	__::isObject('fred');
+	// → false
+	```
+
+  - [__::isString](src/__/objects/isString.php)
+
+	```php
+	__::isString('fred');
+	// → true
+	```
 
 * Utilities
 

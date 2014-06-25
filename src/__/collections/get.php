@@ -11,21 +11,21 @@ namespace collections;
 
 function get($collection = array(), $key = '', $default = null)
 {
-    if(is_null($key)) return $collection;
+    if(\objects\isNull($key)) return $collection;
 
-    if(!is_object($collection) && isset($collection[$key]))
+    if(!\objects\isObject($collection) && isset($collection[$key]))
     {
     	return $collection[$key];
     }
 
-    foreach(explode('.', $key) as $segment)
+    foreach(\explode('.', $key) as $segment)
     {
-      	if(is_object($collection))
+      	if(\objects\isObject($collection))
       	{
-        	if(!isset($collection->{$segment})) return $default instanceof Closure ? $default() : $default;
+        	if(!isset($collection->{$segment})) return $default instanceof \Closure ? $default() : $default;
         	else $collection = $collection->$segment;
       	}else{
-        	if(!isset($collection[$segment])) return $default instanceof Closure ? $default() : $default;
+        	if(!isset($collection[$segment])) return $default instanceof \Closure ? $default() : $default;
         	else $collection = $collection[$segment];
       	}
     }
