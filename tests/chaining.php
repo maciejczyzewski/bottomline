@@ -27,6 +27,18 @@ class ChainingTest extends PHPUnit_Framework_TestCase
         // Assert
         $this->assertEquals('Lorem ipsum dolor sit amet, ...', $x);
     }
+    
+    public function testUrlify()
+    {
+        // Arrange
+        $a = 'I love https://google.com';
+
+        // Act
+        $x = __::urlify($a);
+
+        // Assert
+        $this->assertEquals('I love <a href="https://google.com">google.com</a>', $x);
+    }
 
     // ...
 }

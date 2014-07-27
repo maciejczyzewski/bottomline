@@ -26,7 +26,7 @@ function compact(array $array = array())
     {
         if($value)
         {
-            \array_push($result, $value);
+        	$result[] = $value;
         }
     }
 

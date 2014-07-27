@@ -10,6 +10,8 @@ Useful feature pack.
 
 It's a utility library delivering consistency, customization, performance & extras.
 
+It's a full-on PHP manipulation utility-belt  that provides support for the usual functional suspects each, map, reduce, filter...
+
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting bottomline running on your computer.
@@ -110,6 +112,13 @@ require 'bottomline/bottomline.php';
   // → 'Lorem ipsum dolor sit amet, ...'
   ```
 
+  - [__::urlify](src/__/chaining/urlify.php)
+
+  ```php
+  __::urlify('I love https://google.com');
+  // → 'I love <a href="https://google.com">google.com</a>'
+  ```
+
 * Collections
   - [__::filter](src/__/collections/filter.php)
 
@@ -184,7 +193,7 @@ require 'bottomline/bottomline.php';
   - [__::pluck](src/__/collections/pluck.php)
 
   Extract an array of property values.
-  
+
   ```php
   $a = [
       ['foo' => 'bar',  'bis' => 'ter' ],
@@ -207,6 +216,7 @@ require 'bottomline/bottomline.php';
   // → [['name' => 'maciej', 'age' => 16]]
   ```
 
+* Functions
 * Objects 
   - [__::isArray](src/__/objects/isArray.php)
 
