@@ -8,9 +8,7 @@ Useful feature pack.
 
 ## Introduction
 
-It's a utility library delivering consistency, customization, performance & extras.
-
-It's a full-on PHP manipulation utility-belt  that provides support for the usual functional suspects each, map, reduce, filter...
+It's a full-on PHP manipulation utility-belt that provides support for the usual functional.
 
 #### More reading:
 
