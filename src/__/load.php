@@ -16,7 +16,7 @@ namespace __;
  ** Utilities                                    [0]
 
  *************************************************** 
- * bottomline v0.0.4                               *
+ * bottomline v0.0.5                               *
  * bottomline is licensed under the MIT license    *
  * Copyright (c) 2014 Maciej A. Czyzewski          *
 \***************************************************/
