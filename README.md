@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-1.png"/>
 </div>
 
+> It can be used as port of _lodash.js_ or _underscore.js_.
+
 # bottomline [![Build Status](https://travis-ci.org/MaciejCzyzewski/bottomline.png)](https://travis-ci.org/MaciejCzyzewski/bottomline) [![PHP version](https://badge.fury.io/ph/maciejczyzewski%2Fbottomline.svg)](http://badge.fury.io/ph/maciejczyzewski%2Fbottomline)
 
 Useful feature pack.
