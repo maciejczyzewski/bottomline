@@ -56,12 +56,16 @@ require 'bottomline/bottomline.php';
 
   - [__::compact](src/__/arrays/compact.php)
 
+  Returns a copy of the array with falsy values removed.
+
   ```php
   __::compact([0, 1, false, 2, '', 3]);
   // → [1, 2, 3]
   ```
 
   - [__::flatten](src/__/arrays/flatten.php)
+
+  Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
 
   ```php
   __::flatten([1, 2, [3, [4]]]);
@@ -76,6 +80,8 @@ require 'bottomline/bottomline.php';
   ```
 
   - [__::range](src/__/arrays/range.php)
+
+  Returns an array of integers from start to stop (exclusive) by step.
 
   ```php
   __::range(1, 10, 2);
@@ -107,6 +113,8 @@ require 'bottomline/bottomline.php';
 * Collections
   - [__::filter](src/__/collections/filter.php)
 
+  Return the values in the collection that pass the truth test.
+
   ```php
   $a = [
       ['name' => 'fred',   'age' => 32],
@@ -120,6 +128,8 @@ require 'bottomline/bottomline.php';
   ```
 
   - [__::first](src/__/collections/first.php)
+
+  Get the first element of an array. Passing n returns the first n elements.
 
   ```php
   __::first([1, 2, 3, 4, 5], 2);
@@ -135,12 +145,16 @@ require 'bottomline/bottomline.php';
 
   - [__::last](src/__/collections/last.php)
 
+  Get the last element of an array. Passing n returns the last n elements.
+
   ```php
   __::last([1, 2, 3, 4, 5], 2);
   // → [4, 5]
   ```
 
   - [__::map](src/__/collections/map.php)
+
+  Returns an array of values by mapping each in collection through the iterator.
 
   ```php
   __::map([1, 2, 3], function($n) {
@@ -151,12 +165,16 @@ require 'bottomline/bottomline.php';
 
   - [__::max](src/__/collections/max.php)
 
+  Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
+
   ```php
   __::max([1, 2, 3]);
   // → 3
   ```
 
   - [__::min](src/__/collections/min.php)
+
+  Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
 
   ```php
   __::min([1, 2, 3]);
@@ -165,6 +183,8 @@ require 'bottomline/bottomline.php';
 
   - [__::pluck](src/__/collections/pluck.php)
 
+  Extract an array of property values.
+  
   ```php
   $a = [
       ['foo' => 'bar',  'bis' => 'ter' ],
