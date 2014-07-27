@@ -15,8 +15,8 @@ It's a full-on PHP manipulation utility-belt that provides support for the usual
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting bottomline running on your computer.
-- [Benchmark](#usage): Comparison with other libraries.
 - [Structure](#structure): Explanation of bottomline experimental structure.
+- [Benchmark](#usage): Comparison with other libraries.
 - [Usage](#usage): List of commands.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
@@ -48,12 +48,6 @@ Put the require statement in your code:
 require 'bottomline/bottomline.php';
 ```
 
-## Benchmarks
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-2.png"/>
-</div>
-
 ## Structure
 
 Bottomline is based on namespaces and dynamic autoloader. The main file is `load.php` because it is responsible for loading the various functions from appropriate folders.
@@ -84,6 +78,12 @@ Bottomline is based on namespaces and dynamic autoloader. The main file is `load
 |-- bottomline.php
 |-- phpunit.xml
 ```
+
+## Benchmarks
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-2.png"/>
+</div>
 
 ## Usage
 
