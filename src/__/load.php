@@ -8,12 +8,12 @@ namespace __;
  ___________________________________________________
  ***************************************************
 
- ** Arrays                                      [20]
- ** Chaining                                     [2]
- ** Collections                                 [26]
- ** Functions                                   [15]
- ** Objects                                     [39]
- ** Utilities                                   [17]
+ ** Arrays                                       [6]
+ ** Chaining                                     [3]
+ ** Collections                                  [9]
+ ** Functions                                    [0]
+ ** Objects                                      [7]
+ ** Utilities                                    [0]
 
  *************************************************** 
  * bottomline v0.0.4                               *
