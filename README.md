@@ -16,6 +16,7 @@ It's a full-on PHP manipulation utility-belt that provides support for the usual
 
 - [Installation](#installation): Step-by-step instructions for getting bottomline running on your computer.
 - [Benchmark](#usage): Comparison with other libraries.
+- [Structure](#structure): Explanation of bottomline experimental structure.
 - [Usage](#usage): List of commands.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
@@ -52,6 +53,37 @@ require 'bottomline/bottomline.php';
 <div align="center">
   <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-2.png"/>
 </div>
+
+## Structure
+
+Bottomline is based on namespaces and dynamic autoloader. The main file is `load.php` because it is responsible for loading the various functions from appropriate folders.
+
+```bash
+|-- src
+|   |-- __
+|   |   |-- arrays
+|   |   |   |-- ...
+|   |   |-- chaining
+|   |   |   |-- ...
+|   |   |-- collections
+|   |   |   |-- ...
+|   |   |-- functions
+|   |   |   |-- ...
+|   |   |-- objects
+|   |   |   |-- ...
+|   |   |-- utilities
+|   |   |   |-- ...
+|   |   |-- load.php
+|-- tests
+|   |-- arrays.php
+|   |-- chaining.php
+|   |-- collections.php
+|   |-- functions.php
+|   |-- objects.php
+|   |-- utilities.php
+|-- bottomline.php
+|-- phpunit.xml
+```
 
 ## Usage
 
