@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot.png"/>
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-1.png"/>
 </div>
 
 # bottomline [![Build Status](https://travis-ci.org/MaciejCzyzewski/bottomline.png)](https://travis-ci.org/MaciejCzyzewski/bottomline) [![PHP version](https://badge.fury.io/ph/maciejczyzewski%2Fbottomline.svg)](http://badge.fury.io/ph/maciejczyzewski%2Fbottomline)
@@ -13,6 +13,7 @@ It's a full-on PHP manipulation utility-belt that provides support for the usual
 #### More reading:
 
 - [Installation](#installation): Step-by-step instructions for getting bottomline running on your computer.
+- [Benchmark](#usage): Comparison with other libraries.
 - [Usage](#usage): List of commands.
 - [Contributing](#contributing): Explanation of how you can join the project.
 - [License](#license): Clarification of certain rules.
@@ -43,6 +44,12 @@ Put the require statement in your code:
 ```php
 require 'bottomline/bottomline.php';
 ```
+
+## Benchmarks
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/MaciejCzyzewski/bottomline/master/screenshot-2.png"/>
+</div>
 
 ## Usage
 
