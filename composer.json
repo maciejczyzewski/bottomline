@@ -1,6 +1,6 @@
 {
     "name": "maciejczyzewski/bottomline",
-    "description": "A utility library delivering consistency, customization, performance & extras.",
+    "description": "A full-on PHP manipulation utility-belt that provides support for the usual functional.",
     "keywords": ["__", "bottomline", "library", "utility", "functions"],
     "type": "library",
     "require": {
