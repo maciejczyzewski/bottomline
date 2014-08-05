@@ -113,6 +113,15 @@ Bottomline is based on namespaces and dynamic autoloader. The main file is `load
   // → [1, 2, 3, 4]
   ```
 
+  - [__::patch](src/__/arrays/patch.php)
+
+  Patches array with list of xpath-value pairs.
+
+  ```php
+  __::patch(['addr' => ['country' => 'US', 'zip' => 12345]], ['/addr/country' => 'CA', '/addr/zip' => 54321]);
+  // → ['addr' => ['country' => 'CA', 'zip' => 54321]]
+  ```
+
   - [__::prepend](src/__/arrays/prepend.php)
 
   ```php
