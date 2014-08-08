@@ -12,7 +12,7 @@ function truncate($text, $limit)
     {
         $words = str_word_count($text, 2);
         $pos = array_keys($words);
-        $text = substr($text, 0, $pos[$limit]) . '...';
+        $text = mb_substr($text, 0, $pos[$limit], 'UTF-8') . '...';
     }
 
     return $text;
