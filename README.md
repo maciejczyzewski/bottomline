@@ -265,7 +265,7 @@ Bottomline is based on namespaces and dynamic autoloader. The main file is `load
   ```
 
 * Functions
-* Objects 
+* Objects
   - [__::isArray](src/__/objects/isArray.php)
 
   ```php
@@ -320,8 +320,6 @@ Bottomline is based on namespaces and dynamic autoloader. The main file is `load
 ## Contributing
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
-
-[![Gitter chat](https://badges.gitter.im/MaciejCzyzewski/bottomline.png)](https://gitter.im/MaciejCzyzewski/bottomline)
 
 ## License
 
