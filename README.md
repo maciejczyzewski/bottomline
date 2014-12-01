@@ -17,6 +17,13 @@
 - [License](#license)
 
 
+## Requirements
+
+```ini
+; php.ini
+extension=php_mbstring.dll
+```
+
 ## Introduction
 
 bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes namespaces and dynamic autoloading to improve performance.
