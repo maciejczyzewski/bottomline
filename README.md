@@ -9,7 +9,7 @@
 
 
 ## Table of Contents:
-- [Introduction](#introduction):
+- [Introductionn](#introduction)
 - [Installation](#installation)
 - [Structure](#structure)
 - [Usage](#usage)
@@ -21,7 +21,7 @@
 
 bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes namespaces and dynamic autoloading to improve performance.
 
---- 
+---
 
 **NOTE:** bottomline is not currently in feature parity with Underscore/Lodash. Review the [contributing](#contributing) section for more information.
 
