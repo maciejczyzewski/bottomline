@@ -35,8 +35,6 @@ function baseFlatten(array $array, $shallow=false, $strict=true, $startIndex=0) 
         $output[$idx++] = $value[$j++];
       }
 
-      print_r($output);
-
     } else if (!$strict) {
       $output[$idx++] = $value;
     }

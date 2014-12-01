@@ -9,7 +9,7 @@
 
 
 ## Table of Contents:
-- [Introductionn](#introduction)
+- [Introduction](#introduction)
 - [Installation](#installation)
 - [Structure](#structure)
 - [Usage](#usage)
