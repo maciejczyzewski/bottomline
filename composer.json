@@ -16,5 +16,9 @@
     "autoload": {
         "files": ["bottomline.php"],
         "psr-4": {"__\\": "src/"}
+    },
+
+    "autoload-dev": {
+        "psr-4": { "__\\": "tests/" }
     }
 }
