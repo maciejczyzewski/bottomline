@@ -4,41 +4,17 @@ class ChainingTest extends PHPUnit_Framework_TestCase
 {
     // ...
 
-    public function testSlug()
-    {
+    public function testTODO() {
         // Arrange
-        $a = 'Jakieś zdanie z dużą ilością obcych znaków!';
+        $a = 'testing';
 
         // Act
-        $x = __::slug($a);
+        $x = $a;
 
         // Assert
-        $this->assertEquals('jakies-zdanie-z-duza-iloscia-obcych-znakow', $x);
+        $this->assertEquals('testing', $x);
     }
 
-    public function testTruncate()
-    {
-        // Arrange
-        $a = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';
-
-        // Act
-        $x = __::truncate($a, 5);
-
-        // Assert
-        $this->assertEquals('Lorem ipsum dolor sit amet, ...', $x);
-    }
-    
-    public function testUrlify()
-    {
-        // Arrange
-        $a = 'I love https://google.com';
-
-        // Act
-        $x = __::urlify($a);
-
-        // Assert
-        $this->assertEquals('I love <a href="https://google.com">google.com</a>', $x);
-    }
 
     // ...
 }
