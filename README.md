@@ -85,7 +85,7 @@ __::compact([0, 1, false, 2, '', 3]);
 ##### [__::flatten](src/__/arrays/flatten.php)
 Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
 ```php
-__::flatten([1, 2, [3, [4]]]);
+__::flatten([1, 2, [3, [4]]], [flatten]);
 // >> [1, 2, 3, 4]
 ```
 
