@@ -7,9 +7,6 @@ class UtilitiesTest extends PHPUnit_Framework_TestCase {
         // Act
         $x = __::now();
 
-        echo time() . PHP_EOL;
-        echo __::now();
-
         // Assert
         $this->assertEquals(true, is_numeric($x));
     }

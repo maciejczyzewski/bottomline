@@ -10,7 +10,6 @@ namespace utilities;
  */
 
 function now() {
-	$now = time();
-	print_r($now);
-	return $now;
+  $now = time();
+  return $now;
 }
