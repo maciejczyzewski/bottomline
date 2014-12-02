@@ -38,6 +38,8 @@ bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes
 
 ```bash
 /bottomline
+├── /images
+│   └── (place relevant graphics in this folder)
 ├── /src
 │   └── /__
 │       ├── /arrays
@@ -53,7 +55,6 @@ bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes
 │   ├── functions.php
 │   ├── objects.php
 │   └── utilities.php
-│   /images                 # (place relevant graphics in this folder)
 ├── .gitignore
 ├── .travis.yaml
 ├── bottomline.php
