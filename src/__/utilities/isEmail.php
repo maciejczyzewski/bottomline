@@ -1,9 +1,9 @@
 <?php
 
-namespace objects;
+namespace utilities;
 
 /**
- * @objects @isEmail
+ * @utilities @isEmail
  */
 
 function isEmail($value = null)
