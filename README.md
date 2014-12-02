@@ -26,7 +26,42 @@ extension=php_mbstring.dll
 
 ## Introduction
 
-bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes namespaces and dynamic autoloading to improve performance.
+bottomline is a PHP utility library, similar to Underscore/Lodash, that utilizes `namespace`s and dynamic auto loading to improve library performance.
+
+
+### Project Structure
+
+- `bottomline.php` is the entry point for the bottomline utility library
+- All bottomline methods are stored in separate files within their respective `namespace` folder outlined in `/src/__`
+- Tests reflect the `namespace` defined within the library and are processed using [phpunit testing](https://phpunit.de)
+    + To test bottomline, [install phpunit](https://phpunit.de/getting-started.html) and in the terminal, run `phpunit`
+
+```bash
+/bottomline
+├── /src
+│   └── /__
+│       ├── /arrays
+│       ├── /collections
+│       ├── /functions
+│       ├── /objects
+│       ├── /utilities
+│       └── load.php        # (autoloader script for all bottomline methods)
+├── /tests
+│   ├── arrays.php
+│   ├── chaining.php
+│   ├── collections.php
+│   ├── functions.php
+│   ├── objects.php
+│   └── utilities.php
+│   /images                 # (place relevant graphics in this folder)
+├── .gitignore
+├── .travis.yaml
+├── bottomline.php
+├── composer.json
+├── phpunit.xml
+├── LICENSE
+└── README.md
+```
 
 ---
 
@@ -76,47 +111,47 @@ require 'bottomline/bottomline.php';
 
 ### Arrays
 
-##### [__::append](src/__/arrays/append.php)
+##### [__::append()](src/__/arrays/append.php)
 ```php
 __::append([1, 2, 3], 4);
 // >> [1, 2, 3, 4]
 ```
 
-##### [__::compact](src/__/arrays/compact.php)
+##### [__::compact()](src/__/arrays/compact.php)
 Returns a copy of the array with falsy values removed.
 ```php
 __::compact([0, 1, false, 2, '', 3]);
 // >> [1, 2, 3]
 ```
 
-##### [__::flatten](src/__/arrays/flatten.php)
+##### [__::flatten()](src/__/arrays/flatten.php)
 Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
 ```php
 __::flatten([1, 2, [3, [4]]], [flatten]);
 // >> [1, 2, 3, 4]
 ```
 
-##### [__::patch](src/__/arrays/patch.php)
+##### [__::patch()](src/__/arrays/patch.php)
 Patches array with list of xpath-value pairs.
 ```php
 __::patch(['addr' => ['country' => 'US', 'zip' => 12345]], ['/addr/country' => 'CA', '/addr/zip' => 54321]);
 // >> ['addr' => ['country' => 'CA', 'zip' => 54321]]
 ```
 
-##### [__::prepend](src/__/arrays/prepend.php)
+##### [__::prepend()](src/__/arrays/prepend.php)
 ```php
 __::prepend([1, 2, 3], 4);
 // >> [4, 1, 2, 3]
 ```
 
-##### [__::range](src/__/arrays/range.php)
+##### [__::range()](src/__/arrays/range.php)
 Returns an array of integers from start to stop (exclusive) by step.
 ```php
 __::range(1, 10, 2);
 // >> [1, 3, 5, 7, 9]
 ```
 
-##### [__::repeat](src/__/arrays/repeat.php)
+##### [__::repeat()](src/__/arrays/repeat.php)
 ```php
 __::repeat('foo', 3);
 // >> ['foo', 'foo', 'foo']
@@ -129,7 +164,7 @@ __::repeat('foo', 3);
 
 ### Collections
 
-##### [__::filter](src/__/collections/filter.php)
+##### [__::filter()](src/__/collections/filter.php)
 Returns the values in the collection that pass the truth test.
 ```php
 $a = [
@@ -143,27 +178,27 @@ __::filter($a, function($n) {
 // >> [['name' => 'fred', 'age' => 32]]
 ```
 
-##### [__::first](src/__/collections/first.php)
+##### [__::first()](src/__/collections/first.php)
 Gets the first element of an array. Passing n returns the first n elements.
 ```php
 __::first([1, 2, 3, 4, 5], 2);
 // >> [1, 2]
 ```
 
-##### [__::get](src/__/collections/get.php)
+##### [__::get()](src/__/collections/get.php)
 ```php
 __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
 // >> 'ter'
 ```
 
-##### [__::last](src/__/collections/last.php)
+##### [__::last()](src/__/collections/last.php)
 Gets the last element of an array. Passing n returns the last n elements.
 ```php
 __::last([1, 2, 3, 4, 5], 2);
 // >> [4, 5]
 ```
 
-##### [__::map](src/__/collections/map.php)
+##### [__::map()](src/__/collections/map.php)
 Returns an array of values by mapping each in collection through the iterator.
 ```php
 __::map([1, 2, 3], function($n) {
@@ -172,21 +207,21 @@ __::map([1, 2, 3], function($n) {
 // >> [3, 6, 9]
 ```
 
-##### [__::max](src/__/collections/max.php)
+##### [__::max()](src/__/collections/max.php)
 Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
 ```php
 __::max([1, 2, 3]);
 // >> 3
 ```
 
-##### [__::min](src/__/collections/min.php)
+##### [__::min()](src/__/collections/min.php)
 Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
 ```php
 __::min([1, 2, 3]);
 // >> 1
 ```
 
-##### [__::pluck](src/__/collections/pluck.php)
+##### [__::pluck()](src/__/collections/pluck.php)
 Returns an array of values belonging to a given property of each item in a collection.
 ```php
 $a = [
@@ -198,7 +233,7 @@ __::pluck($a, 'foo');
 // >> ['bar', 'bar2']
 ```
 
-##### [__::where](src/__/collections/where.php)
+##### [__::where()](src/__/collections/where.php)
 ```php
 $a = [
     ['name' => 'fred',   'age' => 32],
@@ -212,70 +247,84 @@ __::where($a, ['age' => 16]);
 
 ### Functions
 
-##### [__::slug](src/__/chaining/slug.php)
+##### [__::slug()](src/__/chaining/slug.php)
 ```php
 __::slug('Jakieś zdanie z dużą ilością obcych znaków!');
 // >> 'jakies-zdanie-z-duza-iloscia-obcych-znakow'
 ```
 
-##### [__::truncate](src/__/chaining/truncate.php)
+##### [__::truncate()](src/__/chaining/truncate.php)
 ```php
 $string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';
 __::truncate($string);
 // >> 'Lorem ipsum dolor sit amet, ...'
 ```
 
-##### [__::urlify](src/__/chaining/urlify.php)
+##### [__::urlify()](src/__/chaining/urlify.php)
 ```php
 __::urlify('I love https://google.com');
 // >> 'I love <a href="https://google.com">google.com</a>'
 ```
 
+
 ### Objects
 
-##### [__::isArray](src/__/objects/isArray.php)
+##### [__::isArray([array])](src/__/objects/isArray.php)
 ```php
 __::isArray([1, 2, 3]);
 // >> true
+
+__::isArray(123);
+// >> false
 ```
 
-##### [__::isEmail](src/__/objects/isEmail.php)
-```php
-__::isEmail('test@test.com');
-// >> true
-```
-
-##### [__::isFunction](src/__/objects/isFunction.php)
+##### [__::isFunction()](src/__/objects/isFunction.php)
 ```php
 __::isFunction(function ($a) { return $a + 2; });
 // >> true
 ```
 
-##### [__::isNull](src/__/objects/isNull.php)
+##### [__::isNull()](src/__/objects/isNull.php)
 ```php
 __::isNull(null);
 // >> true
 ```
 
-##### [__::isNumber](src/__/objects/isNumber.php)
+##### [__::isNumber()](src/__/objects/isNumber.php)
 ```php
 __::isNumber(123);
 // >> true
 ```
 
-##### [__::isObject](src/__/objects/isObject.php)
+##### [__::isObject()](src/__/objects/isObject.php)
 ```php
 __::isObject('fred');
 // >> false
 ```
 
-##### [__::isString](src/__/objects/isString.php)
+##### [__::isString()](src/__/objects/isString.php)
 ```php
 __::isString('fred');
 // >> true
 ```
 
+
 ### Utilities
+##### [__::isEmail()](src/__/objects/isEmail.php)
+```php
+__::isEmail('test@test.com');
+// >> true
+
+__::isEmail('test_test.com');
+// >> false
+```
+
+##### [__::now()](src/__/utilities/now.php)
+Wrapper of the [`time()`](http://php.net/manual/en/function.time.php) function that returns the current offset in seconds since the Unix Epoch.
+```php
+__::now();
+// >> 1417546029
+```
 
 
 ## Contributing
@@ -286,6 +335,7 @@ Please feel free to contribute to this project! Pull requests and feature reques
 ## License
 
 See LICENSE file in this repository.
+
 
 ## Thanks
 
