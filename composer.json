@@ -11,6 +11,10 @@
         {
             "name": "Maciej A. Czyzewski",
             "email": "maciejanthonyczyzewski@gmail.com"
+        },
+        {
+            "name": "Brandtley McMinn",
+            "email": "labs@giggleboxstudios.net"
         }
     ],
     "autoload": {
