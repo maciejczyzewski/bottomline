@@ -112,47 +112,47 @@ require 'bottomline/bottomline.php';
 
 ### Arrays
 
-##### [__::append()](src/__/arrays/append.php)
+##### [`__::append()`](src/__/arrays/append.php)
 ```php
 __::append([1, 2, 3], 4);
 // >> [1, 2, 3, 4]
 ```
 
-##### [__::compact()](src/__/arrays/compact.php)
+##### [`__::compact()`](src/__/arrays/compact.php)
 Returns a copy of the array with falsy values removed.
 ```php
 __::compact([0, 1, false, 2, '', 3]);
 // >> [1, 2, 3]
 ```
 
-##### [__::flatten()](src/__/arrays/flatten.php)
+##### [`__::flatten()`](src/__/arrays/flatten.php)
 Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
 ```php
 __::flatten([1, 2, [3, [4]]], [flatten]);
 // >> [1, 2, 3, 4]
 ```
 
-##### [__::patch()](src/__/arrays/patch.php)
+##### [`__::patch()`](src/__/arrays/patch.php)
 Patches array with list of xpath-value pairs.
 ```php
 __::patch(['addr' => ['country' => 'US', 'zip' => 12345]], ['/addr/country' => 'CA', '/addr/zip' => 54321]);
 // >> ['addr' => ['country' => 'CA', 'zip' => 54321]]
 ```
 
-##### [__::prepend()](src/__/arrays/prepend.php)
+##### [`__::prepend()`](src/__/arrays/prepend.php)
 ```php
 __::prepend([1, 2, 3], 4);
 // >> [4, 1, 2, 3]
 ```
 
-##### [__::range()](src/__/arrays/range.php)
+##### [`__::range()`](src/__/arrays/range.php)
 Returns an array of integers from start to stop (exclusive) by step.
 ```php
 __::range(1, 10, 2);
 // >> [1, 3, 5, 7, 9]
 ```
 
-##### [__::repeat($val, $n)](src/__/arrays/repeat.php)
+##### [`__::repeat($val, $n)`](src/__/arrays/repeat.php)
 Returns an array of `$n` length with each index containing the provided value.
 ```php
 __::repeat('foo', 3);
@@ -166,7 +166,7 @@ __::repeat('foo', 3);
 
 ### Collections
 
-##### [__::filter($array, callback($n))](src/__/collections/filter.php)
+##### [`__::filter($array, callback($n))`](src/__/collections/filter.php)
 Returns the values in the collection that pass the truth test.
 ```php
 $a = [
@@ -180,27 +180,27 @@ __::filter($a, function($n) {
 // >> [['name' => 'fred', 'age' => 32]]
 ```
 
-##### [__::first($array, [$n])](src/__/collections/first.php)
+##### [`__::first($array, [$n])`](src/__/collections/first.php)
 Gets the first element of an array. Passing n returns the first n elements.
 ```php
 __::first([1, 2, 3, 4, 5], 2);
 // >> [1, 2]
 ```
 
-##### [__::get($array, JSON $string)](src/__/collections/get.php)
+##### [`__::get($array, JSON $string)`](src/__/collections/get.php)
 ```php
 __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
 // >> 'ter'
 ```
 
-##### [__::last($array, [$n])](src/__/collections/last.php)
+##### [`__::last($array, [$n])`](src/__/collections/last.php)
 Gets the last element of an array. Passing n returns the last n elements.
 ```php
 __::last([1, 2, 3, 4, 5], 2);
 // >> [4, 5]
 ```
 
-##### [__::map($array, callback($n))](src/__/collections/map.php)
+##### [`__::map($array, callback($n))`](src/__/collections/map.php)
 Returns an array of values by mapping each in collection through the iterator.
 ```php
 __::map([1, 2, 3], function($n) {
@@ -209,21 +209,21 @@ __::map([1, 2, 3], function($n) {
 // >> [3, 6, 9]
 ```
 
-##### [__::max($array)](src/__/collections/max.php)
+##### [`__::max($array)`](src/__/collections/max.php)
 Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
 ```php
 __::max([1, 2, 3]);
 // >> 3
 ```
 
-##### [__::min($array)](src/__/collections/min.php)
+##### [`__::min($array)`](src/__/collections/min.php)
 Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
 ```php
 __::min([1, 2, 3]);
 // >> 1
 ```
 
-##### [__::pluck($array, $property)](src/__/collections/pluck.php)
+##### [`__::pluck($array, $property)`](src/__/collections/pluck.php)
 Returns an array of values belonging to a given property of each item in a collection.
 ```php
 $a = [
@@ -235,7 +235,7 @@ __::pluck($a, 'foo');
 // >> ['bar', 'bar2']
 ```
 
-##### [__::where($array, $parameters[])](src/__/collections/where.php)
+##### [`__::where($array, $parameters[])`](src/__/collections/where.php)
 Returns a collection of objects matching the given array of parameters.
 ```php
 $a = [
@@ -250,7 +250,7 @@ __::where($a, ['age' => 16]);
 
 ### Functions
 
-##### [__::slug($string, [array $options])](src/__/functions/slug.php)
+##### [`__::slug($string, [array $options])`](src/__/functions/slug.php)
 ```php
 __::slug('Jakieś zdanie z dużą ilością obcych znaków!');
 // >> 'jakies-zdanie-z-duza-iloscia-obcych-znakow'
@@ -267,7 +267,7 @@ __::slug('Something you don\'t know about know about Jackson', $options);
 // >> 'something-you-dont-know-about'
 ```
 
-##### [__::truncate($string, [$limit=40])](src/__/functions/truncate.php)
+##### [`__::truncate($string, [$limit=40])`](src/__/functions/truncate.php)
 ```php
 $string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';
 __::truncate($string);
@@ -277,7 +277,7 @@ __::truncate($string, 60);
 // >> 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pel...'
 ```
 
-##### [__::urlify($string)](src/__/functions/urlify.php)
+##### [`__::urlify($string)`](src/__/functions/urlify.php)
 ```php
 __::urlify('I love https://google.com');
 // >> 'I love <a href="https://google.com">google.com</a>'
@@ -286,7 +286,7 @@ __::urlify('I love https://google.com');
 
 ### Objects
 
-##### [__::isArray($array)](src/__/objects/isArray.php)
+##### [`__::isArray($array)`](src/__/objects/isArray.php)
 ```php
 __::isArray([1, 2, 3]);
 // >> true
@@ -295,31 +295,31 @@ __::isArray(123);
 // >> false
 ```
 
-##### [__::isFunction($string)](src/__/objects/isFunction.php)
+##### [`__::isFunction($string)`](src/__/objects/isFunction.php)
 ```php
 __::isFunction(function ($a) { return $a + 2; });
 // >> true
 ```
 
-##### [__::isNull($null)](src/__/objects/isNull.php)
+##### [`__::isNull($null)`](src/__/objects/isNull.php)
 ```php
 __::isNull(null);
 // >> true
 ```
 
-##### [__::isNumber($int|$float)](src/__/objects/isNumber.php)
+##### [`__::isNumber($int|$float)`](src/__/objects/isNumber.php)
 ```php
 __::isNumber(123);
 // >> true
 ```
 
-##### [__::isObject($object)](src/__/objects/isObject.php)
+##### [`__::isObject($object)`](src/__/objects/isObject.php)
 ```php
 __::isObject('fred');
 // >> false
 ```
 
-##### [__::isString($string)](src/__/objects/isString.php)
+##### [`__::isString($string)`](src/__/objects/isString.php)
 ```php
 __::isString('fred');
 // >> true
@@ -327,7 +327,7 @@ __::isString('fred');
 
 
 ### Utilities
-##### [__::isEmail($string)](src/__/objects/isEmail.php)
+##### [`__::isEmail($string)`](src/__/objects/isEmail.php)
 ```php
 __::isEmail('test@test.com');
 // >> true
@@ -336,14 +336,14 @@ __::isEmail('test_test.com');
 // >> false
 ```
 
-##### [__::now()](src/__/utilities/now.php)
+##### [`__::now()`](src/__/utilities/now.php)
 Wrapper of the [`time()`](http://php.net/manual/en/function.time.php) function that returns the current offset in seconds since the Unix Epoch.
 ```php
 __::now();
 // >> 1417546029
 ```
 
-##### [__::stringContains($needle, $haystack, [$offset])](src/__/utilities/stringContains.php)
+##### [`__::stringContains($needle, $haystack, [$offset])`](src/__/utilities/stringContains.php)
 Wrapper of the [`time()`](http://php.net/manual/en/function.time.php) function that returns the current offset in seconds since the Unix Epoch.
 ```php
 __::stringContains('waffle', 'wafflecone');
