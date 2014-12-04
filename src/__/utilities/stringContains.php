@@ -11,5 +11,5 @@ namespace utilities;
  * @return bool              whether the
  */
 function stringContains($needle, $haystack, $offset=0) {
-  return strpos($haystack, $needle, $offset) !== false;
+  return strpos($haystack, $needle, $offset) !== false ? true : false;
 }

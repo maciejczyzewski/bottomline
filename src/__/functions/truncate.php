@@ -6,7 +6,7 @@ namespace functions;
  * @functions @truncate
  */
 
-function truncate($text, $limit) {
+function truncate($text, $limit=40) {
 
   if (str_word_count($text, 0) > $limit) {
     $words  = str_word_count($text, 2);

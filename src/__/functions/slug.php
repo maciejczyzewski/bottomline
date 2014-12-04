@@ -29,7 +29,7 @@ function slug($str, $options = array()) {
 		'limit' => null,
 		'lowercase' => true,
 		'replacements' => array(),
-		'transliterate' => true,
+		'transliterate' => true
 	);
 
 	// Merge options
