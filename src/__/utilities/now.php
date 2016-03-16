@@ -3,13 +3,13 @@
 namespace utilities;
 
 /**
- * @utilities @now
+ * alis to original time() function which return current time
  *
- ** __::now();
- ** // → unix timestamp
+ * @return mixed
+ *
  */
-
-function now() {
-  $now = time();
-  return $now;
+function now()
+{
+    $now = time();
+    return $now;
 }

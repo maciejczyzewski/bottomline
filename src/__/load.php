@@ -28,44 +28,21 @@ if (version_compare(PHP_VERSION, '5.4.0', '=<')) {
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
 class __
 {
-    static $modules = array(
+    static $modules
+      = array(
         'arrays',
         'chaining',
         'collections',
         'functions',
         'objects',
-        'utilities'
-    );
+        'utilities',
+      );
 
     static $functions = array();
 
-    static public function __loader($name, $arguments)
+    public static function __callStatic($name, $arguments)
     {
-        if(empty(self::$functions))
-        {
-            foreach(self::$modules as $key => $value)
-            {
-                foreach(glob(__DIR__ .'/'. $value .'/*.php', GLOB_BRACE) as $function)
-                {
-                    $path = explode('.', str_replace(__DIR__ .'/', '', $function));
-                    $alias = str_replace('/', '\\', array_shift($path));
-
-                    if(!function_exists($alias))
-                    {
-                        self::$functions[] = $alias;
-                        require $function;
-                    }
-                }
-            }
-        }
-
-        foreach(self::$functions as $key => $value)
-        {
-            if(strpos($value, $name))
-            {
-                return call_user_func_array($value, $arguments);
-            }
-        }
+        return self::__loader($name, $arguments);
     }
 
     public function __call($name, $arguments)
@@ -73,8 +50,26 @@ class __
         return self::__loader($name, $arguments);
     }
 
-    public static function __callStatic($name, $arguments)
+    static public function __loader($name, $arguments)
     {
-        return self::__loader($name, $arguments);
+        if (empty(self::$functions)) {
+            foreach (self::$modules as $key => $value) {
+                foreach (glob(__DIR__.'/'.$value.'/*.php', GLOB_BRACE) as $function) {
+                    $path  = explode('.', str_replace(__DIR__.'/', '', $function));
+                    $alias = str_replace('/', '\\', array_shift($path));
+
+                    if (!function_exists($alias)) {
+                        self::$functions[] = $alias;
+                        require $function;
+                    }
+                }
+            }
+        }
+
+        foreach (self::$functions as $key => $value) {
+            if (strpos($value, $name)) {
+                return call_user_func_array($value, $arguments);
+            }
+        }
     }
 }
