@@ -16,18 +16,6 @@ class ObjectsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, $x);
     }
 
-    public function testIsEmail()
-    {
-        // Arrange
-        $a = 'test@test.com';
-
-        // Act
-        $x = __::isEmail($a);
-
-        // Assert
-        $this->assertEquals(true, $x);
-    }
-
     public function testIsFunction()
     {
         // Arrange
