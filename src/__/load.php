@@ -22,7 +22,7 @@ namespace __;
 \***************************************************/
 
 if (version_compare(PHP_VERSION, '5.4.0', '=<')) {
-    throw new Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.4.0', 1);
+    throw new \Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.4.0', 1);
 }
 
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
@@ -50,6 +50,15 @@ class __
         return self::__loader($name, $arguments);
     }
 
+    /**
+     * auto-loading function
+     *
+     * @param $name
+     * @param $arguments
+     *
+     * @return null|mixed
+     *
+     */
     static public function __loader($name, $arguments)
     {
         if (empty(self::$functions)) {
@@ -71,5 +80,6 @@ class __
                 return call_user_func_array($value, $arguments);
             }
         }
+        return null;
     }
 }

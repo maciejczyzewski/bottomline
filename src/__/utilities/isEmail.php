@@ -1,11 +1,12 @@
 <?php
 
-namespace objects;
+namespace utilities;
 
 /**
+ * @utilities @isEmail
  * check if the value is valid email
  *
- * @param null $value
+ * @param string $value
  *
  * @return bool
  *

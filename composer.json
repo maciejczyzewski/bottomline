@@ -1,20 +1,36 @@
 {
-    "name": "maciejczyzewski/bottomline",
-    "description": "A full-on PHP manipulation utility-belt that provides support for the usual functional.",
-    "keywords": ["__", "bottomline", "library", "utility", "functions"],
-    "type": "library",
-    "require": {
-        "php": ">=5.4.0"
+  "name": "tajawal/bottomline",
+  "description": "A full-on PHP manipulation utility-belt that provides support for the usual functional.",
+  "keywords": [
+    "__",
+    "bottomline",
+    "library",
+    "utility",
+    "functions"
+  ],
+  "type": "library",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maciej A. Czyzewski",
+      "email": "maciejanthonyczyzewski@gmail.com"
+      "role": "author"
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Maciej A. Czyzewski",
-            "email": "maciejanthonyczyzewski@gmail.com"
-        }
-    ],
-    "autoload": {
-        "files": ["bottomline.php"],
-        "psr-4": {"__\\": "src/"}
+    {
+      "name": "tajawal",
+      "email": "it@tajawal.com",
+      "role": "developer"
     }
+  ],
+  "autoload": {
+    "files": [
+      "bottomline.php"
+    ],
+    "psr-4": {
+      "__\\": "src/"
+    }
+  }
 }
