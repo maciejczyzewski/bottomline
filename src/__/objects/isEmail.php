@@ -3,9 +3,13 @@
 namespace objects;
 
 /**
- * @objects @isEmail
+ * check if the value is valid email
+ *
+ * @param null $value
+ *
+ * @return bool
+ *
  */
-
 function isEmail($value = null)
 {
     return \filter_var($value, FILTER_VALIDATE_EMAIL) != false;
