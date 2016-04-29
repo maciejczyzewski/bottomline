@@ -28,7 +28,7 @@ function where(array $array = array(), array $key = array())
                     break;
                 }
             } else {
-                if ($v[$j] != $w) {
+                if (!isset($v[$j]) || $v[$j] != $w) {
                     $not = true;
                     break;
                 }
