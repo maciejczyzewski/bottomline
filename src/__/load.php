@@ -21,8 +21,8 @@ namespace __;
  * Copyright (c) 2014 Maciej A. Czyzewski          *
 \***************************************************/
 
-if (version_compare(PHP_VERSION, '5.4.0', '=<')) {
-    throw new Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.4.0', 1);
+if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+    throw new \Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.4.0', 1);
 }
 
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
