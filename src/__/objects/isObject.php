@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isObject($value = null)
+function isObject($value)
 {
     return \is_object($value);
 }

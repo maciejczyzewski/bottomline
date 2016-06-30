@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isFunction($value = null)
+function isFunction($value)
 {
     return \is_callable($value);
 }

@@ -14,9 +14,9 @@ namespace arrays;
  * @return array
  *
  */
-function compact(array $array = array())
+function compact(array $array = [])
 {
-    $result = array();
+    $result = [];
 
     foreach ($array as $value) {
         if ($value) {

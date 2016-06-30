@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isString($value = null)
+function isString($value)
 {
     return \is_string($value);
 }

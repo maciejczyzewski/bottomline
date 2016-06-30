@@ -14,9 +14,9 @@ namespace collections;
  * @return array
  *
  */
-function where(array $array = array(), array $key = array())
+function where(array $array = [], array $key = [])
 {
-    $result = array();
+    $result = [];
 
     foreach ($array as $k => $v) {
         $not = false;
@@ -27,15 +27,13 @@ function where(array $array = array(), array $key = array())
                     $not = true;
                     break;
                 }
-            } else {
-                if (!isset($v[$j]) || $v[$j] != $w) {
-                    $not = true;
-                    break;
-                }
+            } elseif ($v[$j] != $w) {
+                $not = true;
+                break;
             }
         }
 
-        if ($not == false) {
+        if (!$not) {
             $result[] = $v;
         }
     }

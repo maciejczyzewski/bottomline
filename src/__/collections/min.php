@@ -10,7 +10,7 @@ namespace collections;
  * @return mixed
  *
  */
-function min(array $array = array())
+function min(array $array = [])
 {
     return \min($array);
 }

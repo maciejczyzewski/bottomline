@@ -13,7 +13,7 @@ namespace arrays;
  * @return array
  *
  */
-function baseFlatten(array $array, $shallow = false, $strict = true, $startIndex = 0)
+function baseFlatten(array $array, $shallow = false, $strict = true)
 {
 
     $output = [];
@@ -30,7 +30,7 @@ function baseFlatten(array $array, $shallow = false, $strict = true, $startIndex
             while ($j < $len) {
                 $output[$idx++] = $value[$j++];
             }
-        } else if (!$strict) {
+        } elseif (!$strict) {
             $output[$idx++] = $value;
         }
     }

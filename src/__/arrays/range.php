@@ -14,9 +14,9 @@ namespace arrays;
  * @return array range of values
  *
  */
-function range($start = null, $stop = null, $step = 1)
+function range($start = null, $stop = null, $step = null)
 {
-    if ($stop == null && $start != null) {
+    if ($stop === null && $start !== null) {
         $stop  = $start;
         $start = 1;
     }
