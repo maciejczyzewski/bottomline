@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isNull($value = null)
+function isNull($value)
 {
-    return \is_null($value);
+    return $value === null;
 }

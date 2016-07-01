@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isEmail($value = null)
+function isEmail($value)
 {
     return \filter_var($value, FILTER_VALIDATE_EMAIL) != false;
 }

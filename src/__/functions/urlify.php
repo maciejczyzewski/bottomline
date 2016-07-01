@@ -27,9 +27,12 @@ function urlify($string)
     $rexFragment = '(#[!$-/0-9:;=@_\':;!a-zA-Z\x7f-\xff]+?)?';
 
     return preg_replace_callback(
-      "&\\b$rexProtocol$rexDomain$rexPort$rexPath$rexQuery$rexFragment(?=[?.!,;:\"]?(\s|$))&", function ($match) {
-        $completeUrl = $match[1] ? $match[0] : "http://{$match[0]}";
-        return '<a href="'.$completeUrl.'">'.$match[2].$match[3].$match[4].'</a>';
-    }, htmlspecialchars($string)
+        "&\\b$rexProtocol$rexDomain$rexPort$rexPath$rexQuery$rexFragment(?=[?.!,;:\"]?(\s|$))&",
+        function ($match) {
+            $completeUrl = $match[1] ? $match[0] : "http://{$match[0]}";
+
+            return '<a href="' . $completeUrl . '">' . $match[2] . $match[3] . $match[4] . '</a>';
+        },
+        htmlspecialchars($string)
     );
 }

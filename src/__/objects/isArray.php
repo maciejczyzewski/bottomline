@@ -10,7 +10,7 @@ namespace objects;
  * @return bool
  *
  */
-function isArray($value = null)
+function isArray($value)
 {
     return \is_array($value);
 }

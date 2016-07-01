@@ -11,7 +11,7 @@ namespace collections;
  * @return array
  *
  */
-function map(array $array = array(), \Closure $closure)
+function map(array $array = [], \Closure $closure)
 {
     foreach ($array as $key => $value) {
         $array[$key] = $closure($value, $key);

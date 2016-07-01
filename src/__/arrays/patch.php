@@ -17,11 +17,11 @@ namespace arrays;
  */
 function patch($arr, $patches, $parent = '')
 {
-    foreach ($arr as $key => $value) {
-        $z = $parent.'/'.$key;
+    foreach ($arr as $key => &$value) {
+        $z = $parent . '/' . $key;
 
         if (isset($patches[$z])) {
-            $arr[$key] = $patches[$z];
+            $value = $patches[$z];
             unset($patches[$z]);
 
             if (!count($patches)) {
@@ -30,7 +30,7 @@ function patch($arr, $patches, $parent = '')
         }
 
         if (is_array($value)) {
-            $arr[$key] = patch($value, $patches, $z);
+            $value = patch($arr[$key], $patches, $z);
         }
     }
 

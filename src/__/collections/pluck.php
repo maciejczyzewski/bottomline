@@ -11,13 +11,11 @@ namespace collections;
  * @return array|object
  *
  */
-function pluck($collection = array(), $property = '')
+function pluck($collection = [], $property = '')
 {
-    $plucked = \array_map(
-      function ($value) use ($property) {
-          return \collections\get($value, $property);
-      }, (array)$collection
-    );
+    $plucked = \array_map(function ($value) use ($property) {
+        return \collections\get($value, $property);
+    }, (array)$collection);
 
     if (\objects\isObject($collection)) {
         $plucked = (object)$plucked;

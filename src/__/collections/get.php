@@ -15,13 +15,13 @@ namespace collections;
  * @return array|mixed|null
  *
  */
-function get($collection = array(), $key = '', $default = null)
+function get($collection = [], $key = '', $default = null)
 {
     if (\objects\isNull($key)) {
         return $collection;
     }
 
-    if (!\objects\isObject($collection) && isset($collection[$key])) {
+    if (isset($collection[$key]) && !\objects\isObject($collection)) {
         return $collection[$key];
     }
 

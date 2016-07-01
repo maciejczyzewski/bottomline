@@ -10,7 +10,7 @@ namespace collections;
  * @return mixed maximum value
  *
  */
-function max(array $array = array())
+function max(array $array = [])
 {
     return \max($array);
 }
