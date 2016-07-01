@@ -290,3 +290,4 @@ See LICENSE file in this repository.
 ## Thanks
 
 * Brandtley McMinn ([@bmcminn](https://github.com/bmcminn))
+* Ivan Ternovtsiy ([@diaborn19](https://github.com/diaborn19))
