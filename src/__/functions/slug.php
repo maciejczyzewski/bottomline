@@ -20,7 +20,7 @@ namespace functions;
  *
  * @functions @slug
  */
-function slug($str, $options = [])
+function slug($str, array $options = [])
 {
     // Make sure string is in UTF-8 and strip invalid UTF-8 characters
     $str = mb_convert_encoding((string)$str, 'UTF-8', mb_list_encodings());

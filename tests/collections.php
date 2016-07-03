@@ -57,9 +57,11 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
 
         // Act
         $x = __::last($a, 2);
+        $y = __::last($a);
 
         // Assert
         $this->assertEquals([4, 5], $x);
+        $this->assertEquals(5, $y);
     }
 
     public function testMap()
