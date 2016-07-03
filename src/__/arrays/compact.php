@@ -16,6 +16,6 @@ namespace arrays;
  */
 function compact(array $array = [])
 {
-    return \array_filter($array);
+    return \array_values(\array_filter($array));
 }
 
