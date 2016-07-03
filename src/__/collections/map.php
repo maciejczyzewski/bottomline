@@ -17,5 +17,5 @@ function map(array $array = [], \Closure $closure)
         $array[$key] = $closure($value, $key);
     }
 
-    return $array;
+    return \array_map($closure, $array);
 }

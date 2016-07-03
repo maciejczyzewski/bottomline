@@ -9,8 +9,8 @@ namespace collections;
  ** // → 'ter'
  *
  * @param array  $collection  array of values
- * @param string $key   key or index
- * @param null   $default default value to return if index not exist
+ * @param string $key     key or index
+ * @param \Closure|mixed  $default default value to return if index not exist
  *
  * @return array|mixed|null
  *

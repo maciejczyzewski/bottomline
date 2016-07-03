@@ -17,5 +17,5 @@ function first($array, $take = null)
         return \array_shift($array);
     }
 
-    return \array_splice($array, 0, $take, true);
+    return \array_slice($array, 0, $take, true);
 }

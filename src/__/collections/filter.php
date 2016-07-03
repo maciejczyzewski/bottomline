@@ -13,17 +13,5 @@ namespace collections;
  */
 function filter(array $array = [], \Closure $closure = null)
 {
-    if (!$closure) {
-        return \arrays\compact($array);
-    } else {
-        $result = [];
-
-        foreach ($array as $key => $value) {
-            if ($closure($value)) {
-                $result[] = $value;
-            }
-        }
-
-        return $result;
-    }
+    return array_filter($array, $closure);
 }

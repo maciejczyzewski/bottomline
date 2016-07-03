@@ -8,7 +8,6 @@ namespace arrays;
  * @param array $array
  * @param bool  $shallow
  * @param bool  $strict
- * @param int   $startIndex
  *
  * @return array
  *

@@ -7,35 +7,26 @@ namespace collections;
  *
  **_::where($a, ['age' => 16]);
  ** // >> [['name' => 'maciej', 'age' => 16]]
+ * @todo: implement compatibility with more than 2 dimensial arrays:
+ **__::where($a, ['name' => 'fred & maciej', 'ages' => ['first' => 32]);
+ ** // >> ['name' => 'fred & maciej', 'ages' => ['fred' => 32, 'maciej' => 16]]
  *
  * @param array $array array of values
- * @param array $key   condition in format of ['KEY'=>'VALUE']
- *
+ * @param array $cond  condition in format of ['KEY'=>'VALUE']
  * @return array
- *
  */
-function where(array $array = [], array $key = [])
+function where(array $array = [], array $cond = [])
 {
     $result = [];
 
-    foreach ($array as $k => $v) {
-        $not = false;
-
-        foreach ($key as $j => $w) {
-            if (\objects\isArray($w)) {
-                if (count(array_intersect($w, $v[$j])) == 0) {
-                    $not = true;
-                    break;
-                }
-            } elseif ($v[$j] != $w) {
-                $not = true;
-                break;
+    foreach ($array as $arrItem) {
+        foreach ($cond as $condK => $condV) {
+            if (isset($arrItem[$condK]) && $arrItem[$condK] !== $condV) {
+                continue 2;
             }
         }
 
-        if (!$not) {
-            $result[] = $v;
-        }
+        $result[] = $arrItem;
     }
 
     return $result;

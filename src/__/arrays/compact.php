@@ -16,14 +16,6 @@ namespace arrays;
  */
 function compact(array $array = [])
 {
-    $result = [];
-
-    foreach ($array as $value) {
-        if ($value) {
-            $result[] = $value;
-        }
-    }
-
-    return $result;
+    return \array_filter($array);
 }
 
