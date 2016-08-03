@@ -33,6 +33,7 @@ if (version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array flatten(array $input, bool $shallow = false) Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  * @method static array patch(array $input, array $patches) Patches array with list of xpath-value pairs.
  * @method static array prepend(array $input, $item)
+ * @method static array randomize(array $input) Returns shuffled array.
  * @method static array range(int $startOrCount, int $stop = null, int $step = null) Returns an array of integers from start to stop (exclusive) by step.
  * @method static array repeat($input, int $times = 0) Returns an array of input repeated $times times.
  *
