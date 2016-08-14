@@ -3,7 +3,7 @@
 namespace arrays;
 
 /**
- * Shuffle an array
+ * Shuffle an array ensuring no item remains in the same position.
  *
  ** __::randomize([1, 2, 3]);
  ** // → [2, 3, 1]
@@ -15,7 +15,10 @@ namespace arrays;
  */
 function randomize(array $array = [])
 {
-    shuffle($array);
+    for ($i = 0, $c = sizeof($array); $i < $c - 1; $i++) {
+      $j = rand($i + 1, $c - 1);
+      list($array[$i], $array[$j]) = array($array[$j], $array[$i]);
+    }
 
     return $array;
 }
