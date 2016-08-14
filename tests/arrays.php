@@ -68,6 +68,18 @@ class ArraysTest extends PHPUnit_Framework_TestCase
         $this->assertEquals([4, 1, 2, 3], $x);
     }
 
+    public function testRandomize()
+    {
+        // Arrange
+        $a = [1, 2, 3, 4];
+
+        // Act
+        $x = __::randomize($a);
+
+        // Assert
+        $this->assertNotEquals([1, 2, 3, 4], $x);
+    }
+
     public function testRange()
     {
         // Act

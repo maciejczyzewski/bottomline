@@ -109,6 +109,13 @@ __::prepend([1, 2, 3], 4);
 // >> [4, 1, 2, 3]
 ```
 
+##### [__::randomize](src/__/arrays/randomize.php)
+Returns shuffled array ensuring no item remains in the same position.
+```php
+__::randomize(1, 2, 3, 4);
+// >> [4, 3, 1, 2]
+```
+
 ##### [__::range](src/__/arrays/range.php)
 Returns an array of integers from start to stop (exclusive) by step.
 ```php
