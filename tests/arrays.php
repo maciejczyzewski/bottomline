@@ -16,6 +16,20 @@ class ArraysTest extends PHPUnit_Framework_TestCase
         $this->assertEquals([1, 2, 3, 4], $x);
     }
 
+    public function testChunk()
+    {
+        // Arrange
+        $a = [1, 2, 3, 4, 5];
+
+        // Act
+        $x = __::chunk($a, 3);
+
+        // Assert
+        $this->assertEquals(2, count($x));
+        $this->assertEquals([1, 2, 3], $x[0]);
+        $this->assertEquals([4, 5], $x[1]);
+    }
+
     public function testCompact()
     {
         // Arrange

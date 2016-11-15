@@ -4,6 +4,19 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
 {
     // ...
 
+    public function testEase()
+    {
+        // Arrange
+        $a = ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']];
+
+        // Act
+        $x = __::ease($a);
+
+        // Assert
+        $this->assertEquals(3, count($x));
+        $this->assertEquals(['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'], $x);
+    }
+
     public function testFilter()
     {
         // Arrange
@@ -116,6 +129,33 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
 
         // Assert
         $this->assertEquals(['bar', 'bar2'], $x);
+    }
+
+    public function testSet()
+    {
+        // Arrange
+        $a = [
+            ['foo' => ['bar' => 'ter']]
+        ];
+
+        // Act
+        $x = __::set($a, 'foo.baz.ber', 'fer');
+
+        // Assert
+        $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
+    }
+
+    public function testUnease()
+    {
+        // Arrange
+        $a = ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'];
+
+        // Act
+        $x = __::unease($a);
+
+        // Assert
+        $this->assertEquals(2, count($x));
+        $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 
     public function testWhere()
