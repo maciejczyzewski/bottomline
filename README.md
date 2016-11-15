@@ -82,6 +82,13 @@ __::append([1, 2, 3], 4);
 // >> [1, 2, 3, 4]
 ```
 
+##### [__::chunk](src/__/arrays/chunk.php)
+Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements.
+```php
+__::chunk([1, 2, 3, 4, 5], 3);
+// >> [[1, 2, 3], [4, 5]]
+```
+
 ##### [__::compact](src/__/arrays/compact.php)
 Returns a copy of the array with falsy values removed.
 ```php
@@ -135,6 +142,13 @@ __::repeat('foo', 3);
 
 
 ### Collections
+
+##### [__::ease](src/__/collections/ease.php)
+Flattens a complex collection by mapping each ending leafs value to a key consisting of all previous indexes.
+```php
+__::ease(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]);
+// >> '['foo.bar' => 'ter', 'baz.0' => 'b', , 'baz.1' => 'z']'
+```
 
 ##### [__::filter](src/__/collections/filter.php)
 Returns the values in the collection that pass the truth test.
@@ -203,6 +217,20 @@ $a = [
 
 __::pluck($a, 'foo');
 // >> ['bar', 'bar2']
+```
+
+##### [__::set](src/__/collections/set.php)
+Set item of an array by index to given value, accepting nested index
+```php
+__::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
+// >> ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
+```
+
+##### [__::unease](src/__/collections/unease.php)
+Builds a multidimensional collection out of a hash map using the key as indicator where to put the value.
+```php
+__::unease(['foo.bar' => 'ter', 'baz.0' => 'b', , 'baz.1' => 'z']);
+// >> ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]
 ```
 
 ##### [__::where](src/__/collections/where.php)

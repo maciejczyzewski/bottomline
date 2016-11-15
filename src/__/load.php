@@ -29,6 +29,7 @@ if (version_compare(PHP_VERSION, '5.4.0', '<')) {
 
 /**
  * @method static array append(array $input, $item) <code>__::append([1, 2, 3], 4)</code> >> [1, 2, 3, 4]
+ * @method static array chunk(array $input) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
  * @method static array compact(array $input) Returns a copy of the array with falsy values removed. <code>__::compact([0, 1, false, 2, '', 3])</code> >> [1, 2, 3]
  * @method static array flatten(array $input, bool $shallow = false) Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  * @method static array patch(array $input, array $patches) Patches array with list of xpath-value pairs.
@@ -37,14 +38,17 @@ if (version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array range(int $startOrCount, int $stop = null, int $step = null) Returns an array of integers from start to stop (exclusive) by step.
  * @method static array repeat($input, int $times = 0) Returns an array of input repeated $times times.
  *
+ * @method static array ease(array $input, string $glue = '.')
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
- * @method static array get(array|\Traversable $input, string $path, \Closure|mixed $default = null)
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
+ * @method static array get(array|\Traversable $input, string $path, \Closure|mixed $default = null)
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
  * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|\Traversable $input, string $key = '') Returns an array of values belonging to a given property of each item in a collection.
+ * @method static array set(array $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
+ * @method static array unease(array $input, string $separator = '.')
  * @method static array where(array|\Traversable $input, mixed $itemParams = '')
  *
  * @method static array slug(string $input, array $options = []) Default options: <code>array('delimiter' => '-', 'limit' => null, 'lowercase' => true, 'replacements' => array(), 'transliterate' => true)</code>
