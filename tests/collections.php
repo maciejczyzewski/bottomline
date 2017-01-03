@@ -63,6 +63,42 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('ter', $x);
     }
 
+    public function testHasKeys()
+    {
+        // Arrange
+        $a = ['foo' => 'bar'];
+
+        // Act
+        $x = __::hasKeys($a, ['foo', 'foz'], false);
+        $y = __::hasKeys($a, ['foo', 'foz'], true);
+
+        // Assert
+        $this->assertFalse($x);
+        $this->assertFalse($y);
+
+        //Rearrange
+        $a['foz'] = 'baz';
+
+        //React
+        $x = __::hasKeys($a, ['foo', 'foz'], false);
+        $y = __::hasKeys($a, ['foo', 'foz'], true);
+
+        // Assert
+        $this->assertTrue($x);
+        $this->assertTrue($y);
+
+        //Rearrange
+        $a['xxx'] = 'bay';
+
+        //React
+        $x = __::hasKeys($a, ['foo', 'foz'], false);
+        $y = __::hasKeys($a, ['foo', 'foz'], true);
+
+        // Assert
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+    }
+
     public function testLast()
     {
         // Arrange

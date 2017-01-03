@@ -42,6 +42,7 @@ if (version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
  * @method static array get(array|\Traversable $input, string $path, \Closure|mixed $default = null)
+ * @method static bool hasKeys(array $input, array $keys, $strict = false) Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
  * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
