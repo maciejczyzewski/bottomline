@@ -1,7 +1,5 @@
 <?php
 
-namespace collections;
-
 /**
  * Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  *
@@ -10,7 +8,4 @@ namespace collections;
  * @return mixed
  *
  */
-function min(array $array = [])
-{
-    return \min($array);
-}
+return 'min';

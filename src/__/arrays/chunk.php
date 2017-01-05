@@ -8,14 +8,14 @@ namespace arrays;
  * __::chunk([1, 2, 3, 4, 5], 3);
  * // → [[1, 2, 3], [4, 5]]
  *
- * @param array $array original array
- * @param int $size the chunk size
+ * @param array   $array        original array
+ * @param int     $size         the chunk size
  * @param boolean $preserveKeys When set to TRUE keys will be preserved. Default is FALSE which will reindex the chunk numerically
  *
  * @return array
  *
  */
-function chunk(array $array = [], $size = 1, $preserveKeys = false)
+function chunk(array $array, $size = 1, $preserveKeys = false)
 {
     return \array_chunk($array, $size, $preserveKeys);
 }

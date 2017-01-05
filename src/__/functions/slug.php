@@ -23,39 +23,43 @@ namespace functions;
 function slug($str, array $options = [])
 {
     // Make sure string is in UTF-8 and strip invalid UTF-8 characters
-    $str = mb_convert_encoding((string)$str, 'UTF-8', mb_list_encodings());
+    $str = \mb_convert_encoding((string)$str, 'UTF-8', \mb_list_encodings());
 
     $defaults = [
         'delimiter'     => '-',
         'limit'         => null,
         'lowercase'     => true,
         'replacements'  => [],
-        'transliterate' => true,
+        'transliterate' => true
     ];
 
     // Merge options
-    $options = array_merge($defaults, $options);
+    $options = \array_merge($defaults, $options);
 
     // Make custom replacements
-    $str = preg_replace(array_keys($options['replacements']), $options['replacements'], $str);
+    if ($options['replacements']) {
+        $str = \preg_replace(\array_keys($options['replacements']), $options['replacements'], $str);
+    }
 
     // Transliterate characters to ASCII
     if ($options['transliterate']) {
-        $char_map = require __DIR__ . '/../charmap.php';
-        $str      = str_replace(array_keys($char_map), $char_map, $str);
+        $char_map = require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'charmap.php');
+        $str      = \str_replace(\array_keys($char_map), $char_map, $str);
     }
 
     // Replace non-alphanumeric characters with our delimiter
-    $str = preg_replace('/[^\p{L}\p{Nd}]+/u', $options['delimiter'], $str);
+    $str = \preg_replace('/[^\p{L}\p{Nd}]+/u', $options['delimiter'], $str);
 
     // Remove duplicate delimiters
-    $str = preg_replace('/(' . preg_quote($options['delimiter'], '/') . '){2,}/', '$1', $str);
+    $str = \preg_replace('/(' . \preg_quote($options['delimiter'], '/') . '){2,}/', $options['delimiter'], $str);
 
     // Truncate slug to max. characters
-    $str = mb_substr($str, 0, ($options['limit'] ?: mb_strlen($str, 'UTF-8')), 'UTF-8');
+    if ($options['limit']) {
+        $str = \mb_substr($str, 0, ($options['limit'] ?: \mb_strlen($str, 'UTF-8')), 'UTF-8');
+    }
 
     // Remove delimiter from ends
-    $str = trim($str, $options['delimiter']);
+    $str = \trim($str, $options['delimiter']);
 
-    return $options['lowercase'] ? mb_strtolower($str, 'UTF-8') : $str;
+    return $options['lowercase'] ? \mb_strtolower($str, 'UTF-8') : $str;
 }

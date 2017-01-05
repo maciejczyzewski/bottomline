@@ -8,17 +8,18 @@ namespace arrays;
  ** __::patch(['addr' => ['country' => 'US', 'zip' => 12345]], ['/addr/country' => 'CA', '/addr/zip' => 54321]);
  ** // → ['addr' => ['country' => 'CA', 'zip' => 54321]]
  *
- * @param array  $arr     The array to patch
+ * @param array  $array   The array to patch
  * @param  array $patches List of new xpath-value pairs
  * @param string $parent
  *
  * @return array Returns patched array
  *
  */
-function patch($arr, $patches, $parent = '')
+function patch($array, $patches, $parent = '')
 {
-    foreach ($arr as $key => &$value) {
-        $z = $parent . '/' . $key;
+    $parent .= '/';
+    foreach ($array as $key => &$value) {
+        $z = $parent . $key;
 
         if (isset($patches[$z])) {
             $value = $patches[$z];
@@ -29,10 +30,10 @@ function patch($arr, $patches, $parent = '')
             }
         }
 
-        if (is_array($value)) {
-            $value = patch($arr[$key], $patches, $z);
+        if (\is_array($value)) {
+            $value = patch($array[$key], $patches, $z);
         }
     }
 
-    return $arr;
+    return $array;
 }

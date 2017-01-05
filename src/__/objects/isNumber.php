@@ -1,7 +1,5 @@
 <?php
 
-namespace objects;
-
 /**
  * check if give value is number or not
  *
@@ -10,7 +8,4 @@ namespace objects;
  * @return bool
  *
  */
-function isNumber($value)
-{
-    return \is_numeric($value);
-}
+return 'is_numeric';

@@ -1,7 +1,5 @@
 <?php
 
-namespace objects;
-
 /**
  * check if give value is string or not
  *
@@ -10,7 +8,4 @@ namespace objects;
  * @return bool
  *
  */
-function isString($value)
-{
-    return \is_string($value);
-}
+return 'is_string';

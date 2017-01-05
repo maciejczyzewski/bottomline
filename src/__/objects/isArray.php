@@ -1,7 +1,5 @@
 <?php
 
-namespace objects;
-
 /**
  * check if give value is array or not
  *
@@ -10,7 +8,4 @@ namespace objects;
  * @return bool
  *
  */
-function isArray($value)
-{
-    return \is_array($value);
-}
+return 'is_array';

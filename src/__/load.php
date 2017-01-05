@@ -9,7 +9,6 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [6]
- ** Chaining                                     [3]
  ** Collections                                  [9]
  ** Functions                                    [0]
  ** Objects                                      [7]
@@ -21,7 +20,7 @@ namespace __;
  * Copyright (c) 2014 Maciej A. Czyzewski          *
 \***************************************************/
 
-if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
     throw new \Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.4.0', 1);
 }
 
@@ -29,7 +28,7 @@ if (version_compare(PHP_VERSION, '5.4.0', '<')) {
 
 /**
  * @method static array append(array $input, $item) <code>__::append([1, 2, 3], 4)</code> >> [1, 2, 3, 4]
- * @method static array chunk(array $input) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
+ * @method static array chunk(array $input, $size = 1, $preserveKeys = false) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
  * @method static array compact(array $input) Returns a copy of the array with falsy values removed. <code>__::compact([0, 1, false, 2, '', 3])</code> >> [1, 2, 3]
  * @method static array flatten(array $input, bool $shallow = false) Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  * @method static array patch(array $input, array $patches) Patches array with list of xpath-value pairs.
@@ -70,7 +69,6 @@ class __
 {
     private static $modules = [
         'arrays',
-        'chaining',
         'collections',
         'functions',
         'objects',
@@ -89,26 +87,23 @@ class __
         return self::__loader($name, $arguments);
     }
 
-    static public function __loader($name, $arguments)
+    private static function __loader($name, $arguments)
     {
-        if (count(self::$functions) == 0) {
-            foreach (self::$modules as $key => $value) {
-                foreach (glob(__DIR__ . '/' . $value . '/*.php', GLOB_BRACE) as $function) {
-                    $path  = explode('.', str_replace(__DIR__ . '/', '', $function));
-                    $alias = str_replace('/', '\\', array_shift($path));
+        if (isset(self::$functions[$name])) {
+            return \call_user_func_array(self::$functions[$name], $arguments);
+        }
 
-                    if (!function_exists($alias)) {
-                        self::$functions[] = $alias;
-                        require $function;
-                    }
-                }
+        foreach (self::$modules as $moduleName) {
+            $file = __DIR__ . DIRECTORY_SEPARATOR . $moduleName . DIRECTORY_SEPARATOR . $name . '.php';
+            if (\file_exists($file)) {
+                $func = require $file;
+                self::$functions[$name] = $func !== 1 ? $func : $moduleName . '\\' . $name;
+                break;
             }
         }
 
-        foreach (self::$functions as $key => $value) {
-            if (strpos($value, $name)) {
-                return call_user_func_array($value, $arguments);
-            }
+        if (isset(self::$functions[$name])) {
+            return \call_user_func_array(self::$functions[$name], $arguments);
         }
 
         throw new \Exception('Invalid function: ' . $name);
