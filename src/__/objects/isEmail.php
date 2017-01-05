@@ -12,5 +12,5 @@ namespace objects;
  */
 function isEmail($value)
 {
-    return \filter_var($value, FILTER_VALIDATE_EMAIL) != false;
+    return \filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
 }
