@@ -14,9 +14,6 @@
         <testsuite name="Arrays Test Suite">
             <file>tests/arrays.php</file>
         </testsuite>
-        <testsuite name="Chaining Test Suite">
-            <file>tests/chaining.php</file>
-        </testsuite>
         <testsuite name="Collections Test Suite">
             <file>tests/collections.php</file>
         </testsuite>
