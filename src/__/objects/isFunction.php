@@ -1,7 +1,5 @@
 <?php
 
-namespace objects;
-
 /**
  * check if give value is function or not
  *
@@ -10,7 +8,4 @@ namespace objects;
  * @return bool
  *
  */
-function isFunction($value)
-{
-    return \is_callable($value);
-}
+return 'is_callable';

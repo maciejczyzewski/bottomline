@@ -14,7 +14,7 @@ namespace arrays;
  * @return array
  *
  */
-function prepend(array $array = [], $value = null)
+function prepend(array $array, $value = null)
 {
     \array_unshift($array, $value);
 

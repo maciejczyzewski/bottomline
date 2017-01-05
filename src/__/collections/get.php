@@ -8,35 +8,31 @@ namespace collections;
  ** __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
  ** // → 'ter'
  *
- * @param array  $collection  array of values
- * @param string $key     key or index
- * @param \Closure|mixed  $default default value to return if index not exist
+ * @param array|object   $collection array of values
+ * @param string         $key        array key or object attribute
+ * @param \Closure|mixed $default    default value to return if index not exist
  *
  * @return array|mixed|null
  *
  */
-function get($collection = [], $key = '', $default = null)
+function get($collection, $key, $default = null)
 {
-    if (\objects\isNull($key)) {
-        return $collection;
-    }
-
-    if (isset($collection[$key]) && !\objects\isObject($collection)) {
+    if (isset($collection[$key])) {
         return $collection[$key];
     }
 
     foreach (\explode('.', $key) as $segment) {
-        if (\objects\isObject($collection)) {
-            if (!isset($collection->{$segment})) {
-                return $default instanceof \Closure ? $default() : $default;
+        if (\is_object($collection)) {
+            if (isset($collection->{$segment})) {
+                $collection = $collection->{$segment};
             } else {
-                $collection = $collection->$segment;
+                return $default && $default instanceof \Closure ? $default() : $default;
             }
         } else {
-            if (!isset($collection[$segment])) {
-                return $default instanceof \Closure ? $default() : $default;
-            } else {
+            if (isset($collection[$segment])) {
                 $collection = $collection[$segment];
+            } else {
+                return $default && $default instanceof \Closure ? $default() : $default;
             }
         }
     }

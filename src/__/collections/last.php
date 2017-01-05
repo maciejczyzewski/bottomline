@@ -13,5 +13,5 @@ namespace collections;
  */
 function last($array, $take = null)
 {
-    return !$take ? \array_pop($array) : \array_slice($array, -$take);
+    return $take ? \array_slice($array, -$take) : \array_pop($array);
 }

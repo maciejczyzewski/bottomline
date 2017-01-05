@@ -1,7 +1,5 @@
 <?php
 
-namespace objects;
-
 /**
  * check if give value is null or not
  *
@@ -10,7 +8,4 @@ namespace objects;
  * @return bool
  *
  */
-function isNull($value)
-{
-    return $value === null;
-}
+return 'is_null';

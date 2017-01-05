@@ -11,7 +11,7 @@ namespace collections;
  * @return array
  *
  */
-function filter(array $array = [], \Closure $closure = null)
+function filter(array $array, \Closure $closure = null)
 {
     return \array_values(\array_filter($array, $closure));
 }

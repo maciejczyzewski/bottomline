@@ -3,41 +3,6 @@
 namespace arrays;
 
 /**
- * base flatten
- *
- * @param array $array
- * @param bool  $shallow
- * @param bool  $strict
- *
- * @return array
- *
- */
-function baseFlatten(array $array, $shallow = false, $strict = true)
-{
-
-    $output = [];
-    $idx    = 0;
-
-    foreach ($array as $index => $value) {
-        if (is_array($value)) {
-
-            if (!$shallow) {
-                $value = baseFlatten($value, $shallow, $strict);
-            }
-            $j   = 0;
-            $len = count($value);
-            while ($j < $len) {
-                $output[$idx++] = $value[$j++];
-            }
-        } elseif (!$strict) {
-            $output[$idx++] = $value;
-        }
-    }
-
-    return $output;
-}
-
-/**
  * Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  *
  * __::flatten([1, 2, [3, [4]]], [flatten]);
@@ -51,5 +16,19 @@ function baseFlatten(array $array, $shallow = false, $strict = true)
  */
 function flatten($array, $shallow = false)
 {
-    return baseFlatten($array, $shallow, false);
+    $output = [];
+    foreach ($array as $value) {
+        if (is_array($value)) {
+            if (!$shallow) {
+                $value = flatten($value, $shallow);
+            }
+            foreach ($value as $valItem) {
+                $output[] = $valItem;
+            }
+        } else {
+            $output[] = $value;
+        }
+    }
+
+    return $output;
 }

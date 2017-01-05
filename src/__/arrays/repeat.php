@@ -9,16 +9,12 @@ namespace arrays;
  ** // → ['foo', 'foo', 'foo']
  *
  * @param string $object The object to repeat.
- * @param null   $times  ow many times has to be repeated.
+ * @param int    $times  How many times has to be repeated.
  *
  * @return array Returns a new array of filled values.
  *
  */
-function repeat($object = '', $times = null)
+function repeat($object, $times)
 {
-    if ($times == null) {
-        return [];
-    } else {
-        return \array_fill(0, $times, $object);
-    }
+    return \array_fill(0, (int)$times, $object);
 }

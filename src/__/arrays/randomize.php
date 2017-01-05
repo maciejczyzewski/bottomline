@@ -13,11 +13,11 @@ namespace arrays;
  * @return array
  *
  */
-function randomize(array $array = [])
+function randomize(array $array)
 {
     for ($i = 0, $c = sizeof($array); $i < $c - 1; $i++) {
-      $j = rand($i + 1, $c - 1);
-      list($array[$i], $array[$j]) = array($array[$j], $array[$i]);
+        $j = rand($i + 1, $c - 1);
+        list($array[$i], $array[$j]) = array($array[$j], $array[$i]);
     }
 
     return $array;

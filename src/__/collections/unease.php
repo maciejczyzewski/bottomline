@@ -9,17 +9,23 @@ namespace collections;
  ** // → '['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]'
  *
  * @param array  $collection hash map of values
- * @param string $separator the glue used in the keys
+ * @param string $separator  the glue used in the keys
  *
  * @return array
  *
  */
-function unease(array $collection = [], $separator = '.')
+function unease(array $collection, $separator = '.')
 {
+    $nonDefaultSeparator = $separator !== '.';
+
     $map = [];
-    foreach($collection as $key => $value) {
-        $use = ($separator !== '.') ? str_replace($separator, '.', $key) :  $key;
-        $map = \collections\set($map, $use, $value);
+    foreach ($collection as $key => $value) {
+        $map = \collections\set(
+            $map,
+            $nonDefaultSeparator ? \str_replace($separator, '.', $key) : $key,
+            $value
+        );
     }
+
     return $map;
-}
+};

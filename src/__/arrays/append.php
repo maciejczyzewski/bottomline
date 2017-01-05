@@ -14,7 +14,7 @@ namespace arrays;
  * @return array
  *
  */
-function append(array $array = [], $value = null)
+function append(array $array, $value = null)
 {
     $array[] = $value;
 

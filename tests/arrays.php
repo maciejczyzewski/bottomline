@@ -11,9 +11,11 @@ class ArraysTest extends PHPUnit_Framework_TestCase
 
         // Act
         $x = __::append($a, 4);
+        $x2 = __::append($a, [4, 5]);
 
         // Assert
         $this->assertEquals([1, 2, 3, 4], $x);
+        $this->assertEquals([1, 2, 3, [4, 5]], $x2);
     }
 
     public function testChunk()

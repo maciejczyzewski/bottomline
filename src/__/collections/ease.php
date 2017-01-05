@@ -9,30 +9,34 @@ namespace collections;
  * // → '['foo.bar' => 'ter', 'baz.0' => 'b', , 'baz.1' => 'z']'
  *
  * @param array  $collection array of values
- * @param string $glue glue between key path
+ * @param string $glue       glue between key path
  *
  * @return array flatten collection
  *
  */
-function ease(array $collection = [], $glue = '.')
+function ease(array $collection, $glue = '.')
 {
     $map = [];
     _ease($map, $collection, $glue);
-   return $map;
+
+    return $map;
 }
 
 /**
- * Inner function for collections::flatten
+ * Inner function for collections::ease
  *
- * @param $map
- * @param $array
- * @param $glue
+ * @param array  $map
+ * @param array  $array
+ * @param string $glue
  * @param string $prefix
  */
-function _ease(&$map, $array, $glue, $prefix='') {
-    foreach($array as $index=> $value) {
-        if(is_object($value)) continue;
-        elseif(is_array($value)) _ease($map, $value, $glue, $prefix.$index.$glue);
-        else $map[$prefix.$index] = $value;
+function _ease(&$map, $array, $glue, $prefix = '')
+{
+    foreach ($array as $index => $value) {
+        if (\is_array($value)) {
+            _ease($map, $value, $glue, $prefix . $index . $glue);
+        } elseif (!\is_object($value)) {
+            $map[$prefix . $index] = $value;
+        }
     }
 }

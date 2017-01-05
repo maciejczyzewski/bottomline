@@ -11,7 +11,7 @@ namespace collections;
  * @return array
  *
  */
-function map(array $array = [], \Closure $closure)
+function map(array $array, \Closure $closure)
 {
     return \array_map($closure, $array);
 }
