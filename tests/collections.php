@@ -181,6 +181,25 @@ class CollectionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
     }
 
+    public function testSetStrictException()
+    {
+        if (method_exists($this, 'expectException')) {
+            // new phpunit
+            $this->expectException('\Exception');
+        } else {
+            // old phpunit
+            $this->setExpectedException('\Exception');
+        }
+
+        // Arrange
+        $a = [
+            'foo' => ['bar' => 'ter']
+        ];
+
+        // Act
+        __::set($a, 'foo.bar.not_exist', 'baz', true);
+    }
+
     public function testUnease()
     {
         // Arrange
