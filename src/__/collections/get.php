@@ -17,7 +17,7 @@ namespace collections;
  */
 function get($collection, $key, $default = null)
 {
-    if (isset($collection[$key])) {
+    if (\is_array($collection) && isset($collection[$key])) {
         return $collection[$key];
     }
 

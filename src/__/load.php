@@ -40,13 +40,13 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array ease(array $input, string $glue = '.')
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
- * @method static array|mixed get(array|\Traversable $input, string $path, \Closure|mixed $default = null)
+ * @method static array|mixed get(array|object $input, string $path, \Closure|mixed $default = null)
  * @method static bool hasKeys(array $input, array $keys, $strict = false) Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
  * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
- * @method static array pluck(array|\Traversable $input, string $key = '') Returns an array of values belonging to a given property of each item in a collection.
+ * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
  * @method static array set(array $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
  * @method static array unease(array $input, string $separator = '.')
  * @method static array where(array|\Traversable $input, mixed $itemParams = '')

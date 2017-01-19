@@ -22,14 +22,17 @@ class ArraysTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $a = [1, 2, 3, 4, 5];
+        $b = [1];
 
         // Act
         $x = __::chunk($a, 3);
+        $y = __::chunk($b, 3);
 
         // Assert
         $this->assertEquals(2, count($x));
         $this->assertEquals([1, 2, 3], $x[0]);
         $this->assertEquals([4, 5], $x[1]);
+        $this->assertEquals([[1]], $y);
     }
 
     public function testCompact()
@@ -88,12 +91,21 @@ class ArraysTest extends PHPUnit_Framework_TestCase
     {
         // Arrange
         $a = [1, 2, 3, 4];
+        $b = [1];
+        $c = [1, 2];
+        $d = [];
 
         // Act
         $x = __::randomize($a);
+        $y = __::randomize($b);
+        $z = __::randomize($c);
+        $f = __::randomize($d);
 
         // Assert
         $this->assertNotEquals([1, 2, 3, 4], $x);
+        $this->assertEquals([1], $y);
+        $this->assertEquals([2, 1], $z);
+        $this->assertEquals([], $f);
     }
 
     public function testRange()
@@ -115,10 +127,10 @@ class ArraysTest extends PHPUnit_Framework_TestCase
         $string = 'foo';
 
         // Act
-        $x = __::repeat('foo', 3);
+        $x = __::repeat($string, 3);
 
         // Assert
-        $this->assertEquals(['foo', 'foo', 'foo'], $x);
+        $this->assertEquals([$string, $string, $string], $x);
     }
 
     // ...

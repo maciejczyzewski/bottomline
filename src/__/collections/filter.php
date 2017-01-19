@@ -13,5 +13,7 @@ namespace collections;
  */
 function filter(array $array, \Closure $closure = null)
 {
-    return \array_values(\array_filter($array, $closure));
+    return \array_values(
+        $closure ? \array_filter($array, $closure) : \array_filter($array)
+    );
 }

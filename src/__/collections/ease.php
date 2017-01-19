@@ -35,7 +35,7 @@ function _ease(&$map, $array, $glue, $prefix = '')
     foreach ($array as $index => $value) {
         if (\is_array($value)) {
             _ease($map, $value, $glue, $prefix . $index . $glue);
-        } elseif (!\is_object($value)) {
+        } else {
             $map[$prefix . $index] = $value;
         }
     }
