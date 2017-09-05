@@ -182,8 +182,8 @@ class StringsTest extends \PHPUnit\Framework\TestCase
         $b = 'FRED';
 
         // Act
-        $x = __::upperCase($a);
-        $y = __::upperCase($b);
+        $x = __::upperFirst($a);
+        $y = __::upperFirst($b);
 
         // Assert
         $this->assertEquals('Fred', $x);
@@ -202,7 +202,6 @@ class StringsTest extends \PHPUnit\Framework\TestCase
         $x = __::words($a);
         $y = __::words($b, $bPattern);
         $z = __::words($c);
-        var_dump($x === true ? 'true' : 'false');
 
         // Assert
         $this->assertEquals(['fred', 'barney', 'pebbles'], $x);

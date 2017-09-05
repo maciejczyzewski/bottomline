@@ -3,10 +3,10 @@
 namespace strings;
 
 /**
- * Converts string, as a whole, to upper case just like strtoupper.
+ * Converts string, as a whole, to lower case just like strtoupper.
  *
- * __::toLower('fooBar');
- *      >> 'foobar'
+ * __::toUpper('fooBar');
+ *      >> 'FOOBAR'
  *
  * @param string $input
  *
@@ -15,5 +15,5 @@ namespace strings;
  */
 function toUpper($input)
 {
-    return strtoupper($input);
+    return \strtoupper($input);
 }

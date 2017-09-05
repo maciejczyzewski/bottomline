@@ -27,10 +27,10 @@ function words($input, $pattern = null)
     if ($pattern === null) {
         $pattern = asciiWords;
     }
-    $r = preg_match_all($pattern, $input, $matches, PREG_PATTERN_ORDER);
+    $r = \preg_match_all($pattern, $input, $matches, PREG_PATTERN_ORDER);
     if ($r === false) {
         throw new RuntimeException('Regex exception');
     }
 
-    return count($matches[0]) > 0 ? $matches[0] : [];
+    return \count($matches[0]) > 0 ? $matches[0] : [];
 }
