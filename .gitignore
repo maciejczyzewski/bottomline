@@ -2,3 +2,4 @@ vendor/
 __testing/
 /.idea
 composer.phar
+composer.lock
