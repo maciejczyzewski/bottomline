@@ -3,17 +3,18 @@
 namespace strings;
 
 /**
- * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
+ * Converts string to
+ * [snake case](https://en.wikipedia.org/wiki/Snake_case).
  *
- * __::startCase('--foo-bar--');
- *      >> 'Foo Bar'
+ * __::snakeCase('Foo Bar');
+ *      >> 'foo_bar'
  *
  * @param string $input
  *
  * @return string
  *
  */
-function startCase($input)
+function snakeCase($input)
 {
     $words = \__::words(\preg_replace("/['\x{2019}]/u", '', $input));
 
@@ -21,7 +22,7 @@ function startCase($input)
         $words,
         function ($result, $word) use($words) {
             $isFirst = \__::first($words) === $word;
-            return $result . (!$isFirst ? ' ' : '') . \__::upperFirst($word);
+            return $result . (!$isFirst ? '_' : '') . \__::toLower($word);
         },
         ''
     );

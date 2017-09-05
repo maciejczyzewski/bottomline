@@ -3,7 +3,7 @@
 namespace strings;
 
 /**
- * Converts string to camel case. https://en.wikipedia.org/wiki/CamelCase
+ * Converts string to [camel case](https://en.wikipedia.org/wiki/CamelCase).
  *
  * __::camelCase('Foo Bar');
  *      >> 'fooBar'

@@ -3,17 +3,17 @@
 namespace strings;
 
 /**
- * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
+ * Converts string, as space separated words, to lower case.
  *
- * __::startCase('--foo-bar--');
- *      >> 'Foo Bar'
+ * __::lowerCase('--Foo-Bar--');
+ *      >> 'foo bar'
  *
  * @param string $input
  *
  * @return string
  *
  */
-function startCase($input)
+function lowerCase($input)
 {
     $words = \__::words(\preg_replace("/['\x{2019}]/u", '', $input));
 
@@ -21,7 +21,7 @@ function startCase($input)
         $words,
         function ($result, $word) use($words) {
             $isFirst = \__::first($words) === $word;
-            return $result . (!$isFirst ? ' ' : '') . \__::upperFirst($word);
+            return $result . (!$isFirst ? ' ' : '') . \__::toLower($word);
         },
         ''
     );

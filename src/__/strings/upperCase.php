@@ -3,17 +3,17 @@
 namespace strings;
 
 /**
- * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
+ * Converts string, as space separated words, to upper case.
  *
- * __::startCase('--foo-bar--');
- *      >> 'Foo Bar'
+ * __::upperCase('--foo-bar');
+ *      >> 'FOO BAR'
  *
  * @param string $input
  *
  * @return string
  *
  */
-function startCase($input)
+function upperCase($input)
 {
     $words = \__::words(\preg_replace("/['\x{2019}]/u", '', $input));
 
@@ -21,7 +21,7 @@ function startCase($input)
         $words,
         function ($result, $word) use($words) {
             $isFirst = \__::first($words) === $word;
-            return $result . (!$isFirst ? ' ' : '') . \__::upperFirst($word);
+            return $result . (!$isFirst ? ' ' : '') . \__::toUpper($word);
         },
         ''
     );
