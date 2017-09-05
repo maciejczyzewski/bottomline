@@ -13,6 +13,7 @@ namespace __;
  ** Functions                                    [0]
  ** Objects                                      [7]
  ** Utilities                                    [0]
+ ** Strings                                     [11]
 
  ***************************************************
  * bottomline v0.0.5                               *
@@ -64,6 +65,18 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isString($var)
  *
  * @method static int now()
+ *
+ * @method static string camelCase(string $input)
+ * @method static string capitalize(string $input)
+ * @method static string kebabCase(string $input)
+ * @method static string lowerCase(string $input)
+ * @method static string lowerFirst(string $input)
+ * @method static string snakeCase(string $input)
+ * @method static string startCase(string $input)
+ * @method static string toLower(string $input)
+ * @method static string toUpper(string $input)
+ * @method static string upperCase(string $input)
+ * @method static string upperFirst(string $input)
  */
 class __
 {
@@ -72,7 +85,8 @@ class __
         'collections',
         'functions',
         'objects',
-        'utilities'
+        'utilities',
+        'strings'
     ];
 
     private static $functions = [];
