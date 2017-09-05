@@ -250,7 +250,6 @@ __::where($a, ['age' => 16]);
 // >> [['name' => 'maciej', 'age' => 16]]
 ```
 
-
 ### Functions
 
 ##### [__::slug](src/__/chaining/slug.php)
@@ -318,6 +317,73 @@ __::isString('fred');
 
 ### Utilities
 
+### Strings
+
+##### [__::camelCase](src/__/strings/camelCase.php)
+```php
+__::camelCase('Foo Bar');
+// >> 'fooBar'
+```
+
+##### [__::capitalize](src/__/strings/capitalize.php)
+```php
+__::capitalize('FRED');
+// >> 'Fred'
+```
+
+##### [__::kebabCase](src/__/strings/kebabCase.php)
+```php
+__::kebabCase('Foo Bar');
+// >> 'foo-bar'
+```
+
+##### [__::lowerCase](src/__/strings/lowerCase.php)
+```php
+__::lowerCase('fooBar');
+// >> 'foo bar'
+```
+
+##### [__::lowerFirst](src/__/strings/lowerFirst.php)
+```php
+__::lowerFirst('Fred');
+// >> 'fred'
+```
+
+##### [__::snakeCase](src/__/strings/snakeCase.php)
+```php
+__::snakeCase('Foo Bar');
+// >> 'foo_bar'
+```
+
+##### [__::startCase](src/__/strings/startCase.php)
+```php
+__::startCase('fooBar');
+// >> 'Foo Bar'
+```
+
+##### [__::toLower](src/__/strings/toLower.php)
+```php
+__::toLower('fooBar');
+// >> 'foobar'
+```
+
+##### [__::toUpper](src/__/strings/toUpper.php)
+```php
+__::toUpper('fooBar');
+// >> 'FOOBAR'
+```
+
+##### [__::upperCase](src/__/strings/upperCase.php)
+```php
+__::upperCase('fooBar');
+// >> 'FOO BAR'
+```
+
+##### [__::upperFirst](src/__/strings/upperFirst.php)
+```php
+__::upperFirst('fred');
+// >> 'Fred'
+```
 
 ## Contributing
 
