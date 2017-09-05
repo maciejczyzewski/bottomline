@@ -323,6 +323,8 @@ __::isString('fred');
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:
 
+To run the tests, install PHPUnit with `make install-dev` and run the tests with `make test`.
+
 
 ## License
 
