@@ -1,6 +1,6 @@
 <?php
 
-class ObjectsTest extends PHPUnit_Framework_TestCase
+class ObjectsTest extends \PHPUnit\Framework\TestCase
 {
     // ...
 

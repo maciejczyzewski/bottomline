@@ -1,3 +1,4 @@
 vendor/
 __testing/
 /.idea
+composer.phar
