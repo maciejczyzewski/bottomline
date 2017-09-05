@@ -16,17 +16,11 @@ namespace strings;
 function startCase($input)
 {
     $words = \__::words(\preg_replace("/[\x{2019}]/u", '', $input));
-    echo('   ');
-    print_r($words);
-    echo('   ');
 
     return array_reduce(
         $words,
         function ($result, $word) use($words) {
             $isFirst = \__::first($words) === $word;
-            print_r($word);
-            echo('  - ');
-            echo($isFirst ? ' true ' : ' false ');
             return $result . (!$isFirst ? ' ' : '') . \__::upperFirst($word);
         },
         ''
