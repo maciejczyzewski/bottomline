@@ -385,6 +385,12 @@ __::upperFirst('fred');
 // >> 'Fred'
 ```
 
+##### [__::words](src/__/strings/words.php)
+```php
+__::words('fred, barney, & pebbles');
+// >> ['fred', 'barney', 'pebbles']
+```
+
 ## Contributing
 
 Please feel free to contribute to this project! Pull requests and feature requests welcome! :v:

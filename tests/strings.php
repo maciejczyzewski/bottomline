@@ -190,5 +190,25 @@ class StringsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('FRED', $y);
     }
 
+    public function testWords()
+    {
+        // Arrange
+        $a = 'fred, barney, & pebbles';
+        $b = 'fred, barney, & pebbles';
+        $bPattern = '/[^, ]+/';
+        $c = '';
+
+        // Act
+        $x = __::words($a);
+        $y = __::words($b, $bPattern);
+        $z = __::words($c);
+        var_dump($x === true ? 'true' : 'false');
+
+        // Assert
+        $this->assertEquals(['fred', 'barney', 'pebbles'], $x);
+        $this->assertEquals(['fred', 'barney', '&', 'pebbles'], $y);
+        $this->assertEquals([], $z);
+    }
+
     // ...
 }

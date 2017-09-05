@@ -13,7 +13,7 @@ namespace __;
  ** Functions                                    [0]
  ** Objects                                      [7]
  ** Utilities                                    [0]
- ** Strings                                     [11]
+ ** Strings                                     [12]
 
  ***************************************************
  * bottomline v0.0.5                               *
@@ -77,6 +77,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static string toUpper(string $input)
  * @method static string upperCase(string $input)
  * @method static string upperFirst(string $input)
+ * @method static array words(string $input, string $pattern = null)
  */
 class __
 {
