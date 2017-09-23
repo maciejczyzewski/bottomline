@@ -1,6 +1,6 @@
 <?php
 
-class ArraysTest extends PHPUnit_Framework_TestCase
+class ArraysTest extends \PHPUnit\Framework\TestCase
 {
     // ...
 

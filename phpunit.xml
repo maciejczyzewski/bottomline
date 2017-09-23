@@ -26,5 +26,8 @@
         <testsuite name="Utilities Test Suite">
             <file>tests/utilities.php</file>
         </testsuite>
+        <testsuite name="Strings Test Suite">
+            <file>tests/strings.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>

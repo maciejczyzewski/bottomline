@@ -1,6 +1,6 @@
 <?php
 
-class UtilitiesTest extends PHPUnit_Framework_TestCase {
+class UtilitiesTest extends \PHPUnit\Framework\TestCase {
 
     public function testNow() {
 
