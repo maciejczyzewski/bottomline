@@ -176,6 +176,25 @@ __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
 // >> 'ter'
 ```
 
+##### [__::groupBy](src/__/collections/groupBy.php)
+Group an array of objects or arrays based on a given key.
+```php
+$a = [
+    ['name' => 'maciej',    'continent' => 'Europe'],
+    ['name' => 'yoan',      'continent' => 'Europe'],
+    ['name' => 'brandtley', 'continent' => 'North America'],
+];
+
+__::groupBy($a, 'continent');
+// >> [
+//   'Europe' => [
+//     ['name' => 'maciej', 'continent' => 'Europe'],
+//     ['name' => 'yoan', 'continent' => 'Europe'],
+//   ],
+//   'North America' => [ ['name' => 'brandtley', 'continent' => 'North America'] ]
+// ]
+```
+
 ##### [__::hasKeys](src/__/collections/hasKeys.php)
 Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
 ```php

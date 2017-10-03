@@ -116,6 +116,84 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($o, $z);
     }
 
+    public function testGroupByString()
+    {
+        $a = [
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+        ];
+
+        $grouped = __::groupBy($a, 'state');
+        $this->assertCount(2, $grouped);
+        $this->assertArrayHasKey('CA', $grouped);
+    }
+
+    public function testGroupByStringNested()
+    {
+        $a = [
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+        ];
+
+        $grouped = __::groupBy($a, 'state', 'city');
+        $this->assertCount(2, $grouped);
+        $this->assertCount(2, $grouped['IN']);
+        $this->assertArrayHasKey('Indianapolis', $grouped['IN']);
+    }
+
+    public function testGroupByInteger()
+    {
+        $a = [
+            ['IN', 'Indianapolis', 'School bus'],
+            ['IN', 'Indianapolis', 'Manhole'],
+            ['IN', 'Plainfield', 'Basketball'],
+            ['CA', 'San Diego', 'Light bulb'],
+            ['CA', 'Mountain View', 'Space pen'],
+        ];
+
+        $grouped = __::groupBy($a, 1);
+        $this->assertCount(4, $grouped);
+        $this->assertArrayHasKey('Indianapolis', $grouped);
+    }
+
+    public function testGroupByObjectProperties()
+    {
+        $a = [
+            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+            (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+            (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+            (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+        ];
+
+        $grouped = __::groupBy($a, 'state');
+        $this->assertCount(2, $grouped);
+        $this->assertArrayHasKey('CA', $grouped);
+    }
+
+    public function testGroupByCallable()
+    {
+        $a = [
+            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+            (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+            (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+            (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+        ];
+
+        $grouped = __::groupBy($a, function ($value) {
+            return $value->city;
+        });
+        $this->assertCount(4, $grouped);
+        $this->assertArrayHasKey('Indianapolis', $grouped);
+    }
+
     public function testHasKeys()
     {
         // Arrange
