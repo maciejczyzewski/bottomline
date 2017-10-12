@@ -333,6 +333,46 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2], $z2);
     }
 
+    public function testReduceArray()
+    {
+        // Arrange
+        // TODO Get examples from Lodash (shameless).
+        $a = 'Foo Bar';
+        $b = '--foo-bar--';
+        $c = [
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+        ];
+        // TODO
+        // $cReducer = function ($accumulator, $value, $index, $collection) {
+        $cReducer = function ($accumulator, $value) {
+            if (isset($accumulator[$value['city']])) {
+                $accumulator[$value['city']]++;
+            } else {
+                $accumulator[$value['city']] = 1;
+            }
+            return $accumulator;
+        };
+
+        // Act
+        // $x = __::camelCase($a);
+        // $y = __::camelCase($b);
+        $z = __::reduce($c, $cReducer, []);
+
+        // Assert
+        // $this->assertEquals('fooBar', $x);
+        // $this->assertEquals('fooBar', $y);
+        $this->assertEquals([
+            'Indianapolis' => 2,
+            'Plainfield' => 1,
+            'San Diego' => 1,
+            'Mountain View' => 1,
+        ], $z);
+    }
+
     public function testSet()
     {
         // Arrange
