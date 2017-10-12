@@ -8,6 +8,43 @@ namespace collections;
  * Based on {@author Chauncey McAskill}'s {@link https://gist.github.com/mcaskill/baaee44487653e1afc0d array_group_by()}
  * function.
  *
+ ** __::groupBy([
+ **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ **         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ **         ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+ **     ],
+ **     'state'
+ ** );
+ ** // >> [
+ ** //   'IN' => [
+ ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ ** //      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ ** //   ],
+ ** //   'CA' => [
+ ** //      ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen']
+ ** //   ]
+ ** // ]
+ *
+ *
+ ** __::groupBy([
+ **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ **         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ **     ],
+ **     function ($value) {
+ **         return $value->city;
+ **     }
+ ** );
+ ** // >> [
+ ** //   'Indianapolis' => [
+ ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ ** //   ],
+ ** //   'San Diego' => [
+ ** //      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ ** //   ]
+ ** // ]
+ *
  * @param array $array
  * @param int|float|string|\Closure $key
  *
