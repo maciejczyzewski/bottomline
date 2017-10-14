@@ -4,3 +4,6 @@ install-dev:
 
 test:
 	vendor/bin/phpunit --configuration phpunit.xml
+
+bench:
+	php bench.php
