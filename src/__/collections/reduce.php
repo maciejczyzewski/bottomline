@@ -16,6 +16,33 @@ namespace collections;
  * The $iteratee is invoked with four arguments:
  * ($accumulator, $value, $index|$key, $collection).
  *
+ ** __::reduce([1, 2], function ($sum, $number) {
+ **     return $sum + $number;
+ ** }, 0);
+ ** // >> 3
+ *
+ ** $a = [
+ **     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ **     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ **     ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+ **     ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ **     ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+ ** ];
+ ** $iteratee = function ($accumulator, $value) {
+ **     if (isset($accumulator[$value['city']]))
+ **         $accumulator[$value['city']]++;
+ **     else
+ **         $accumulator[$value['city']] = 1;
+ **     return $accumulator;
+ ** };
+ ** __::reduce($c, $iteratee, []);
+ ** // >> [
+ ** // >>    'Indianapolis' => 2,
+ ** // >>    'Plainfield' => 1,
+ ** // >>    'San Diego' => 1,
+ ** // >>    'Mountain View' => 1,
+ ** // >> ]
+ *
  * @param array|object  $collection The collection to iterate over.
  * @param \Closure $iteratee The function invoked per iteration.
  * @param (*) [$accumulator] The initial value.
