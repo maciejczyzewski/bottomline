@@ -352,9 +352,10 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $aReducer = function ($accumulator, $value) {
             return $accumulator + $value;
         };
-        // TODO
-        // $cReducer = function ($accumulator, $value, $index, $collection) {
-        $cReducer = function ($accumulator, $value) {
+        $cIndex = 0;
+        $cReducer = function ($accumulator, $value, $index, $collection) use(&$c, &$cIndex) {
+            $this->assertEquals($c, $collection);
+            $this->assertEquals($cIndex++, $index);
             if (isset($accumulator[$value['city']])) {
                 $accumulator[$value['city']]++;
             } else {
