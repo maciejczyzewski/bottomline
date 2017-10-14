@@ -16,7 +16,7 @@ namespace __;
  ** Strings                                     [12]
 
  ***************************************************
- * bottomline v0.0.5                               *
+ * bottomline v0.1.0                               *
  * bottomline is licensed under the MIT license    *
  * Copyright (c) 2014 Maciej A. Czyzewski          *
 \***************************************************/
