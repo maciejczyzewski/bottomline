@@ -8,9 +8,9 @@ namespace __;
  ___________________________________________________
  ***************************************************
 
- ** Arrays                                       [6]
- ** Collections                                  [9]
- ** Functions                                    [0]
+ ** Arrays                                       [8]
+ ** Collections                                  [15]
+ ** Functions                                    [3]
  ** Objects                                      [7]
  ** Utilities                                    [0]
  ** Strings                                     [12]
