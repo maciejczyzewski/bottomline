@@ -52,8 +52,10 @@ namespace collections;
  */
 function reduce($collection, \Closure $iteratee, $accumulator = NULL)
 {
-    // TODO Initialize $accumulator.
     $output = $accumulator;
+    if ($output === NULL) {
+        $output = \__::first($collection);
+    }
     foreach ($collection as $key => $value) {
         $output = $iteratee($output, $value, $key, $collection);
     }
