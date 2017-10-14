@@ -4,6 +4,7 @@ namespace collections;
 
 /**
  * TODO Manage collections. Objects?
+ * https://github.com/lodash/lodash/blob/master/reduce.js
  *
  * Reduces $collection to a value which is the $accumulator result of running each
  * element in $collection thru $iteratee, where each successive invocation is supplied

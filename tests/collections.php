@@ -337,7 +337,10 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         // TODO Get examples from Lodash (shameless).
-        $a = 'Foo Bar';
+        // TODO With Std objects.
+        // TODO With class objects.
+        // (object)
+        $a = [1, 2, 3];
         $b = '--foo-bar--';
         $c = [
             ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
@@ -346,6 +349,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
             ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
         ];
+        $aReducer = function ($accumulator, $value) {
+            return $accumulator + $value;
+        };
         // TODO
         // $cReducer = function ($accumulator, $value, $index, $collection) {
         $cReducer = function ($accumulator, $value) {
@@ -358,12 +364,12 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         };
 
         // Act
-        // $x = __::camelCase($a);
+        $x = __::reduce($a, $aReducer, 2);
         // $y = __::camelCase($b);
         $z = __::reduce($c, $cReducer, []);
 
         // Assert
-        // $this->assertEquals('fooBar', $x);
+        $this->assertEquals(8, $x);
         // $this->assertEquals('fooBar', $y);
         $this->assertEquals([
             'Indianapolis' => 2,
