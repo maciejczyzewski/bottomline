@@ -379,6 +379,27 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $z);
     }
 
+    public function testReduceStdClass()
+    {
+        // Arrange
+        $a = new \stdClass();
+        $a->paris = 10659489;
+        $a->marseille = 1578484;
+        $a->lyon = 1620331;
+        $a->toulouse = 935440;
+        $a->nice = 944022;
+        $a->lille = 1037939;
+        $aReducer = function ($accumulator, $value) {
+            return $accumulator + $value;
+        };
+
+        // Act
+        $x = __::reduce($a, $aReducer, 0);
+
+        // Assert
+        $this->assertEquals(16775705, $x);
+    }
+
     public function testSet()
     {
         // Arrange

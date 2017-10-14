@@ -50,7 +50,12 @@ namespace collections;
  * @return (*): Returns the accumulated value.
  *
  */
-function reduce(array $collection, \Closure $iteratee, $accumulator = NULL)
+function reduce($collection, \Closure $iteratee, $accumulator = NULL)
 {
-    return \array_reduce($collection, $iteratee, $accumulator);
+    // TODO Initialize $accumulator.
+    $output = $accumulator;
+    foreach ($collection as $key => $value) {
+        $output = $iteratee($output, $value, $key, $collection);
+    }
+    return $output;
 }
