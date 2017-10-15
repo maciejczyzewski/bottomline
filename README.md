@@ -244,6 +244,17 @@ __::pluck($a, 'foo');
 // >> ['bar', 'bar2']
 ```
 
+##### [__::reduce](src/__/collections/reduce.php)
+Reduces a collection to a value which is the accumulator result of running each
+element in the collection thru an iteratee function, where each successive
+invocation is supplied the return value of the previous.
+```php
+__::reduce([1, 2], function ($sum, $number) {
+    return $sum + $number;
+}, 0);
+// >> 3
+```
+
 ##### [__::set](src/__/collections/set.php)
 Set item of an array by index to given value, accepting nested index
 ```php
