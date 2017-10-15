@@ -218,6 +218,41 @@ __::map([1, 2, 3], function($n) {
 // >> [3, 6, 9]
 ```
 
+##### [__::mapKeys](src/__/collections/mapKeys.php)
+Transforms the keys in a collection by running each key through the iterator
+```php
+__::mapKeys(['x' => 1], function($key, $value, $collection) {
+    return "{$key}_{$value}";
+});
+// >> ['x_1' => 1]
+ 
+__::mapKeys(['x' => 1], function($key) {
+    return strtoupper($key);
+});
+// >> ['X' => 3]
+ 
+__::mapKeys(['x' => 1])
+// >> ['x' => 1]
+
+```
+
+##### [__::mapValues](src/__/collections/mapValues.php)
+Transforms the values in a collection by running each value through the iterator
+```php
+__::mapValues(['x' => 1], function($value, $key, $collection) {
+    return "{$key}_{$value}";
+});
+// >> ['x' => 'x_1']
+ 
+__::mapValues(['x' => 1], function($value) {
+    return $value * 3;
+});
+// >> ['x' => 3]
+ 
+__::mapValues(['x' => 1])
+// >> ['x' => 1]
+```
+
 ##### [__::max](src/__/collections/max.php)
 Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
 ```php
@@ -335,6 +370,16 @@ __::isString('fred');
 ```
 
 ### Utilities
+
+#### [__::identity](src/__/utilities/identity.php)
+Returns the first argument it receives
+```php
+__::identity(1, 2, 3, 4)
+// >> 1
+ 
+__::identity()
+// >> null
+```
 
 ### Strings
 
