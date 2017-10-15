@@ -46,6 +46,8 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool hasKeys(array $input, array $keys, $strict = false) Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
  * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
+ * @method static array mapKeys(array $input, \Closure $func = null) Returns an array with keys being mapped through the iterator
+ * @method static array mapValues(array $input, \Closure $func = null) Returns an array with values being mapped through the iterator
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
@@ -67,6 +69,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isString($var)
  *
  * @method static int now()
+ * @method static mixed identity()
  *
  * @method static string camelCase(string $input)
  * @method static string capitalize(string $input)
