@@ -8,15 +8,15 @@ namespace __;
  ___________________________________________________
  ***************************************************
 
- ** Arrays                                       [6]
- ** Collections                                  [9]
- ** Functions                                    [0]
+ ** Arrays                                       [8]
+ ** Collections                                  [15]
+ ** Functions                                    [3]
  ** Objects                                      [7]
  ** Utilities                                    [0]
  ** Strings                                     [12]
 
  ***************************************************
- * bottomline v0.0.5                               *
+ * bottomline v0.1.0                               *
  * bottomline is licensed under the MIT license    *
  * Copyright (c) 2014 Maciej A. Czyzewski          *
 \***************************************************/
@@ -49,6 +49,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
+ * @method static mixed reduce(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection thru $iteratee, where each successive invocation is supplied the return value of the previous.
  * @method static array set(array $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
  * @method static array unease(array $input, string $separator = '.')
  * @method static array where(array|\Traversable $input, mixed $itemParams = '')
