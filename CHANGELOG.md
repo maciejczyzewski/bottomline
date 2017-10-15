@@ -1,13 +1,13 @@
 # Changelog
 
 ## <sub>unreleased</sub>
-#### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/doc/README.md)
+#### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)
 
 * Added `__.groupBy`
 * Added `__.reduce`
 
 ## <sub>v0.1.0</sub>
-#### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/doc/README.md)
+#### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)
 
 * Added `__.camelCase`
 * Added `__.capitalize`
@@ -23,13 +23,13 @@
 * Added `__.words`
 
 ## <sub>v0.0.9</sub>
-#### _Jan 5, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.8...0.0.9) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.9/doc/README.md)
+#### _Jan 5, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.8...0.0.9) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.9/README.md)
 
 * Added benchmark `bench.php`
 * PHPDoc and code normalization
 
 ## <sub>v0.0.8</sub>
-#### _Jan 3, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.7...0.0.8) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.8/doc/README.md)
+#### _Jan 3, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.7...0.0.8) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.8/README.md)
 
 * Added `__.chunk`
 * Added `__.randomize`
@@ -41,13 +41,13 @@
 * Enhanced PHPDoc
 
 ## <sub>v0.0.7</sub>
-#### _Dec 1, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.6...0.0.7) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.7/doc/README.md)
+#### _Dec 1, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.6...0.0.7) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.7/README.md)
 
 * Added `__.now`
 * Documentation improvements
 
 ## <sub>v0.0.6</sub>
-#### _Aug 7, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.5...0.0.6) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.6/doc/README.md)
+#### _Aug 7, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.5...0.0.6) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.6/README.md)
 
 * Added `__.patch`
 * Added benchmark with other libraries
@@ -55,7 +55,7 @@
 * Added PHPDoc on each function
 
 ## <sub>v0.0.5</sub>
-#### _Jul 27, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.4...0.0.5) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.5/doc/README.md)
+#### _Jul 27, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.4...0.0.5) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.5/README.md)
 
 * Added `__.append`
 * Added `__.flatten`
@@ -80,7 +80,7 @@
 * Added PHPDoc on each function
 
 ## <sub>v0.0.4</sub>
-#### _Jun 23, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.3...0.0.4) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.4/doc/README.md)
+#### _Jun 23, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.3...0.0.4) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.4/README.md)
 
 * Added `__.compact`
 * Added `__.range`
@@ -93,12 +93,12 @@
 * Added unit tests (PHPUnit)
 
 ## <sub>v0.0.3</sub>
-#### _Jan 17, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.2...v0.0.3) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.3/doc/README.md)
+#### _Jan 17, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.2...v0.0.3) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.3/README.md)
 
 * Added `__.each`
 
 ## <sub>v0.0.2</sub>
-#### _Jan 6, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.1...v0.0.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.2/doc/README.md)
+#### _Jan 6, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.1...v0.0.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.2/README.md)
 
  * Added branding
  * Written `README.md`
