@@ -336,10 +336,6 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testReduceArray()
     {
         // Arrange
-        // TODO Get examples from Lodash (shameless).
-        // TODO With Std objects.
-        // TODO With class objects.
-        // (object)
         $a = [1, 2, 3];
         $b = [
             10659489,
@@ -379,7 +375,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Act
         $x = __::reduce($a, $aReducer, 2);
-        $y = __::reduce($b,$bReducer);
+        $y = __::reduce($b, $bReducer);
         $z = __::reduce($c, $cReducer, []);
 
         // Assert
@@ -393,7 +389,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $z);
     }
 
-    public function testReduceStdClass()
+    public function testReduceObject()
     {
         // Arrange
         $a = new \stdClass();
@@ -406,12 +402,28 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $aReducer = function ($accumulator, $value) {
             return $accumulator + $value;
         };
+        $b = (object) [
+            'a' => 1,
+            'b' => 2,
+            'c' => 1
+        ];
+        $bReducer = function ($accumulator, $value, $key) {
+            if (!isset($accumulator[$value]))
+                $accumulator[$value] = [];
+            $accumulator[$value][] = $key;
+            return $accumulator;
+        };
 
         // Act
         $x = __::reduce($a, $aReducer, 0);
+        $y = __::reduce($b, $bReducer, []);
 
         // Assert
         $this->assertEquals(16775705, $x);
+        $this->assertEquals([
+            '1' => ['a', 'c'],
+            '2' => ['b']
+        ], $y);
     }
 
     public function testSet()
