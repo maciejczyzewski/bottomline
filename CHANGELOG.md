@@ -1,5 +1,11 @@
 # Changelog
 
+## <sub>unreleased</sub>
+#### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/doc/README.md)
+
+* Added `__.groupBy`
+* Added `__.reduce`
+
 ## <sub>v0.1.0</sub>
 #### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/doc/README.md)
 
