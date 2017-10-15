@@ -5,6 +5,9 @@
 
 * Added `__.groupBy`
 * Added `__.reduce`
+* Added `__.mapKeys`
+* Added `__.mapValues`
+* Added `__.identity`
 
 ## <sub>v0.1.0</sub>
 #### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)
