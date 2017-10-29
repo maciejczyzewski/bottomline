@@ -9,11 +9,12 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [8]
- ** Collections                                  [15]
+ ** Collections                                 [15]
  ** Functions                                    [3]
  ** Objects                                      [7]
  ** Utilities                                    [0]
  ** Strings                                     [12]
+ ** Sequences                                    [1]
 
  ***************************************************
  * bottomline v0.1.0                               *
@@ -83,6 +84,8 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static string upperCase(string $input)
  * @method static string upperFirst(string $input)
  * @method static array words(string $input, string $pattern = null)
+ *
+ * @method static \BottomlineWrapper chain(mixed $input)
  */
 class __
 {
@@ -92,7 +95,8 @@ class __
         'functions',
         'objects',
         'utilities',
-        'strings'
+        'strings',
+        'sequences'
     ];
 
     private static $functions = [];

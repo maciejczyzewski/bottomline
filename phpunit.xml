@@ -29,5 +29,8 @@
         <testsuite name="Strings Test Suite">
             <file>tests/strings.php</file>
         </testsuite>
+        <testsuite name="Sequences Test Suite">
+            <file>tests/sequences.php</file>
+        </testsuite>
     </testsuites>
 </phpunit>
