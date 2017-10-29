@@ -3,7 +3,7 @@
 namespace arrays;
 
 /**
- * prend item or value to an array
+ * prepend item or value to an array
  *
  ** __::prepend([1, 2, 3], 4);
  ** // → [4, 1, 2, 3]

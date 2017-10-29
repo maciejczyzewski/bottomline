@@ -134,10 +134,19 @@ __::repeat('foo', 3);
 // >> ['foo', 'foo', 'foo']
 ```
 
-### Chaining
+### Sequences
 
-`coming soon...`
-
+#### [__::chain](src/__/sequences/chain.php)
+```php
+__::chain([1, 2, 3, 0, null])
+    ->compact()
+    ->prepend(4)
+    ->reduce(function($sum, $number) {
+        return $sum + $number;
+    }, 0)
+    ->value();
+// >> 10
+```
 
 ### Collections
 
