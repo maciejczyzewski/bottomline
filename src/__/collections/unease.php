@@ -20,7 +20,7 @@ function unease(array $collection, $separator = '.')
 
     $map = [];
     foreach ($collection as $key => $value) {
-        $map = \collections\set(
+        $map = \__::set(
             $map,
             $nonDefaultSeparator ? \str_replace($separator, '.', $key) : $key,
             $value
