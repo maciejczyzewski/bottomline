@@ -21,6 +21,20 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['foo.bar' => $object, 'baz.0' => 'b', 'baz.1' => 'z'], $y);
     }
 
+    // running this one before __::set() tests also correct inner dependency autoload
+    public function testUnease()
+    {
+        // Arrange
+        $a = ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'];
+
+        // Act
+        $x = __::unease($a);
+
+        // Assert
+        $this->assertEquals(2, count($x));
+        $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
+    }
+
     public function testFilter()
     {
         // Arrange
@@ -457,19 +471,6 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Act
         __::set($a, 'foo.bar.not_exist', 'baz', true);
-    }
-
-    public function testUnease()
-    {
-        // Arrange
-        $a = ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'];
-
-        // Act
-        $x = __::unease($a);
-
-        // Assert
-        $this->assertEquals(2, count($x));
-        $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 
     public function testWhere()
