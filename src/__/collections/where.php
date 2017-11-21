@@ -21,7 +21,7 @@ function where(array $array = [], array $cond = [])
 
     foreach ($array as $arrItem) {
         foreach ($cond as $condK => $condV) {
-            if (isset($arrItem[$condK]) && $arrItem[$condK] !== $condV) {
+            if (!isset($arrItem[$condK]) || $arrItem[$condK] !== $condV) {
                 continue 2;
             }
         }
