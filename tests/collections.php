@@ -440,6 +440,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $y);
     }
 
+    public function testPick()
+    {
+        // Arrange
+        $a = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
+
+        // Act
+        $x = __::pick($a, ['a', 'b.d', 'e', 'f.g']);
+
+        // Assert
+        $this->assertEquals([
+            'a' => 1,
+            'b' => ['d' => 4],
+            'e' => null,
+            'f' => ['g' => null]
+        ], $x);
+    }
+
     public function testSet()
     {
         // Arrange
