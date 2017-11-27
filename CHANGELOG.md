@@ -3,6 +3,7 @@
 ## <sub>unreleased</sub>
 #### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)
 
+* Added `__.pick`
 * Added `__.groupBy`
 * Added `__.reduce`
 * Added `__.mapKeys`
