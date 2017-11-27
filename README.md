@@ -306,6 +306,13 @@ __::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
 // >> ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
 ```
 
+##### [__::pick](src/__/collections/pick.php)
+Returns an array having only keys present in the given path list.
+```php
+__::pick(['a' => 1, 'b' => ['c' => 3, 'd' => 4]], ['a', 'b.d']);
+// → ['a' => 1, 'b' => ['d' => 4]]
+```
+
 ##### [__::unease](src/__/collections/unease.php)
 Builds a multidimensional collection out of a hash map using the key as indicator where to put the value.
 ```php
