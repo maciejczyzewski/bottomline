@@ -443,7 +443,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testPick()
     {
         // Arrange
-        $a = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
+        $a = ['a' => 1, 'b' => ['c' => 3, 'd' => 4], 'h' => 5];
 
         // Act
         $x = __::pick($a, ['a', 'b.d', 'e', 'f.g']);
@@ -464,12 +464,11 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $b = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
 
         // Act.
-        $x = __::pick($a, ['nasa', 'cnsa', 'esa', 'jaxa'], 26);
+        $x = __::pick($a, ['cnsa', 'esa', 'jaxa'], 26);
         $y = __::pick($b, ['a', 'b.d', 'e', 'f.g'], 'default');
 
         // Assert.
         $this->assertEquals([
-            'nasa' => 1,
             'cnsa' => 42,
             'esa' => 26,
             'jaxa' => 26,
@@ -480,6 +479,24 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             'e' => 'default',
             'f' => ['g' => 'default']
         ], $y);
+    }
+
+    public function testPickObject()
+    {
+        // Arrange.
+        $a = new \stdClass();
+        $a->paris = 10659489;
+        $a->marseille = 1578484;
+        $a->lyon = 1620331;
+
+        // Act.
+        $x = __::pick($a, ['marseille', 'london']);
+
+        // Assert.
+        $this->assertEquals([
+            'marseille' => 1578484,
+            'london' => null
+        ], $x);
     }
 
     public function testSet()
