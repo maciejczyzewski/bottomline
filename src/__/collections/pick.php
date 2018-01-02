@@ -19,11 +19,7 @@ function pick(array $array = [], array $paths = [], $default = null)
 {
     $result = [];
     foreach ($paths as $path) {
-        if (strpos($path, '.') === false) {
-            $result[$path] = isset($array[$path]) ? $array[$path] : $default;
-        } else {
-            $result = \__::set($result, $path, \__::get($array, $path, $default));
-        }
+        $result = \__::set($result, $path, \__::get($array, $path, $default));
     }
     return $result;
 }
