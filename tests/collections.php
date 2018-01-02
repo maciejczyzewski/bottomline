@@ -457,6 +457,31 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $x);
     }
 
+    public function testPickDefaults()
+    {
+        // Arrange.
+        $a = ['nasa' => 1, 'cnsa' => 42];
+        $b = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
+
+        // Act.
+        $x = __::pick($a, ['nasa', 'cnsa', 'esa', 'jaxa'], 26);
+        $y = __::pick($b, ['a', 'b.d', 'e', 'f.g'], 'default');
+
+        // Assert.
+        $this->assertEquals([
+            'nasa' => 1,
+            'cnsa' => 42,
+            'esa' => 26,
+            'jaxa' => 26,
+        ], $x);
+        $this->assertEquals([
+            'a' => 1,
+            'b' => ['d' => 4],
+            'e' => 'default',
+            'f' => ['g' => 'default']
+        ], $y);
+    }
+
     public function testSet()
     {
         // Arrange
