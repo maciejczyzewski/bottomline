@@ -55,7 +55,7 @@ namespace collections;
  ** // >>     '2' => ['b']
  ** // >> ]
  *
- * @param array|object  $collection The collection to iterate over.
+ * @param array|object $collection The collection to iterate over.
  * @param \Closure $iteratee The function invoked per iteration.
  * @param (*) [$accumulator] The initial value.
  *
