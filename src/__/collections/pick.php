@@ -17,9 +17,7 @@ namespace collections;
  */
 function pick(array $array = [], array $paths = [], $default = null)
 {
-    $result = [];
-    foreach ($paths as $path) {
-        $result = \__::set($result, $path, \__::get($array, $path, $default));
-    }
-    return $result;
+    return \__::reduce($paths, function ($results, $path) use ($array, $default) {
+        return \__::set($results, $path, \__::get($array, $path, $default));
+    }, []);
 }
