@@ -493,10 +493,10 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $x = __::pick($a, ['marseille', 'london']);
 
         // Assert.
-        $i = new \stdClass();
-        $i->marseille = 1578484;
-        $i->london = null;
-        $this->assertEquals($i, $x);
+        $this->assertEquals((object) [
+            'marseille' => 1578484,
+            'london' => null
+        ], $x);
     }
 
     public function testSet()
