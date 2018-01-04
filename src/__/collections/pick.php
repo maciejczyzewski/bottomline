@@ -17,9 +17,6 @@ namespace collections;
  */
 function pick($collection = [], array $paths = [], $default = null)
 {
-    if (!\__::isCollection($collection)) {
-        throw new \InvalidArgumentException('Expected collection to be an array or object');
-    }
     return \__::reduce($paths, function ($results, $path) use ($collection, $default) {
         return \__::set($results, $path, \__::get($collection, $path, $default));
     }, \__::isObject($collection) ? new \stdClass() : []);
