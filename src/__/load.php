@@ -11,7 +11,7 @@ namespace __;
  ** Arrays                                       [8]
  ** Collections                                 [15]
  ** Functions                                    [3]
- ** Objects                                      [7]
+ ** Objects                                      [8]
  ** Utilities                                    [0]
  ** Strings                                     [12]
  ** Sequences                                    [1]
@@ -69,6 +69,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isNumber($var)
  * @method static bool isObject($var)
  * @method static bool isString($var)
+ * @method static bool isCollection($var)
  *
  * @method static int now()
  * @method static mixed identity()

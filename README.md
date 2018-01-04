@@ -234,12 +234,12 @@ __::mapKeys(['x' => 1], function($key, $value, $collection) {
     return "{$key}_{$value}";
 });
 // >> ['x_1' => 1]
- 
+
 __::mapKeys(['x' => 1], function($key) {
     return strtoupper($key);
 });
 // >> ['X' => 3]
- 
+
 __::mapKeys(['x' => 1])
 // >> ['x' => 1]
 
@@ -252,12 +252,12 @@ __::mapValues(['x' => 1], function($value, $key, $collection) {
     return "{$key}_{$value}";
 });
 // >> ['x' => 'x_1']
- 
+
 __::mapValues(['x' => 1], function($value) {
     return $value * 3;
 });
 // >> ['x' => 3]
- 
+
 __::mapValues(['x' => 1])
 // >> ['x' => 1]
 ```
@@ -396,6 +396,13 @@ __::isString('fred');
 // >> true
 ```
 
+##### [__::isCollection](src/__/objects/isCollection.php)
+Returns true if the argument is a collection (that is an array or object).
+```php
+__::isCollection([1, 2, 3]);
+// >> true
+```
+
 ### Utilities
 
 #### [__::identity](src/__/utilities/identity.php)
@@ -403,7 +410,7 @@ Returns the first argument it receives
 ```php
 __::identity(1, 2, 3, 4)
 // >> 1
- 
+
 __::identity()
 // >> null
 ```
