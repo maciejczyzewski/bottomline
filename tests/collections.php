@@ -208,6 +208,25 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('Indianapolis', $grouped);
     }
 
+    public function testHas()
+    {
+        // Arrange.
+        $a = ['foo' => 'bar'];
+        $b = (object) ['foo' => 'bar'];
+
+        // Act.
+        $x = __::has($a, 'foo');
+        $y = __::has($a, 'foz');
+        $z = __::has($b, 'foo');
+        $x1 = __::has($b, 'foz');
+
+        // Assert.
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+        $this->assertTrue($z);
+        $this->assertFalse($x1);
+    }
+
     public function testHasKeys()
     {
         // Arrange

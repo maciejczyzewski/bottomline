@@ -204,6 +204,13 @@ __::groupBy($a, 'continent');
 // ]
 ```
 
+##### [__::has](src/__/collections/has.php)
+Returns true if the collection contains the requested key.
+```php
+__::has(['foo' => 'bar', 'foz' => 'baz'], 'foo');
+// >> true
+```
+
 ##### [__::hasKeys](src/__/collections/hasKeys.php)
 Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
 ```php

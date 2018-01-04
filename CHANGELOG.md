@@ -10,6 +10,7 @@
 * Added `__::mapValues`
 * Added `__::identity`
 * Added `__::isCollection`
+* Added `__::has`
 * Make `__::pick()`, `__::set()` work on both arrays and objects
 
 ## <sub>v0.1.0</sub>
