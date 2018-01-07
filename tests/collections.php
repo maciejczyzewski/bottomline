@@ -530,6 +530,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert
         $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
         $this->assertEquals(['foo' => ['bar' => 'fer2']], $y);
+        $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
     }
 
     public function testSetObject()
@@ -544,6 +545,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert.
         $this->assertEquals((object) ['ber' => 'fer'], $x->foo->baz);
         $this->assertEquals((object) ['foo' => ['bar' => 'fer2']], $y);
+        $this->assertEquals((object )['foo' => ['bar' => 'ter']], $a);
     }
 
     public function testSetStrictException()

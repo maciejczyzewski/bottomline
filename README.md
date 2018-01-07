@@ -307,7 +307,7 @@ __::reduce([1, 2], function ($sum, $number) {
 ```
 
 ##### [__::set](src/__/collections/set.php)
-Set item of an array by index to given value, accepting nested index
+Return a new collection with the item set at index to given value. Index can be a path.
 ```php
 __::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
 // >> ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
