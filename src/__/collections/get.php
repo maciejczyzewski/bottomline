@@ -26,12 +26,15 @@ function get($collection, $path, $default = null)
             if (isset($collection->{$segment})) {
                 $collection = $collection->{$segment};
             } else {
+                // TODO Remove Closure option: what is the point if it has no parameter:
+                // it will always yielf the same value? KISS.
                 return $default && $default instanceof \Closure ? $default() : $default;
             }
         } else {
             if (isset($collection[$segment])) {
                 $collection = $collection[$segment];
             } else {
+                // TODO Same as above on Closure.
                 return $default && $default instanceof \Closure ? $default() : $default;
             }
         }
