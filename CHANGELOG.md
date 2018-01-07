@@ -12,6 +12,8 @@
 * Added `__::isCollection`
 * Added `__::has`
 * Make `__::pick()`, `__::set()` work on both arrays and objects
+* Make `__::set()` to return a copy of the collection (do not mutate)
+* Remove `$strict` optional parameter of `__::set()`: it always create or override portion of path
 
 ## <sub>v0.1.0</sub>
 #### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)

@@ -525,7 +525,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Act
         $x = __::set($a, 'foo.baz.ber', 'fer');
-        $y = __::set($a, 'foo.bar', 'fer2', true);
+        $y = __::set($a, 'foo.bar', 'fer2');
 
         // Assert
         $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
@@ -540,7 +540,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Act.
         $x = __::set($a, 'foo.baz.ber', 'fer');
-        $y = __::set($a, 'foo.bar', 'fer2', true);
+        $y = __::set($a, 'foo.bar', 'fer2');
 
         // Assert.
         $this->assertEquals((object )['foo' => (object) ['bar' => 'ter']], $a);
@@ -548,23 +548,17 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals((object) ['foo' => (object) ['bar' => 'fer2']], $y);
     }
 
-    public function testSetStrictException()
+    public function testSetOveride()
     {
-        if (method_exists($this, 'expectException')) {
-            // new phpunit
-            $this->expectException('\Exception');
-        } else {
-            // old phpunit
-            $this->setExpectedException('\Exception');
-        }
-
         // Arrange
-        $a = [
-            'foo' => ['bar' => 'ter']
-        ];
+        $a = ['foo' => ['bar' => 'ter']];
 
         // Act
-        __::set($a, 'foo.bar.not_exist', 'baz', true);
+        $x = __::set($a, 'foo.bar.not_exist', 'baz');
+
+        // Assert.
+        $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
+        $this->assertEquals(['foo' => ['bar' => ['not_exist' => 'baz']]], $x);
     }
 
     public function testWhere()
