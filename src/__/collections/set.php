@@ -21,8 +21,9 @@ namespace collections;
 function set($collection, $keys, $value = null, $strict = false)
 {
     $set_object = function ($object, $key, $value) {
-        $object->$key = $value;
-        return $object;
+        $newObject = clone $object;
+        $newObject->$key = $value;
+        return $newObject;
     };
     $set_array = function ($array, $key, $value) {
         $array[$key] = $value;
@@ -40,14 +41,26 @@ function set($collection, $keys, $value = null, $strict = false)
     if (\count($keys) === 0) {
         $collection = call_user_func_array($setter, [$collection, $key, $value]);
     } else {
-        if (!\__::has($collection, $key) || (!\is_array(\__::get($collection, $key)) && $strict)) {
-            $collection[$key] = [];
-        } elseif (!\is_array(\__::get($collection, $key))) {
+        $empty = \__::isObject($collection) ? new \stdClass : [];
+        if (!\__::has($collection, $key)) {
+            $collection = call_user_func_array($setter, [$collection, $key, $empty]);
+        } elseif (
+            $strict
+            && (
+                (\__::isObject($collection) && !\__::isObject(\__::get($collection, $key)))
+                || (\__::isArray($collection) && !\__::isArray(\__::get($collection, $key)))
+            )
+        ) {
+            $collection = call_user_func_array($setter, [$collection, $key, $empty]);
+        } elseif (
+            (\__::isObject($collection) && !\__::isObject(\__::get($collection, $key)))
+            || (\__::isArray($collection) && !\__::isArray(\__::get($collection, $key)))
+        ) {
             throw new \Exception(sprintf('Could not insert value %s into array because the value at key %s is no array.', $value, $key));
         }
         $collection = call_user_func_array(
             $setter,
-            [&$collection, $key, set(\__::get($collection, $key), implode('.', $keys), $value)]
+            [$collection, $key, set(\__::get($collection, $key), implode('.', $keys), $value)]
         );
     }
 
