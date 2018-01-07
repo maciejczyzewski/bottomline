@@ -37,9 +37,12 @@ function set($collection, $path, $value = null)
         return $collection;
     }
 
+    // TODO Use $portions = __::split('.', $path);
     $path = \explode('.', $path);
+    // TODO Use __::first($portions)
     $key  = \array_shift($path);
 
+    // TODO Use __::isEmpty($portions)
     if (\count($path) === 0) {
         $collection = call_user_func_array($setter, [$collection, $key, $value]);
     } else {
@@ -54,6 +57,7 @@ function set($collection, $path, $value = null)
         }
         $collection = call_user_func_array(
             $setter,
+            // TODO Use __::join(__::drop($portions), '.')
             [$collection, $key, set(\__::get($collection, $key), implode('.', $path), $value)]
         );
     }
