@@ -60,7 +60,7 @@ function set($collection, $keys, $value = null, $strict = false)
         }
         $collection = call_user_func_array(
             $setter,
-            [$collection, $key, set(\__::get($collection, $key), implode('.', $keys), $value)]
+            [$collection, $key, set(\__::get($collection, $key), implode('.', $keys), $value, $strict)]
         );
     }
 
