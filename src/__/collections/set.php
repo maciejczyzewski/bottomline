@@ -20,7 +20,7 @@ namespace collections;
  * @return array|object the new collection with the item set
  *
  */
-function set($collection, $keys, $value = null)
+function set($collection, $path, $value = null)
 {
     $set_object = function ($object, $key, $value) {
         $newObject = clone $object;
@@ -33,14 +33,14 @@ function set($collection, $keys, $value = null)
     };
     $setter = \__::isObject($collection) ? $set_object : $set_array;
 
-    if ($keys === null) {
+    if ($path === null) {
         return $collection;
     }
 
-    $keys = \explode('.', $keys);
-    $key  = \array_shift($keys);
+    $path = \explode('.', $path);
+    $key  = \array_shift($path);
 
-    if (\count($keys) === 0) {
+    if (\count($path) === 0) {
         $collection = call_user_func_array($setter, [$collection, $key, $value]);
     } else {
         $empty = \__::isObject($collection) ? new \stdClass : [];
@@ -54,7 +54,7 @@ function set($collection, $keys, $value = null)
         }
         $collection = call_user_func_array(
             $setter,
-            [$collection, $key, set(\__::get($collection, $key), implode('.', $keys), $value)]
+            [$collection, $key, set(\__::get($collection, $key), implode('.', $path), $value)]
         );
     }
 
