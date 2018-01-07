@@ -46,14 +46,15 @@ function set($collection, $path, $value = null)
     if (\count($path) === 0) {
         $collection = call_user_func_array($setter, [$collection, $key, $value]);
     } else {
-        $empty = \__::isObject($collection) ? new \stdClass : [];
-        if (!\__::has($collection, $key)) {
-            $collection = call_user_func_array($setter, [$collection, $key, $empty]);
-        } elseif (
-            (\__::isObject($collection) && !\__::isObject(\__::get($collection, $key)))
+        if (
+            !\__::has($collection, $key)
+            || (\__::isObject($collection) && !\__::isObject(\__::get($collection, $key)))
             || (\__::isArray($collection) && !\__::isArray(\__::get($collection, $key)))
         ) {
-            $collection = call_user_func_array($setter, [$collection, $key, $empty]);
+            $collection = call_user_func_array(
+                $setter,
+                [$collection, $key, \__::isObject($collection) ? new \stdClass : []]
+            );
         }
         $collection = call_user_func_array(
             $setter,
