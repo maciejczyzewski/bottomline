@@ -15,5 +15,5 @@ namespace collections;
  */
 function isEmpty($value)
 {
-    return empty($value);
+    return count((array) $value) === 0;
 }
