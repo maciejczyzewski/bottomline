@@ -265,23 +265,15 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testIsEmpty()
     {
-        // Arrange.
-        $a = [];
-        $b = ['Falcon', 'Heavy'];
-        $c = new stdClass();
-        $d = (object) ['Baie' => 'Goji'];
-
-        // Act.
-        $x = __::isEmpty($a);
-        $y = __::isEmpty($b);
-        $z = __::isEmpty($c);
-        $xa = __::isEmpty($d);
-
-        // Assert.
-        $this->assertTrue($x);
-        $this->assertFalse($y);
-        $this->assertTrue($z);
-        $this->assertFalse($xa);
+        // Assert nominal cases.
+        $this->assertTrue(__::isEmpty([]));
+        $this->assertFalse(__::isEmpty(['Falcon', 'Heavy']));
+        $this->assertTrue(__::isEmpty(new stdClass()));
+        $this->assertFalse(__::isEmpty((object) ['Baie' => 'Goji']));
+        // Assert on non-collections.
+        $this->assertTrue(__::isEmpty(null));
+        $this->assertTrue(__::isEmpty(3));
+        $this->assertTrue(__::isEmpty(true));
     }
 
     public function testLast()

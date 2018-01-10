@@ -5,6 +5,8 @@ namespace collections;
 /**
  * Check if value is an empty array or object.
  *
+ * We consider any non enumerable as empty.
+ *
  ** __::isEmpty([]);
  ** // → true
  *
@@ -15,5 +17,6 @@ namespace collections;
  */
 function isEmpty($value)
 {
-    return count((array) $value) === 0;
+    // TODO Create and use our own __::size(). (Manage object, etc.).
+    return (!\__::isArray($value) && !\__::isObject($value)) || count((array) $value) === 0;
 }
