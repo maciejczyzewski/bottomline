@@ -11,6 +11,7 @@
 * Added `__::identity`
 * Added `__::isCollection`
 * Added `__::has`
+* Added `__::split`
 * Make `__::pick()`, `__::set()` work on both arrays and objects
 * Make `__::set()` to return a copy of the collection (do not mutate)
 * Remove `$strict` optional parameter of `__::set()`: it always create or override portion of path

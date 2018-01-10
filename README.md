@@ -460,6 +460,13 @@ __::snakeCase('Foo Bar');
 // >> 'foo_bar'
 ```
 
+##### [__::split](src/__/strings/split.php)
+Split a string by string.
+```php
+__::split('github.com', '.');
+// >> ['github', 'com']
+```
+
 ##### [__::startCase](src/__/strings/startCase.php)
 ```php
 __::startCase('fooBar');
