@@ -37,8 +37,7 @@ function set($collection, $path, $value = null)
         return $collection;
     }
 
-    // TODO Use $portions = __::split('.', $path);
-    $path = \explode('.', $path);
+    $path = \__::split($path, '.');
     // TODO Use __::first($portions)
     $key  = \array_shift($path);
 

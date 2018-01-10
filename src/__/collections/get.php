@@ -24,7 +24,7 @@ function get($collection, $path, $default = null)
         return $collection[$path];
     }
 
-    foreach (\explode('.', $path) as $segment) {
+    foreach (\__::split($path, '.') as $segment) {
         if (\is_object($collection)) {
             if (isset($collection->{$segment})) {
                 $collection = $collection->{$segment};
