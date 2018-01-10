@@ -13,7 +13,7 @@ namespace __;
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [0]
- ** Strings                                     [12]
+ ** Strings                                     [13]
  ** Sequences                                    [1]
 
  ***************************************************
@@ -81,6 +81,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static string lowerCase(string $input)
  * @method static string lowerFirst(string $input)
  * @method static string snakeCase(string $input)
+ * @method static array split(string $input, string $delimiter[, integer $limit])
  * @method static string startCase(string $input)
  * @method static string toLower(string $input)
  * @method static string toUpper(string $input)
