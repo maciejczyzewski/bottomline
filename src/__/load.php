@@ -8,7 +8,7 @@ namespace __;
  ___________________________________________________
  ***************************************************
 
- ** Arrays                                       [8]
+ ** Arrays                                       [9]
  ** Collections                                 [16]
  ** Functions                                    [3]
  ** Objects                                      [8]
@@ -32,6 +32,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array append(array $input, $item) <code>__::append([1, 2, 3], 4)</code> >> [1, 2, 3, 4]
  * @method static array chunk(array $input, $size = 1, $preserveKeys = false) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
  * @method static array compact(array $input) Returns a copy of the array with falsy values removed. <code>__::compact([0, 1, false, 2, '', 3])</code> >> [1, 2, 3]
+ * @method static array drop(array $input, int $number = 1) Creates a slice of array with n elements dropped from the beginning.
  * @method static array flatten(array $input, bool $shallow = false) Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  * @method static array patch(array $input, array $patches) Patches array with list of xpath-value pairs.
  * @method static array prepend(array $input, $item)
@@ -81,7 +82,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static string lowerCase(string $input)
  * @method static string lowerFirst(string $input)
  * @method static string snakeCase(string $input)
- * @method static array split(string $input, string $delimiter[, integer $limit])
+ * @method static array split(string $input, string $delimiter[, int $limit]) Split a string by string.
  * @method static string startCase(string $input)
  * @method static string toLower(string $input)
  * @method static string toUpper(string $input)

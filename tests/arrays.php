@@ -47,6 +47,24 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2, 3], $x);
     }
 
+    public function testDrop()
+    {
+        // Arrange
+        $a = [1, 2, 3];
+
+        // Act
+        $x = __::drop($a);
+        $y = __::drop($a, 2);
+        $z = __::drop($a, 5);
+        $xa = __::drop($a, 0);
+
+        // Assert
+        $this->assertEquals([2, 3], $x);
+        $this->assertEquals([3], $y);
+        $this->assertEquals([], $z);
+        $this->assertEquals([1, 2, 3], $xa);
+    }
+
     public function testFlatten()
     {
         // Arrange
