@@ -225,6 +225,15 @@ __::hasKeys(['foo' => 'bar', 'foz' => 'baz'], ['foo', 'foz']);
 // >> true
 ```
 
+##### [__::isEmpty](src/__/collections/isEmpty.php)
+Check if value is an empty array or object.
+```php
+__::isEmpty([]);
+// >> true
+__::isEmpty(new stdClass());
+// >> true
+```
+
 ##### [__::last](src/__/collections/last.php)
 Gets the last element of an array. Passing n returns the last n elements.
 ```php

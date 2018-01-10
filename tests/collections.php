@@ -263,6 +263,27 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($y);
     }
 
+    public function testIsEmpty()
+    {
+        // Arrange.
+        $a = [];
+        $b = ['Falcon', 'Heavy'];
+        $c = new stdClass();
+        $d = (object) ['Baie' => 'Goji'];
+
+        // Act.
+        $x = __::isEmpty($a);
+        $y = __::isEmpty($b);
+        $z = __::isEmpty($c);
+        $xa = __::isEmpty($d);
+
+        // Assert.
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+        $this->assertTrue($z);
+        $this->assertFalse($xa);
+    }
+
     public function testLast()
     {
         // Arrange

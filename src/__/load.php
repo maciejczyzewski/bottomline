@@ -9,7 +9,7 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [9]
- ** Collections                                 [16]
+ ** Collections                                 [17]
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [0]
@@ -47,6 +47,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array groupBy(array $input, int|float|string|\Closure $key) Returns an associative array where the keys are values of $key.
  * @method static bool has($collection, $key) Returns true if $collection contains the requested $key.
  * @method static bool hasKeys(array $input, array $keys, $strict = false) Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
+ * @method static bool isEmpty($value) Check if $value is an empty array or object.
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
  * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
  * @method static array mapKeys(array $input, \Closure $func = null) Returns an array with keys being mapped through the iterator
