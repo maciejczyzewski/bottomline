@@ -304,6 +304,20 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([3, 6, 9], $x);
     }
 
+    public function testMapObject()
+    {
+        // Arrange
+        $a = (object) ['a' => 1, 'b' => 2, 'c' => 3];
+
+        // Act
+        $x = __::map($a, function($n, $key) {
+            return $key === 'c' ? $n : $n * 3;
+        });
+
+        // Assert
+        $this->assertEquals([3, 6, 3], $x);
+    }
+
     public function testMax()
     {
         // Arrange
