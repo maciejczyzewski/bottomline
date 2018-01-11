@@ -94,6 +94,24 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($b, $bMapped);
     }
 
+    public function testEvery()
+    {
+        // Arrange.
+        $a = [true, 1, null, 'yes'];
+        $b = [true, false];
+        $c = [1, 3, 4];
+
+        // Act.
+        $x = __::every($a, 'is_bool');
+        $y = __::every($b, 'is_bool');
+        $c = __::every($b, 'is_int');
+
+        // Assert
+        $this->assertFalse($a);
+        $this->assertTrue($b);
+        $this->assertTrue($c);
+    }
+
     public function testDoForEachPrematureReturn()
     {
         // Arrange

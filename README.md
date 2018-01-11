@@ -197,6 +197,15 @@ __::doForEach(
 // >> (Side effect: print numbers)
 ```
 
+##### [__::every](src/__/collections/every.php)
+Checks if predicate returns truthy for all elements of collection.
+```php
+__::every([true, 1, null, 'yes'], 'is_bool')
+// >> false
+__::every([true, false], 'is_bool')
+// >> true
+```
+
 ##### [__::get](src/__/collections/get.php)
 Get item of an array by index, aceepting nested index
 ```php
