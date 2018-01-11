@@ -16,8 +16,11 @@ namespace collections;
 function map($collection, \Closure $iteratee)
 {
     $result = [];
-    foreach ($collection as $key => $value) {
-        $result[] = $iteratee($value, $key, $collection);
-    }
+    \__::doForEach(
+        $collection,
+        function ($value, $key, $collection) use(&$result, $iteratee) {
+            $result[] = $iteratee($value, $key, $collection);
+        }
+    );
     return $result;
 }

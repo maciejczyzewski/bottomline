@@ -67,8 +67,11 @@ function reduce($collection, \Closure $iteratee, $accumulator = NULL)
     if ($accumulator === NULL) {
         $accumulator = \__::first($collection);
     }
-    foreach ($collection as $key => $value) {
-        $accumulator = $iteratee($accumulator, $value, $key, $collection);
-    }
+    \__::doForEach(
+        $collection,
+        function ($value, $key, $collection) use(&$accumulator, $iteratee) {
+            $accumulator = $iteratee($accumulator, $value, $key, $collection);
+        }
+    );
     return $accumulator;
 }
