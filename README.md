@@ -185,6 +185,18 @@ __::first([1, 2, 3, 4, 5], 2);
 // >> [1, 2]
 ```
 
+##### [__::doForEach](src/__/collections/forEach.php)
+Iterate over elements of the collection and invokes iteratee for each element.
+```php
+__::doForEach(
+    [1, 2, 3],
+    function ($n) {
+        print_r($n)
+    }
+);
+// >> (Side effect: print numbers)
+```
+
 ##### [__::get](src/__/collections/get.php)
 Get item of an array by index, aceepting nested index
 ```php

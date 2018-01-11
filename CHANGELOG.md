@@ -14,6 +14,7 @@
 * Added `__::split`
 * Added `__::drop`
 * Added `__::isEmpty`
+* Added `__::doForEach`
 * Made `__::pick()`, `__::set()` work on both arrays and objects
 * Made `__::set()` to return a copy of the collection (do not mutate)
 * Removed `$strict` optional parameter of `__::set()`: it always create or override portion of path

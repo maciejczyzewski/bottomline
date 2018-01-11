@@ -72,6 +72,28 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2], $x);
     }
 
+    public function testDoForEach()
+    {
+        // Arrange
+        $makeMapper = function (&$array) {
+            return function ($value, $key) use(&$array) {
+                $array[$key] = $value;
+            };
+        };
+        $a = [1, 2, 3];
+        $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+
+        // Act.
+        $aMapped = [];
+        $bMapped = [];
+        __::doForEach($a, $makeMapper($aMapped));
+        __::doForEach($b, $makeMapper($bMapped));
+
+        // Assert
+        $this->assertEquals($a, $aMapped);
+        $this->assertEquals($b, $bMapped);
+    }
+
     public function testGetArrays()
     {
         // Arrange
