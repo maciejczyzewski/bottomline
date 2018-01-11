@@ -13,17 +13,22 @@ namespace collections;
  ** __::hasKeys((object) ['foo' => 'bar', 'foz' => 'baz'], 'bar');
  ** // → false
  *
- * @param array $collection of key values pairs
- * @param string|integer $key key to look for
+ * @param array|object $collection of key values pairs
+ * @param string|integer $path Path to look for.
  *
  * @return boolean
  *
  */
-function has($collection, $key)
+function has($collection, $path)
 {
-    // TODO Support path lookup.
-    $has = \__::isObject($collection) ? 'property_exists' : 'array_key_exists';
-    $args = \__::isObject($collection) ? [$collection, $key] : [$key, $collection];
+    // TODO Factorize path mavigation/enumeration with set and get.
+    $portions = \__::split($path, '.', 2);
+    $key  = $portions[0];
 
-    return call_user_func_array($has, $args);
+    if (\count($portions) === 1) {
+        $has = \__::isObject($collection) ? 'property_exists' : 'array_key_exists';
+        $args = \__::isObject($collection) ? [$collection, $key] : [$key, $collection];
+        return call_user_func_array($has, $args);
+    }
+    return has(\__::get($collection, $key), $portions[1]);
 }

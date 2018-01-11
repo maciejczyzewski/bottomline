@@ -276,32 +276,38 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Arrange.
         $a = ['foo' => 'bar'];
         $b = (object) ['foo' => 'bar'];
+        $c = ['foo' => ['bar' => 'foie']];
 
         // Act.
         $x = __::has($a, 'foo');
         $y = __::has($a, 'foz');
         $z = __::has($b, 'foo');
-        $x1 = __::has($b, 'foz');
+        $xa = __::has($b, 'foz');
+        $xb = __::has($c, 'foo.bar');
 
         // Assert.
         $this->assertTrue($x);
         $this->assertFalse($y);
         $this->assertTrue($z);
-        $this->assertFalse($x1);
+        $this->assertFalse($xa);
+        $this->assertTrue($xb);
     }
 
     public function testHasKeys()
     {
         // Arrange
         $a = ['foo' => 'bar'];
+        $b = ['foo' => ['bar' => 'foie'], 'estomac' => true];
 
         // Act
         $x = __::hasKeys($a, ['foo', 'foz'], false);
         $y = __::hasKeys($a, ['foo', 'foz'], true);
+        $z = __::hasKeys($b, ['foo.bar', 'estomac']);
 
         // Assert
         $this->assertFalse($x);
         $this->assertFalse($y);
+        $this->assertTrue($z);
 
         //Rearrange
         $a['foz'] = 'baz';

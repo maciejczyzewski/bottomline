@@ -21,6 +21,10 @@ function hasKeys($collection = [], array $keys = [], $strict = false)
     if ($strict && \count($collection) !== $keyCount) {
         return false;
     }
-    
-    return \count(\array_intersect($keys, \array_keys((array) $collection))) === $keyCount;
+    return \__::every(
+        \__::map($keys, function ($key) use($collection) {
+            return \__::has($collection, $key);
+        }),
+        function ($v) { return $v === true; }
+    );
 }

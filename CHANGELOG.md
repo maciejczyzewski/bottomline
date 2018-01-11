@@ -17,6 +17,7 @@
 * Added `__::doForEach`
 * Added `__::every`
 * Made `__::pick()`, `__::set()`, `__::map()` and `__::hasKeys()` to work on both arrays and objects
+* Made `__::hasKeys()` to work with paths
 * Made `__::set()` to return a copy of the collection (do not mutate)
 * Removed `$strict` optional parameter of `__::set()`: it always create or override portion of path
 
