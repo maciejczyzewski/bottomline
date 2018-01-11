@@ -15,9 +15,9 @@ namespace collections;
  */
 function map($collection, \Closure $iteratee)
 {
-    //
-    // foreach ($collection as $key => $value) {
-    //     $accumulator = $iteratee($accumulator, $value, $key, $collection);
-    // }
-    return \array_map($iteratee, (array) $collection);
+    $result = [];
+    foreach ($collection as $key => $value) {
+        $result[] = $iteratee($value, $key, $collection);
+    }
+    return $result;
 }
