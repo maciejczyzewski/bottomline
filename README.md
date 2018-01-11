@@ -97,7 +97,7 @@ __::compact([0, 1, false, 2, '', 3]);
 ##### [__::drop](src/__/arrays/drop.php)
 Creates a slice of array with n elements dropped from the beginning.
 ```php
-__::drop(1, 2, 3], 2);
+__::drop([1, 2, 3], 2);
 // >> [3]
 ```
 
