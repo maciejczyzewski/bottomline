@@ -15,10 +15,9 @@
 * Added `__::drop`
 * Added `__::isEmpty`
 * Added `__::doForEach`
-* Made `__::pick()`, `__::set()` work on both arrays and objects
+* Made `__::pick()`, `__::set()`, `__::map()` and `__::hasKeys()` to work on both arrays and objects
 * Made `__::set()` to return a copy of the collection (do not mutate)
 * Removed `$strict` optional parameter of `__::set()`: it always create or override portion of path
-* Allowed `__::map()` to work on objects
 
 ## <sub>v0.1.0</sub>
 #### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)

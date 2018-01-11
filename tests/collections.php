@@ -308,6 +308,20 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertFalse($y);
     }
 
+    public function testHasKeysObject()
+    {
+        // Arrange.
+        $a = (object) ['foo' => 'bar'];
+
+        // Act
+        $x = __::hasKeys($a, ['foo']);
+        $y = __::hasKeys($a, ['foo', 'foz']);
+
+        // Assert
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+    }
+
     public function testIsEmpty()
     {
         // Assert nominal cases.
