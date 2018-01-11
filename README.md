@@ -200,9 +200,9 @@ __::doForEach(
 ##### [__::every](src/__/collections/every.php)
 Checks if predicate returns truthy for all elements of collection.
 ```php
-__::every([true, 1, null, 'yes'], 'is_bool')
+__::every([true, 1, null, 'yes'], function ($v) { return is_bool($v); })
 // >> false
-__::every([true, false], 'is_bool')
+__::every([true, false], function ($v) { return is_bool($v); })
 // >> true
 ```
 

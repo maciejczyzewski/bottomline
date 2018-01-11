@@ -8,7 +8,7 @@ namespace collections;
  * Iteration is stopped once predicate returns falsey.
  * The predicate is invoked with three arguments: (value, index|key, collection).
  *
- ** __::every([1, 3, 4], 'is_int');
+ ** __::every([1, 3, 4], function ($v) { return is_int($v); });
  ** // → true
  *
  * @param array|object $collection The collection to iterate over.

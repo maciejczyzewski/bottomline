@@ -102,14 +102,14 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $c = [1, 3, 4];
 
         // Act.
-        $x = __::every($a, 'is_bool');
-        $y = __::every($b, 'is_bool');
-        $c = __::every($b, 'is_int');
+        $x = __::every($a, function ($v) { return is_bool($v); });
+        $y = __::every($b, function ($v) { return is_bool($v); });
+        $z = __::every($c, function ($v) { return is_int($v); });
 
         // Assert
-        $this->assertFalse($a);
-        $this->assertTrue($b);
-        $this->assertTrue($c);
+        $this->assertFalse($x);
+        $this->assertTrue($y);
+        $this->assertTrue($z);
     }
 
     public function testDoForEachPrematureReturn()
