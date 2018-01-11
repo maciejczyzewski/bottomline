@@ -20,6 +20,8 @@ namespace collections;
 function doForEach($collection, \Closure $iteratee)
 {
     foreach ($collection as $key => $value) {
-        $iteratee($value, $key, $collection);
+        if ($iteratee($value, $key, $collection) === false) {
+            break;
+        }
     }
 }
