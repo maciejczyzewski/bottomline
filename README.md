@@ -235,7 +235,7 @@ __::groupBy($a, 'continent');
 ##### [__::has](src/__/collections/has.php)
 Returns true if the collection contains the requested key.
 ```php
-__::has(['foo' => 'bar', 'foz' => 'baz'], 'foo');
+__::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
 // >> true
 ```
 

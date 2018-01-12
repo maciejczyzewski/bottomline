@@ -7,7 +7,7 @@ namespace collections;
  *
  * In constrast to isset(), __::has() returns true if the key exists but is null.
  *
- ** __::hasKeys(['foo' => 'bar', 'foz' => 'baz'], 'foo');
+ ** __::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
  ** // → true
  *
  ** __::hasKeys((object) ['foo' => 'bar', 'foz' => 'baz'], 'bar');
