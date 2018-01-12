@@ -94,6 +94,13 @@ __::compact([0, 1, false, 2, '', 3]);
 // >> [1, 2, 3]
 ```
 
+##### [__::drop](src/__/arrays/drop.php)
+Creates a slice of array with n elements dropped from the beginning.
+```php
+__::drop([1, 2, 3], 2);
+// >> [3]
+```
+
 ##### [__::flatten](src/__/arrays/flatten.php)
 Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
 ```php
@@ -178,6 +185,27 @@ __::first([1, 2, 3, 4, 5], 2);
 // >> [1, 2]
 ```
 
+##### [__::doForEach](src/__/collections/forEach.php)
+Iterate over elements of the collection and invokes iteratee for each element.
+```php
+__::doForEach(
+    [1, 2, 3],
+    function ($n) {
+        print_r($n)
+    }
+);
+// >> (Side effect: print numbers)
+```
+
+##### [__::every](src/__/collections/every.php)
+Checks if predicate returns truthy for all elements of collection.
+```php
+__::every([true, 1, null, 'yes'], function ($v) { return is_bool($v); })
+// >> false
+__::every([true, false], function ($v) { return is_bool($v); })
+// >> true
+```
+
 ##### [__::get](src/__/collections/get.php)
 Get item of an array by index, aceepting nested index
 ```php
@@ -204,10 +232,26 @@ __::groupBy($a, 'continent');
 // ]
 ```
 
+##### [__::has](src/__/collections/has.php)
+Returns true if the collection contains the requested key.
+```php
+__::has(['foo' => 'bar', 'foz' => 'baz'], 'foo');
+// >> true
+```
+
 ##### [__::hasKeys](src/__/collections/hasKeys.php)
 Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
 ```php
 __::hasKeys(['foo' => 'bar', 'foz' => 'baz'], ['foo', 'foz']);
+// >> true
+```
+
+##### [__::isEmpty](src/__/collections/isEmpty.php)
+Check if value is an empty array or object.
+```php
+__::isEmpty([]);
+// >> true
+__::isEmpty(new stdClass());
 // >> true
 ```
 
@@ -234,12 +278,12 @@ __::mapKeys(['x' => 1], function($key, $value, $collection) {
     return "{$key}_{$value}";
 });
 // >> ['x_1' => 1]
- 
+
 __::mapKeys(['x' => 1], function($key) {
     return strtoupper($key);
 });
 // >> ['X' => 3]
- 
+
 __::mapKeys(['x' => 1])
 // >> ['x' => 1]
 
@@ -252,12 +296,12 @@ __::mapValues(['x' => 1], function($value, $key, $collection) {
     return "{$key}_{$value}";
 });
 // >> ['x' => 'x_1']
- 
+
 __::mapValues(['x' => 1], function($value) {
     return $value * 3;
 });
 // >> ['x' => 3]
- 
+
 __::mapValues(['x' => 1])
 // >> ['x' => 1]
 ```
@@ -300,7 +344,7 @@ __::reduce([1, 2], function ($sum, $number) {
 ```
 
 ##### [__::set](src/__/collections/set.php)
-Set item of an array by index to given value, accepting nested index
+Return a new collection with the item set at index to given value. Index can be a path.
 ```php
 __::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
 // >> ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
@@ -396,6 +440,13 @@ __::isString('fred');
 // >> true
 ```
 
+##### [__::isCollection](src/__/objects/isCollection.php)
+Returns true if the argument is a collection (that is an array or object).
+```php
+__::isCollection([1, 2, 3]);
+// >> true
+```
+
 ### Utilities
 
 #### [__::identity](src/__/utilities/identity.php)
@@ -403,7 +454,7 @@ Returns the first argument it receives
 ```php
 __::identity(1, 2, 3, 4)
 // >> 1
- 
+
 __::identity()
 // >> null
 ```
@@ -444,6 +495,13 @@ __::lowerFirst('Fred');
 ```php
 __::snakeCase('Foo Bar');
 // >> 'foo_bar'
+```
+
+##### [__::split](src/__/strings/split.php)
+Split a string by string.
+```php
+__::split('github.com', '.');
+// >> ['github', 'com']
 ```
 
 ##### [__::startCase](src/__/strings/startCase.php)

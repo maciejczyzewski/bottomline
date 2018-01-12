@@ -19,7 +19,7 @@ function pluck($collection, $property)
             return $value->{$property};
         }
 
-        foreach (\explode('.', $property) as $segment) {
+        foreach (\__::split($property, '.') as $segment) {
             if (\is_object($value)) {
                 if (isset($value->{$segment})) {
                     $value = $value->{$segment};

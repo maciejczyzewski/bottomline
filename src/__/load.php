@@ -8,12 +8,12 @@ namespace __;
  ___________________________________________________
  ***************************************************
 
- ** Arrays                                       [8]
- ** Collections                                 [15]
+ ** Arrays                                       [10]
+ ** Collections                                 [22]
  ** Functions                                    [3]
- ** Objects                                      [7]
- ** Utilities                                    [0]
- ** Strings                                     [12]
+ ** Objects                                      [8]
+ ** Utilities                                    [2]
+ ** Strings                                     [13]
  ** Sequences                                    [1]
 
  ***************************************************
@@ -32,6 +32,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array append(array $input, $item) <code>__::append([1, 2, 3], 4)</code> >> [1, 2, 3, 4]
  * @method static array chunk(array $input, $size = 1, $preserveKeys = false) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
  * @method static array compact(array $input) Returns a copy of the array with falsy values removed. <code>__::compact([0, 1, false, 2, '', 3])</code> >> [1, 2, 3]
+ * @method static array drop(array $input, int $number = 1) Creates a slice of array with n elements dropped from the beginning.
  * @method static array flatten(array $input, bool $shallow = false) Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
  * @method static array patch(array $input, array $patches) Patches array with list of xpath-value pairs.
  * @method static array prepend(array $input, $item)
@@ -42,18 +43,22 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array ease(array $input, string $glue = '.')
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
- * @method static array|mixed get(array|object $input, string $path, \Closure|mixed $default = null)
+ * @method static null doForEach(array|object $collection, \Closure $iteratee) Iterate over elements of the collection and invokes iteratee for each element.
+ * @method static bool every(array|object $collection, \Closure $iteratee) Checks if predicate returns truthy for all elements of collection.
+ * @method static array|mixed get(array|object $collection, string $path, \Closure|mixed $default = null)
  * @method static array groupBy(array $input, int|float|string|\Closure $key) Returns an associative array where the keys are values of $key.
+ * @method static bool has($collection, $key) Returns true if $collection contains the requested $key.
  * @method static bool hasKeys(array $input, array $keys, $strict = false) Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
+ * @method static bool isEmpty($value) Check if $value is an empty array or object.
  * @method static array|mixed last(array $input, int $count = null) Gets the last element of an array. Passing n returns the last n elements.
- * @method static array map(array $input, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
+ * @method static array map(array|object $collection, \Closure $func = null) Returns an array of values by mapping each in collection through the iterator.
  * @method static array mapKeys(array $input, \Closure $func = null) Returns an array with keys being mapped through the iterator
  * @method static array mapValues(array $input, \Closure $func = null) Returns an array with values being mapped through the iterator
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
  * @method static mixed reduce(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection thru $iteratee, where each successive invocation is supplied the return value of the previous.
- * @method static array set(array $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
+ * @method static array set(array|object $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
 * @method static array pick(array $array = [], array $paths = [], $default = null) Returns an array having only keys present in the given path list.
  * @method static array unease(array $input, string $separator = '.')
  * @method static array where(array|\Traversable $input, mixed $itemParams = '')
@@ -69,6 +74,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isNumber($var)
  * @method static bool isObject($var)
  * @method static bool isString($var)
+ * @method static bool isCollection($var)
  *
  * @method static int now()
  * @method static mixed identity()
@@ -79,6 +85,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static string lowerCase(string $input)
  * @method static string lowerFirst(string $input)
  * @method static string snakeCase(string $input)
+ * @method static array split(string $input, string $delimiter[, int $limit]) Split a string by string.
  * @method static string startCase(string $input)
  * @method static string toLower(string $input)
  * @method static string toUpper(string $input)

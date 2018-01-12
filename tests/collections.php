@@ -72,6 +72,69 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2], $x);
     }
 
+    public function testDoForEach()
+    {
+        // Arrange
+        $makeMapper = function (&$array) {
+            return function ($value, $key) use(&$array) {
+                $array[$key] = $value;
+            };
+        };
+        $a = [1, 2, 3];
+        $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+
+        // Act.
+        $aMapped = [];
+        $bMapped = [];
+        __::doForEach($a, $makeMapper($aMapped));
+        __::doForEach($b, $makeMapper($bMapped));
+
+        // Assert
+        $this->assertEquals($a, $aMapped);
+        $this->assertEquals($b, $bMapped);
+    }
+
+    public function testEvery()
+    {
+        // Arrange.
+        $a = [true, 1, null, 'yes'];
+        $b = [true, false];
+        $c = [1, 3, 4];
+
+        // Act.
+        $x = __::every($a, function ($v) { return is_bool($v); });
+        $y = __::every($b, function ($v) { return is_bool($v); });
+        $z = __::every($c, function ($v) { return is_int($v); });
+
+        // Assert
+        $this->assertFalse($x);
+        $this->assertTrue($y);
+        $this->assertTrue($z);
+    }
+
+    public function testDoForEachPrematureReturn()
+    {
+        // Arrange
+        $makeMapper = function (&$array, $returnAtKey) {
+            return function ($value, $key) use(&$array, $returnAtKey) {
+                $array[$key] = $value;
+                if ($returnAtKey === $key) return false;
+            };
+        };
+        $a = [1, 2, 3, 4];
+        $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+
+        // Act.
+        $aMapped = [];
+        $bMapped = [];
+        __::doForEach($a, $makeMapper($aMapped, 1));
+        __::doForEach($b, $makeMapper($bMapped,  'city'));
+
+        // Assert
+        $this->assertEquals([1, 2], $aMapped);
+        $this->assertEquals(['state' => 'IN', 'city' => 'Indianapolis'], $bMapped);
+    }
+
     public function testGetArrays()
     {
         // Arrange
@@ -208,18 +271,43 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('Indianapolis', $grouped);
     }
 
+    public function testHas()
+    {
+        // Arrange.
+        $a = ['foo' => 'bar'];
+        $b = (object) ['foo' => 'bar'];
+        $c = ['foo' => ['bar' => 'foie']];
+
+        // Act.
+        $x = __::has($a, 'foo');
+        $y = __::has($a, 'foz');
+        $z = __::has($b, 'foo');
+        $xa = __::has($b, 'foz');
+        $xb = __::has($c, 'foo.bar');
+
+        // Assert.
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+        $this->assertTrue($z);
+        $this->assertFalse($xa);
+        $this->assertTrue($xb);
+    }
+
     public function testHasKeys()
     {
         // Arrange
         $a = ['foo' => 'bar'];
+        $b = ['foo' => ['bar' => 'foie'], 'estomac' => true];
 
         // Act
         $x = __::hasKeys($a, ['foo', 'foz'], false);
         $y = __::hasKeys($a, ['foo', 'foz'], true);
+        $z = __::hasKeys($b, ['foo.bar', 'estomac']);
 
         // Assert
         $this->assertFalse($x);
         $this->assertFalse($y);
+        $this->assertTrue($z);
 
         //Rearrange
         $a['foz'] = 'baz';
@@ -242,6 +330,33 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert
         $this->assertTrue($x);
         $this->assertFalse($y);
+    }
+
+    public function testHasKeysObject()
+    {
+        // Arrange.
+        $a = (object) ['foo' => 'bar'];
+
+        // Act
+        $x = __::hasKeys($a, ['foo']);
+        $y = __::hasKeys($a, ['foo', 'foz']);
+
+        // Assert
+        $this->assertTrue($x);
+        $this->assertFalse($y);
+    }
+
+    public function testIsEmpty()
+    {
+        // Assert nominal cases.
+        $this->assertTrue(__::isEmpty([]));
+        $this->assertFalse(__::isEmpty(['Falcon', 'Heavy']));
+        $this->assertTrue(__::isEmpty(new stdClass()));
+        $this->assertFalse(__::isEmpty((object) ['Baie' => 'Goji']));
+        // Assert on non-collections.
+        $this->assertTrue(__::isEmpty(null));
+        $this->assertTrue(__::isEmpty(3));
+        $this->assertTrue(__::isEmpty(true));
     }
 
     public function testLast()
@@ -270,6 +385,20 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         $this->assertEquals([3, 6, 9], $x);
+    }
+
+    public function testMapObject()
+    {
+        // Arrange
+        $a = (object) ['a' => 1, 'b' => 2, 'c' => 3];
+
+        // Act
+        $x = __::map($a, function($n, $key) {
+            return $key === 'c' ? $n : $n * 3;
+        });
+
+        // Assert
+        $this->assertEquals([3, 6, 3], $x);
     }
 
     public function testMax()
@@ -443,7 +572,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testPick()
     {
         // Arrange
-        $a = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
+        $a = ['a' => 1, 'b' => ['c' => 3, 'd' => 4], 'h' => 5];
 
         // Act
         $x = __::pick($a, ['a', 'b.d', 'e', 'f.g']);
@@ -457,6 +586,48 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $x);
     }
 
+    public function testPickDefaults()
+    {
+        // Arrange.
+        $a = ['nasa' => 1, 'cnsa' => 42];
+        $b = ['a' => 1, 'b' => ['c' => 3, 'd' => 4]];
+
+        // Act.
+        $x = __::pick($a, ['cnsa', 'esa', 'jaxa'], 26);
+        $y = __::pick($b, ['a', 'b.d', 'e', 'f.g'], 'default');
+
+        // Assert.
+        $this->assertEquals([
+            'cnsa' => 42,
+            'esa' => 26,
+            'jaxa' => 26,
+        ], $x);
+        $this->assertEquals([
+            'a' => 1,
+            'b' => ['d' => 4],
+            'e' => 'default',
+            'f' => ['g' => 'default']
+        ], $y);
+    }
+
+    public function testPickObject()
+    {
+        // Arrange.
+        $a = new \stdClass();
+        $a->paris = 10659489;
+        $a->marseille = 1578484;
+        $a->lyon = 1620331;
+
+        // Act.
+        $x = __::pick($a, ['marseille', 'london']);
+
+        // Assert.
+        $this->assertEquals((object) [
+            'marseille' => 1578484,
+            'london' => null
+        ], $x);
+    }
+
     public function testSet()
     {
         // Arrange
@@ -464,30 +635,40 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Act
         $x = __::set($a, 'foo.baz.ber', 'fer');
-        $y = __::set($a, 'foo.bar', 'fer2', true);
+        $y = __::set($a, 'foo.bar', 'fer2');
 
         // Assert
+        $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
         $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
         $this->assertEquals(['foo' => ['bar' => 'fer2']], $y);
     }
 
-    public function testSetStrictException()
+    public function testSetObject()
     {
-        if (method_exists($this, 'expectException')) {
-            // new phpunit
-            $this->expectException('\Exception');
-        } else {
-            // old phpunit
-            $this->setExpectedException('\Exception');
-        }
+        // Arrange.
+        $a = (object) ['foo' => (object) ['bar' => 'ter']];
 
+        // Act.
+        $x = __::set($a, 'foo.baz.ber', 'fer');
+        $y = __::set($a, 'foo.bar', 'fer2');
+
+        // Assert.
+        $this->assertEquals((object )['foo' => (object) ['bar' => 'ter']], $a);
+        $this->assertEquals((object) ['ber' => 'fer'], $x->foo->baz);
+        $this->assertEquals((object) ['foo' => (object) ['bar' => 'fer2']], $y);
+    }
+
+    public function testSetOveride()
+    {
         // Arrange
-        $a = [
-            'foo' => ['bar' => 'ter']
-        ];
+        $a = ['foo' => ['bar' => 'ter']];
 
         // Act
-        __::set($a, 'foo.bar.not_exist', 'baz', true);
+        $x = __::set($a, 'foo.bar.not_exist', 'baz');
+
+        // Assert.
+        $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
+        $this->assertEquals(['foo' => ['bar' => ['not_exist' => 'baz']]], $x);
     }
 
     public function testWhere()

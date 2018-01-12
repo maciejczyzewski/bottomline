@@ -10,20 +10,14 @@ namespace collections;
  ** __::pick(['a' => 1, 'b' => ['c' => 3, 'd' => 4]], ['a', 'b.d']);
  ** // → ['a' => 1, 'b' => ['d' => 4]]
  *
- * @param array $array         assoc array of values
- * @param array $paths         array of paths to pick
+ * @param array|object $collection The collection to iterate over.
+ * @param array $paths array paths to pick
  *
  * @return array
  */
-function pick(array $array = [], array $paths = [], $default = null)
+function pick($collection = [], array $paths = [], $default = null)
 {
-    $result = [];
-    foreach ($paths as $path) {
-        if (strpos($path, '.') === false) {
-            $result[$path] = isset($array[$path]) ? $array[$path] : $default;
-        } else {
-            $result = \__::set($result, $path, \__::get($array, $path, $default));
-        }
-    }
-    return $result;
+    return \__::reduce($paths, function ($results, $path) use ($collection, $default) {
+        return \__::set($results, $path, \__::get($collection, $path, $default));
+    }, \__::isObject($collection) ? new \stdClass() : []);
 }
