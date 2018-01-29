@@ -20,9 +20,13 @@ namespace collections;
  */
 function assign($collection1, $collection2)
 {
-    // foreach (func_get_args() as $collectionN) {
-    //
-    // }
-    // PHP 5.6+ array_merge_recursive(...func_get_args());
-    return call_user_func_array('array_merge', func_get_args());
+    // TODO Alternative over casting to array: implement directly assign using
+    // foreach (func_get_args() as $collectionN). (with object handling).
+    // First collection determine output type (array vs. object).
+    $isObject = \__::isObject($collection1);
+    // Cast args to array.
+    $args = \__::map(func_get_args(), function ($arg) { return (array) $arg; });
+    // PHP 5.6+ array_merge_recursive(...$args);
+    $merged = call_user_func_array('array_merge', $args);;
+    return $isObject ? (object) $merged : $merged;
 }
