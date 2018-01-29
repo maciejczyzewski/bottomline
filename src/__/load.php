@@ -9,11 +9,11 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [10]
- ** Collections                                 [24]
+ ** Collections                                  [24]
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [2]
- ** Strings                                     [13]
+ ** Strings                                      [13]
  ** Sequences                                    [1]
 
  ***************************************************
