@@ -18,31 +18,27 @@ namespace collections;
  * @return array|object Merged collection.
  *
  */
-function merge($collection1, $collection2)
+function merge()
 {
-    // TODO Reimplement array_merge_recursive with support for objects.
-    // __::merge() is an __:assign() with recursivity. Nop: index appending.
-    // $isObject = \__::isObject($collection1);
-    // return \__::reduce(func_get_args(), function ($merged, $collectionN) {
-    //     \__::doForEach($collectionN, function ($value, $key) use(&$merged) {
-    //         if (\__::has($merged, $key)) {
-    //             // Append the value.
-    //             if (!\__::isArray($merged[$key])) {
-    //                 $merged[$key] = [$merged[$key]];
-    //             }
-    //             $merged[$key][] = $value;
-    //             // TODO Where the recursivity?
-    //         } else {
-    //             $merged[$key] = $value;
-    //             // $merged = \__::assign($merged, [$key => $value]);
-    //         }
-    //     });
-    //     return $merged;
-    //     // return \__::assign($merged, $collectionN);
-    // }, []);
-    // foreach (func_get_args() as $collectionN) {
-    //
-    // }
+    return \__::reduce(array_reverse(func_get_args()), function ($source, $result) {
+        \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
+            if (!\__::has($result, $key)) {
+                $result[$key] = $sourceValue;
+            } else if(is_numeric($key)) {
+                array_push($result, $sourceValue);
+            } else {
+                $resultValue = $result[$key];
+                if(!\__::isArray($resultValue)) {
+                    $resultValue = [$resultValue];
+                }
+                if(!\__::isArray($sourceValue)) {
+                    $sourceValue = [$sourceValue];
+                }
+                $result[$key] = merge($resultValue, $sourceValue);
+            }
+        });
+        return $result;
+    }, []);
     // PHP 5.6+ array_merge_recursive(...func_get_args());
-    return call_user_func_array('array_merge_recursive', func_get_args());
+    // return call_user_func_array('array_merge_recursive', func_get_args());
 }
