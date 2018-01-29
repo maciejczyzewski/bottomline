@@ -20,6 +20,26 @@ namespace collections;
  */
 function merge($collection1, $collection2)
 {
+    // TODO Reimplement array_merge_recursive with support for objects.
+    // __::merge() is an __:assign() with recursivity. Nop: index appending.
+    // $isObject = \__::isObject($collection1);
+    // return \__::reduce(func_get_args(), function ($merged, $collectionN) {
+    //     \__::doForEach($collectionN, function ($value, $key) use(&$merged) {
+    //         if (\__::has($merged, $key)) {
+    //             // Append the value.
+    //             if (!\__::isArray($merged[$key])) {
+    //                 $merged[$key] = [$merged[$key]];
+    //             }
+    //             $merged[$key][] = $value;
+    //             // TODO Where the recursivity?
+    //         } else {
+    //             $merged[$key] = $value;
+    //             // $merged = \__::assign($merged, [$key => $value]);
+    //         }
+    //     });
+    //     return $merged;
+    //     // return \__::assign($merged, $collectionN);
+    // }, []);
     // foreach (func_get_args() as $collectionN) {
     //
     // }
