@@ -38,6 +38,4 @@ function merge()
         });
         return $result;
     }, []);
-    // PHP 5.6+ array_merge_recursive(...func_get_args());
-    // return call_user_func_array('array_merge_recursive', func_get_args());
 }
