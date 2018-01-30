@@ -472,23 +472,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
     }
 
-    // public function testMergeObject()
-    // {
-    //     // Arrange
-    //     $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
-    //     $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-    //     $b1 = (object) ['a' => 0];
-    //     $b2 = (object) ['a' => 1, 'b' => 2];
-    //     $b3 = (object) ['c' => 3, 'd' => 4];
-    //
-    //     // Act
-    //     $x = __::merge($a1, $a2);
-    //     $y = __::merge($b1, $b2, $b3);
-    //
-    //     // Assert
-    //     $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
-    //     $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
-    // }
+    public function testMergeObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2];
+        $b3 = (object) ['c' => 3, 'd' => 4];
+    
+        // Act
+        $x = __::merge($a1, $a2);
+        $y = __::merge($b1, $b2, $b3);
+    
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
 
 
     public function testMin()

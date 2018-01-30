@@ -23,11 +23,20 @@ function merge()
     return \__::reduce(array_reverse(func_get_args()), function ($source, $result) {
         \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
             if (!\__::has($result, $key)) {
-                $result[$key] = $sourceValue;
+                $result = \__::set($result, $key, $sourceValue);
             } else if(is_numeric($key)) {
-                array_push($result, $sourceValue);
+                // We want to append to the collection. As we can't append using numerical keys
+                // on objects, we have to cast to arrays.
+                // TODO: use __::append
+                $resultArray = (array) $result;
+                array_push($resultArray, $sourceValue);
+                $result = \__::isObject($result) ? (object) $resultArray : $resultArray;
             } else {
-                $result[$key] = merge((array) $result[$key], (array) $sourceValue);
+                $resultValue = \__::get($result, $key);
+                $result = \__::set($result, $key, merge(
+                    \__::isCollection($resultValue) ? $resultValue : (array) $resultValue,
+                    \__::isCollection($sourceValue) ? $sourceValue : (array) $sourceValue
+                ));
             }
         });
         return $result;
