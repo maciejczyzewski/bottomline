@@ -27,12 +27,7 @@ function merge()
             if (!\__::has($result, $key)) {
                 $result = \__::set($result, $key, $sourceValue);
             } else if(is_numeric($key)) {
-                // We want to append to the collection. As we can't append using numerical keys
-                // on objects, we have to cast to arrays.
-                // TODO: use __::append
-                $resultArray = (array) $result;
-                array_push($resultArray, $sourceValue);
-                $result = \__::isObject($result) ? (object) $resultArray : $resultArray;
+                $result = \__::assign($result, [$sourceValue]);
             } else {
                 $resultValue = \__::get($result, $key);
                 $result = \__::set($result, $key, merge(
