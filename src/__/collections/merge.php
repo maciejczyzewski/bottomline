@@ -27,14 +27,7 @@ function merge()
             } else if(is_numeric($key)) {
                 array_push($result, $sourceValue);
             } else {
-                $resultValue = $result[$key];
-                if(!\__::isArray($resultValue)) {
-                    $resultValue = [$resultValue];
-                }
-                if(!\__::isArray($sourceValue)) {
-                    $sourceValue = [$sourceValue];
-                }
-                $result[$key] = merge($resultValue, $sourceValue);
+                $result[$key] = merge((array) $result[$key], (array) $sourceValue);
             }
         });
         return $result;
