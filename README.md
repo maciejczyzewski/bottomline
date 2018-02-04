@@ -402,6 +402,17 @@ __::reduce([1, 2], function ($sum, $number) {
 // >> 3
 ```
 
+##### [__::reduceRight](src/__/collections/reduce.php)
+Reduces a collection to a value which is the accumulator result of running each
+element in the collection - from right to left - thru an iteratee function,
+where each successive invocation is supplied the return value of the previous.
+```php
+__::reduceRight(['a', 'b', 'c'], function ($word, $char) {
+    return $word . $char;
+}, '');
+// >> 'cba'
+```
+
 ##### [__::set](src/__/collections/set.php)
 Return a new collection with the item set at index to given value. Index can be a path.
 ```php

@@ -752,6 +752,21 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $y);
     }
 
+    public function testReduceRightArray()
+    {
+        // Arrange
+        $a = ['a', 'b', 'c'];
+        $aReducer = function ($word, $char) {
+            return $word . $char;
+        };
+
+        // Act
+        $x = __::reduceRight($a, $aReducer, '');
+
+        // Assert
+        $this->assertEquals('cba', $x);
+    }
+
     public function testPick()
     {
         // Arrange

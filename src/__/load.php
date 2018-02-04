@@ -9,7 +9,7 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [10]
- ** Collections                                  [27]
+ ** Collections                                  [28]
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [2]
@@ -63,8 +63,9 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
  * @method static mixed reduce(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection thru $iteratee, where each successive invocation is supplied the return value of the previous.
+ * @method static mixed reduceRight(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection - from right to left - thru $iteratee, where each successive invocation is supplied the return value of the previous.
  * @method static array set(array|object $collection = [], string $key = '', $value = null, $strict = false) Set item of an array by index to given value, aceepting nested index
-* @method static array pick(array $array = [], array $paths = [], $default = null) Returns an array having only keys present in the given path list.
+ * @method static array pick(array $array = [], array $paths = [], $default = null) Returns an array having only keys present in the given path list.
  * @method static array unease(array $input, string $separator = '.')
  * @method static array where(array|\Traversable $input, mixed $itemParams = '')
  *
