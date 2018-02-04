@@ -227,7 +227,22 @@ __::doForEach(
         print_r($n)
     }
 );
-// >> (Side effect: print numbers)
+// (Side effect: print numbers)
+// >> 1, 2, 3
+```
+
+##### [__::doForEachRight](src/__/collections/doForEachRight.php)
+Iterate over elements of the collection, from right to left, and invokes iteratee
+for each element.
+```php
+__::doForEachRight(
+    [1, 2, 3],
+    function ($n) {
+        print_r($n)
+    }
+);
+// (Side effect: print numbers)
+// >> 3, 2, 1
 ```
 
 ##### [__::every](src/__/collections/every.php)

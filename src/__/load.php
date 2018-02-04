@@ -9,7 +9,7 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [10]
- ** Collections                                  [26]
+ ** Collections                                  [27]
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [2]
@@ -47,6 +47,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
  * @method static null doForEach(array|object $collection, \Closure $iteratee) Iterate over elements of the collection and invokes iteratee for each element.
+ * @method static null doForEachRight(array|object $collection, \Closure $iteratee) Iterate over elements of the collection, from right to left, and invokes iteratee for each element.
  * @method static bool every(array|object $collection, \Closure $iteratee) Checks if predicate returns truthy for all elements of collection.
  * @method static array|mixed get(array|object $collection, string $path, \Closure|mixed $default = null)
  * @method static array groupBy(array $input, int|float|string|\Closure $key) Returns an associative array where the keys are values of $key.
