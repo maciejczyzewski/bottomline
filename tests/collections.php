@@ -3,10 +3,11 @@
 class CollectionsTest extends \PHPUnit\Framework\TestCase
 {
     // ...
+
     public function testAssign()
     {
         // Arrange
-        $a1 = ['color' => ['favorite' => 'red', 5]];
+        $a1 = ['color' => ['favorite' => 'red', 'model' => 3, 5], 3];
         $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
         $b1 = ['a' => 0];
         $b2 = ['a' => 1, 'b' => 2];
@@ -27,8 +28,8 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
         $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
         $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2];
-        $b3 = (object) ['c' => 3, 'd' => 4];
+        $b2 = (object) ['a' => 1, 'b' => 2, 5];
+        $b3 = (object) ['c' => 3, 'd' => 4, 6];
 
         // Act
         $x = __::assign($a1, $a2);
@@ -36,7 +37,83 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
+    }
+
+    public function testConcat()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2, 5];
+        $b3 = ['c' => 3, 'd' => 4, 6];
+        $c1 = [1, 2, 3];
+        $c2 = [4, 5];
+
+        // Act
+        $x = __::concat($a1, $a2);
+        $y = __::concat($b1, $b2, $b3);
+        $z = __::concat($c1, $c2);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => 'green', 'blue'], 3, 10], $x);
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 5, 6], $y);
+        $this->assertEquals([1, 2, 3, 4, 5], $z);
+    }
+
+    public function testConcatObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2];
+        $b3 = (object) ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concat($a1, $a2);
+        $y = __::concat($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
         $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testConcatDeep()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2];
+        $b3 = ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concatDeep($a1, $a2);
+        $y = __::concatDeep($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10], $x);
+        $this->assertEquals(['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testConcatDeepObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2];
+        $b3 = (object) ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concatDeep($a1, $a2);
+        $y = __::concatDeep($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
     }
 
     public function testEase()
@@ -454,43 +531,6 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(3, $x);
     }
 
-    public function testMerge()
-    {
-        // Arrange
-        $a1 = ['color' => ['favorite' => 'red', 5]];
-        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
-        $b1 = ['a' => 0];
-        $b2 = ['a' => 1, 'b' => 2];
-        $b3 = ['c' => 3, 'd' => 4];
-
-        // Act
-        $x = __::merge($a1, $a2);
-        $y = __::merge($b1, $b2, $b3);
-
-        // Assert
-        $this->assertEquals(['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
-        $this->assertEquals(['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
-    }
-
-    public function testMergeObject()
-    {
-        // Arrange
-        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
-        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-        $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2];
-        $b3 = (object) ['c' => 3, 'd' => 4];
-    
-        // Act
-        $x = __::merge($a1, $a2);
-        $y = __::merge($b1, $b2, $b3);
-    
-        // Assert
-        $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
-        $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
-    }
-
-
     public function testMin()
     {
         // Arrange
@@ -501,6 +541,42 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         $this->assertEquals(1, $x);
+    }
+
+    public function testMerge()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 'model' => 3, 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2];
+        $b3 = ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::merge($a1, $a2);
+        $y = __::merge($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testMergeObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 'model' => 3, 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2, 5];
+        $b3 = (object) ['c' => 3, 'd' => 4, 6];
+
+        // Act
+        $x = __::merge($a1, $a2);
+        $y = __::merge($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
     }
 
     public function testPluck()

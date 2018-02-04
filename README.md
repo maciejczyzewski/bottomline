@@ -158,14 +158,36 @@ __::chain([1, 2, 3, 0, null])
 ### Collections
 
 ##### [__::assign](src/__/collections/assign.php)
-Combines collections provided with each others. If the collections have
-common keys, then the last passed keys override the previous. If numerical indexes
-are passed, then values are appended.
+Combines and merge collections provided with each others.
+If the collections have common keys, then the last passed keys override the previous.
+If numerical indexes are passed, then last passed indexes override the previous.
 
 For a recursive merge, see [__::merge](#__::merge).
 ```php
-__::assign(['color' => ['favorite' => 'red', 5]], [10, 'color' => ['favorite' => 'green', 'blue']]);
-// >> ['color' => ['favorite' => 'green', 'blue'], 5, 10]
+__::assign(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => 'green', 'blue'], 10]
+```
+
+##### [__::concat](src/__/collections/concat.php)
+Combines and concat collections provided with each others.
+If the collections have common keys, then the values are appended in an array.
+If numerical indexes are passed, then values are appended.
+
+For a recursive concat, see [__::concatDeep](#__::concatDeep).
+```php
+__::concat(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => ['green'], 5, 'blue'], 3, 10]
+```
+
+##### [__::concatDeep](src/__/collections/concatDeep.php)
+Recursively combines and concat collections provided with each others.
+If the collections have common keys, then the values are appended in an array.
+If numerical indexes are passed, then values are appended.
+
+For a non-recursive concat, see [__::concat](#__::concat).
+```php
+__::concatDeep(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10]
 ```
 
 ##### [__::ease](src/__/collections/ease.php)
@@ -325,14 +347,14 @@ __::max([1, 2, 3]);
 ```
 
 ##### [__::merge](src/__/collections/merge.php)
-Recursively combines collections provided with each others. If the collections have
-common keys, then the values are appended in an array. If numerical indexes
-are passed, then values are appended.
+Recursively combines and merge collections provided with each others.
+If the collections have common keys, then the last passed keys override the previous.
+If numerical indexes are passed, then last passed indexes override the previous.
 
 For a non-recursive merge, see [__::assign](#__::assign).
 ```php
-__::merge(['color' => ['favorite' => 'red', 5]], [10, 'color' => ['favorite' => 'green', 'blue']]);
-// >> ['color' => ['favorite' => ['red', 'green'], 'blue'], 5, 10]
+__::merge(['color' => ['favorite' => 'red', 'model' => 3, 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
 ```
 
 ##### [__::min](src/__/collections/min.php)

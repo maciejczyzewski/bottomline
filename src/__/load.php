@@ -9,7 +9,7 @@ namespace __;
  ***************************************************
 
  ** Arrays                                       [10]
- ** Collections                                  [24]
+ ** Collections                                  [26]
  ** Functions                                    [3]
  ** Objects                                      [8]
  ** Utilities                                    [2]
@@ -40,7 +40,9 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array range(int $startOrCount, int $stop = null, int $step = null) Returns an array of integers from start to stop (exclusive) by step.
  * @method static array repeat($input, int $times = 0) Returns an array of input repeated $times times.
  *
- * @method static array|object assign(array|object $collection1, [array|object $... ]) Combines collections provided with each others.
+ * @method static array|object assign(array|object $collection1, [array|object $... ]) Combines and merge collections provided with each others.
+ * @method static array|object concat(array|object $collection1, [array|object $... ]) Combines and concat collections provided with each others.
+ * @method static array|object concatDeep(array|object $collection1, [array|object $... ]) Recursively combines and concat collections provided with each others.
  * @method static array ease(array $input, string $glue = '.')
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
@@ -56,7 +58,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array mapKeys(array $input, \Closure $func = null) Returns an array with keys being mapped through the iterator
  * @method static array mapValues(array $input, \Closure $func = null) Returns an array with values being mapped through the iterator
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
- * @method static array|object merge(array|object $collection1, [array|object $... ]) Recursively combines collections provided with each others.
+ * @method static array|object concatDeep(array|object $collection1, [array|object $... ]) Recursively combines collections provided with each others.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
  * @method static mixed reduce(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection thru $iteratee, where each successive invocation is supplied the return value of the previous.

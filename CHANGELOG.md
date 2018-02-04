@@ -3,6 +3,8 @@
 ## <sub>unreleased</sub>
 #### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)
 * Added `__::assign`
+* Added `__::concat`
+* Added `__::concatDeep`
 * Added `__::merge`
 
 ## <sub>v0.1.1</sub>
