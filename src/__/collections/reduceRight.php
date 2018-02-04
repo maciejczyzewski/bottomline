@@ -27,7 +27,7 @@ namespace collections;
  */
 function reduceRight($collection, \Closure $iteratee, $accumulator = NULL)
 {
-    // TODO Factorize using iter_reverse: make it a function.
+    // TODO Factorize using iter_reverse: make it a function. (See doForEachRight)
     if ($accumulator === NULL) {
         $accumulator = \__::first($collection);
     }
