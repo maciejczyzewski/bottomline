@@ -22,9 +22,7 @@ namespace collections;
  */
 function assign($collection1, $collection2)
 {
-    // TODO Use __::reduceRight()
-    // (Requires to implement it. Itself may use __::doForEachRight() as base).
-    return \__::reduce(array_reverse(func_get_args()), function ($source, $result) {
+    return \__::reduceRight(func_get_args(), function ($source, $result) {
         \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
             $result = \__::set($result, $key, $sourceValue);
         });
