@@ -26,9 +26,12 @@ function has($collection, $path)
     $key  = $portions[0];
 
     if (\count($portions) === 1) {
-        $has = \__::isObject($collection) ? 'property_exists' : 'array_key_exists';
-        $args = \__::isObject($collection) ? [$collection, $key] : [$key, $collection];
-        return call_user_func_array($has, $args);
+//         $has = \__::isObject($collection) ? 'property_exists' : 'array_key_exists';
+//         $args = \__::isObject($collection) ? [$collection, $key] : [$key, $collection];
+//         return call_user_func_array($has, $args);
+        // We use a cast to array to handle the numeric keys for objects (workaround).
+        // See: https://wiki.php.net/rfc/convert_numeric_keys_in_object_array_casts
+        return array_key_exists($key, (array) $collection);
     }
     return has(\__::get($collection, $key), $portions[1]);
 }

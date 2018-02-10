@@ -4,6 +4,118 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 {
     // ...
 
+    public function testAssign()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 'model' => 3, 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2];
+        $b3 = ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::assign($a1, $a2);
+        $y = __::assign($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testAssignObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2, 5];
+        $b3 = (object) ['c' => 3, 'd' => 4, 6];
+
+        // Act
+        $x = __::assign($a1, $a2);
+        $y = __::assign($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
+    }
+
+    public function testConcat()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2, 5];
+        $b3 = ['c' => 3, 'd' => 4, 6];
+        $c1 = [1, 2, 3];
+        $c2 = [4, 5];
+
+        // Act
+        $x = __::concat($a1, $a2);
+        $y = __::concat($b1, $b2, $b3);
+        $z = __::concat($c1, $c2);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => 'green', 'blue'], 3, 10], $x);
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 5, 6], $y);
+        $this->assertEquals([1, 2, 3, 4, 5], $z);
+    }
+
+    public function testConcatObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2];
+        $b3 = (object) ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concat($a1, $a2);
+        $y = __::concat($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testConcatDeep()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2];
+        $b3 = ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concatDeep($a1, $a2);
+        $y = __::concatDeep($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10], $x);
+        $this->assertEquals(['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testConcatDeepObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2];
+        $b3 = (object) ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::concatDeep($a1, $a2);
+        $y = __::concatDeep($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
     public function testEase()
     {
         $object = new \stdClass();
@@ -90,6 +202,36 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         __::doForEach($b, $makeMapper($bMapped));
 
         // Assert
+        $this->assertEquals($a, $aMapped);
+        $this->assertEquals($b, $bMapped);
+    }
+
+    public function testDoForEachRight()
+    {
+        // Arrange
+        $makeAppend = function (&$array) {
+            return function ($value) use(&$array) {
+                $array[] = $value;
+            };
+        };
+        $makeMapper = function (&$array) {
+            return function ($value, $key) use(&$array) {
+                $array[$key] = $value;
+            };
+        };
+        $a = [1, 2, 3];
+        $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+
+        // Act.
+        $aAppend = [];
+        $aMapped = [];
+        $bMapped = [];
+        __::doForEachRight($a, $makeAppend($aAppend));
+        __::doForEachRight($a, $makeMapper($aMapped));
+        __::doForEachRight($b, $makeMapper($bMapped));
+
+        // Assert
+        $this->assertEquals(array_reverse($a), $aAppend);
         $this->assertEquals($a, $aMapped);
         $this->assertEquals($b, $bMapped);
     }
@@ -277,6 +419,8 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a = ['foo' => 'bar'];
         $b = (object) ['foo' => 'bar'];
         $c = ['foo' => ['bar' => 'foie']];
+        $d = [5];
+        $e = (object) [5];
 
         // Act.
         $x = __::has($a, 'foo');
@@ -284,6 +428,8 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $z = __::has($b, 'foo');
         $xa = __::has($b, 'foz');
         $xb = __::has($c, 'foo.bar');
+        $xc = __::has($d, 0);
+        $xd = __::has($e, 0);
 
         // Assert.
         $this->assertTrue($x);
@@ -291,6 +437,8 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($z);
         $this->assertFalse($xa);
         $this->assertTrue($xb);
+        $this->assertTrue($xc);
+        $this->assertTrue($xd);
     }
 
     public function testHasKeys()
@@ -413,7 +561,6 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(3, $x);
     }
 
-
     public function testMin()
     {
         // Arrange
@@ -424,6 +571,42 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         $this->assertEquals(1, $x);
+    }
+
+    public function testMerge()
+    {
+        // Arrange
+        $a1 = ['color' => ['favorite' => 'red', 'model' => 3, 5], 3];
+        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
+        $b1 = ['a' => 0];
+        $b2 = ['a' => 1, 'b' => 2];
+        $b3 = ['c' => 3, 'd' => 4];
+
+        // Act
+        $x = __::merge($a1, $a2);
+        $y = __::merge($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals(['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
+        $this->assertEquals(['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+    }
+
+    public function testMergeObject()
+    {
+        // Arrange
+        $a1 = (object) ['color' => (object) ['favorite' => 'red', 'model' => 3, 5]];
+        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
+        $b1 = (object) ['a' => 0];
+        $b2 = (object) ['a' => 1, 'b' => 2, 5];
+        $b3 = (object) ['c' => 3, 'd' => 4, 6];
+
+        // Act
+        $x = __::merge($a1, $a2);
+        $y = __::merge($b1, $b2, $b3);
+
+        // Assert
+        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
+        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
     }
 
     public function testPluck()
@@ -567,6 +750,21 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             '1' => ['a', 'c'],
             '2' => ['b']
         ], $y);
+    }
+
+    public function testReduceRightArray()
+    {
+        // Arrange
+        $a = ['a', 'b', 'c'];
+        $aReducer = function ($word, $char) {
+            return $word . $char;
+        };
+
+        // Act
+        $x = __::reduceRight($a, $aReducer, '');
+
+        // Assert
+        $this->assertEquals('cba', $x);
     }
 
     public function testPick()

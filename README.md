@@ -157,6 +157,39 @@ __::chain([1, 2, 3, 0, null])
 
 ### Collections
 
+##### [__::assign](src/__/collections/assign.php)
+Combines and merge collections provided with each others.
+If the collections have common keys, then the last passed keys override the previous.
+If numerical indexes are passed, then last passed indexes override the previous.
+
+For a recursive merge, see [__::merge](#__::merge).
+```php
+__::assign(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => 'green', 'blue'], 10]
+```
+
+##### [__::concat](src/__/collections/concat.php)
+Combines and concat collections provided with each others.
+If the collections have common keys, then the values are appended in an array.
+If numerical indexes are passed, then values are appended.
+
+For a recursive concat, see [__::concatDeep](#__::concatDeep).
+```php
+__::concat(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => ['green'], 5, 'blue'], 3, 10]
+```
+
+##### [__::concatDeep](src/__/collections/concatDeep.php)
+Recursively combines and concat collections provided with each others.
+If the collections have common keys, then the values are appended in an array.
+If numerical indexes are passed, then values are appended.
+
+For a non-recursive concat, see [__::concat](#__::concat).
+```php
+__::concatDeep(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10]
+```
+
 ##### [__::ease](src/__/collections/ease.php)
 Flattens a complex collection by mapping each ending leafs value to a key consisting of all previous indexes.
 ```php
@@ -194,7 +227,22 @@ __::doForEach(
         print_r($n)
     }
 );
-// >> (Side effect: print numbers)
+// (Side effect: print numbers)
+// >> 1, 2, 3
+```
+
+##### [__::doForEachRight](src/__/collections/doForEachRight.php)
+Iterate over elements of the collection, from right to left, and invokes iteratee
+for each element.
+```php
+__::doForEachRight(
+    [1, 2, 3],
+    function ($n) {
+        print_r($n)
+    }
+);
+// (Side effect: print numbers)
+// >> 3, 2, 1
 ```
 
 ##### [__::every](src/__/collections/every.php)
@@ -313,6 +361,17 @@ __::max([1, 2, 3]);
 // >> 3
 ```
 
+##### [__::merge](src/__/collections/merge.php)
+Recursively combines and merge collections provided with each others.
+If the collections have common keys, then the last passed keys override the previous.
+If numerical indexes are passed, then last passed indexes override the previous.
+
+For a non-recursive merge, see [__::assign](#__::assign).
+```php
+__::merge(['color' => ['favorite' => 'red', 'model' => 3, 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
+// >> ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
+```
+
 ##### [__::min](src/__/collections/min.php)
 Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
 ```php
@@ -341,6 +400,17 @@ __::reduce([1, 2], function ($sum, $number) {
     return $sum + $number;
 }, 0);
 // >> 3
+```
+
+##### [__::reduceRight](src/__/collections/reduce.php)
+Reduces a collection to a value which is the accumulator result of running each
+element in the collection - from right to left - thru an iteratee function,
+where each successive invocation is supplied the return value of the previous.
+```php
+__::reduceRight(['a', 'b', 'c'], function ($word, $char) {
+    return $word . $char;
+}, '');
+// >> 'cba'
 ```
 
 ##### [__::set](src/__/collections/set.php)

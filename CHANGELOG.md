@@ -2,6 +2,12 @@
 
 ## <sub>unreleased</sub>
 #### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)
+* Added `__::assign`
+* Added `__::concat`
+* Added `__::concatDeep`
+* Added `__::merge`
+* Added `__::doForEachRight`
+* Added `__::reduceRight`
 
 ## <sub>v0.1.1</sub>
 #### _Jan 12, 2018_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...0.1.1) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.1/README.md)
