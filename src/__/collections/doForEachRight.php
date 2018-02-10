@@ -5,16 +5,27 @@ namespace collections;
 /**
  * Iterate an array or other foreach-able without making a copy of it.
  *
- * From mpen and linepogl https://stackoverflow.com/a/36605605/1956471
+ * Code for PHP_VERSION >= 5.5.(using `yiel`) is from mpen and linepogl
+ * See https://stackoverflow.com/a/36605605/1956471
  *
  * @param array|\Traversable $iterable
  * @return Generator
  */
-function iter_reverse($iterable) {
-    for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
-        yield $key => current($iterable);
-    }
-}
+ if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+     eval('
+     function iter_reverse($iterable) {
+         return array_reverse($iterable);
+     }
+     ');
+ } else {
+     eval('
+     function iter_reverse($iterable) {
+         for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
+             yield $key => current($iterable);
+         }
+     }
+     ');
+ }
 
 /**
  * Iterate over elements of the collection, from right to left, and invokes iteratee
