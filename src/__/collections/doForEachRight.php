@@ -14,7 +14,7 @@ namespace collections;
  if (version_compare(PHP_VERSION, '5.5.0', '<')) {
      eval('
      function iter_reverse($iterable) {
-         return array_reverse($iterable);
+         return array_reverse($iterable, true);
      }
      ');
  } else {
