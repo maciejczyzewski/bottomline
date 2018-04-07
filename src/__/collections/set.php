@@ -14,7 +14,7 @@ function _universal_set($collection, $key, $value) {
         $array[$key] = $value;
         return $array;
     };
-    $setter = \__::isObject($collection) ? $set_object : $set_array;
+    $setter = \__::isObject($collection) && !($collection instanceof \ArrayAccess) ? $set_object : $set_array;
     return call_user_func_array($setter, [$collection, $key, $value]);
 }
 

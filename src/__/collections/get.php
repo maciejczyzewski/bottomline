@@ -25,7 +25,7 @@ function get($collection, $path, $default = null)
     }
 
     foreach (\__::split($path, '.') as $segment) {
-        if (\is_object($collection)) {
+        if (\is_object($collection) && !($collection instanceof \ArrayAccess)) {
             if (isset($collection->{$segment})) {
                 $collection = $collection->{$segment};
             } else {

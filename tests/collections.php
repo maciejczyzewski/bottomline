@@ -1,5 +1,30 @@
 <?php
 
+class ArrayAccessible implements ArrayAccess
+{
+    private $content;
+
+    public function offsetExists($offset)
+    {
+        return isset($this->content[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->content[$offset];
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->content[$offset] = $value;
+    }
+
+    public function offsetUnset($offset)
+    {
+        unset($this->content[$offset]);
+    }
+}
+
 class CollectionsTest extends \PHPUnit\Framework\TestCase
 {
     // ...
@@ -303,6 +328,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('default', $y2);
         $this->assertEquals('default_from_callback', $y3);
         $this->assertEquals($o, $z);
+    }
+
+    public function testGetArrayAccess()
+    {
+        $aa = new ArrayAccessible();
+        $aa['foo'] = [
+            'bar' => 'quim',
+        ];
+        $aa['bar'] = 5;
+        $aa['caz'] = new \stdClass();
+        $aa['caz']->daer = 'heft';
+
+        $this->assertEquals('quim', __::get($aa, 'foo.bar'));
+        $this->assertEquals(5, __::get($aa, 'bar'));
+        $this->assertEquals('heft', __::get($aa, 'caz.daer'));
+
+        $this->assertNull(__::get($aa, 'foo.cat'));
     }
 
     public function testGetObjects()
@@ -839,6 +881,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['foo' => ['bar' => 'ter']], $a);
         $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
         $this->assertEquals(['foo' => ['bar' => 'fer2']], $y);
+    }
+
+    public function testSetArrayAccess()
+    {
+        $aa = new ArrayAccessible();
+
+        __::set($aa, 'foo.ubi', [
+            'bar' => 'qaz',
+        ]);
+        __::set($aa, 'faa.raot.uft', 100);
+
+        $this->assertTrue(is_object(__::get($aa, 'foo')));
+        $this->assertTrue(is_object(__::get($aa, 'faa')));
+        $this->assertTrue(is_object(__::get($aa, 'faa.raot')));
+
+        $this->assertEquals('qaz', __::get($aa, 'foo.ubi.bar'));
+        $this->assertEquals(42, __::get($aa, 'foo.nonexistent', 42));
     }
 
     public function testSetObject()
