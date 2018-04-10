@@ -22,6 +22,9 @@ function _universal_set($collection, $key, $value) {
  * Return a new collection with the item set at index to given value.
  * Index can be a path of nested indexes.
  *
+ * If $collection is an object that implements the ArrayAccess interface, this
+ * function will treat it as an array.
+ *
  * If a portion of path doesn't exist, it's created. Arrays are created for missing
  * index in an array; objects are created for missing property in an object.
  *
@@ -59,7 +62,7 @@ function set($collection, $path, $value = null)
         || (\__::isObject($collection) && !\__::isObject(\__::get($collection, $key)))
         || (\__::isArray($collection) && !\__::isArray(\__::get($collection, $key)))
     ) {
-        $collection = _universal_set($collection, $key, \__::isObject($collection) ? new \stdClass : []);
+        $collection = _universal_set($collection, $key, (\__::isObject($collection) && !($collection instanceof \ArrayAccess)) ? new \stdClass : []);
     }
     return _universal_set($collection, $key, set(\__::get($collection, $key), $portions[1], $value));
 }

@@ -5,6 +5,9 @@ namespace collections;
 /**
  * get item of an array by index, accepting path (nested index).
  *
+ * If $collection is an object that implementes the ArrayAccess interface, this
+ * function will treat it as an array instead of accessing class properties.
+ *
  ** __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
  ** // → 'ter'
  *

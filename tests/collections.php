@@ -892,9 +892,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ]);
         __::set($aa, 'faa.raot.uft', 100);
 
-        $this->assertTrue(is_object(__::get($aa, 'foo')));
-        $this->assertTrue(is_object(__::get($aa, 'faa')));
-        $this->assertTrue(is_object(__::get($aa, 'faa.raot')));
+        $this->assertTrue(is_array(__::get($aa, 'foo')));
+        $this->assertTrue(is_array(__::get($aa, 'faa')));
+        $this->assertTrue(is_array(__::get($aa, 'faa.raot')));
 
         $this->assertEquals('qaz', __::get($aa, 'foo.ubi.bar'));
         $this->assertEquals(42, __::get($aa, 'foo.nonexistent', 42));
