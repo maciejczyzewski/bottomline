@@ -262,7 +262,7 @@ __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
 ```
 
 ##### [__::groupBy](src/__/collections/groupBy.php)
-Group an array of objects or arrays based on a given key.
+Group an array of objects or arrays based on a given key, accepting a nested index (same as `__::get()`)
 ```php
 $a = [
     ['name' => 'maciej',    'continent' => 'Europe'],

@@ -27,6 +27,36 @@ namespace collections;
  *
  *
  ** __::groupBy([
+ **         ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ **         ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ **         ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+ **         ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+ **         ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+ **     ],
+ **     'metadata.state'
+ ** );
+ ** // >> [
+ ** //   'IN' => [
+ ** //     'Indianapolis' => [
+ ** //       ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ ** //       ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ ** //     ],
+ ** //     'Plainfield' => [
+ ** //       ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+ ** //     ],
+ ** //   ],
+ ** //   'CA' => [
+ ** //     'San Diego' => [
+ ** //       ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+ ** //     ],
+ ** //     'Mountain View' => [
+ ** //       ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+ ** //     ],
+ ** //   ],
+ ** // ]
+ *
+ *
+ ** __::groupBy([
  **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
  **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
  **         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
@@ -63,10 +93,8 @@ function groupBy(array $array, $key)
 
         if (\is_callable($key)) {
             $groupKey = call_user_func($key, $value);
-        } elseif (\is_object($value) && \property_exists($value, $key)) {
-            $groupKey = $value->{$key};
-        } elseif (\is_array($value) && isset($value[$key])) {
-            $groupKey = $value[$key];
+        } else {
+            $groupKey = \__::get($value, $key);
         }
 
         if ($groupKey === null) {
