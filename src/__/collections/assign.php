@@ -15,7 +15,7 @@ namespace collections;
  ** // >> ['color' => ['favorite' => 'green', 'blue'], 10]
  *
  * @param array|object $collection1 Collection to assign to.
- * @param array|object $... N other collections to assign.
+ * @param array|object $collection2,... N other collections to assign.
  *
  * @return array|object Assigned collection.
  *

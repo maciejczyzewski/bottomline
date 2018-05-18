@@ -12,15 +12,15 @@ namespace collections;
  ** // → true
  *
  * @param array|object $collection The collection to iterate over.
- * @param Closure $iterate The function to call for each value.
+ * @param \Closure $iteratee The function to call for each value.
  *
  * @return bool
  *
  */
-function every($collection, $iteratee)
+function every($collection, \Closure $iteratee)
 {
     $truthy = true;
-    // We could use __::reduce(), but it won't allow us to return preminarily.
+    // We could use __::reduce(), but it won't allow us to return preliminarily.
     \__::doForEach(
         $collection,
         function ($value, $key, $collection) use(&$truthy, $iteratee) {

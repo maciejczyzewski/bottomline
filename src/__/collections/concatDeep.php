@@ -14,9 +14,9 @@ namespace collections;
  ** // >> ['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10]
  *
  * @param array|object $collection1 First collection to concatDeep.
- * @param array|object $... N other collections to concatDeep.
+ * @param array|object $collection2,... N other collections to concatDeep.
  *
- * @return array|object Concatened collection.
+ * @return array|object Concatenated collection.
  *
  */
 function concatDeep()

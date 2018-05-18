@@ -5,7 +5,7 @@ namespace collections;
 /**
  * Iterate an array or other foreach-able without making a copy of it.
  *
- * Code for PHP_VERSION >= 5.5.(using `yiel`) is from mpen and linepogl
+ * Code for PHP_VERSION >= 5.5.(using `yield`) is from mpen and linepogl
  * See https://stackoverflow.com/a/36605605/1956471
  *
  * @param array|\Traversable $iterable
@@ -38,7 +38,7 @@ namespace collections;
  ** // → (Side effect: print 3, 2, 1)
  *
  * @param array|object $collection The collection to iterate over.
- * @param Closure $iterate The function to call for each value.
+ * @param \Closure $iteratee The function to call for each value.
  *
  * @return null
  *

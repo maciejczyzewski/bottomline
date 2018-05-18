@@ -12,7 +12,7 @@ namespace collections;
  ** // → (Side effect: print 1, 2, 3)
  *
  * @param array|object $collection The collection to iterate over.
- * @param Closure $iterate The function to call for each value.
+ * @param \Closure $iteratee The function to call for each value.
  *
  * @return null
  *

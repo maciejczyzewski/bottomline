@@ -12,7 +12,7 @@ namespace strings;
  *
  * @param string $input The string to split.
  * @param string $delimeter The boundary string.
- * @param [optional] $limit If limit is set and positive, the returned array
+ * @param int $limit If limit is set and positive, the returned array
  * will contain a maximum of limit elements with the last element containing the
  * rest of string.
  * If the limit parameter is negative, all components except the last -limit are returned.

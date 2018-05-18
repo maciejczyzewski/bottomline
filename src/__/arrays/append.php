@@ -9,7 +9,7 @@ namespace arrays;
  ** // → [1, 2, 3, 4]
  *
  * @param array $array original array
- * @param null  $value new item or valie to append
+ * @param mixed|null $value new item or value to append
  *
  * @return array
  *

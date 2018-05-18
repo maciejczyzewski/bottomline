@@ -33,7 +33,7 @@ function get($collection, $path, $default = null)
                 $collection = $collection->{$segment};
             } else {
                 // TODO Remove Closure option: what is the point if it has no parameter:
-                // it will always yielf the same value? KISS.
+                // it will always yield the same value? KISS.
                 return $default && $default instanceof \Closure ? $default() : $default;
             }
         } else {

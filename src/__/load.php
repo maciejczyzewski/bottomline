@@ -29,7 +29,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
 /** 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
 
 /**
- * @method static array append(array $input, $item) <code>__::append([1, 2, 3], 4)</code> >> [1, 2, 3, 4]
+ * @method static array append(array $input, mixed $item = null) Append item to an array<br><br><code>__::append([1, 2, 3], 4)</code><br>>> [1, 2, 3, 4]
  * @method static array chunk(array $input, $size = 1, $preserveKeys = false) Creates an array of elements split into groups the length of size. If array can't be split evenly, the final chunk will be the remaining elements. <code>__::chunk([1, 2, 3, 4, 5], 3)</code> >> [1, 2, 3], [4, 5]
  * @method static array compact(array $input) Returns a copy of the array with falsy values removed. <code>__::compact([0, 1, false, 2, '', 3])</code> >> [1, 2, 3]
  * @method static array drop(array $input, int $number = 1) Creates a slice of array with n elements dropped from the beginning.
@@ -40,9 +40,9 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array range(int $startOrCount, int $stop = null, int $step = null) Returns an array of integers from start to stop (exclusive) by step.
  * @method static array repeat($input, int $times = 0) Returns an array of input repeated $times times.
  *
- * @method static array|object assign(array|object $collection1, [array|object $... ]) Combines and merge collections provided with each others.
- * @method static array|object concat(array|object $collection1, [array|object $... ]) Combines and concat collections provided with each others.
- * @method static array|object concatDeep(array|object $collection1, [array|object $... ]) Recursively combines and concat collections provided with each others.
+ * @method static array|object assign(array|object $collection1, array|object $collection2,...) Combines and merge collections provided with each others.
+ * @method static array|object concat(array|object $collection1, array|object $collection2,...) Combines and concat collections provided with each others.
+ * @method static array|object concatDeep(array|object $collection1, array|object $collection2,...) Recursively combines and concat collections provided with each others.
  * @method static array ease(array $input, string $glue = '.')
  * @method static array filter(array|\Traversable $input, \Closure $func = null) Returns the values in the collection that pass the truth test.
  * @method static array|mixed first(array $input, int $count = null) Gets the first element of an array. Passing n returns the first n elements.
@@ -59,7 +59,6 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static array mapKeys(array $input, \Closure $func = null) Returns an array with keys being mapped through the iterator
  * @method static array mapValues(array $input, \Closure $func = null) Returns an array with values being mapped through the iterator
  * @method static array max(array|\Traversable $input) Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
- * @method static array|object concatDeep(array|object $collection1, [array|object $... ]) Recursively combines collections provided with each others.
  * @method static array min(array|\Traversable $input) Returns the minimum value from the collection. If passed an iterator, min will return min value returned by the iterator.
  * @method static array pluck(array|object $input, string $key) Returns an array of values belonging to a given property of each item in a collection.
  * @method static mixed reduce(array|\Traversable $input, \Closure $iteratee, mixed $accumulator = null) Reduces a collection to a value which is the $accumulator result of running each element in the collection thru $iteratee, where each successive invocation is supplied the return value of the previous.
@@ -85,19 +84,19 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static int now()
  * @method static mixed identity()
  *
- * @method static string camelCase(string $input)
- * @method static string capitalize(string $input)
- * @method static string kebabCase(string $input)
- * @method static string lowerCase(string $input)
- * @method static string lowerFirst(string $input)
- * @method static string snakeCase(string $input)
- * @method static array split(string $input, string $delimiter[, int $limit]) Split a string by string.
- * @method static string startCase(string $input)
- * @method static string toLower(string $input)
- * @method static string toUpper(string $input)
- * @method static string upperCase(string $input)
- * @method static string upperFirst(string $input)
- * @method static array words(string $input, string $pattern = null)
+ * @method static string camelCase(\string $input)
+ * @method static string capitalize(\string $input)
+ * @method static string kebabCase(\string $input)
+ * @method static string lowerCase(\string $input)
+ * @method static string lowerFirst(\string $input)
+ * @method static string snakeCase(\string $input)
+ * @method static array split(\string $input, \string $delimiter, \int $limit = PHP_INT_MAX) Split a string by string.
+ * @method static string startCase(\string $input)
+ * @method static string toLower(\string $input)
+ * @method static string toUpper(\string $input)
+ * @method static string upperCase(\string $input)
+ * @method static string upperFirst(\string $input)
+ * @method static array words(\string $input, \string $pattern = null)
  *
  * @method static \BottomlineWrapper chain(mixed $input)
  */
