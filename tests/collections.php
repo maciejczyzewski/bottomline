@@ -2,11 +2,11 @@
 
 class ArrayAccessible implements ArrayAccess
 {
-    private $content;
+    private $content = [];
 
     public function offsetExists($offset)
     {
-        return isset($this->content[$offset]);
+        return array_key_exists($offset, $this->content);
     }
 
     public function offsetGet($offset)
@@ -481,6 +481,17 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($xb);
         $this->assertTrue($xc);
         $this->assertTrue($xd);
+    }
+
+    public function testHasArrayAccess()
+    {
+        $aa = new ArrayAccessible();
+        $aa['qux'] = true;
+        $aa['field'] = null;
+
+        $this->assertTrue(__::has($aa, 'qux'));
+        $this->assertTrue(__::has($aa, 'field'));
+        $this->assertFalse(__::has($aa, 'non-existent'));
     }
 
     public function testHasKeys()

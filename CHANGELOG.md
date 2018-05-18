@@ -9,6 +9,7 @@
 * Added `__::doForEachRight`
 * Added `__::reduceRight`
 * Made `__::get` and `__::set` work as array getter and setter for objects implementing the ArrayAccess interface
+* Made `__::has` call `offsetExists()` for objects implementing the ArrayAccess interface
 
 ## <sub>v0.1.1</sub>
 #### _Jan 12, 2018_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...0.1.1) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.1/README.md)
