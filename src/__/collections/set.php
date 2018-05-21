@@ -45,7 +45,7 @@ function set($collection, $path, $value = null)
         return $collection;
     }
 
-    $portions = \__::split($path, '.', 2);
+    $portions = \__::split($path, \__::DOT_NOTATION_DELIMITER, 2);
     $key  = $portions[0];
 
     if (\count($portions) === 1) {

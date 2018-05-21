@@ -21,8 +21,7 @@ namespace collections;
  */
 function has($collection, $path)
 {
-    // TODO Factorize path mavigation/enumeration with set and get.
-    $portions = \__::split($path, '.', 2);
+    $portions = \__::split($path, \__::DOT_NOTATION_DELIMITER, 2);
     $key  = $portions[0];
 
     if (\count($portions) === 1) {
