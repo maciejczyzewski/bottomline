@@ -392,7 +392,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('CA', $grouped);
     }
 
-    public function testGroupByStringNested()
+    public function testGroupByStringMultipleGroupings()
     {
         $a = [
             ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
@@ -406,6 +406,62 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertCount(2, $grouped);
         $this->assertCount(2, $grouped['IN']);
         $this->assertArrayHasKey('Indianapolis', $grouped['IN']);
+    }
+
+    public function testGroupByNestedValues()
+    {
+        $a = [
+            ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+            ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+            ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+            ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+            ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+        ];
+
+        $grouped = __::groupBy($a, 'metadata.state');
+        $this->assertEquals([
+            'IN' => [
+                ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+            ],
+            'CA' => [
+                ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+                ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+            ],
+        ], $grouped);
+    }
+
+    public function testGroupByNestedValuesMultipleGrouping()
+    {
+        $a = [
+            ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+            ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+            ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+            ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+            ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+        ];
+
+        $grouped = __::groupBy($a, 'metadata.state', 'metadata.city');
+        $this->assertEquals([
+            'IN' => [
+                'Indianapolis' => [
+                    ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                    ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                ],
+                'Plainfield' => [
+                    ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+                ],
+            ],
+            'CA' => [
+                'San Diego' => [
+                    ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+                ],
+                'Mountain View' => [
+                    ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+                ],
+            ],
+        ], $grouped);
     }
 
     public function testGroupByInteger()
