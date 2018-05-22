@@ -103,6 +103,8 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  */
 class __
 {
+    const DOT_NOTATION_DELIMITER = '.';
+
     private static $modules = [
         'arrays',
         'collections',
