@@ -5,7 +5,7 @@ namespace collections;
 /**
  * Return true if $collection contains the requested $key.
  *
- * In constrast to isset(), __::has() returns true if the key exists but is null.
+ * In contrast to isset(), __::has() returns true if the key exists but is null.
  *
  ** __::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
  ** // → true
@@ -21,14 +21,16 @@ namespace collections;
  */
 function has($collection, $path)
 {
-    // TODO Factorize path mavigation/enumeration with set and get.
-    $portions = \__::split($path, '.', 2);
+    $portions = \__::split($path, \__::DOT_NOTATION_DELIMITER, 2);
     $key  = $portions[0];
 
     if (\count($portions) === 1) {
-//         $has = \__::isObject($collection) ? 'property_exists' : 'array_key_exists';
-//         $args = \__::isObject($collection) ? [$collection, $key] : [$key, $collection];
-//         return call_user_func_array($has, $args);
+        // Calling array_key_exists on an ArrayAccess object will not call `offsetExists()`
+        // See: http://php.net/manual/en/class.arrayaccess.php#104061
+        if ($collection instanceof \ArrayAccess) {
+            return $collection->offsetExists($key);
+        }
+
         // We use a cast to array to handle the numeric keys for objects (workaround).
         // See: https://wiki.php.net/rfc/convert_numeric_keys_in_object_array_casts
         return array_key_exists($key, (array) $collection);

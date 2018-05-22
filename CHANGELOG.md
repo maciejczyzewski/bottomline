@@ -9,6 +9,7 @@
 * Added `__::doForEachRight`
 * Added `__::reduceRight`
 * Made `__::get` and `__::set` work as array getter and setter for objects implementing the ArrayAccess interface
+* Made `__::has` call `offsetExists()` for objects implementing the ArrayAccess interface
 * Added dot notation support to `__::groupBy()`; it now uses `__::get()` and `__::set()` internally
 
 ## <sub>v0.1.1</sub>
