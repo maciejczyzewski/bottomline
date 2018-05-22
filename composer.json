@@ -22,6 +22,7 @@
         "phpunit/phpunit": "^4.8",
         "doctrine/instantiator": "~1.0.5",
         "phpdocumentor/reflection-docblock": "^2.0||^3.1",
-        "erusev/parsedown": "^1.7"
+        "erusev/parsedown": "^1.7",
+        "nikic/php-parser": "^2.0||^3.0"
     }
 }
