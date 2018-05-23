@@ -73,7 +73,18 @@ foreach ($bottomlineFunctions as $fxn) {
         $functionSummary = $markdown->text($docBlock->getSummary());
         $functionDescription = $markdown->text($docBlock->getDescription()->render());
 
-        $descriptionBody = trim(preg_replace('/\n/', '', nl2br($functionSummary . "\n" . $functionDescription)));
+        // Extract <pre> blocks and replace their new lines with `<br>` so they can be formatted nicely by IDEs
+        $codeBlocks = [];
+        preg_match_all("/(<pre>(?:\s|.)*?<\/pre>)/", $functionDescription, $codeBlocks);
+
+        // This means there were a few code blocks
+        if (count($codeBlocks) == 2) {
+            foreach ($codeBlocks[1] as $codeBlock) {
+                $functionDescription = str_replace($codeBlock, nl2br($codeBlock), $functionDescription);
+            }
+        }
+
+        $descriptionBody = trim(preg_replace('/\n/', '', $functionSummary . '<br>' . $functionDescription));
         $description = new Description($descriptionBody);
 
         $functionReturnType = collections\first($docBlock->getTagsByName('return'));
