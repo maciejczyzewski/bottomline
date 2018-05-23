@@ -65,7 +65,7 @@ foreach ($bottomlineFunctions as $fxn) {
         /** @var Param $argument */
         foreach ($functionArguments as $argument) {
             $argDefs[] = [
-                'name' => $argument->getName(),
+                'name' => $argument->getVariableName(),
                 'type' => $argument->getType(),
             ];
         }
