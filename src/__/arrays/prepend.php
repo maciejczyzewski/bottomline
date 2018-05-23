@@ -3,16 +3,24 @@
 namespace arrays;
 
 /**
- * prepend item or value to an array
+ * Prepend item or value to an array.
  *
- ** __::prepend([1, 2, 3], 4);
- ** // → [4, 1, 2, 3]
+ * **Usage**
+ *
+ * ```php
+ * __::prepend([1, 2, 3], 4);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [4, 1, 2, 3]
+ * ```
  *
  * @param array $array
- * @param null  $value
+ * @param mixed $value
  *
  * @return array
- *
  */
 function prepend(array $array, $value = null)
 {

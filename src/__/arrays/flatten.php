@@ -3,16 +3,26 @@
 namespace arrays;
 
 /**
- * Flattens a multidimensional array. If you pass shallow, the array will only be flattened a single level.
+ * Flattens a multidimensional array.
  *
- * __::flatten([1, 2, [3, [4]]], [flatten]);
- *      >> [1, 2, 3, 4]
+ * If `$shallow` is set to TRUE, the array will only be flattened a single level.
  *
- * @param      $array
+ * **Usage**
+ *
+ * ```php
+ * __::flatten([1, 2, [3, [4]]], false);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [1, 2, 3, 4]
+ * ```
+ *
+ * @param array $array
  * @param bool $shallow
  *
  * @return array
- *
  */
 function flatten($array, $shallow = false)
 {
