@@ -24,9 +24,18 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Find all registered bottomline functions
 //
 
+$bottomlineNamespaces = [];
 $phpFunctions = get_defined_functions();
 
 foreach (glob(__DIR__ . '/src/__/**/*.php') as $file) {
+    $namespace = basename(dirname($file));
+
+    if (!isset($bottomlineNamespaces[$namespace])) {
+        $bottomlineNamespaces[$namespace] = 1;
+    } else {
+        $bottomlineNamespaces[$namespace]++;
+    }
+
     include $file;
 }
 
@@ -40,7 +49,6 @@ $bottomlineFunctions = array_diff($newFunctions['user'], $phpFunctions['user']);
 $markdown = new Parsedown();
 $docBlockFactory = DocBlockFactory::createInstance();
 $bottomlineMethods = [];
-$bottomlineNamespaces = [];
 
 foreach ($bottomlineFunctions as $fxn) {
     try {
@@ -48,12 +56,6 @@ foreach ($bottomlineFunctions as $fxn) {
         $docBlock = $docBlockFactory->create($functionDefinition->getDocComment());
 
         $functionNamespace = $functionDefinition->getNamespaceName();
-
-        if (!isset($bottomlineNamespaces[$functionNamespace])) {
-            $bottomlineNamespaces[$functionNamespace] = 1;
-        } else {
-            $bottomlineNamespaces[$functionNamespace]++;
-        }
 
         $functionName = str_replace($functionNamespace . '\\', '', $functionDefinition->getName());
         $functionArguments = $docBlock->getTagsByName('param');
