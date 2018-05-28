@@ -62,21 +62,53 @@ foreach ($bottomlineFunctions as $fxn) {
         $docBlock = $docBlockFactory->create($functionDefinition->getDocComment());
 
         $functionNamespace = $functionDefinition->getNamespaceName();
-
         $functionName = str_replace($functionNamespace . '\\', '', $functionDefinition->getName());
-        $functionArguments = $docBlock->getTagsByName('param');
 
         // If the function starts with an underscore, it's a private function so no need to document it
         if (strpos($functionName, '_') === 0) {
             continue;
         }
 
+        $functionArguments = $docBlock->getTagsByName('param');
+        $functionArgumentDefinitions = $functionDefinition->getParameters();
+
         $argDefs = [];
 
         /** @var Param $argument */
         foreach ($functionArguments as $argument) {
+            $varName = $argument->getVariableName();
+
+            $hasDefaultValue = false;
+            $defaultVal = null;
+
+            foreach ($functionArgumentDefinitions as $argumentDefinition) {
+                if ($varName === $argumentDefinition->getName() && $argumentDefinition->isOptional()) {
+                    $hasDefaultValue = true;
+                    $defaultVal = $argumentDefinition->getDefaultValue();
+                    break;
+                }
+            }
+
+            if ($hasDefaultValue) {
+                if ($defaultVal === null) {
+                    $varName .= ' = null';
+                }
+                elseif (is_bool($defaultVal)) {
+                    $varName .= ' = ' . ($defaultVal ? 'true' : 'false');
+                }
+                elseif (is_string($defaultVal)) {
+                    $varName .= " = '" . $defaultVal . "'";
+                }
+                elseif (is_array($defaultVal)) {
+                    $varName .= ' = []';
+                }
+                else {
+                    $varName .= ' = ' . $defaultVal;
+                }
+            }
+
             $argDefs[] = [
-                'name' => $argument->getVariableName(),
+                'name' => $varName,
                 'type' => $argument->getType(),
             ];
         }
@@ -104,7 +136,6 @@ foreach ($bottomlineFunctions as $fxn) {
             $functionReturnType = $functionReturnType->getType();
         }
 
-        // @TODO need to support default values for arguments
         $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
     }
     catch (\Exception $e) {
