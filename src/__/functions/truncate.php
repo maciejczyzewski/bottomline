@@ -3,13 +3,26 @@
 namespace functions;
 
 /**
- * trunct string based on count of words
+ * Truncate string based on count of words
+ *
+ * **Usage**
+ *
+ * ```php
+ * $string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';
+ *
+ * __::truncate($string);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'Lorem ipsum dolor sit amet, ...'
+ * ```
  *
  * @param string  $text  text to truncate
- * @param integer $limit limit of words
+ * @param int     $limit limit of words
  *
  * @return string
- *
  */
 function truncate($text, $limit)
 {
