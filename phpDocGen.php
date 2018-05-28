@@ -28,7 +28,13 @@ $bottomlineNamespaces = [];
 $phpFunctions = get_defined_functions();
 
 foreach (glob(__DIR__ . '/src/__/**/*.php') as $file) {
+    $filename = basename($file);
     $namespace = basename(dirname($file));
+
+    // If the file starts with an uppercase letter, then it's a class so let's not count it
+    if (preg_match('/[A-Z]/', substr($filename, 0, 1)) === 1) {
+        continue;
+    }
 
     if (!isset($bottomlineNamespaces[$namespace])) {
         $bottomlineNamespaces[$namespace] = 1;
@@ -59,6 +65,11 @@ foreach ($bottomlineFunctions as $fxn) {
 
         $functionName = str_replace($functionNamespace . '\\', '', $functionDefinition->getName());
         $functionArguments = $docBlock->getTagsByName('param');
+
+        // If the function starts with an underscore, it's a private function so no need to document it
+        if (strpos($functionName, '_') === 0) {
+            continue;
+        }
 
         $argDefs = [];
 
@@ -93,6 +104,7 @@ foreach ($bottomlineFunctions as $fxn) {
             $functionReturnType = $functionReturnType->getType();
         }
 
+        // @TODO need to support default values for arguments
         $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
     }
     catch (\Exception $e) {
