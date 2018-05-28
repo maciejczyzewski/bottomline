@@ -3,20 +3,32 @@
 namespace collections;
 
 /**
- * get item of an array by index, accepting path (nested index).
+ * Get item of an array or object by index, accepting path (nested index).
  *
- * If $collection is an object that implementes the ArrayAccess interface, this
+ * If `$collection` is an object that implements the ArrayAccess interface, this
  * function will treat it as an array instead of accessing class properties.
  *
- ** __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
- ** // → 'ter'
+ * Use a period (`.`) in `$path` to go down a level in a multidimensional array.
  *
- * @param array|object $collection array of values
- * @param string $path array key or object attribute
- * @param \Closure|mixed $default default value to return if index not exist
+ * **Usage**
+ *
+ * ```php
+ * __::get(['foo' => ['bar' => 'ter']], 'foo.bar');
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'ter'
+ * ```
+ *
+ * @param array|object $collection Array of values or object
+ * @param string       $path       Array key or object attribute. Use a period
+ *                                 for depicting a new level in a multidimensional
+ *                                 array
+ * @param mixed        $default    Default value to return if index not exist
  *
  * @return array|mixed|null
- *
  */
 function get($collection, $path, $default = null)
 {

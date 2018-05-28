@@ -6,16 +6,25 @@ namespace collections;
  * Checks if predicate returns truthy for all elements of collection.
  *
  * Iteration is stopped once predicate returns falsey.
- * The predicate is invoked with three arguments: (value, index|key, collection).
  *
- ** __::every([1, 3, 4], function ($v) { return is_int($v); });
- ** // → true
+ * **Usage**
+ *
+ * ```php
+ * __::every([1, 3, 4], function ($value, $key, $collection) {
+ *     return is_int($v);
+ * });
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * true
+ * ```
  *
  * @param array|object $collection The collection to iterate over.
- * @param \Closure $iteratee The function to call for each value.
+ * @param \Closure     $iteratee   The function to call for each value.
  *
  * @return bool
- *
  */
 function every($collection, \Closure $iteratee)
 {
