@@ -1,11 +1,10 @@
 <?php
 
 /**
- * check if give value is array or not
+ * Check if give value is array or not.
  *
- * @param null $value
+ * @param mixed $value
  *
  * @return bool
- *
  */
 return 'is_array';
