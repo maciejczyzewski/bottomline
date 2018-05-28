@@ -5,7 +5,7 @@ namespace collections;
 /**
  * Returns an associative array where the keys are values of $key.
  *
- * Based on {@author Chauncey McAskill}'s {@link https://gist.github.com/mcaskill/baaee44487653e1afc0d array_group_by()}
+ * Based on Chauncey McAskill's [array_group_by()](https://gist.github.com/mcaskill/baaee44487653e1afc0d)
  * function.
  *
  * ## Group by Key
@@ -105,6 +105,8 @@ namespace collections;
  *   ]
  * ]
  * ```
+ *
+ * @author Chauncey McAskill
  *
  * @param array $array
  * @param int|float|string|\Closure $key

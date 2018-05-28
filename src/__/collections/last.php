@@ -3,13 +3,24 @@
 namespace collections;
 
 /**
- * get last item(s) of an array
+ * Get last item(s) of an array.
  *
- * @param array $array array of values
- * @param null  $take  number of returned values
+ * **Usage**
+ *
+ * ```php
+ * __::last([1, 2, 3, 4, 5], 2);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [4, 5]
+ * ```
+ *
+ * @param array    $array array of values
+ * @param int|null $take  number of returned values
  *
  * @return array|mixed
- *
  */
 function last($array, $take = null)
 {

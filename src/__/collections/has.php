@@ -3,21 +3,43 @@
 namespace collections;
 
 /**
- * Return true if $collection contains the requested $key.
+ * Return true if `$collection` contains the requested `$key`.
  *
- * In contrast to isset(), __::has() returns true if the key exists but is null.
+ * In contrast to `isset()`, `__::has()` returns true if the key exists but is null.
  *
- ** __::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
- ** // → true
+ * ## Arrays
  *
- ** __::hasKeys((object) ['foo' => 'bar', 'foz' => 'baz'], 'bar');
- ** // → false
+ * **Usage**
  *
- * @param array|object $collection of key values pairs
- * @param string|integer $path Path to look for.
+ * ```php
+ *  __::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
+ * ```
  *
- * @return boolean
+ * **Result**
  *
+ * ```
+ * true
+ * ```
+ *
+ * ## Objects
+ *
+ * **Usage**
+ *
+ * ```php
+ *  __::hasKeys((object) ['foo' => 'bar', 'foz' => 'baz'], 'bar');
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * false
+ * ```
+ *
+ * @param array|object $collection Array or object to search a key for
+ * @param string|int   $path       Path to look for. Supports dot notation for
+ *                                 traversing multiple levels.
+ *
+ * @return bool
  */
 function has($collection, $path)
 {

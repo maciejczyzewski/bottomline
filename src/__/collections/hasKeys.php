@@ -3,17 +3,26 @@
 namespace collections;
 
 /**
- * Returns if $input contains all requested $keys. If $strict is true it also checks if $input exclusively contains the given $keys.
+ * Returns true if `$input` contains all requested $keys. If `$strict` is `true`
+ * it also checks if `$input` exclusively contains the given `$keys`.
  *
- ** __::hasKeys(['foo' => 'bar', 'foz' => 'baz'], ['foo', 'foz']);
- ** // → true
+ * **Usage**
+ *
+ * ```php
+ * __::hasKeys(['foo' => 'bar', 'foz' => 'baz'], ['foo', 'foz']);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * true
+ * ```
  *
  * @param array|object $collection of key values pairs
- * @param array   $keys       collection of keys to look for
- * @param boolean $strict     to exclusively check
+ * @param array        $keys       collection of keys to look for
+ * @param bool         $strict     to exclusively check
  *
- * @return boolean
- *
+ * @return bool
  */
 function hasKeys($collection = [], array $keys = [], $strict = false)
 {

@@ -3,10 +3,24 @@
 namespace collections;
 
 /**
- * Transforms the values in a collection by running each value through the iterator
+ * Transforms the values in a collection by running each value through the iterator.
  *
- * @param array $array          array of values
- * @param \Closure $closure     closure to map the values
+ * **Usage**
+ *
+ * ```php
+ * __::mapValues(['x' => 1], function($value, $key, $collection) {
+ *     return "{$key}_{$value}";
+ * });
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * ['x' => 'x_1']
+ * ```
+ *
+ * @param array    $array       Array of values
+ * @param \Closure $closure     Closure to map the values
  *
  * @return array
  */
