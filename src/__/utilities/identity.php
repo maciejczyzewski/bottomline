@@ -3,10 +3,19 @@
 namespace utilities;
 
 /**
- * Returns the first argument it receives
+ * Returns the first argument it receives.
  *
+ * **Usage**
+ *
+ * ```php
  * __::identity('arg1', 'arg2');
- *      >> 'arg1'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'arg1'
+ * ```
  *
  * @return mixed
  */
