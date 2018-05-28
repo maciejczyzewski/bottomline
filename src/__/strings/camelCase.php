@@ -5,13 +5,21 @@ namespace strings;
 /**
  * Converts string to [camel case](https://en.wikipedia.org/wiki/CamelCase).
  *
+ * **Usage**
+ *
+ * ```php
  * __::camelCase('Foo Bar');
- *      >> 'fooBar'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'fooBar'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function camelCase($input)
 {

@@ -9,17 +9,40 @@ namespace strings;
 /**
  * Splits string into an array of its words.
  *
+ * ## Default Behavior
+ *
+ * **Usage**
+ *
+ * ```php
  * __::words('fred, barney, & pebbles');
- *      >> ['fred', 'barney', 'pebbles']
+ * ```
  *
+ * **Result**
+ *
+ * ```
+ * ['fred', 'barney', 'pebbles']
+ * ```
+ *
+ * ## Custom Pattern
+ *
+ * Use a custom regex to define how words are split.
+ *
+ * **Usage**
+ *
+ * ```php
  * __::words('fred, barney, & pebbles', '/[^, ]+/');
- *      >> ['fred', 'barney', '&', 'pebbles']
+ * ```
  *
- * @param string $input
- * @param string $pattern : The pattern to match words.
+ * **Result**
  *
- * @return string
+ * ```
+ * ['fred', 'barney', '&', 'pebbles']
+ * ```
  *
+ * @param string      $input   The string of words to split.
+ * @param string|null $pattern The regex to match words.
+ *
+ * @return string[]
  */
 function words($input, $pattern = null)
 {
@@ -99,7 +122,7 @@ function words($input, $pattern = null)
     }
     $r = \preg_match_all($pattern, $input, $matches, PREG_PATTERN_ORDER);
     if ($r === false) {
-        throw new RuntimeException('Regex exception');
+        throw new \RuntimeException('Regex exception');
     }
 
     return \count($matches[0]) > 0 ? $matches[0] : [];

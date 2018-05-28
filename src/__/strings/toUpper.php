@@ -3,15 +3,23 @@
 namespace strings;
 
 /**
- * Converts string, as a whole, to lower case just like strtoupper.
+ * Converts string, as a whole, to lower case just like `strtoupper()`.
  *
+ * **Usage**
+ *
+ * ```
  * __::toUpper('fooBar');
- *      >> 'FOOBAR'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'FOOBAR'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function toUpper($input)
 {

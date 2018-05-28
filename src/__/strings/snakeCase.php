@@ -3,16 +3,23 @@
 namespace strings;
 
 /**
- * Converts string to
- * [snake case](https://en.wikipedia.org/wiki/Snake_case).
+ * Converts string to [snake case](https://en.wikipedia.org/wiki/Snake_case).
  *
+ * **Usage**
+ *
+ * ```php
  * __::snakeCase('Foo Bar');
- *      >> 'foo_bar'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'foo_bar'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function snakeCase($input)
 {

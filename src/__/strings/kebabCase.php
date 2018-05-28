@@ -3,16 +3,23 @@
 namespace strings;
 
 /**
- * Converts string to
- * [kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
+ * Converts string to [kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).
  *
+ * **Usage**
+ *
+ * ```php
  * __::kebabCase('Foo Bar');
- *      >> 'foo-bar'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'foo-bar'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function kebabCase($input)
 {

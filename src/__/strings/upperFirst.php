@@ -3,15 +3,23 @@
 namespace strings;
 
 /**
- * Converts the first character of string to upper case, like ucfirst.
+ * Converts the first character of string to upper case, like `ucfirst()`.
  *
+ * **Usage**
+ *
+ * ```php
  * __::upperFirst('fred');
- *      >> 'Fred'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'Fred'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function upperFirst($input)
 {

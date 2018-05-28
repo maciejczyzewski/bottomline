@@ -5,13 +5,21 @@ namespace strings;
 /**
  * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
  *
+ * **Usage**
+ *
+ * ```php
  * __::startCase('--foo-bar--');
- *      >> 'Foo Bar'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'Foo Bar'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function startCase($input)
 {

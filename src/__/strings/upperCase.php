@@ -5,13 +5,21 @@ namespace strings;
 /**
  * Converts string, as space separated words, to upper case.
  *
+ * **Usage**
+ *
+ * ```php
  * __::upperCase('--foo-bar');
- *      >> 'FOO BAR'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'FOO BAR'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function upperCase($input)
 {

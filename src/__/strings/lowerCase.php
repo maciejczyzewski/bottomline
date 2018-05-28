@@ -5,13 +5,21 @@ namespace strings;
 /**
  * Converts string, as space separated words, to lower case.
  *
+ * **Usage**
+ *
+ * ```php
  * __::lowerCase('--Foo-Bar--');
- *      >> 'foo bar'
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'foo bar'
+ * ```
  *
  * @param string $input
  *
  * @return string
- *
  */
 function lowerCase($input)
 {
