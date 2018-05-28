@@ -5,18 +5,28 @@ namespace sequences;
 include_once 'BottomlineWrapper.php';
 
 /**
- * returns a wrapper instance, allows the value to be passed through multiple bottomline functions
+ * Returns a wrapper instance, allows the value to be passed through multiple
+ * bottomline functions.
  *
+ * **Usage**
+ *
+ * ```php
  * __::chain([0, 1, 2, 3, null])
- *   ->compact()
- *   ->prepend(4)
- *   ->value();
- * >> [4, 1, 2, 3]
+ *     ->compact()
+ *     ->prepend(4)
+ *     ->value()
+ * ;
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [4, 1, 2, 3]
+ * ```
  *
  * @param mixed $initialValue
  *
- * @return mixed
- *
+ * @return \__|\BottomlineWrapper|mixed
  */
 function chain($initialValue)
 {
