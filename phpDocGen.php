@@ -21,11 +21,123 @@ use PhpParser\PrettyPrinter\Standard;
 require_once __DIR__ . '/vendor/autoload.php';
 
 //
+// Factories and other setup
+//
+
+$phpParser = (new ParserFactory())->create(ParserFactory::PREFER_PHP5);
+$phpPrinter = new Standard();
+$markdown = new Parsedown();
+$docBlockFactory = DocBlockFactory::createInstance();
+$bottomlineMethods = [];
+
+function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace, $fqfn) {
+    global $docBlockFactory, $bottomlineMethods, $markdown;
+
+    // If function name starts with an underscore, it's a helper function not part of the API
+    if (substr($functionName, 0, 1) === '_') {
+        return;
+    }
+
+    $docBlock = $docBlockFactory->create($docBlockRaw->getText());
+
+    if ($namespace !== null) {
+        $fullyQualifiedFunctionName = sprintf("%s\\%s", $namespace, $functionName);
+    }
+    elseif ($fqfn !== null) {
+        $fullyQualifiedFunctionName = $fqfn;
+    }
+    else {
+        $fullyQualifiedFunctionName = $functionName;
+    }
+
+    $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
+    $functionArguments = $docBlock->getTagsByName('param');
+    $functionArgumentDefinitions = $functionDefinition->getParameters();
+
+    $argDefs = [];
+
+    /** @var Param $argument */
+    foreach ($functionArguments as $argument) {
+        $varName = $argument->getVariableName();
+
+        $hasDefaultValue = false;
+        $defaultVal = null;
+
+        foreach ($functionArgumentDefinitions as $argumentDefinition) {
+            if ($varName === $argumentDefinition->getName() && $argumentDefinition->isOptional()) {
+                $hasDefaultValue = true;
+                $defaultVal = $argumentDefinition->getDefaultValue();
+                break;
+            }
+        }
+
+        if ($hasDefaultValue) {
+            if ($defaultVal === null) {
+                $varName .= ' = null';
+            }
+            elseif (is_bool($defaultVal)) {
+                $varName .= ' = ' . ($defaultVal ? 'true' : 'false');
+            }
+            elseif (is_string($defaultVal)) {
+                $varName .= " = '" . $defaultVal . "'";
+            }
+            elseif (is_array($defaultVal)) {
+                $varName .= ' = []';
+            }
+            else {
+                $varName .= ' = ' . $defaultVal;
+            }
+        }
+
+        $argDefs[] = [
+            'name' => $varName,
+            'type' => $argument->getType(),
+        ];
+    }
+
+    $functionSummary = $markdown->text($docBlock->getSummary());
+    $functionDescription = $markdown->text($docBlock->getDescription()->render());
+
+    // Extract <pre> blocks and replace their new lines with `<br>` so they can be formatted nicely by IDEs
+    $codeBlocks = [];
+    preg_match_all("/(<pre>(?:\s|.)*?<\/pre>)/", $functionDescription, $codeBlocks);
+
+    // This means there were a few code blocks
+    if (count($codeBlocks) == 2) {
+        foreach ($codeBlocks[1] as $codeBlock) {
+            $functionDescription = str_replace($codeBlock, nl2br($codeBlock), $functionDescription);
+        }
+    }
+
+    $descriptionBody = trim(preg_replace('/\n/', ' ', $functionSummary . '<br>' . $functionDescription));
+    $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
+    $description = new Description($descriptionBody);
+
+    $returnStatements = $docBlock->getTagsByName('return');
+    $functionReturnType = array_shift($returnStatements);
+
+    if ($functionReturnType !== null) {
+        $functionReturnType = $functionReturnType->getType();
+    }
+
+    $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
+}
+
+function registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace = null, $fqfn = null) {
+    try {
+        _registerBottomlineFunction($functionName, $docBlockRaw, $namespace, $fqfn);
+    }
+    catch (\Exception $e) {
+        printf("Exception message: %s\n", $e->getMessage());
+        printf("  %s\n\n", $functionName);
+    }
+}
+
+//
 // Find all registered bottomline functions
 //
 
 $bottomlineNamespaces = [];
-$phpFunctions = get_defined_functions();
 
 foreach (glob(__DIR__ . '/src/__/**/*.php') as $file) {
     $filename = basename($file);
@@ -43,104 +155,43 @@ foreach (glob(__DIR__ . '/src/__/**/*.php') as $file) {
     }
 
     include $file;
-}
 
-$newFunctions = get_defined_functions();
-$bottomlineFunctions = array_diff($newFunctions['user'], $phpFunctions['user']);
+    $parsedPhp = $phpParser->parse(file_get_contents($file));
 
-//
-// Setup
-//
+    /** @var Stmt\Namespace_|Stmt\Return_ $rootElement */
+    $rootElement = array_shift($parsedPhp);
 
-$markdown = new Parsedown();
-$docBlockFactory = DocBlockFactory::createInstance();
-$bottomlineMethods = [];
+    switch ($rootElement->getType()) {
+        case 'Stmt_Namespace':
+        {
+            $nodes = $rootElement->stmts;
 
-foreach ($bottomlineFunctions as $fxn) {
-    try {
-        $functionDefinition = new ReflectionFunction($fxn);
-        $docBlock = $docBlockFactory->create($functionDefinition->getDocComment());
-
-        $functionNamespace = $functionDefinition->getNamespaceName();
-        $functionName = str_replace($functionNamespace . '\\', '', $functionDefinition->getName());
-
-        // If the function starts with an underscore, it's a private function so no need to document it
-        if (strpos($functionName, '_') === 0) {
-            continue;
-        }
-
-        $functionArguments = $docBlock->getTagsByName('param');
-        $functionArgumentDefinitions = $functionDefinition->getParameters();
-
-        $argDefs = [];
-
-        /** @var Param $argument */
-        foreach ($functionArguments as $argument) {
-            $varName = $argument->getVariableName();
-
-            $hasDefaultValue = false;
-            $defaultVal = null;
-
-            foreach ($functionArgumentDefinitions as $argumentDefinition) {
-                if ($varName === $argumentDefinition->getName() && $argumentDefinition->isOptional()) {
-                    $hasDefaultValue = true;
-                    $defaultVal = $argumentDefinition->getDefaultValue();
-                    break;
+            foreach ($nodes as $node) {
+                if ($node->getType() !== 'Stmt_Function') {
+                    continue;
                 }
-            }
 
-            if ($hasDefaultValue) {
-                if ($defaultVal === null) {
-                    $varName .= ' = null';
-                }
-                elseif (is_bool($defaultVal)) {
-                    $varName .= ' = ' . ($defaultVal ? 'true' : 'false');
-                }
-                elseif (is_string($defaultVal)) {
-                    $varName .= " = '" . $defaultVal . "'";
-                }
-                elseif (is_array($defaultVal)) {
-                    $varName .= ' = []';
-                }
-                else {
-                    $varName .= ' = ' . $defaultVal;
-                }
-            }
+                $functionName = $node->name;
+                $comments = $node->getAttribute('comments');
+                $docBlock = array_pop($comments);
 
-            $argDefs[] = [
-                'name' => $varName,
-                'type' => $argument->getType(),
-            ];
-        }
-
-        $functionSummary = $markdown->text($docBlock->getSummary());
-        $functionDescription = $markdown->text($docBlock->getDescription()->render());
-
-        // Extract <pre> blocks and replace their new lines with `<br>` so they can be formatted nicely by IDEs
-        $codeBlocks = [];
-        preg_match_all("/(<pre>(?:\s|.)*?<\/pre>)/", $functionDescription, $codeBlocks);
-
-        // This means there were a few code blocks
-        if (count($codeBlocks) == 2) {
-            foreach ($codeBlocks[1] as $codeBlock) {
-                $functionDescription = str_replace($codeBlock, nl2br($codeBlock), $functionDescription);
+                registerBottomlineFunction($functionName, $docBlock, $namespace);
             }
         }
+        break;
 
-        $descriptionBody = trim(preg_replace('/\n/', '', $functionSummary . '<br>' . $functionDescription));
-        $description = new Description($descriptionBody);
+        case 'Stmt_Return':
+        {
+            $functionName = pathinfo($filename, PATHINFO_FILENAME);
+            $comments = $rootElement->getAttribute('comments');
+            $docBlock = array_pop($comments);
 
-        $functionReturnType = collections\first($docBlock->getTagsByName('return'));
-
-        if ($functionReturnType !== null) {
-            $functionReturnType = $functionReturnType->getType();
+            registerBottomlineFunction($functionName, $docBlock, null, $rootElement->expr->value);
         }
+        break;
 
-        $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
-    }
-    catch (\Exception $e) {
-        printf("Exception message: %s\n", $e->getMessage());
-        printf("  %s\n\n", $fxn);
+        default:
+            break;
     }
 }
 
@@ -153,9 +204,6 @@ $docBlockLiteral = $docBlockSerializer->getDocComment($loaderDocBlock);
 //
 
 $BOTTOMLINE_LOADER = __DIR__ . '/src/__/load.php';
-
-$phpParser = (new ParserFactory())->create(ParserFactory::PREFER_PHP5);
-$phpPrinter = new Standard();
 
 $bottomlineLoaderFile = $phpParser->parse(file_get_contents($BOTTOMLINE_LOADER));
 $bottomlineLoaderStatements = &$bottomlineLoaderFile[0]->stmts;
