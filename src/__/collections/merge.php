@@ -32,7 +32,7 @@ namespace collections;
 function merge()
 {
     return \__::reduceRight(func_get_args(), function ($source, $result) {
-        \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
+        \__::doForEach($source, function ($sourceValue, $key) use (&$result) {
             $value = $sourceValue;
             if (\__::isCollection($value)) {
                 $value = merge(\__::get($result, $key), $sourceValue);

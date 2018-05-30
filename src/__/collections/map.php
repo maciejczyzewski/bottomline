@@ -29,7 +29,7 @@ function map($collection, \Closure $iteratee)
     $result = [];
     \__::doForEach(
         $collection,
-        function ($value, $key, $collection) use(&$result, $iteratee) {
+        function ($value, $key, $collection) use (&$result, $iteratee) {
             $result[] = $iteratee($value, $key, $collection);
         }
     );

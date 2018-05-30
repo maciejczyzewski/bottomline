@@ -48,7 +48,7 @@ namespace collections;
 function assign($_)
 {
     return \__::reduceRight(func_get_args(), function ($source, $result) {
-        \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
+        \__::doForEach($source, function ($sourceValue, $key) use (&$result) {
             $result = \__::set($result, $key, $sourceValue);
         });
         return $result;

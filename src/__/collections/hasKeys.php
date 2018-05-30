@@ -31,9 +31,11 @@ function hasKeys($collection = [], array $keys = [], $strict = false)
         return false;
     }
     return \__::every(
-        \__::map($keys, function ($key) use($collection) {
+        \__::map($keys, function ($key) use ($collection) {
             return \__::has($collection, $key);
         }),
-        function ($v) { return $v === true; }
+        function ($v) {
+            return $v === true;
+        }
     );
 }

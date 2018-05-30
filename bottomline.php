@@ -7,4 +7,6 @@ require __DIR__ . '/src/__/load.php';
  *
  * @author Maciej A. Czyzewski
  */
-class __ extends \__\__ {}
+class __ extends \__\__
+{
+}

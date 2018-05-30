@@ -38,7 +38,7 @@ function reduceRight($collection, \Closure $iteratee, $accumulator = null)
     }
     \__::doForEachRight(
         $collection,
-        function ($value, $key, $collection) use(&$accumulator, $iteratee) {
+        function ($value, $key, $collection) use (&$accumulator, $iteratee) {
             $accumulator = $iteratee($accumulator, $value, $key, $collection);
         }
     );

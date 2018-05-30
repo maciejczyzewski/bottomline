@@ -10,3 +10,11 @@ bench:
 
 doc:
 	php phpDocGen.php
+
+CS_FIXER := vendor/bin/php-cs-fixer
+
+cs-fix:
+	php $(CS_FIXER) fix
+
+cs-check:
+	php $(CS_FIXER) fix --dry-run -v --diff

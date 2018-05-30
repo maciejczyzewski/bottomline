@@ -27,7 +27,7 @@ function camelCase($input)
 
     return array_reduce(
         $words,
-        function ($result, $word) use($words) {
+        function ($result, $word) use ($words) {
             $isFirst = \__::first($words) === $word;
             $word = \__::toLower($word);
             return $result . (!$isFirst ? \__::capitalize($word) : $word);

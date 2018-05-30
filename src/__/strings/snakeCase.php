@@ -27,7 +27,7 @@ function snakeCase($input)
 
     return array_reduce(
         $words,
-        function ($result, $word) use($words) {
+        function ($result, $word) use ($words) {
             $isFirst = \__::first($words) === $word;
             return $result . (!$isFirst ? '_' : '') . \__::toLower($word);
         },

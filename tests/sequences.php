@@ -28,7 +28,7 @@ class SequencesTest extends \PHPUnit\Framework\TestCase
         $result = __::chain($collection)
             ->compact()
             ->prepend(4)
-            ->reduce(function($sum, $number) {
+            ->reduce(function ($sum, $number) {
                 return $sum + $number;
             }, 0)
             ->value();

@@ -42,8 +42,11 @@ function concat($collection, $_)
     // First collection determine output type (array vs. object).
     $isObject = \__::isObject($collection);
     // Cast args to array.
-    $args = \__::map(func_get_args(), function ($arg) { return (array) $arg; });
+    $args = \__::map(func_get_args(), function ($arg) {
+        return (array) $arg;
+    });
     // PHP 5.6+ array_merge_recursive(...$args);
-    $merged = call_user_func_array('array_merge', $args);;
+    $merged = call_user_func_array('array_merge', $args);
+    ;
     return $isObject ? (object) $merged : $merged;
 }

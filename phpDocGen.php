@@ -30,7 +30,8 @@ $markdown = new Parsedown();
 $docBlockFactory = DocBlockFactory::createInstance();
 $bottomlineMethods = [];
 
-function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace, $fqfn) {
+function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace, $fqfn)
+{
     global $docBlockFactory, $bottomlineMethods, $markdown;
 
     // If function name starts with an underscore, it's a helper function not part of the API
@@ -42,11 +43,9 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
 
     if ($namespace !== null) {
         $fullyQualifiedFunctionName = sprintf("%s\\%s", $namespace, $functionName);
-    }
-    elseif ($fqfn !== null) {
+    } elseif ($fqfn !== null) {
         $fullyQualifiedFunctionName = $fqfn;
-    }
-    else {
+    } else {
         $fullyQualifiedFunctionName = $functionName;
     }
 
@@ -74,17 +73,13 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
         if ($hasDefaultValue) {
             if ($defaultVal === null) {
                 $varName .= ' = null';
-            }
-            elseif (is_bool($defaultVal)) {
+            } elseif (is_bool($defaultVal)) {
                 $varName .= ' = ' . ($defaultVal ? 'true' : 'false');
-            }
-            elseif (is_string($defaultVal)) {
+            } elseif (is_string($defaultVal)) {
                 $varName .= " = '" . $defaultVal . "'";
-            }
-            elseif (is_array($defaultVal)) {
+            } elseif (is_array($defaultVal)) {
                 $varName .= ' = []';
-            }
-            else {
+            } else {
                 $varName .= ' = ' . $defaultVal;
             }
         }
@@ -123,11 +118,11 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
     $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
 }
 
-function registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace = null, $fqfn = null) {
+function registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace = null, $fqfn = null)
+{
     try {
         _registerBottomlineFunction($functionName, $docBlockRaw, $namespace, $fqfn);
-    }
-    catch (\Exception $e) {
+    } catch (\Exception $e) {
         printf("Exception message: %s\n", $e->getMessage());
         printf("  %s\n\n", $functionName);
     }
@@ -214,13 +209,12 @@ $commentRegex = '/\*\*\s([a-zA-Z]+)\s+\[(\d+)\]/m';
 foreach ($bottomlineLoaderStatements as &$statement) {
     if ($statement->getType() === 'Stmt_Class') {
         $statement->setDocComment(new Doc($docBlockLiteral));
-    }
-    elseif ($statement->getType() === 'Stmt_If') {
+    } elseif ($statement->getType() === 'Stmt_If') {
         $functionCount = [];
 
         /** @var Comment $comments */
         $comments = collections\first($statement->getAttribute('comments'));
-        $commentLiteral = preg_replace_callback($commentRegex, function($matches) use ($bottomlineNamespaces) {
+        $commentLiteral = preg_replace_callback($commentRegex, function ($matches) use ($bottomlineNamespaces) {
             $namespace = strtolower($matches[1]);
 
             return str_replace($matches[2], $bottomlineNamespaces[$namespace], $matches[0]);

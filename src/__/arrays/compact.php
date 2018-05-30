@@ -34,4 +34,3 @@ function compact(array $array)
 {
     return \array_values(\array_filter($array));
 }
-

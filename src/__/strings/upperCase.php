@@ -27,7 +27,7 @@ function upperCase($input)
 
     return array_reduce(
         $words,
-        function ($result, $word) use($words) {
+        function ($result, $word) use ($words) {
             $isFirst = \__::first($words) === $word;
             return $result . (!$isFirst ? ' ' : '') . \__::toUpper($word);
         },

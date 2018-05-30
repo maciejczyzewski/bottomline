@@ -9,5 +9,9 @@ php:
   - 7.2
   - nightly
 script:
-  - php bench.php
+  - make cs-check
   - make test
+  - make bench
+  # TODO Ensure documentation has been generated:
+  # * generate it locally (make doc) ;
+  # * ensure git status gives no changes.

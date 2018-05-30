@@ -31,7 +31,9 @@ class ObjectsTest extends \PHPUnit\Framework\TestCase
     public function testIsFunction()
     {
         // Arrange
-        $a = function ($a) { return $a + 2; };
+        $a = function ($a) {
+            return $a + 2;
+        };
 
         // Act
         $x = __::isFunction($a);

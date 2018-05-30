@@ -3,3 +3,4 @@ __testing/
 /.idea
 composer.phar
 composer.lock
+.php_cs.cache

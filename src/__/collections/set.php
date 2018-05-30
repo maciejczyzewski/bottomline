@@ -4,7 +4,8 @@ namespace collections;
 
 // TODO Place in .internal folder. (Something or somewhere not intended to be used
 // externally: these are internal helpers).
-function _universal_set($collection, $key, $value) {
+function _universal_set($collection, $key, $value)
+{
     $set_object = function ($object, $key, $value) {
         $newObject = clone $object;
         $newObject->$key = $value;

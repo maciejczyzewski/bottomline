@@ -41,10 +41,10 @@ namespace collections;
 function concatDeep()
 {
     return \__::reduceRight(func_get_args(), function ($source, $result) {
-        \__::doForEach($source, function ($sourceValue, $key) use(&$result) {
+        \__::doForEach($source, function ($sourceValue, $key) use (&$result) {
             if (!\__::has($result, $key)) {
                 $result = \__::set($result, $key, $sourceValue);
-            } else if(is_numeric($key)) {
+            } elseif (is_numeric($key)) {
                 $result = \__::concat($result, [$sourceValue]);
             } else {
                 $resultValue = \__::get($result, $key);

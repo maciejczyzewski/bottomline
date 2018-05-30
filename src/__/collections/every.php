@@ -32,9 +32,11 @@ function every($collection, \Closure $iteratee)
     // We could use __::reduce(), but it won't allow us to return preliminarily.
     \__::doForEach(
         $collection,
-        function ($value, $key, $collection) use(&$truthy, $iteratee) {
+        function ($value, $key, $collection) use (&$truthy, $iteratee) {
             $truthy = $truthy && $iteratee($value, $key, $collection);
-            if (!$truthy) return false;
+            if (!$truthy) {
+                return false;
+            }
         }
     );
     return $truthy;

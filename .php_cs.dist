@@ -1,0 +1,15 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->exclude('./vendor/')
+    ->in(__DIR__)
+;
+
+return PhpCsFixer\Config::create()
+    // We use @PSR1 and @PSR2 rules, which are the defaults.
+    ->setRules([
+        '@PSR1' => true,
+        '@PSR2' => true,
+    ])
+    ->setFinder($finder)
+;

@@ -183,10 +183,10 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $c = [0, 1, false, 2, null, 3, true];
 
         // Act
-        $x = __::filter($a, function($n) {
+        $x = __::filter($a, function ($n) {
             return $n > 3;
         });
-        $y = __::filter($b, function($n) {
+        $y = __::filter($b, function ($n) {
             return $n['age'] == 16;
         });
         $z = __::filter($c);
@@ -213,7 +213,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $makeMapper = function (&$array) {
-            return function ($value, $key) use(&$array) {
+            return function ($value, $key) use (&$array) {
                 $array[$key] = $value;
             };
         };
@@ -235,12 +235,12 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $makeAppend = function (&$array) {
-            return function ($value) use(&$array) {
+            return function ($value) use (&$array) {
                 $array[] = $value;
             };
         };
         $makeMapper = function (&$array) {
-            return function ($value, $key) use(&$array) {
+            return function ($value, $key) use (&$array) {
                 $array[$key] = $value;
             };
         };
@@ -269,9 +269,15 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $c = [1, 3, 4];
 
         // Act.
-        $x = __::every($a, function ($v) { return is_bool($v); });
-        $y = __::every($b, function ($v) { return is_bool($v); });
-        $z = __::every($c, function ($v) { return is_int($v); });
+        $x = __::every($a, function ($v) {
+            return is_bool($v);
+        });
+        $y = __::every($b, function ($v) {
+            return is_bool($v);
+        });
+        $z = __::every($c, function ($v) {
+            return is_int($v);
+        });
 
         // Assert
         $this->assertFalse($x);
@@ -283,9 +289,11 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $makeMapper = function (&$array, $returnAtKey) {
-            return function ($value, $key) use(&$array, $returnAtKey) {
+            return function ($value, $key) use (&$array, $returnAtKey) {
                 $array[$key] = $value;
-                if ($returnAtKey === $key) return false;
+                if ($returnAtKey === $key) {
+                    return false;
+                }
             };
         };
         $a = [1, 2, 3, 4];
@@ -295,7 +303,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $aMapped = [];
         $bMapped = [];
         __::doForEach($a, $makeMapper($aMapped, 1));
-        __::doForEach($b, $makeMapper($bMapped,  'city'));
+        __::doForEach($b, $makeMapper($bMapped, 'city'));
 
         // Assert
         $this->assertEquals([1, 2], $aMapped);
@@ -636,7 +644,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a = [1, 2, 3];
 
         // Act
-        $x = __::map($a, function($n) {
+        $x = __::map($a, function ($n) {
             return $n * 3;
         });
 
@@ -650,7 +658,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a = (object) ['a' => 1, 'b' => 2, 'c' => 3];
 
         // Act
-        $x = __::map($a, function($n, $key) {
+        $x = __::map($a, function ($n, $key) {
             return $key === 'c' ? $n : $n * 3;
         });
 
@@ -797,7 +805,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             return $accumulator + $value;
         };
         $cIndex = 0;
-        $cReducer = function ($accumulator, $value, $index, $collection) use(&$c, &$cIndex) {
+        $cReducer = function ($accumulator, $value, $index, $collection) use (&$c, &$cIndex) {
             $this->assertEquals($c, $collection);
             $this->assertEquals($cIndex++, $index);
             if (isset($accumulator[$value['city']])) {
@@ -843,8 +851,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             'c' => 1
         ];
         $bReducer = function ($accumulator, $value, $key) {
-            if (!isset($accumulator[$value]))
+            if (!isset($accumulator[$value])) {
                 $accumulator[$value] = [];
+            }
             $accumulator[$value][] = $key;
             return $accumulator;
         };
@@ -1032,7 +1041,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ];
 
         // Act
-        $b = __::mapKeys($a, function($key) {
+        $b = __::mapKeys($a, function ($key) {
             return strtoupper($key);
         });
 
@@ -1050,7 +1059,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // test with complicated closure
         // Act
-        $b = __::mapKeys($a, function($key, $value, $collection) {
+        $b = __::mapKeys($a, function ($key, $value, $collection) {
             $size = count($collection);
             return "{$key}_{$value['name']}_{$size}";
         });
@@ -1089,7 +1098,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a = ['x' => ['y' => 1]];
 
         // Act
-        __::mapKeys($a, function($key) {
+        __::mapKeys($a, function ($key) {
             return ['key' => $key];
         });
     }
@@ -1109,7 +1118,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ];
 
         // Act
-        $b = __::mapValues($a, function($value) {
+        $b = __::mapValues($a, function ($value) {
             return array_flip($value);
         });
 
@@ -1127,7 +1136,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // test with complicated closure
         // Act
-        $b = __::mapValues($a, function($value, $key, $collection) {
+        $b = __::mapValues($a, function ($value, $key, $collection) {
             $size = count($collection);
             return [
                 'subKey' => "{$value['age']}_{$key}_{$size}"

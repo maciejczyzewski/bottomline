@@ -103,7 +103,7 @@ function reduce($collection, \Closure $iteratee, $accumulator = null)
     }
     \__::doForEach(
         $collection,
-        function ($value, $key, $collection) use(&$accumulator, $iteratee) {
+        function ($value, $key, $collection) use (&$accumulator, $iteratee) {
             $accumulator = $iteratee($accumulator, $value, $key, $collection);
         }
     );
