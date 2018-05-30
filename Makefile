@@ -7,3 +7,6 @@ test:
 
 bench:
 	php bench.php
+
+doc:
+	php phpDocGen.php

@@ -26,7 +26,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
 }
 /* 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
 /**
- *
+ * 
  *
  * @method static array append(array $array, mixed $value = null) <p>Append an item to array.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::append([1, 2, 3], 4);</code></pre> <p><strong>Result</strong></p> <pre><code>[1, 2, 3, 4]</code></pre>
  * @method static array chunk(array $array, int $size = 1, bool $preserveKeys = false) <p>Creates an array of elements split into groups the length of <code>$size</code>.</p><br><p>If array can't be split evenly, the final chunk will be the remaining elements. When <code>$preserveKeys</code> is set to TRUE, keys will be preserved. Default is FALSE, which will reindex the chunk numerically.</p> <p><strong>Usage</strong></p> <pre><code class="language-php">__::chunk([1, 2, 3, 4, 5], 3);</code></pre> <p><strong>Result</strong></p> <pre><code>[[1, 2, 3], [4, 5]]</code></pre>

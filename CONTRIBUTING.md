@@ -25,26 +25,26 @@ extension=php_mbstring.dll
 
 ## Development checklist
 
-- Add or update phpDocs for the new function with a **Usage** and **Result** section
-- Always add tests for the code that you write, including edge cases
-- Place the new functions where they belong (collections, arrays, utilities, etc.)
-- Add `README.md` doc entry for the functions
-- Execute the `phpDocGen.php` script to automatically build an updated `load.php`
-- Update the benchmark `bench.php`, this helps us to validate the performance of the library
-- Update `CHANGELOG.md` with your changes
+- Add or update phpDocs for the new function with a **Usage** and **Result** section ;
+- Always add tests for the code that you write, including edge cases ;
+- Place the new functions where they belong (collections, arrays, utilities, etc.) ;
+- Add `README.md` doc entry for the functions ;
+- Execute `make doc` script to automatically build an updated `load.php` ;
+- Update the benchmark `bench.php`, this helps us to validate the performance of the library ;
+- Update `CHANGELOG.md` with your changes.
 
 ## How to open a PR
 
-- Create a branch in your forked repository and push your code into it
-- Create a PR in [bottomline](https://github.com/maciejczyzewski/bottomline) that points to your forked branch
-- Add description of the PR (issue links, etc.)
+- Create a branch in your forked repository and push your code into it ;
+- Create a PR in [bottomline](https://github.com/maciejczyzewski/bottomline) that points to your forked branch ;
+- Add description of the PR (issue links, etc.).
 
 ## Recommendation
 
-- Squash commits into 1 commit before the PR is merged into master, this help reduces git tree and makes it easier to revert to a certain state. (can be multiple commits, but they have to be meaningful commits)
+- Squash commits into 1 commit before the PR is merged into master, this help reduces git tree and makes it easier to revert to a certain state. (can be multiple commits, but they have to be meaningful commits) ;
 - Open PR title starting with one of the following words:
-    + `Fix` - for a bug fix.
-    + `New` - implemented a new feature.
-    + `Update` - for a backwards-compatible enhancement.
-    + `Breaking` - for a backwards-incompatible enhancement or feature.
+    + `Fix` - for a bug fix ;
+    + `New` - implemented a new feature ;
+    + `Update` - for a backwards-compatible enhancement ;
+    + `Breaking` - for a backwards-incompatible enhancement or feature ;
     + `Docs` - changes to documentation only.
