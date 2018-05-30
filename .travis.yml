@@ -1,5 +1,8 @@
 language: php
-install: composer install --ignore-platform-reqs
+install:
+  # We do not use it in unit tests.
+  - composer remove friendsofphp/php-cs-fixer
+  - composer install
 php:
   - 5.4
   - 5.5
@@ -14,6 +17,7 @@ script:
 jobs:
   include:
     - stage: checks
+      install: composer install
       php:
         - 7.2
       script:

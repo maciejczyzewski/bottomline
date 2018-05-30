@@ -24,6 +24,6 @@
         "phpdocumentor/reflection-docblock": "^2.0||^3.1",
         "erusev/parsedown": "^1.7",
         "nikic/php-parser": "^2.0||^3.0",
-        "friendsofphp/php-cs-fixer": "2.2.15"
+        "friendsofphp/php-cs-fixer": "^2.11"
     }
 }
