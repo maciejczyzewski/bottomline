@@ -1,7 +1,7 @@
 language: php
 install:
   # We do not use it in unit tests.
-  - composer remove friendsofphp/php-cs-fixer
+  - composer remove --dev friendsofphp/php-cs-fixer
   - composer install
 php:
   - 5.4
