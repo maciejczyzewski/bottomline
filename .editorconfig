@@ -16,6 +16,6 @@ charset = utf-8
 indent_style = tab
 
 # Matches the exact files either package.json or .travis.yml
-[*.{yml}]
+[*.yml]
 indent_style = space
 indent_size = 2
