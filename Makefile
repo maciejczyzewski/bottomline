@@ -9,7 +9,7 @@ bench:
 	php bench.php
 
 doc:
-	php phpDocGen.php
+	php tools/phpDocGen.php && make cs-fix
 
 CS_FIXER := vendor/bin/php-cs-fixer
 
