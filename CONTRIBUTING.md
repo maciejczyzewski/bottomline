@@ -47,4 +47,5 @@ extension=php_mbstring.dll
     + `New` - implemented a new feature ;
     + `Update` - for a backwards-compatible enhancement ;
     + `Breaking` - for a backwards-incompatible enhancement or feature ;
-    + `Docs` - changes to documentation only.
+    + `Docs` - changes to documentation only ;
+- Use `LF` line endings.
