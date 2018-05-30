@@ -6,7 +6,7 @@ test:
 	vendor/bin/phpunit --configuration phpunit.xml
 
 bench:
-	php bench.php
+	php tools/bench.php
 
 doc:
 	php tools/phpDocGen.php && make cs-fix

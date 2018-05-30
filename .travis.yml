@@ -12,6 +12,8 @@ script:
   - make cs-check
   - make test
   - make bench
-  # TODO Ensure documentation has been generated:
+  # Ensure documentation has been generated:
   # * generate it locally (make doc) ;
-  # * ensure git status gives no changes.
+  # * ensure git status gives no changes: if it does the doc wasn't properly
+  # updated (this must make the CI build fail).
+  - make doc && ./tools/hasGitChanges.sh
