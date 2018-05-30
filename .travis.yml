@@ -1,19 +1,27 @@
 language: php
 install: composer install
-php:
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - nightly
-script:
-  - make cs-check
-  - make test
-  - make bench
-  # Ensure documentation has been generated:
-  # * generate it locally (make doc) ;
-  # * ensure git status gives no changes: if it does the doc wasn't properly
-  # updated (this must make the CI build fail).
-  - make doc || ./tools/hasGitChanges.sh
+jobs:
+  include:
+    - stage: checks
+      php:
+        - 7.2
+      script:
+        - make cs-check
+        # Ensure documentation has been generated:
+        # * generate it locally (make doc) ;
+        # * ensure git status gives no changes: if it does the doc wasn't properly
+        # updated (this must make the CI build fail).
+        - make doc || ./tools/hasGitChanges.sh
+    - stage: test
+      php:
+        - 5.4
+        - 5.5
+        - 5.6
+        - 7.0
+        - 7.1
+        - 7.2
+        - nightly
+      script:
+        - make test
+      script:
+        - make bench
