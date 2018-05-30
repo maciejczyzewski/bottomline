@@ -16,4 +16,4 @@ script:
   # * generate it locally (make doc) ;
   # * ensure git status gives no changes: if it does the doc wasn't properly
   # updated (this must make the CI build fail).
-  - make doc && ./tools/hasGitChanges.sh
+  - make doc || ./tools/hasGitChanges.sh
