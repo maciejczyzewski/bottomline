@@ -3,68 +3,102 @@
 namespace collections;
 
 /**
- * Reduces $collection to a value which is the $accumulator result of running each
- * element in $collection thru $iteratee, where each successive invocation is supplied
- * the return value of the previous.
+ * Reduces `$collection` to a value which is the $accumulator result of running
+ * each element in `$collection` thru `$iteratee`, where each successive invocation
+ * is supplied the return value of the previous.
  *
- * If $accumulator is not given, the first element of $collection is used as the
- * initial value.
+ * If `$accumulator` is not given, the first element of `$collection` is used as
+ * the initial value.
  *
- * The $iteratee is invoked with four arguments:
- * ($accumulator, $value, $index|$key, $collection).
+ * ## Sum Example
  *
- ** __::reduce([1, 2], function ($sum, $number) {
- **     return $sum + $number;
- ** }, 0);
- ** // >> 3
+ * **Usage**
  *
- ** $a = [
- **     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- **     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
- **     ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
- **     ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
- **     ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
- ** ];
- ** $iteratee = function ($accumulator, $value) {
- **     if (isset($accumulator[$value['city']]))
- **         $accumulator[$value['city']]++;
- **     else
- **         $accumulator[$value['city']] = 1;
- **     return $accumulator;
- ** };
- ** __::reduce($c, $iteratee, []);
- ** // >> [
- ** // >>    'Indianapolis' => 2,
- ** // >>    'Plainfield' => 1,
- ** // >>    'San Diego' => 1,
- ** // >>    'Mountain View' => 1,
- ** // >> ]
+ * ```php
+ * __::reduce([1, 2], function ($accumulator, $value, $key, $collection) {
+ *     return $accumulator + $value;
+ * }, 0);
+ * ```
  *
- ** $object = new \stdClass();
- ** $object->a = 1;
- ** $object->b = 2;
- ** $object->c = 1;
- ** __::reduce($object, function ($result, $value, $key) {
- **     if (!isset($result[$value]))
- **         $result[$value] = [];
- **     $result[$value][] = $key;
- **     return $result;
- ** }, [])
- ** // >> [
- ** // >>     '1' => ['a', 'c'],
- ** // >>     '2' => ['b']
- ** // >> ]
+ * **Result**
  *
- * @param array|object $collection The collection to iterate over.
- * @param \Closure $iteratee The function invoked per iteration.
- * @param (*) [$accumulator] The initial value.
+ * ```
+ * 3
+ * ```
  *
- * @return (*): Returns the accumulated value.
+ * ## Array Counter
  *
+ * **Usage**
+ *
+ * ```php
+ * $a = [
+ *     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ *     ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+ *     ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *     ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+ * ];
+ *
+ * $iteratee = function ($accumulator, $value) {
+ *     if (isset($accumulator[$value['city']]))
+ *         $accumulator[$value['city']]++;
+ *     else
+ *         $accumulator[$value['city']] = 1;
+ *     return $accumulator;
+ * };
+ *
+ * __::reduce($c, $iteratee, []);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *    'Indianapolis' => 2,
+ *    'Plainfield' => 1,
+ *    'San Diego' => 1,
+ *    'Mountain View' => 1,
+ * ]
+ * ```
+ *
+ * ## Object Usage
+ *
+ * **Usage**
+ *
+ * ```php
+ * $object = new \stdClass();
+ * $object->a = 1;
+ * $object->b = 2;
+ * $object->c = 1;
+ *
+ * __::reduce($object, function ($result, $value, $key) {
+ *     if (!isset($result[$value]))
+ *         $result[$value] = [];
+ *
+ *     $result[$value][] = $key;
+ *
+ *     return $result;
+ * }, [])
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *     '1' => ['a', 'c'],
+ *     '2' => ['b']
+ * ]
+ * ```
+ *
+ * @param array|object       $collection  The collection to iterate over.
+ * @param \Closure           $iteratee    The function invoked per iteration.
+ * @param array|object|mixed $accumulator The initial value.
+ *
+ * @return array|object|mixed Returns the accumulated value.
  */
-function reduce($collection, \Closure $iteratee, $accumulator = NULL)
+function reduce($collection, \Closure $iteratee, $accumulator = null)
 {
-    if ($accumulator === NULL) {
+    if ($accumulator === null) {
         $accumulator = \__::first($collection);
     }
     \__::doForEach(

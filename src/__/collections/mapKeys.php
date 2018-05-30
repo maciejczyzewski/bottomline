@@ -3,11 +3,29 @@
 namespace collections;
 
 /**
- * Transforms the keys in a collection by running each key through the iterator
+ * Transforms the keys in a collection by running each key through the iterator.
  *
- * @param array $array          array of values
- * @param \Closure $closure     closure to map the keys
- * @throws \Exception           if closure doesn't return a valid key that can be used in PHP array
+ * This function throws an `\Exception` when the close doesn't return a valid key
+ * that can be used in a PHP array.
+ *
+ * **Usage**
+ *
+ * ```php
+ * __::mapKeys(['x' => 1], function($key, $value, $collection) {
+ *     return "{$key}_{$value}";
+ * });
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * ['x_1' => 1]
+ * ```
+ *
+ * @param array    $array       Array of values
+ * @param \Closure $closure     Closure to map the keys
+ *
+ * @throws \Exception when closure doesn't return a valid key that can be used in PHP array
  *
  * @return array
  */

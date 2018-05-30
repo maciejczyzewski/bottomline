@@ -5,11 +5,11 @@ namespace collections;
 /**
  * Iterate an array or other foreach-able without making a copy of it.
  *
- * Code for PHP_VERSION >= 5.5.(using `yiel`) is from mpen and linepogl
+ * Code for PHP_VERSION >= 5.5.(using `yield`) is from mpen and linepogl
  * See https://stackoverflow.com/a/36605605/1956471
  *
  * @param array|\Traversable $iterable
- * @return Generator
+ * @return \Generator
  */
  if (version_compare(PHP_VERSION, '5.5.0', '<')) {
      eval('
@@ -34,14 +34,24 @@ namespace collections;
  * The iteratee is invoked with three arguments: (value, index|key, collection).
  * Iteratee functions may exit iteration early by explicitly returning false.
  *
- ** __::doForEachRight([1, 2, 3], function ($value) { print_r($value) });
- ** // → (Side effect: print 3, 2, 1)
+ * **Usage**
+ *
+ * ```php
+ * __::doForEachRight([1, 2, 3], function ($value, $key, $collection) {
+ *     print_r($value);
+ * });
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * (Side effect: print 3, 2, 1)
+ * ```
  *
  * @param array|object $collection The collection to iterate over.
- * @param Closure $iterate The function to call for each value.
+ * @param \Closure     $iteratee   The function to call for each value.
  *
- * @return null
- *
+ * @return void
  */
 function doForEachRight($collection, \Closure $iteratee)
 {

@@ -5,19 +5,29 @@ namespace collections;
 /**
  * Recursively combines and merge collections provided with each others.
  *
- * If the collections have common keys, then the last passed keys override the previous.
- * If numerical indexes are passed, then last passed indexes override the previous.
+ * - If the collections have common keys, then the last passed keys override the previous.
+ * - If numerical indexes are passed, then last passed indexes override the previous.
  *
- * For a non-recursive merge, see __::merge.
+ * For a non-recursive merge, see `__::merge()`.
  *
- ** __::merge(['color' => ['favorite' => 'red', 'model' => 3, 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
- ** // >> ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
+ * **Usage**
  *
- * @param array|object $collection1 First collection to merge.
- * @param array|object $... N other collections to merge.
+ * ```php
+ * __::merge(
+ *     ['color' => ['favorite' => 'red', 'model' => 3, 5], 3],
+ *     [10, 'color' => ['favorite' => 'green', 'blue']]
+ * );
+ * ```
  *
- * @return array|object Concatened collection.
+ * **Result**
  *
+ * ```
+ * ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
+ * ```
+ *
+ * @param array|object ...$_ Collections to merge.
+ *
+ * @return array|object Concatenated collection.
  */
 function merge()
 {

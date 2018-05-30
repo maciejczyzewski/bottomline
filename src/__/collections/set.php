@@ -2,7 +2,7 @@
 
 namespace collections;
 
-// TODO Place in .internal folder. (Something or somewhere not intented to be used
+// TODO Place in .internal folder. (Something or somewhere not intended to be used
 // externally: these are internal helpers).
 function _universal_set($collection, $key, $value) {
     $set_object = function ($object, $key, $value) {
@@ -19,25 +19,36 @@ function _universal_set($collection, $key, $value) {
 }
 
 /**
- * Return a new collection with the item set at index to given value.
- * Index can be a path of nested indexes.
+ * Return a new collection with the item set at index to given value. Index can
+ * be a path of nested indexes.
  *
- * If $collection is an object that implements the ArrayAccess interface, this
- * function will treat it as an array.
+ * - If `$collection` is an object that implements the ArrayAccess interface,
+ *   this function will treat it as an array.
+ * - If a portion of path doesn't exist, it's created. Arrays are created for
+ *   missing index in an array; objects are created for missing property in an
+ *   object.
  *
- * If a portion of path doesn't exist, it's created. Arrays are created for missing
- * index in an array; objects are created for missing property in an object.
+ * This function throws an `\Exception` if the path consists of a non-collection.
  *
- ** __::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
- ** // → '['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]'
+ * **Usage**
  *
- * @param array|object $collection collection of values
- * @param string  $path key or index
- * @param mixed   $value the value to set at position $key
- * @throws \Exception if the path consists of a non collection and strict is set to false
+ * ```php
+ * __::set(['foo' => ['bar' => 'ter']], 'foo.baz.ber', 'fer');
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
+ * ```
+ *
+ * @param array|object $collection Collection of values
+ * @param string       $path       Key or index. Supports dot notation
+ * @param mixed        $value      The value to set at position $key
+ *
+ * @throws \Exception if the path consists of a non collection
  *
  * @return array|object the new collection with the item set
- *
  */
 function set($collection, $path, $value = null)
 {

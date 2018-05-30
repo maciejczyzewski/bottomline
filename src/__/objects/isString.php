@@ -1,11 +1,10 @@
 <?php
 
 /**
- * check if give value is string or not
+ * Check if give value is string or not.
  *
- * @param null $value
+ * @param mixed $value
  *
  * @return bool
- *
  */
 return 'is_string';

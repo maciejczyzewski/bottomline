@@ -5,13 +5,21 @@ namespace arrays;
 /**
  * Shuffle an array ensuring no item remains in the same position.
  *
- ** __::randomize([1, 2, 3]);
- ** // → [2, 3, 1]
+ * **Usage**
+ *
+ * ```php
+ * __::randomize([1, 2, 3]);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [2, 3, 1]
+ * ```
  *
  * @param array $array original array
  *
  * @return array
- *
  */
 function randomize(array $array)
 {

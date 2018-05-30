@@ -5,7 +5,24 @@ namespace collections;
 /**
  * Returns an array of values belonging to a given property of each item in a collection.
  *
- * @param array|object $collection array or object that can be converted to array
+ * **Usage**
+ *
+ * ```php
+ * $a = [
+ *     ['foo' => 'bar',  'bis' => 'ter' ],
+ *     ['foo' => 'bar2', 'bis' => 'ter2'],
+ * ];
+ *
+ * __::pluck($a, 'foo');
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * ['bar', 'bar2']
+ * ```
+ *
+ * @param array|object $collection Array or object that can be converted to array
  * @param string       $property   property name
  *
  * @return array
@@ -19,7 +36,7 @@ function pluck($collection, $property)
             return $value->{$property};
         }
 
-        foreach (\__::split($property, '.') as $segment) {
+        foreach (\__::split($property, \__::DOT_NOTATION_DELIMITER) as $segment) {
             if (\is_object($value)) {
                 if (isset($value->{$segment})) {
                     $value = $value->{$segment};

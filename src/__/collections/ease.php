@@ -3,16 +3,32 @@
 namespace collections;
 
 /**
- * Flattens a complex collection by mapping each ending leafs value to a key consisting of all previous indexes.
+ * Flattens a complex collection by mapping each ending leafs value to a key
+ * consisting of all previous indexes.
  *
- * __::ease(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]);
- * // → '['foo.bar' => 'ter', 'baz.0' => 'b', , 'baz.1' => 'z']'
+ * **Usage**
+ *
+ * ```php
+ * __::ease([
+ *     'foo' => ['bar' => 'ter'],
+ *     'baz' => ['b', 'z']
+ * ]);
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *     'foo.bar' => 'ter',
+ *     'baz.0' => 'b',
+ *     'baz.1' => 'z'
+ * ]
+ * ```
  *
  * @param array  $collection array of values
  * @param string $glue       glue between key path
  *
  * @return array flatten collection
- *
  */
 function ease(array $collection, $glue = '.')
 {

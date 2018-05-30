@@ -8,16 +8,35 @@ namespace collections;
  * If the collections have common keys, then the values are appended in an array.
  * If numerical indexes are passed, then values are appended.
  *
- * For a non-recursive concat, see __::concat.
+ * For a non-recursive concat, see `__::concat()`.
  *
- ** __::concatDeep(['color' => ['favorite' => 'red', 5], 3], [10, 'color' => ['favorite' => 'green', 'blue']]);
- ** // >> ['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10]
+ * **Usage**
  *
- * @param array|object $collection1 First collection to concatDeep.
- * @param array|object $... N other collections to concatDeep.
+ * ```php
+ * __::concatDeep(
+ *     ['color' => ['favorite' => 'red', 5], 3],
+ *     [10, 'color' => ['favorite' => 'green', 'blue']]
+ * );
+ * ```
  *
- * @return array|object Concatened collection.
+ * **Result**
  *
+ * ```
+ * [
+ *     'color' => [
+ *         'favorite' => ['red', 'green'],
+ *         5,
+ *         'blue'
+ *     ],
+ *     3,
+ *     10
+ * ]
+ * ```
+ *
+ * @param array|object $collection First collection to concatDeep.
+ * @param array|object ...$_        N other collections to concatDeep.
+ *
+ * @return array|object Concatenated collection.
  */
 function concatDeep()
 {

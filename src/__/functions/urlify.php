@@ -3,13 +3,23 @@
 namespace functions;
 
 /**
- ** __::urlify("I love https://google.com");
- ** // → 'I love <a href="https://google.com">google.com</a>'
+ * Convert any URLs into HTML anchor tags in a string.
+ *
+ * **Usage**
+ *
+ * ```php
+ * __::urlify("I love https://google.com");
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'I love <a href="https://google.com">google.com</a>'
+ * ```
  *
  * @param string $string
  *
- * @return string mixed
- *
+ * @return string
  */
 function urlify($string)
 {

@@ -5,9 +5,22 @@ namespace functions;
 /**
  * Create a web friendly URL slug from a string.
  *
- * Although supported, transliteration is discouraged because
- *     1) most web browsers support UTF-8 characters in URLs
- *     2) transliteration causes a loss of information
+ * Although supported, transliteration is discouraged because:
+ *
+ * 1. most web browsers support UTF-8 characters in URLs
+ * 2. transliteration causes a loss of information
+ *
+ * **Usage**
+ *
+ * ```php
+ * __::slug('Jakieś zdanie z dużą ilością obcych znaków!');
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * 'jakies-zdanie-z-duza-iloscia-obcych-znakow'
+ * ```
  *
  * @author    Sean Murphy <sean@iamseanmurphy.com>
  * @copyright Copyright 2012 Sean Murphy. All rights reserved.
@@ -17,8 +30,6 @@ namespace functions;
  * @param array  $options method options which includes: delimiter, limit, lowercase, replacements, transliterate
  *
  * @return string
- *
- * @functions @slug
  */
 function slug($str, array $options = [])
 {

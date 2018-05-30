@@ -3,12 +3,11 @@
 namespace objects;
 
 /**
- * check if the value is valid email
+ * Check if the value is valid email.
  *
- * @param null $value
+ * @param mixed $value
  *
  * @return bool
- *
  */
 function isEmail($value)
 {

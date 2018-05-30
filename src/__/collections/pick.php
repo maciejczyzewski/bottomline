@@ -7,11 +7,31 @@ namespace collections;
  *
  * Values for missing keys values will be filled with provided default value.
  *
- ** __::pick(['a' => 1, 'b' => ['c' => 3, 'd' => 4]], ['a', 'b.d']);
- ** // → ['a' => 1, 'b' => ['d' => 4]]
+ * **Usage**
+ *
+ * ```php
+ * __::pick(
+ *     [
+ *         'a' => 1,
+ *         'b' => ['c' => 3, 'd' => 4]
+ *     ],
+ *     ['a', 'b.d']
+ * );
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *     'a' => 1,
+ *     'b' => ['d' => 4]
+ * ]
+ * ```
  *
  * @param array|object $collection The collection to iterate over.
- * @param array $paths array paths to pick
+ * @param array        $paths      Array paths to pick
+ * @param mixed        $default    The default value that will be used if the
+ *                                 specified path does not exist.
  *
  * @return array
  */

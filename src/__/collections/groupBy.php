@@ -5,81 +5,113 @@ namespace collections;
 /**
  * Returns an associative array where the keys are values of $key.
  *
- * Based on {@author Chauncey McAskill}'s {@link https://gist.github.com/mcaskill/baaee44487653e1afc0d array_group_by()}
+ * Based on Chauncey McAskill's [array_group_by()](https://gist.github.com/mcaskill/baaee44487653e1afc0d)
  * function.
  *
- ** __::groupBy([
- **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- **         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
- **         ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
- **     ],
- **     'state'
- ** );
- ** // >> [
- ** //   'IN' => [
- ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- ** //      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
- ** //   ],
- ** //   'CA' => [
- ** //      ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen']
- ** //   ]
- ** // ]
+ * ## Group by Key
  *
+ * **Usage**
  *
- ** __::groupBy([
- **         ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
- **         ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
- **         ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
- **         ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
- **         ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
- **     ],
- **     'metadata.state'
- ** );
- ** // >> [
- ** //   'IN' => [
- ** //     'Indianapolis' => [
- ** //       ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
- ** //       ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
- ** //     ],
- ** //     'Plainfield' => [
- ** //       ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
- ** //     ],
- ** //   ],
- ** //   'CA' => [
- ** //     'San Diego' => [
- ** //       ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
- ** //     ],
- ** //     'Mountain View' => [
- ** //       ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
- ** //     ],
- ** //   ],
- ** // ]
+ * ```php
+ * __::groupBy([
+ *         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *         ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+ *     ],
+ *     'state'
+ * );
+ * ```
  *
+ * **Result**
  *
- ** __::groupBy([
- **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- **         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
- **         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
- **     ],
- **     function ($value) {
- **         return $value->city;
- **     }
- ** );
- ** // >> [
- ** //   'Indianapolis' => [
- ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- ** //      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
- ** //   ],
- ** //   'San Diego' => [
- ** //      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
- ** //   ]
- ** // ]
+ * ```
+ * [
+ *   'IN' => [
+ *      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *   ],
+ *   'CA' => [
+ *      ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen']
+ *   ]
+ * ]
+ * ```
+ *
+ * ## Group by nested key (dot notation)
+ *
+ * **Usage**
+ *
+ * ```php
+ * __::groupBy([
+ *         ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ *         ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ *         ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+ *         ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+ *         ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+ *     ],
+ *     'metadata.state'
+ * );
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *   'IN' => [
+ *     'Indianapolis' => [
+ *       ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ *       ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+ *     ],
+ *     'Plainfield' => [
+ *       ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+ *     ],
+ *   ],
+ *   'CA' => [
+ *     'San Diego' => [
+ *       ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+ *     ],
+ *     'Mountain View' => [
+ *       ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+ *     ],
+ *   ],
+ * ]
+ * ```
+ *
+ * ## Group by Closure
+ *
+ * **Usage**
+ *
+ * ```php
+ * __::groupBy([
+ *         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ *         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *     ],
+ *     function ($value) {
+ *         return $value->city;
+ *     }
+ * );
+ * ```
+ *
+ * **Result**
+ *
+ * ```
+ * [
+ *   'Indianapolis' => [
+ *      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ *   ],
+ *   'San Diego' => [
+ *      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *   ]
+ * ]
+ * ```
+ *
+ * @author Chauncey McAskill
  *
  * @param array $array
  * @param int|float|string|\Closure $key
  *
  * @return array
- *
  */
 function groupBy(array $array, $key)
 {

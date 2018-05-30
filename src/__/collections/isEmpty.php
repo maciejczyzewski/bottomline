@@ -7,13 +7,21 @@ namespace collections;
  *
  * We consider any non enumerable as empty.
  *
- ** __::isEmpty([]);
- ** // → true
+ * **Usage**
  *
- * @param $value The value to check for emptiness.
+ * ```php
+ * __::isEmpty([]);
+ * ```
  *
- * @return boolean
+ * **Result**
  *
+ * ```
+ * true
+ * ```
+ *
+ * @param array|object $value The value to check for emptiness.
+ *
+ * @return bool
  */
 function isEmpty($value)
 {
