@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/bottomline.php';
+require dirname(__DIR__) . '/bottomline.php';
 
 $methods    = [
     // arrays

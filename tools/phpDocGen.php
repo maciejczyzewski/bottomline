@@ -18,7 +18,7 @@ use PhpParser\Node\Stmt;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 //
 // Factories and other setup
@@ -134,7 +134,7 @@ function registerBottomlineFunction($functionName, Comment $docBlockRaw, $namesp
 
 $bottomlineNamespaces = [];
 
-foreach (glob(__DIR__ . '/src/__/**/*.php') as $file) {
+foreach (glob(dirname(__DIR__) . '/src/__/**/*.php') as $file) {
     $filename = basename($file);
     $namespace = basename(dirname($file));
 
@@ -198,7 +198,7 @@ $docBlockLiteral = $docBlockSerializer->getDocComment($loaderDocBlock);
 // Build our loader
 //
 
-$BOTTOMLINE_LOADER = __DIR__ . '/src/__/load.php';
+$BOTTOMLINE_LOADER = dirname(__DIR__) . '/src/__/load.php';
 
 $bottomlineLoaderFile = $phpParser->parse(file_get_contents($BOTTOMLINE_LOADER));
 $bottomlineLoaderStatements = &$bottomlineLoaderFile[0]->stmts;
