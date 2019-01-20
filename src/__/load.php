@@ -77,6 +77,7 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isNumber(mixed $value) <p>Check if give value is number or not.</p>
  * @method static bool isObject(mixed $value) <p>Check if give value is object or not.</p>
  * @method static bool isString(mixed $value) <p>Check if give value is string or not.</p>
+ * @method static bool isEqual(mixed $value, mixed $value) <p>Check if the two values are deeply equal or not.</p>
  * @method static \__|\BottomlineWrapper|mixed chain(mixed $initialValue) <p>Returns a wrapper instance, allows the value to be passed through multiple bottomline functions.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::chain([0, 1, 2, 3, null])<br />     -&gt;compact()<br />     -&gt;prepend(4)<br />     -&gt;value()<br /> ;</code></pre> <p><strong>Result</strong></p> <pre><code>[4, 1, 2, 3]</code></pre>
  * @method static string camelCase(string $input) <p>Converts string to <a href="https://en.wikipedia.org/wiki/CamelCase">camel case</a>.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::camelCase('Foo Bar');</code></pre> <p><strong>Result</strong></p> <pre><code>'fooBar'</code></pre>
  * @method static string capitalize(string $input) <p>Converts the first character of string to upper case and the remaining to lower case.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::capitalize('FRED');</code></pre> <p><strong>Result</strong></p> <pre><code>'Fred'</code></pre>
