@@ -72,12 +72,12 @@ if (\version_compare(PHP_VERSION, '5.4.0', '<')) {
  * @method static bool isArray(mixed $value) <p>Check if give value is array or not.</p>
  * @method static bool isCollection(mixed $object) <p>Check if the object is a collection.</p><br><p>A collection is either an array or an object.</p>
  * @method static bool isEmail(mixed $value) <p>Check if the value is valid email.</p>
+ * @method static bool isEqual(mixed $object1, mixed $object2) <p>Check if the objects are equals.</p><br><p>Perform a deep (recursive) comparison when the parameters are arrays or objects.</p> <p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings. object objects are compared by their own enumerable properties (as returned by get_object_vars).</p> <p><strong>Usage</strong></p> <pre><code class="language-php">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);</code></pre> <p><strong>Result</strong></p> <pre><code>false</code></pre>
  * @method static bool isFunction(mixed $value) <p>Check if give value is function or not.</p>
  * @method static bool isNull(mixed $value) <p>Check if give value is null or not.</p>
  * @method static bool isNumber(mixed $value) <p>Check if give value is number or not.</p>
  * @method static bool isObject(mixed $value) <p>Check if give value is object or not.</p>
  * @method static bool isString(mixed $value) <p>Check if give value is string or not.</p>
- * @method static bool isEqual(mixed $value, mixed $value) <p>Check if the two values are deeply equal or not.</p>
  * @method static \__|\BottomlineWrapper|mixed chain(mixed $initialValue) <p>Returns a wrapper instance, allows the value to be passed through multiple bottomline functions.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::chain([0, 1, 2, 3, null])<br />     -&gt;compact()<br />     -&gt;prepend(4)<br />     -&gt;value()<br /> ;</code></pre> <p><strong>Result</strong></p> <pre><code>[4, 1, 2, 3]</code></pre>
  * @method static string camelCase(string $input) <p>Converts string to <a href="https://en.wikipedia.org/wiki/CamelCase">camel case</a>.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::camelCase('Foo Bar');</code></pre> <p><strong>Result</strong></p> <pre><code>'fooBar'</code></pre>
  * @method static string capitalize(string $input) <p>Converts the first character of string to upper case and the remaining to lower case.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::capitalize('FRED');</code></pre> <p><strong>Result</strong></p> <pre><code>'Fred'</code></pre>
