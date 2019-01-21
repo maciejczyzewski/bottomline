@@ -517,6 +517,13 @@ __::isCollection([1, 2, 3]);
 // >> true
 ```
 
+##### [__::isCollection](src/__/objects/isEqual.php)
+Performs a deep comparison between two values to determine if they are equivalent.
+```php
+__::isEqual([1, 1.0]);
+// >> false
+```
+
 ### Utilities
 
 #### [__::identity](src/__/utilities/identity.php)

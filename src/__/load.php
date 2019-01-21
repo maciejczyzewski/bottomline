@@ -11,7 +11,7 @@ namespace __;
  ** Arrays                                       [10]
  ** Collections                                  [28]
  ** Functions                                    [3]
- ** Objects                                      [8]
+ ** Objects                                      [9]
  ** Utilities                                    [2]
  ** Strings                                      [13]
  ** Sequences                                    [1]
