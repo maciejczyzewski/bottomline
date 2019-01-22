@@ -219,16 +219,21 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         };
         $a = [1, 2, 3];
         $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+        $c = (object) ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
 
         // Act.
         $aMapped = [];
         $bMapped = [];
+        $cMapped = [];
         __::doForEach($a, $makeMapper($aMapped));
         __::doForEach($b, $makeMapper($bMapped));
+        __::doForEach($c, $makeMapper($cMapped));
 
         // Assert
         $this->assertEquals($a, $aMapped);
         $this->assertEquals($b, $bMapped);
+        $this->assertEquals($c, (object) $cMapped);
+        $this->assertEquals((array) $c, $cMapped);
     }
 
     public function testDoForEachRight()
