@@ -1,33 +1,52 @@
 language: php
 
+install:
+  # We do not use it in unit tests.
+  - composer remove --dev friendsofphp/php-cs-fixer
+  - composer install
+script:
+  - make test
+  - make bench
+
+# We use a matrix to have access to old PHP versions, which requires to run old Ubuntu TravisCI build envs.
+# https://docs.travis-ci.com/user/languages/php/#php-52x---53x-support-is-available-on-precise-only
+# https://docs.travis-ci.com/user/reference/trusty#php-images
+# Sadly not supported with jobs, for what I understand.
+# See https://github.com/travis-ci/travis-ci/issues/8295
+# php:
+#   - 5.6
+#   - 7.0
+#   - 7.1
+#   - 7.2
+#   - 7.3
+
+# matrix:
+#   include:
+#     - php: 5.4
+#       dist: trusty
+#     - php: 5.5
+#       dist: trusty
+
+# Magic YML syntax that I don't really understand.
+# https://github.com/travis-ci/travis-ci/issues/8295#issuecomment-454457787
+stagetest: &stagetest
+  stage: test
+  install:
+  # We do not use it in unit tests.
+  - composer remove --dev friendsofphp/php-cs-fixer
+  - composer install
+  script:
+    - make test
+    - make bench
+
 jobs:
   include:
-    - stage: test
-      php:
-        - 5.6
-        - 7.0
-        - 7.1
-        - 7.2
-        - 7.3
-        - nightly
-
-      # We use a matrix to have access to old PHP versions, which requires to run old Ubuntu TravisCI build envs.
-      # https://docs.travis-ci.com/user/languages/php/#php-52x---53x-support-is-available-on-precise-only
-      # https://docs.travis-ci.com/user/reference/trusty#php-images
-      matrix:
-        include:
-          - php: 5.4
-            dist: trusty
-          - php: 5.5
-            dist: trusty
-
-      install:
-        # We do not use it in unit tests.
-        - composer remove --dev friendsofphp/php-cs-fixer
-        - composer install
-      script:
-        - make test
-        - make bench
+    - <<: *stagetest
+      php: 5.4
+      dist: trusty
+    - <<: *stagetest
+      php: 5.5
+      dist: trusty
 
     - stage: checks
       install: composer install
