@@ -6,7 +6,7 @@ $methods    = [
     // arrays
     'append', 'chunk', 'compact', 'flatten', 'patch', 'prepend', 'randomize', 'range', 'repeat',
     // collections
-    'ease', 'filter', 'first', 'get', 'hasKeys', 'last', 'map', 'max', 'min', 'pluck', 'set', 'unease', 'where',
+    'ease', 'filter', 'first', 'firstIterables', 'get', 'hasKeys', 'last', 'map', 'max', 'min', 'pluck', 'set', 'unease', 'where',
     // functions
     'slug', 'truncate', 'urlify'
 ];
@@ -111,6 +111,11 @@ function bench_filter($i)
 function bench_first($i)
 {
     __::first([1, 2, 3, 4, 5, $i], 2);
+}
+
+function bench_firstIterables($i)
+{
+    __::first(new ArrayIterator([1, 2, 3, 4, 5, $i]), 2);
 }
 
 function bench_get($i)
