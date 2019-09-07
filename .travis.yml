@@ -1,11 +1,11 @@
 language: php
 
-# php:
-#   - 5.6
-#   - 7.0
-#   - 7.1
-#   - 7.2
-#   - 7.3
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
   # - nightly
 # We use a matrix to have access to old PHP versions, which requires to run old Ubuntu TravisCI build envs.
 # https://docs.travis-ci.com/user/languages/php/#php-52x---53x-support-is-available-on-precise-only
