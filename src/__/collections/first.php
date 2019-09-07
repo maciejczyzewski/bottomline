@@ -22,9 +22,26 @@ namespace collections;
  * @param array    $array array of values
  * @param int|null $count number of values to return
  *
- * @return array|mixed
+ * @return array|iterable
  */
-function first(array $array, $count = null)
+function first($array, $count = null)
 {
+    // For iterables.
+    // https://secure.php.net/manual/en/language.types.iterable.php
+    if (!\is_array($array)) {
+        $i = $count ? $count : 1;
+        $values = [];
+        foreach ($array as $value) {
+            $values[] = $value;
+            $i -= 1;
+            if ($i <= 0) {
+                break;
+            }
+        }
+        return $count ? $values : $values[0];
+    }
+    // TODO array_shift reset the array pointer, which is not properly "functional":
+    // this change an implicit state and could create issues in external code.
+    // See https://www.php.net/manual/en/function.array-shift.php
     return $count ? \array_slice($array, 0, $count, true) : \array_shift($array);
 }

@@ -203,10 +203,29 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a = [1, 2, 3, 4, 5];
 
         // Act
-        $x = __::first($a, 2);
+        $x = __::first($a);
+        $y = __::first($a, 2);
 
         // Assert
-        $this->assertEquals([1, 2], $x);
+        $this->assertEquals(1, $x);
+        $this->assertEquals([1, 2], $y);
+    }
+
+    public function testFirstIterable()
+    {
+        if (version_compare(PHP_VERSION, '7.1', '<')) {
+            return;
+        }
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3, 4, 5]);
+
+        // Act
+        $x = __::first($a);
+        $y = __::first($a, 2);
+
+        // Assert
+        $this->assertEquals(1, $x);
+        $this->assertEquals([1, 2], $y);
     }
 
     public function testDoForEach()
