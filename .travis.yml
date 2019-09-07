@@ -26,16 +26,16 @@ script:
   - make test
   - make bench
 
-# jobs:
-#   include:
-#     - stage: checks
-#       install: composer install
-#       php:
-#         - 7.2
-#       script:
-#         - make cs-check
-#         # Ensure documentation has been generated:
-#         # * generate it locally (make doc) ;
-#         # * ensure git status gives no changes: if it does the doc wasn't properly
-#         # updated (this must make the CI build fail).
-#         - make doc || ./tools/hasGitChanges.sh
+jobs:
+  include:
+    - stage: checks
+      install: composer install
+      php:
+        - 7.2
+      script:
+        - make cs-check
+        # Ensure documentation has been generated:
+        # * generate it locally (make doc) ;
+        # * ensure git status gives no changes: if it does the doc wasn't properly
+        # updated (this must make the CI build fail).
+        - make doc || ./tools/hasGitChanges.sh
