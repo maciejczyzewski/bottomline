@@ -6,7 +6,8 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  # - nightly
+  - nightly
+
 # We use a matrix to have access to old PHP versions, which requires to run old Ubuntu TravisCI build envs.
 # https://docs.travis-ci.com/user/languages/php/#php-52x---53x-support-is-available-on-precise-only
 # https://docs.travis-ci.com/user/reference/trusty#php-images
@@ -16,16 +17,6 @@ matrix:
       dist: trusty
     - php: 5.5
       dist: trusty
-    # - php: 5.6
-    #   dist: bionic
-    # - php: 7.0
-    #   dist: bionic
-    # - php: 7.1
-    #   dist: bionic
-    # - php: 7.2
-    #   dist: bionic
-    # - php: 7.3
-    #   dist: bionic
 
 install:
   # We do not use it in unit tests.
