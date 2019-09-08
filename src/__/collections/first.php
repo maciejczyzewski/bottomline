@@ -19,10 +19,10 @@ namespace collections;
  * [1, 2]
  * ```
  *
- * @param array    $array array of values
+ * @param array|iterable    $array array (or any iterable) of values
  * @param int|null $count number of values to return
  *
- * @return array|iterable
+ * @return array|mixed
  */
 function first($array, $count = null)
 {
