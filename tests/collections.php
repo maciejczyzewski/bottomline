@@ -197,6 +197,31 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2, 3, true], $z);
     }
 
+    public function testFilterIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3, 4, 5]);
+        $b = new ArrayIterator([
+            ['name' => 'fred',   'age' => 32],
+            ['name' => 'maciej', 'age' => 16]
+        ]);
+        $c = new ArrayIterator([0, 1, false, 2, null, 3, true]);
+
+        // Act
+        $x = __::filter($a, function ($n) {
+            return $n > 3;
+        });
+        $y = __::filter($b, function ($n) {
+            return $n['age'] == 16;
+        });
+        $z = __::filter($c);
+
+        // Assert
+        $this->assertEquals([4, 5], $x);
+        $this->assertEquals([$b[1]], $y);
+        $this->assertEquals([1, 2, 3, true], $z);
+    }
+
     public function testFirst()
     {
         // Arrange

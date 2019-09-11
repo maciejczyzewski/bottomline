@@ -28,13 +28,28 @@ namespace collections;
  * [['name' => 'fred', 'age' => 32]]
  * ```
  *
- * @param array         $array   Array to filter
+ * @param array|iterable         $array   Array to filter
  * @param \Closure|null $closure Closure to filter the array
  *
  * @return array
  */
-function filter(array $array, \Closure $closure = null)
+function filter($array, \Closure $closure = null)
 {
+    // For iterables.
+    // https://secure.php.net/manual/en/language.types.iterable.php
+    if (!\is_array($array)) {
+        $values = [];
+        foreach ($array as $value) {
+            if ($closure) {
+                if ($closure($value)) {
+                    $values[] = $value;
+                }
+            } else if ($value) {
+                $values[] = $value;
+            }
+        }
+        return $values;
+    }
     return \array_values(
         $closure ? \array_filter($array, $closure) : \array_filter($array)
     );
