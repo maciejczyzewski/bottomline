@@ -41,7 +41,7 @@ function filter($array, \Closure $closure = null)
             if ($closure($value)) {
                 $values[] = $value;
             }
-        } else if ($value) {
+        } elseif ($value) {
             $values[] = $value;
         }
     }
