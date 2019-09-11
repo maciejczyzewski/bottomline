@@ -35,22 +35,15 @@ namespace collections;
  */
 function filter($array, \Closure $closure = null)
 {
-    // For iterables.
-    // https://secure.php.net/manual/en/language.types.iterable.php
-    if (!\is_array($array)) {
-        $values = [];
-        foreach ($array as $value) {
-            if ($closure) {
-                if ($closure($value)) {
-                    $values[] = $value;
-                }
-            } else if ($value) {
+    $values = [];
+    foreach ($array as $value) {
+        if ($closure) {
+            if ($closure($value)) {
                 $values[] = $value;
             }
+        } else if ($value) {
+            $values[] = $value;
         }
-        return $values;
     }
-    return \array_values(
-        $closure ? \array_filter($array, $closure) : \array_filter($array)
-    );
+    return $values;
 }
