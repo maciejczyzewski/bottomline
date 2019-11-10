@@ -715,10 +715,36 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([3, 6, 3], $x);
     }
 
+    public function testMapIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3]);
+
+        // Act
+        $x = __::map($a, function ($n) {
+            return $n * 3;
+        });
+
+        // Assert
+        $this->assertEquals([3, 6, 9], $x);
+    }
+
     public function testMax()
     {
         // Arrange
         $a = [1, 2, 3];
+
+        // Act
+        $x = __::max($a);
+
+        // Assert
+        $this->assertEquals(3, $x);
+    }
+
+    public function testMaxIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3]);
 
         // Act
         $x = __::max($a);
@@ -1152,6 +1178,38 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         });
     }
 
+    public function testMapKeysIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([
+            'name1' => [
+                'name' => 'Tuan',
+                'age' => 26
+            ],
+            'name2' => [
+                'name' => 'Nguyen',
+                'age' => '25'
+            ],
+        ]);
+
+        // Act
+        $b = __::mapKeys($a, function ($key) {
+            return strtoupper($key);
+        });
+
+        // Assert
+        $this->assertEquals([
+            'NAME1' => [
+                'name' => 'Tuan',
+                'age' => 26
+            ],
+            'NAME2' => [
+                'name' => 'Nguyen',
+                'age' => '25'
+            ],
+        ], $b);
+    }
+
     public function testMapValues()
     {
         // Arrange
@@ -1204,5 +1262,37 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         $this->assertEquals($a, $b);
+    }
+
+    public function testMapValuesIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([
+            'name1' => [
+                'name' => 'Tuan',
+                'age' => 26
+            ],
+            'name2' => [
+                'name' => 'Nguyen',
+                'age' => '25'
+            ],
+        ]);
+
+        // Act
+        $b = __::mapValues($a, function ($value) {
+            return array_flip($value);
+        });
+
+        // Assert
+        $this->assertEquals([
+            'name1' => [
+                'Tuan' => 'name',
+                26 => 'age'
+            ],
+            'name2' => [
+                'Nguyen' => 'name',
+                25 => 'age'
+            ],
+        ], $b);
     }
 }

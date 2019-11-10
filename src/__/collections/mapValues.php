@@ -19,12 +19,12 @@ namespace collections;
  * ['x' => 'x_1']
  * ```
  *
- * @param array    $array       Array of values
+ * @param array|iterable    $array       Array of values
  * @param \Closure $closure     Closure to map the values
  *
  * @return array
  */
-function mapValues(array $array, \Closure $closure = null)
+function mapValues($array, \Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';

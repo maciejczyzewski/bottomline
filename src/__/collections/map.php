@@ -19,7 +19,7 @@ namespace collections;
  * [3, 6, 9]
  * ```
  *
- * @param array|object $collection The collection of values to map over.
+ * @param array|iterable|object $collection The collection of values to map over.
  * @param \Closure     $iteratee   The function to apply on each value.
  *
  * @return array

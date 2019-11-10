@@ -3,7 +3,7 @@
 namespace collections;
 
 /**
- * Gets the first element of an array. Passing n returns the first n elements.
+ * Gets the first element of an array/iterable. Passing n returns the first n elements.
  *
  * When `$count` is `null`, only the first element will be returned.
  *
