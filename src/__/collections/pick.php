@@ -28,7 +28,7 @@ namespace collections;
  * ]
  * ```
  *
- * @param array|object $collection The collection to iterate over.
+ * @param array|iterable|object $collection The collection to iterate over.
  * @param array        $paths      Array paths to pick
  * @param mixed        $default    The default value that will be used if the
  *                                 specified path does not exist.
@@ -39,5 +39,5 @@ function pick($collection = [], array $paths = [], $default = null)
 {
     return \__::reduce($paths, function ($results, $path) use ($collection, $default) {
         return \__::set($results, $path, \__::get($collection, $path, $default));
-    }, \__::isObject($collection) ? new \stdClass() : []);
+    }, \__::isObject($collection) && !($collection instanceof \ArrayAccess) ? new \stdClass() : []);
 }

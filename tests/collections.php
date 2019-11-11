@@ -939,6 +939,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2], $z2);
     }
 
+    public function testPluckIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([
+            ['foo' => 'bar',  'bis' => 'ter',  '' => 0],
+            ['foo' => 'bar2', 'bis' => 'ter2', '' => 1],
+        ]);
+
+        // Act
+        $x  = __::pluck($a, 'foo');
+        $x2 = __::pluck($a, '');
+
+        // Assert
+        $this->assertEquals(['bar', 'bar2'], $x);
+        $this->assertEquals([0, 1], $x2);
+    }
+
     public function testReduceArray()
     {
         // Arrange
@@ -1137,6 +1154,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals((object) [
             'marseille' => 1578484,
             'london' => null
+        ], $x);
+    }
+
+    public function testPickIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator(['a' => 1, 'b' => ['c' => 3, 'd' => 4], 'h' => 5]);
+
+        // Act
+        $x = __::pick($a, ['a', 'b.d', 'e', 'f.g']);
+
+        // Assert
+        $this->assertEquals([
+            'a' => 1,
+            'b' => ['d' => 4],
+            'e' => null,
+            'f' => ['g' => null]
         ], $x);
     }
 
