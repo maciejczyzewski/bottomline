@@ -172,6 +172,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 
+    public function testUneaseIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator(['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z']);
+
+        // Act
+        $x = __::unease($a);
+
+        // Assert
+        $this->assertEquals(2, count($x));
+        $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
+    }
+
     public function testFilter()
     {
         // Arrange
@@ -866,11 +879,13 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         // Check we got back a Generator.
-        $this->assertTrue($x instanceof \ArrayIterator);
+        $this->assertTrue(is_array($x));
         $xValues = [];
         foreach ($x as $key => $value) {
             $xValues[$key] = $value;
         }
+        $this->assertEquals(new ArrayIterator(['color' => ['favorite' => 'red', 'model' => 3, 5], 3]), $a1);
+        $this->assertEquals(new ArrayIterator([10, 'color' => ['favorite' => 'green', 'blue']]), $a2);
         $this->assertEquals(['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10], $xValues);
     }
 
@@ -1185,6 +1200,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['foo' => ['bar' => ['not_exist' => 'baz']]], $x);
     }
 
+    public function testSetIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator(['foo' => ['bar' => 'ter']]);
+
+        // Act
+        $x = __::set($a, 'foo.baz.ber', 'fer');
+
+        // Assert
+        $this->assertEquals(new ArrayIterator(['foo' => ['bar' => 'ter']]), $a);
+        $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
+    }
+
     public function testWhere()
     {
         // Arrange
@@ -1193,6 +1221,28 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ['name' => 'maciej', 'age' => 16],
             ['a' => 'b', 'c' => 'd']
         ];
+
+        // Act
+        $x = __::where($a, ['age' => 16]);
+        $x2 = __::where($a, ['age' => 16, 'name' => 'fred']);
+        $x3 = __::where($a, ['name' => 'maciej', 'age' => 16]);
+        $x4 = __::where($a, ['name' => 'unknown']);
+
+        // Assert
+        $this->assertEquals([$a[1]], $x);
+        $this->assertEquals([], $x2);
+        $this->assertEquals([$a[1]], $x3);
+        $this->assertEquals([], $x4);
+    }
+
+    public function testWhereIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([
+            ['name' => 'fred',   'age' => 32],
+            ['name' => 'maciej', 'age' => 16],
+            ['a' => 'b', 'c' => 'd']
+        ]);
 
         // Act
         $x = __::where($a, ['age' => 16]);

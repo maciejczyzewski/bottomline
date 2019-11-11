@@ -15,7 +15,24 @@ function _universal_set($collection, $key, $value)
         $array[$key] = $value;
         return $array;
     };
-    $setter = \__::isObject($collection) && !($collection instanceof \ArrayAccess) ? $set_object : $set_array;
+    if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+        $set_iterator = function ($array, $key, $value) {
+            // We ensure we do not modify an iterator original values,
+            // by making a copy to an array.
+            $array = iterator_to_array($array);
+            $array[$key] = $value;
+            return $array;
+        };
+    }
+    $setter = $set_array;
+    if (\__::isObject($collection) && !($collection instanceof \ArrayAccess)) {
+        $setter = $set_object;
+    }
+    if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+        if ($collection instanceof \Iterator) {
+            $setter = $set_iterator;
+        }
+    }
     return call_user_func_array($setter, [$collection, $key, $value]);
 }
 
@@ -43,7 +60,7 @@ function _universal_set($collection, $key, $value)
  * ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
  * ```
  *
- * @param array|object $collection Collection of values
+ * @param array|iterable|object $collection Collection of values
  * @param string       $path       Key or index. Supports dot notation
  * @param mixed        $value      The value to set at position $key
  *

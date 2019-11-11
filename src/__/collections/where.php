@@ -24,22 +24,20 @@ namespace collections;
  *
  * @todo: implement compatibility with more than 2 dimensial arrays:
  *
- * @param array $array array of values
+ * @param array|iterable $array array of values
  * @param array $cond  condition in format of ['KEY'=>'VALUE']
  *
  * @return array
  */
-function where(array $array = [], array $cond = [])
+function where($array = [], array $cond = [])
 {
     $result = [];
-
     foreach ($array as $arrItem) {
         foreach ($cond as $condK => $condV) {
             if (!isset($arrItem[$condK]) || $arrItem[$condK] !== $condV) {
                 continue 2;
             }
         }
-
         $result[] = $arrItem;
     }
 

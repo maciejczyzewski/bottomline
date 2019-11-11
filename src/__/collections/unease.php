@@ -18,15 +18,14 @@ namespace collections;
  * ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]
  * ```
  *
- * @param array  $collection Hash map of values
+ * @param array|iterable  $collection Hash map of values
  * @param string $separator  The glue used in the keys
  *
  * @return array
  */
-function unease(array $collection, $separator = '.')
+function unease($collection, $separator = '.')
 {
     $nonDefaultSeparator = $separator !== '.';
-
     $map = [];
     foreach ($collection as $key => $value) {
         $map = \__::set(
