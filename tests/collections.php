@@ -677,11 +677,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = [1, 2, 3];
-        $b = new ArrayIterator([1, 2, 3]);
 
         // Act
         $x = __::reverseIterable($a, 2);
-        $y = __::reverseIterable($b, 2);
 
         // Assert
         // Check we got back a Generator.
@@ -691,12 +689,26 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             $xValues[] = $value;
         }
         $this->assertEquals([3, 2, 1], $xValues);
-        $this->assertTrue($y instanceof \Generator);
-        $yValues = [];
-        foreach ($y as $value) {
-            $yValues[] = $value;
+    }
+
+    public function testReveseIterableArrayIterable()
+    {
+        if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+            // Arrange
+            $a = new ArrayIterator([1, 2, 3]);
+
+            // Act
+            $x = __::reverseIterable($a, 2);
+
+            // Assert
+            // Check we got back a Generator.
+            $this->assertTrue($x instanceof \Generator);
+            $xValues = [];
+            foreach ($x as $value) {
+                $xValues[] = $value;
+            }
+            $this->assertEquals([3, 2, 1], $xValues);
         }
-        $this->assertEquals([3, 2, 1], $yValues);
     }
 
     public function testLast()
@@ -1004,6 +1016,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testReduceIterable()
     {
+        
         // Arrange
         $a = new ArrayIterator([1, 2, 3]);
         $aReducer = function ($accumulator, $value) {
@@ -1034,17 +1047,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testReduceRightIterable()
     {
-        // Arrange
-        $a = new ArrayIterator(['a', 'b', 'c']);
-        $aReducer = function ($word, $char) {
-            return $word . $char;
-        };
+        if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
+            // Arrange
+            $a = new ArrayIterator(['a', 'b', 'c']);
+            $aReducer = function ($word, $char) {
+                return $word . $char;
+            };
 
-        // Act
-        $x = __::reduceRight($a, $aReducer, '');
+            // Act
+            $x = __::reduceRight($a, $aReducer, '');
 
-        // Assert
-        $this->assertEquals('cba', $x);
+            // Assert
+            $this->assertEquals('cba', $x);
+        }
     }
 
     public function testPick()
