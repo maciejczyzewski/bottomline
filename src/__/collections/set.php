@@ -15,23 +15,19 @@ function _universal_set($collection, $key, $value)
         $array[$key] = $value;
         return $array;
     };
-    if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
-        $set_iterator = function ($array, $key, $value) {
-            // We ensure we do not modify an iterator original values,
-            // by making a copy to an array.
-            $array = iterator_to_array($array);
-            $array[$key] = $value;
-            return $array;
-        };
-    }
+    $set_iterator = function ($array, $key, $value) {
+        // We ensure we do not modify an iterator original values,
+        // by making a copy to an array.
+        $array = iterator_to_array($array);
+        $array[$key] = $value;
+        return $array;
+    };
     $setter = $set_array;
     if (\__::isObject($collection) && !($collection instanceof \ArrayAccess)) {
         $setter = $set_object;
     }
-    if (version_compare(PHP_VERSION, '5.5.0', '>=')) {
-        if ($collection instanceof \Iterator) {
-            $setter = $set_iterator;
-        }
+    if ($collection instanceof \Iterator) {
+        $setter = $set_iterator;
     }
     return call_user_func_array($setter, [$collection, $key, $value]);
 }

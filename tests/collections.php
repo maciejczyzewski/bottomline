@@ -878,7 +878,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $x = __::merge($a1, $a2);
 
         // Assert
-        // Check we got back a Generator.
+        // Check we got back an array.
         $this->assertTrue(is_array($x));
         $xValues = [];
         foreach ($x as $key => $value) {
