@@ -683,7 +683,11 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
         // Assert
         // Check we got back a Generator.
-        $this->assertTrue($x instanceof \Generator);
+        if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+            $this->assertTrue(is_array($x));
+        } else {
+            $this->assertTrue($x instanceof \Generator);
+        }
         $xValues = [];
         foreach ($x as $value) {
             $xValues[] = $value;
