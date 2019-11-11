@@ -303,6 +303,15 @@ __::isEmpty(new stdClass());
 // >> true
 ```
 
+##### [__::reverseIterable](src/__/collections/reverseIterable.php)
+Return the reverse of an array/iterable without making a copy of it, by returning a Generator.
+```php
+__::reverseIterable([1, 2, 3]);
+// >> Generator([3, 2, 1])
+__::reverseIterable(new ArrayIterator([1, 2, 3]));
+// >> Generator([3, 2, 1])
+```
+
 ##### [__::last](src/__/collections/last.php)
 Gets the last element of an array. Passing n returns the last n elements.
 ```php

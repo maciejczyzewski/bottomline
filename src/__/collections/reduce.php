@@ -90,7 +90,7 @@ namespace collections;
  * ]
  * ```
  *
- * @param array|object       $collection  The collection to iterate over.
+ * @param array|iterable|object       $collection  The collection to iterate over.
  * @param \Closure           $iteratee    The function invoked per iteration.
  * @param array|object|mixed $accumulator The initial value.
  *

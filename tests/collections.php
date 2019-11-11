@@ -673,6 +673,32 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(__::isEmpty(true));
     }
 
+    public function testReveseIterableArray()
+    {
+        // Arrange
+        $a = [1, 2, 3];
+        $b = new ArrayIterator([1, 2, 3]);
+
+        // Act
+        $x = __::reverseIterable($a, 2);
+        $y = __::reverseIterable($b, 2);
+
+        // Assert
+        // Check we got back a Generator.
+        $this->assertTrue($x instanceof \Generator);
+        $xValues = [];
+        foreach ($x as $value) {
+            $xValues[] = $value;
+        }
+        $this->assertEquals([3, 2, 1], $xValues);
+        $this->assertTrue($y instanceof \Generator);
+        $yValues = [];
+        foreach ($y as $value) {
+            $yValues[] = $value;
+        }
+        $this->assertEquals([3, 2, 1], $yValues);
+    }
+
     public function testLast()
     {
         // Arrange
@@ -765,6 +791,18 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(1, $x);
     }
 
+    public function testMinIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3]);
+
+        // Act
+        $x = __::min($a);
+
+        // Assert
+        $this->assertEquals(1, $x);
+    }
+
     public function testMerge()
     {
         // Arrange
@@ -799,6 +837,25 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert
         $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
         $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
+    }
+
+    public function testMergeIterable()
+    {
+        // Arrange
+        $a1 = new ArrayIterator(['color' => ['favorite' => 'red', 'model' => 3, 5], 3]);
+        $a2 = new ArrayIterator([10, 'color' => ['favorite' => 'green', 'blue']]);
+
+        // Act
+        $x = __::merge($a1, $a2);
+
+        // Assert
+        // Check we got back a Generator.
+        $this->assertTrue($x instanceof \ArrayIterator);
+        $xValues = [];
+        foreach ($x as $key => $value) {
+            $xValues[$key] = $value;
+        }
+        $this->assertEquals(['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10], $xValues);
     }
 
     public function testPluck()
@@ -945,10 +1002,40 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ], $y);
     }
 
+    public function testReduceIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([1, 2, 3]);
+        $aReducer = function ($accumulator, $value) {
+            return $accumulator + $value;
+        };
+
+        // Act
+        $x = __::reduce($a, $aReducer, 2);
+
+        // Assert
+        $this->assertEquals(8, $x);
+    }
+
     public function testReduceRightArray()
     {
         // Arrange
         $a = ['a', 'b', 'c'];
+        $aReducer = function ($word, $char) {
+            return $word . $char;
+        };
+
+        // Act
+        $x = __::reduceRight($a, $aReducer, '');
+
+        // Assert
+        $this->assertEquals('cba', $x);
+    }
+
+    public function testReduceRightIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator(['a', 'b', 'c']);
         $aReducer = function ($word, $char) {
             return $word . $char;
         };

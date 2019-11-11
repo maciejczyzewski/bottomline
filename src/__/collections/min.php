@@ -1,5 +1,7 @@
 <?php
 
+namespace collections;
+
 /**
  * Returns the minimum value from the collection. If passed an iterator, min will
  * return min value returned by the iterator.
@@ -16,8 +18,17 @@
  * 1
  * ```
  *
- * @param array $array array of values
+ * @param array|iterable $array array of values
  *
  * @return mixed
  */
-return 'min';
+function bottomline_min($array)
+{
+    $minValue = null;
+    foreach ($array as $value) {
+        if ($minValue === null || $value < $minValue) {
+            $minValue = $value;
+        }
+    }
+    return $minValue;
+}

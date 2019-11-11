@@ -1,6 +1,7 @@
 <?php
 
 const MIN_VERSION = '5.5.9';
+const PREFIX_FN_BOTTOMLINE = 'bottomline_';
 
 if (\version_compare(PHP_VERSION, MIN_VERSION, '<')) {
     die(sprintf("This script should be run with a PHP version higher than %s due to dependency constraints.\n", MIN_VERSION));
@@ -107,12 +108,18 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
     $descriptionBody = trim(preg_replace('/\n/', ' ', $functionSummary . '<br>' . $functionDescription));
     $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
     $description = new Description($descriptionBody);
-
+    
     $returnStatements = $docBlock->getTagsByName('return');
     $functionReturnType = array_shift($returnStatements);
-
+    
     if ($functionReturnType !== null) {
         $functionReturnType = $functionReturnType->getType();
+    }
+    
+    // Change documented names for function like max which are declared in files
+    // with a function prefix name (to avoid clash with PHP generic function max).
+    if (substr($functionName, 0, strlen(PREFIX_FN_BOTTOMLINE)) === PREFIX_FN_BOTTOMLINE) {
+        $functionName = str_replace(PREFIX_FN_BOTTOMLINE, '', $functionName);
     }
 
     $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);

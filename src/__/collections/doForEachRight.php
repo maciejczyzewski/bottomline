@@ -3,31 +3,6 @@
 namespace collections;
 
 /**
- * Iterate an array or other foreach-able without making a copy of it.
- *
- * Code for PHP_VERSION >= 5.5.(using `yield`) is from mpen and linepogl
- * See https://stackoverflow.com/a/36605605/1956471
- *
- * @param array|\Traversable $iterable
- * @return \Generator
- */
- if (version_compare(PHP_VERSION, '5.5.0', '<')) {
-     eval('
-     function iter_reverse($iterable) {
-         return array_reverse($iterable, true);
-     }
-     ');
- } else {
-     eval('
-     function iter_reverse($iterable) {
-         for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
-             yield $key => current($iterable);
-         }
-     }
-     ');
- }
-
-/**
  * Iterate over elements of the collection, from right to left, and invokes iteratee
  * for each element.
  *
@@ -55,5 +30,5 @@ namespace collections;
  */
 function doForEachRight($collection, \Closure $iteratee)
 {
-    \__::doForEach(iter_reverse($collection), $iteratee);
+    \__::doForEach(\__::reverseIterable($collection), $iteratee);
 }

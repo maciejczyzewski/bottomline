@@ -8,7 +8,7 @@ namespace collections;
  * - If the collections have common keys, then the last passed keys override the previous.
  * - If numerical indexes are passed, then last passed indexes override the previous.
  *
- * For a non-recursive merge, see `__::merge()`.
+ * For a non-recursive merge, see `__::assign()`.
  *
  * **Usage**
  *
@@ -25,7 +25,7 @@ namespace collections;
  * ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
  * ```
  *
- * @param array|object ...$_ Collections to merge.
+ * @param array|iterable|object ...$_ Collections to merge.
  *
  * @return array|object Concatenated collection.
  */
