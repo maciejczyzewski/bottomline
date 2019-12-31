@@ -114,6 +114,29 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(count($expected), $itrSize);
     }
 
+    public function testDropWithGenerator()
+    {
+        $a = [1, 2, 3, 4, 5];
+        $generator = call_user_func(function () use ($a) {
+            foreach ($a as $item) {
+                yield $item;
+            }
+        });
+
+        $this->assertInstanceOf(Generator::class, $generator);
+
+        $expected = __::drop($a, 3);
+        $actual = __::drop($generator, 3);
+        $itrSize = 0;
+
+        foreach ($actual as $i => $item) {
+            ++$itrSize;
+            $this->assertEquals($item, $expected[$i]);
+        }
+
+        $this->assertEquals(count($expected), $itrSize);
+    }
+
     public function testFlatten()
     {
         // Arrange

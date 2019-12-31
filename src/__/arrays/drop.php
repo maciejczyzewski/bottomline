@@ -9,21 +9,29 @@ namespace arrays;
  *
  * @internal
  *
- * @param iterable $input
- * @param int      $number
+ * @param \Traversable $input
+ * @param int          $number
  *
  * @return \Generator
  */
 function dropIterable($input, $number)
 {
+    // We have our own counter for elements since iterators and generators can
+    // return arbitrary keys.
+    //
+    //   https://www.php.net/manual/en/iterator.key.php
+    //   https://www.php.net/manual/en/language.generators.syntax.php#control-structures.yield.associative
+    $count = 0;
     $iterator = \__::getIterator($input);
 
-    foreach ($iterator as $i => $item) {
-        if ($i < $number) {
+    foreach ($iterator as $item) {
+        ++$count;
+
+        if ($count <= $number) {
             continue;
         }
 
-        yield $iterator->current();
+        yield $item;
     }
 }
 
@@ -42,8 +50,8 @@ function dropIterable($input, $number)
  * [3, 5]
  * ```
  *
- * @param array|iterable $input  The array or iterable to query.
- * @param int            $number The number of elements to drop.
+ * @param array|\Traversable|iterable $input  The array or iterable to query.
+ * @param int                         $number The number of elements to drop.
  *
  * @throws \Exception
  *
