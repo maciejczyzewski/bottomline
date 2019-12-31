@@ -46,9 +46,6 @@ jobs:
   include:
   # Anyway, here are the PHP versions specified, with the build env when necessary.
     - <<: *stagetest
-      php: 5.4
-      dist: trusty
-    - <<: *stagetest
       php: 5.5
       dist: trusty
     - <<: *stagetest

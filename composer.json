@@ -4,7 +4,7 @@
     "keywords": ["__", "bottomline", "library", "utility", "functions"],
     "type": "library",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "ext-mbstring": "*"
     },
     "license": "MIT",
