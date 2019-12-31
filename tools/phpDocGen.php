@@ -53,6 +53,11 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
     $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
     $functionArguments = $docBlock->getTagsByName('param');
     $functionArgumentDefinitions = $functionDefinition->getParameters();
+    $isInternal = count($docBlock->getTagsByName('internal')) > 0;
+
+    if ($isInternal) {
+        return;
+    }
 
     $argDefs = [];
 
