@@ -33,21 +33,125 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([1, 2, 3, [4, 5]], $x2);
     }
 
-    public function testChunk()
+    public static function dataProvider_chunk()
     {
-        // Arrange
-        $a = [1, 2, 3, 4, 5];
-        $b = [1];
+        return [
+            [
+                'sourceArray' => [1, 2, 3, 4, 5],
+                'chunkSize' => 3,
+                'preserveKeys' => false,
+                'expectedChunks' => [
+                    [1, 2, 3],
+                    [4, 5],
+                ],
+            ],
+            [
+                'sourceArray' => [1],
+                'chunkSize' => 3,
+                'preserveKeys' => false,
+                'expectedChunks' => [
+                    [1],
+                ],
+            ],
+            [
+                'sourceArray' => [
+                    'a' => 1,
+                    'b' => 2,
+                    'c' => 3,
+                    'd' => 4,
+                    'e' => 5,
+                ],
+                'chunkSize' => 2,
+                'preserveKeys' => true,
+                'expectedChunks' => [
+                    [
+                        'a' => 1,
+                        'b' => 2,
+                    ],
+                    [
+                        'c' => 3,
+                        'd' => 4,
+                    ],
+                    [
+                        'e' => 5,
+                    ],
+                ],
+            ],
+            [
+                'sourceArray' => new IteratorAggregateSample([1, 2, 3, 4, 5]),
+                'chunkSize' => 3,
+                'preserveKeys' => false,
+                'expectedChunks' => [
+                    [1, 2, 3],
+                    [4, 5],
+                ],
+            ],
+            [
+                'sourceArray' => call_user_func(function () {
+                    yield 1;
+                    yield 2;
+                    yield 3;
+                    yield 4;
+                    yield 5;
+                }),
+                'chunkSize' => 3,
+                'preserveKeys' => false,
+                'expectedChunks' => [
+                    [1, 2, 3],
+                    [4, 5],
+                ],
+            ],
+            [
+                'sourceArray' => new ArrayIterator([1, 2, 3, 4, 5]),
+                'chunkSize' => 3,
+                'preserveKeys' => false,
+                'expectedChunks' => [
+                    [1, 2, 3],
+                    [4, 5],
+                ],
+            ],
+            [
+                'sourceArray' => new ArrayIterator([
+                    'a' => 1,
+                    'b' => 2,
+                    'c' => 3,
+                    'd' => 4,
+                    'e' => 5,
+                ]),
+                'chunkSize' => 2,
+                'preserveKeys' => true,
+                'expectedChunks' => [
+                    [
+                        'a' => 1,
+                        'b' => 2,
+                    ],
+                    [
+                        'c' => 3,
+                        'd' => 4,
+                    ],
+                    [
+                        'e' => 5,
+                    ],
+                ],
+            ],
+        ];
+    }
 
-        // Act
-        $x = __::chunk($a, 3);
-        $y = __::chunk($b, 3);
+    /**
+     * @dataProvider dataProvider_chunk
+     *
+     * @param array|\Traversable $sourceArray
+     * @param int                $chunkSize
+     * @param bool               $preserveKeys
+     * @param array              $expectedChunks
+     */
+    public function testChunk($sourceArray, $chunkSize, $preserveKeys, $expectedChunks)
+    {
+        $actual = __::chunk($sourceArray, $chunkSize, $preserveKeys);
 
-        // Assert
-        $this->assertEquals(2, count($x));
-        $this->assertEquals([1, 2, 3], $x[0]);
-        $this->assertEquals([4, 5], $x[1]);
-        $this->assertEquals([[1]], $y);
+        foreach ($actual as $i => $chunk) {
+            $this->assertEquals($expectedChunks[$i], $chunk);
+        }
     }
 
     public function testCompact()
