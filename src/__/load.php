@@ -132,6 +132,6 @@ class __
         if (isset(self::$functions[$name])) {
             return \call_user_func_array(self::$functions[$name], $arguments);
         }
-        throw new \Exception('Invalid function: ' . $name);
+        throw new \BadFunctionCallException('Invalid function: ' . $name);
     }
 }
