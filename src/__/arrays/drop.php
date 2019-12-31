@@ -3,6 +3,31 @@
 namespace arrays;
 
 /**
+ * When a function has the `yield` keyword, the returned value becomes a
+ * \Generator. In order to bypass this behavior and allow `drop` to return either
+ * an array or a \Generator, this is code is extracted into a separate function.
+ *
+ * @internal
+ *
+ * @param iterable $input
+ * @param int      $number
+ *
+ * @return \Generator
+ */
+function dropIterable($input, $number)
+{
+    $iterator = \__::getIterator($input);
+
+    foreach ($iterator as $i => $item) {
+        if ($i < $number) {
+            continue;
+        }
+
+        yield $iterator->current();
+    }
+}
+
+/**
  * Creates a slice of array with n elements dropped from the beginning.
  *
  * **Usage**
@@ -22,27 +47,13 @@ namespace arrays;
  *
  * @throws \Exception
  *
- * @return array|iterable
+ * @return array|\Generator
  */
 function drop(/*iterable*/ $input, $number = 1)
 {
     if (is_array($input)) {
-        return array_slice($input, $number);
+        return \array_slice($input, $number);
     }
 
-    if ($input instanceof \Iterator) {
-        for ($i = 0; $i < $number; $i++) {
-            $input->next();
-        }
-
-        return $input;
-    }
-
-    if ($input instanceof \IteratorAggregate) {
-        $itr = $input->getIterator();
-
-        return drop($itr, $number);
-    }
-
-    throw new \InvalidArgumentException('$input should implement the Iterator or IteratorAggregate interface');
+    return dropIterable($input, $number);
 }

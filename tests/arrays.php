@@ -1,5 +1,20 @@
 <?php
 
+class IteratorAggregateSample implements IteratorAggregate
+{
+    private $data;
+
+    public function __construct($data)
+    {
+        $this->data = $data;
+    }
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->data);
+    }
+}
+
 class ArraysTest extends \PHPUnit\Framework\TestCase
 {
     // ...
@@ -63,6 +78,40 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([3], $y);
         $this->assertEquals([], $z);
         $this->assertEquals([1, 2, 3], $xa);
+    }
+
+    public function testDropWithIterator()
+    {
+        $a = [1, 2, 3, 4, 5];
+        $aItr = new ArrayIterator($a);
+
+        $expected = __::drop($a, 3);
+        $actual = __::drop($aItr, 3);
+        $itrSize = 0;
+
+        foreach ($actual as $i => $item) {
+            ++$itrSize;
+            $this->assertEquals($item, $expected[$i]);
+        }
+
+        $this->assertEquals(count($expected), $itrSize);
+    }
+
+    public function testDropWithIteratorAggregate()
+    {
+        $a = [1, 2, 3, 4, 5];
+        $aItrAgg = new IteratorAggregateSample($a);
+
+        $expected = __::drop($a, 3);
+        $actual = __::drop($aItrAgg, 3);
+        $itrSize = 0;
+
+        foreach ($actual as $i => $item) {
+            ++$itrSize;
+            $this->assertEquals($item, $expected[$i]);
+        }
+
+        $this->assertEquals(count($expected), $itrSize);
     }
 
     public function testFlatten()
