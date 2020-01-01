@@ -3,6 +3,29 @@
 namespace collections;
 
 /**
+ * @internal
+ *
+ * @param \Traversable $iterable
+ * @param \Closure|null $closure Closure to filter the array
+ *
+ * @return \Generator
+ */
+function filterIterable($iterable, \Closure $closure = null)
+{
+    foreach (\__::getIterator($iterable) as $key => $value) {
+        if ($closure) {
+            if ($closure($value)) {
+                // yield $key => $value;
+                yield $value;
+            }
+        } elseif ($value) {
+            // yield $key => $value;
+            yield $value;
+        }
+    }
+}
+
+/**
  * Returns the values in the collection that pass the truth test.
  *
  * When `$closure` is set to null, this function will automatically remove falsey
@@ -28,22 +51,32 @@ namespace collections;
  * [['name' => 'fred', 'age' => 32]]
  * ```
  *
- * @param array|iterable         $array   Array to filter
+ * @param array|\Traversable         $iterable   Array to filter
  * @param \Closure|null $closure Closure to filter the array
  *
- * @return array
+ * @since 0.2.0 iterable objects are now supported
+ *
+ * @throws \InvalidArgumentException when an non-array or non-traversable object
+ *     is given for $iterable.
+ *
+ * @return array|\Generator When given a `\Traversable` object for `$iterable`,
+ *     a generator will be returned. Otherwise, an array will be returned.
  */
-function filter($array, \Closure $closure = null)
+function filter($iterable, \Closure $closure = null)
 {
-    $values = [];
-    foreach ($array as $value) {
-        if ($closure) {
-            if ($closure($value)) {
+    if (is_array($iterable)) {
+        $values = [];
+        foreach ($iterable as $value) {
+            if ($closure) {
+                if ($closure($value)) {
+                    $values[] = $value;
+                }
+            } elseif ($value) {
                 $values[] = $value;
             }
-        } elseif ($value) {
-            $values[] = $value;
         }
+        return $values;
     }
-    return $values;
+
+    return filterIterable($iterable, $closure);
 }

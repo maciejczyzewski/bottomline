@@ -25,6 +25,20 @@ class ArrayAccessible implements ArrayAccess
     }
 }
 
+function integerGenerator($n = null)
+{
+    for ($i=0; $n === null || $i < $n; $i++) {
+        yield $i;
+    }
+};
+
+function createGeneratorFromIterable($iterable)
+{
+    foreach ($iterable as $key => $value) {
+        yield $key => $value;
+    }
+};
+
 class CollectionsTest extends \PHPUnit\Framework\TestCase
 {
     // ...
@@ -185,54 +199,100 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 
-    public function testFilter()
+    public static function dataProvider_filter()
     {
-        // Arrange
-        $a = [1, 2, 3, 4, 5];
-        $b = [
-            ['name' => 'fred',   'age' => 32],
-            ['name' => 'maciej', 'age' => 16]
+        return [
+            // On arrays.
+            [
+                'source' => [1, 2, 3, 4, 5],
+                'filterFn' => function ($n) {
+                    return $n > 3;
+                },
+                'expected' => [4, 5],
+            ],
+            [
+                'source' => [
+                    ['name' => 'fred',   'age' => 32],
+                    ['name' => 'maciej', 'age' => 16]
+                ],
+                'filterFn' => function ($n) {
+                    return $n['age'] == 16;
+                },
+                'expected' => [['name' => 'maciej', 'age' => 16]],
+            ],
+            [
+                'source' => [0, 1, false, 2, null, 3, true],
+                'filterFn' => null,
+                'expected' => [1, 2, 3, true],
+            ],
+            // On iterators.
+            [
+                'source' => new ArrayIterator([1, 2, 3, 4, 5]),
+                'filterFn' => function ($n) {
+                    return $n > 3;
+                },
+                'expected' => createGeneratorFromIterable([4, 5]),
+            ],
+            [
+                'source' => new ArrayIterator([
+                    ['name' => 'fred',   'age' => 32],
+                    ['name' => 'maciej', 'age' => 16]
+                ]),
+                'filterFn' => function ($n) {
+                    return $n['age'] == 16;
+                },
+                'expected' => createGeneratorFromIterable([['name' => 'maciej', 'age' => 16]]),
+            ],
+            [
+                'source' => new ArrayIterator([0, 1, false, 2, null, 3, true]),
+                'filterFn' => null,
+                'expected' => createGeneratorFromIterable([1, 2, 3, true]),
+            ],
+            // On IteratorAggregate.
+            [
+                'source' => new IteratorAggregateSample([1, 2, 3, 4, 5]),
+                'filterFn' => function ($n) {
+                    return $n > 3;
+                },
+                'expected' => createGeneratorFromIterable([4, 5]),
+            ],
+            // Generators.
+            [
+                // We could theorically filter on an infinite generator.
+                'source' => integerGenerator(10),
+                'filterFn' => function ($n) {
+                    return $n % 2 === 0;
+                },
+                'expected' => createGeneratorFromIterable([0, 2, 4, 6, 8]),
+            ],
+            // [
+            //     // We could theorically filter on an infinite generator.
+            //     'source' => integerGenerator(),
+            //     'filterFn' => function ($n) {
+            //         return $n % 2 === 0;
+            //     },
+            //     'expected' => createGeneratorFromIterable([0, 4, 6, 8]),
+            // ],
         ];
-        $c = [0, 1, false, 2, null, 3, true];
-
-        // Act
-        $x = __::filter($a, function ($n) {
-            return $n > 3;
-        });
-        $y = __::filter($b, function ($n) {
-            return $n['age'] == 16;
-        });
-        $z = __::filter($c);
-
-        // Assert
-        $this->assertEquals([4, 5], $x);
-        $this->assertEquals([$b[1]], $y);
-        $this->assertEquals([1, 2, 3, true], $z);
     }
 
-    public function testFilterIterable()
+    /**
+     * @dataProvider dataProvider_filter
+     *
+     * @param array|\Traversable $source
+     * @param function           $filterFn
+     * @param array|\Traversable $expected
+     */
+    public function testFilter($source, $filterFn, $expected)
     {
-        // Arrange
-        $a = new ArrayIterator([1, 2, 3, 4, 5]);
-        $b = new ArrayIterator([
-            ['name' => 'fred',   'age' => 32],
-            ['name' => 'maciej', 'age' => 16]
-        ]);
-        $c = new ArrayIterator([0, 1, false, 2, null, 3, true]);
+        $actual = __::filter($source, $filterFn);
 
-        // Act
-        $x = __::filter($a, function ($n) {
-            return $n > 3;
-        });
-        $y = __::filter($b, function ($n) {
-            return $n['age'] == 16;
-        });
-        $z = __::filter($c);
-
-        // Assert
-        $this->assertEquals([4, 5], $x);
-        $this->assertEquals([$b[1]], $y);
-        $this->assertEquals([1, 2, 3, true], $z);
+        $this->assertEquals($expected, $actual);
+        $this->assertEquals(iterator_to_array($expected, true), iterator_to_array($actual, true));
+        // $this->assertInstanceOf(Generator::class, $generator);
+        // foreach ($expected as $actualKey => $actualValue) {
+        //     $this->assertEquals($expected[$actualKey], $actualValue);
+        // }
     }
 
     public function testFirst()
