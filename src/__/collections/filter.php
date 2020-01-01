@@ -15,11 +15,9 @@ function filterIterable($iterable, \Closure $closure = null)
     foreach (\__::getIterator($iterable) as $key => $value) {
         if ($closure) {
             if ($closure($value)) {
-                // yield $key => $value;
                 yield $value;
             }
         } elseif ($value) {
-            // yield $key => $value;
             yield $value;
         }
     }

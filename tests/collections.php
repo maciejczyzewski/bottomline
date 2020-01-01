@@ -225,6 +225,18 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
                 'filterFn' => null,
                 'expected' => [1, 2, 3, true],
             ],
+            // The keys are not preserved by our filter implementation.
+            // TODO We could provide an equivalent of https://lodash.com/docs/4.17.15#pickBy
+            // for preserving keys on associative arrays.
+            // We could also pass a preserveKeys argument, which is more PHPonic and is the way already
+            // adopted (eg. chunk).
+            [
+                'source' => ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5],
+                'filterFn' => function ($n) {
+                    return $n > 3;
+                },
+                'expected' => [4, 5],
+            ],
             // On iterators.
             [
                 'source' => new ArrayIterator([1, 2, 3, 4, 5]),
@@ -288,11 +300,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $actual = __::filter($source, $filterFn);
 
         $this->assertEquals($expected, $actual);
-        $this->assertEquals(iterator_to_array($expected, true), iterator_to_array($actual, true));
-        // $this->assertInstanceOf(Generator::class, $generator);
-        // foreach ($expected as $actualKey => $actualValue) {
-        //     $this->assertEquals($expected[$actualKey], $actualValue);
-        // }
+        if ($expected instanceof \Generator) {
+            $this->assertEquals(iterator_to_array($expected, true), iterator_to_array($actual, true));
+        }
     }
 
     public function testFirst()
