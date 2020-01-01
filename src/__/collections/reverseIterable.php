@@ -25,13 +25,23 @@ namespace collections;
  */
 function reverseIterable($iterable)
 {
-    // TODO There is an issue with this implementation:
-    // as generators can only be iterated only once, going to the end of the iterable
-    // exhaust the values, without possibility to rewind them.
-    // Also we use functions that are not part of the Traversable API
-    // (not even the Iterator API https://www.php.net/manual/en/class.iterator.php),
-    // but are restricted to arrays https://www.php.net/manual/en/function.end.php.
-    for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
-        yield $key => current($iterable);
+    // $iterable_values = [];
+    // if (is_array($iterable)) {
+    //     // TODO Use array_reverse?
+    //     $iterable_values = $iterable;
+    // } else {
+    //     // We first read the iterable values to an array.
+    //     // We do that as there is no API to read an iterable from end to start
+    //     // (because it could be an infinite genrator)
+    //     // and that generators can be iterated only once.
+    //     // So it seems we indeed need to pull all iterable content into memory
+    //     // for reversing it.
+    //     foreach ($iterable as $key => $value) {
+    //         $iterable_values[$key] = $value;
+    //     }
+    // }
+    $iterable_values = $iterable;
+    for (end($iterable_values); ($key = key($iterable_values)) !== null; prev($iterable_values)) {
+        yield $key => current($iterable_values);
     }
 }

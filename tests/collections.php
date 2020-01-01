@@ -713,7 +713,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = new ArrayIterator([1, 2, 3]);
-
+        
         // Act
         $x = __::reverseIterable($a);
 
