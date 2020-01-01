@@ -154,16 +154,48 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         }
     }
 
-    public function testCompact()
+    public static function dataProvider_compact()
     {
-        // Arrange
-        $a = [0, 1, false, 2, '', 3];
+        return [
+            [
+                'sourceArray' => [0, 1, false, 2, '', 3],
+                'expected' => [1, 2, 3],
+            ],
+            [
+                'sourceArray' => new ArrayIterator([0, 1, false, 2, '', 3]),
+                'expected' => [1, 2, 3],
+            ],
+            [
+                'sourceArray' => new IteratorAggregateSample([0, 1, false, 2, '', 3]),
+                'expected' => [1, 2, 3],
+            ],
+            [
+                'sourceArray' => call_user_func(function () {
+                    yield 0;
+                    yield 1;
+                    yield false;
+                    yield 2;
+                    yield '';
+                    yield 3;
+                }),
+                'expected' => [1, 2, 3],
+            ],
+        ];
+    }
 
-        // Act
-        $x = __::compact($a);
+    /**
+     * @dataProvider dataProvider_compact
+     *
+     * @param array|iterable $sourceArray
+     * @param array          $expected
+     */
+    public function testCompact($sourceArray, $expected)
+    {
+        $actual = __::compact($sourceArray);
 
-        // Assert
-        $this->assertEquals([1, 2, 3], $x);
+        foreach ($actual as $i => $item) {
+            $this->assertEquals($expected[$i], $item);
+        }
     }
 
     public function testDrop()

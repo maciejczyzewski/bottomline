@@ -3,6 +3,24 @@
 namespace arrays;
 
 /**
+ * @internal
+ *
+ * @param \Traversable $iterable
+ *
+ * @return \Generator
+ */
+function compactIterable(/* iterable */ $iterable)
+{
+    $iterator = \__::getIterator($iterable);
+
+    foreach ($iterator as $item) {
+        if ($item) {
+            yield $item;
+        }
+    }
+}
+
+/**
  * Creates an array with all falsey values removed.
  *
  * The following values are considered falsey:
@@ -26,11 +44,15 @@ namespace arrays;
  * [1, 2, 3]
  * ```
  *
- * @param array $array The array to compact
+ * @param array|iterable|\Traversable $iterable The array to compact
  *
- * @return array
+ * @return array|\Generator
  */
-function compact(array $array)
+function compact($iterable)
 {
-    return \array_values(\array_filter($array));
+    if (is_array($iterable)) {
+        return \array_values(\array_filter($iterable));
+    }
+
+    return compactIterable($iterable);
 }
