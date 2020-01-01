@@ -2,26 +2,10 @@
 
 namespace collections;
 
-if (version_compare(PHP_VERSION, '5.5.0', '<')) {
-    eval('
-    function iter_reverse($iterable) {
-        return array_reverse($iterable, true);
-    }
-    ');
-} else {
-    eval('
-    function iter_reverse($iterable) {
-        for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
-            yield $key => current($iterable);
-        }
-    }
-    ');
-}
-
 /**
  * Return the reverse of an array or other foreach-able (Iterable) without making a copy of it.
  *
- * Code for PHP_VERSION >= 5.5.(using `yield`) is from mpen and linepogl
+ * Code (using `yield`) is from mpen and linepogl
  * See https://stackoverflow.com/a/36605605/1956471
  *
  * **Usage**
@@ -41,5 +25,13 @@ if (version_compare(PHP_VERSION, '5.5.0', '<')) {
  */
 function reverseIterable($iterable)
 {
-    return iter_reverse($iterable);
+    // TODO There is an issue with this implementation:
+    // as generators can only be iterated only once, going to the end of the iterable
+    // exhaust the values, without possibility to rewind them.
+    // Also we use functions that are not part of the Traversable API
+    // (not even the Iterator API https://www.php.net/manual/en/class.iterator.php),
+    // but are restricted to arrays https://www.php.net/manual/en/function.end.php.
+    for (end($iterable); ($key = key($iterable)) !== null; prev($iterable)) {
+        yield $key => current($iterable);
+    }
 }
