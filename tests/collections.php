@@ -270,21 +270,21 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ],
             // Generators.
             [
-                // We could theorically filter on an infinite generator.
                 'source' => integerGenerator(10),
                 'filterFn' => function ($n) {
                     return $n % 2 === 0;
                 },
                 'expected' => createGeneratorFromIterable([0, 2, 4, 6, 8]),
             ],
-            // [
-            //     // We could theorically filter on an infinite generator.
-            //     'source' => integerGenerator(),
-            //     'filterFn' => function ($n) {
-            //         return $n % 2 === 0;
-            //     },
-            //     'expected' => createGeneratorFromIterable([0, 4, 6, 8]),
-            // ],
+            [
+                // We could theorically filter on an infinite generator.
+                'source' => integerGenerator(),
+                'filterFn' => function ($n) {
+                    return $n % 2 === 0;
+                },
+                'expected' => createGeneratorFromIterable([0, 2, 4, 6, 8]),
+                'iterateOnlyOnExpected' => true,
+            ],
         ];
     }
 
@@ -295,13 +295,23 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
      * @param function           $filterFn
      * @param array|\Traversable $expected
      */
-    public function testFilter($source, $filterFn, $expected)
+    public function testFilter($source, $filterFn, $expected, $iterateOnlyOnExpected = false)
     {
         $actual = __::filter($source, $filterFn);
 
         $this->assertEquals($expected, $actual);
         if ($expected instanceof \Generator) {
-            $this->assertEquals(iterator_to_array($expected, true), iterator_to_array($actual, true));
+            if ($iterateOnlyOnExpected) {
+                foreach ($expected as $expectedKey => $expectedValue) {
+                    $actualKey = $actual->key();
+                    $actualValue = $actual->current();
+                    $this->assertEquals($expectedKey, $actualKey);
+                    $this->assertEquals($expectedValue, $actualValue);
+                    $actual->next();
+                }
+            } else {
+                $this->assertEquals(iterator_to_array($expected, true), iterator_to_array($actual, true));
+            }
         }
     }
 
