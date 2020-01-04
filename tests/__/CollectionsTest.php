@@ -856,17 +856,78 @@ class CollectionsTest extends TestCase
         $this->assertFalse($y);
     }
 
-    public function testIsEmpty()
+    public function dataProvider_isEmpty()
     {
-        // Assert nominal cases.
-        $this->assertTrue(__::isEmpty([]));
-        $this->assertFalse(__::isEmpty(['Falcon', 'Heavy']));
-        $this->assertTrue(__::isEmpty(new \stdClass()));
-        $this->assertFalse(__::isEmpty((object)['Baie' => 'Goji']));
-        // Assert on non-collections.
-        $this->assertTrue(__::isEmpty(null));
-        $this->assertTrue(__::isEmpty(3));
-        $this->assertTrue(__::isEmpty(true));
+        return [
+            // Assert nominal cases
+            [
+                'source' => [],
+                'expected' => true,
+            ],
+            [
+                'source' => ['Falcon', 'Heavy'],
+                'expected' => false,
+            ],
+            [
+                'source' => new \stdClass(),
+                'expected' => true,
+            ],
+            [
+                'source' => (object)['Baie' => 'Goji'],
+                'expected' => false,
+            ],
+
+            // Assert non-collections
+            [
+                'source' => null,
+                'expected' => true,
+            ],
+            [
+                'source' => 3,
+                'expected' => true,
+            ],
+            [
+                'source' => true,
+                'expected' => true,
+            ],
+
+
+            // Assert iterators
+            [
+                'source' => new ArrayIterator([]),
+                'expected' => true,
+            ],
+            [
+                'source' => new MockIteratorAggregate([]),
+                'expected' => true,
+            ],
+            [
+                'source' => new ArrayIterator([1, 2]),
+                'expected' => false,
+            ],
+            [
+                'source' => new MockIteratorAggregate([1, 2]),
+                'expected' => false,
+            ],
+            [
+                'source' => call_user_func(function () {
+                    yield 1;
+                    yield 5;
+                }),
+                'expected' => false,
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider_isEmpty
+     *
+     * @param mixed $source
+     * @param bool  $expected
+     */
+    public function testIsEmpty($source, $expected)
+    {
+        $this->assertEquals($expected, __::isEmpty($source));
     }
 
     public function testReverseIterableArray()
