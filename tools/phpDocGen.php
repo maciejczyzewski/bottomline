@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 
 const MIN_VERSION = '5.5.9';
