@@ -17,9 +17,11 @@ namespace utilities;
  * 'arg1'
  * ```
  *
+ * @param mixed ...$_
+ *
  * @return mixed
  */
-function identity()
+function identity($_ = null)
 {
     $args = func_get_args();
     return isset($args[0]) ? $args[0] : null;
