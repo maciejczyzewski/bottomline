@@ -122,21 +122,52 @@ class CollectionsTest extends TestCase
         $this->assertEquals((object)['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
     }
 
-    public function testEase()
+    public static function dataProvider_ease()
     {
         $object = new \stdClass();
-        // Arrange
-        $a = ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']];
-        $b = ['foo' => ['bar' => $object], 'baz' => ['b', 'z']];
 
-        // Act
-        $x = __::ease($a);
-        $y = __::ease($b);
+        return [
+            [
+                'source' => ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']],
+                'glue' => '.',
+                'expected' => ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'],
+            ],
+            [
+                'source' => ['foo' => ['bar' => $object], 'baz' => ['b', 'z']],
+                'glue' => '_',
+                'expected' => ['foo_bar' => $object, 'baz_0' => 'b', 'baz_1' => 'z'],
+            ],
+            [
+                'source' => new ArrayIterator(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]),
+                'glue' => '.',
+                'expected' => ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'],
+            ],
+            [
+                'source' => new MockIteratorAggregate(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]),
+                'glue' => '.',
+                'expected' => ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'],
+            ],
+            [
+                'source' => call_user_func(function () {
+                    yield 'foo' => ['bar' => 'ter'];
+                    yield 'baz' => ['b', 'z'];
+                }),
+                'glue' => '.',
+                'expected' => ['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'],
+            ],
+        ];
+    }
 
-        // Assert
-        $this->assertEquals(3, count($x));
-        $this->assertEquals(['foo.bar' => 'ter', 'baz.0' => 'b', 'baz.1' => 'z'], $x);
-        $this->assertEquals(['foo.bar' => $object, 'baz.0' => 'b', 'baz.1' => 'z'], $y);
+    /**
+     * @dataProvider dataProvider_ease
+     *
+     * @param mixed  $source
+     * @param string $glue
+     * @param array  $expected
+     */
+    public function testEase($source, $glue, $expected)
+    {
+        $this->assertEquals($expected, __::ease($source, $glue));
     }
 
     // running this one before __::set() tests also correct inner dependency autoload

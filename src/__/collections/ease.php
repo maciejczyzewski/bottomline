@@ -25,12 +25,14 @@ namespace collections;
  * ]
  * ```
  *
- * @param array  $collection array of values
- * @param string $glue       glue between key path
+ * @since 0.2.0 added support for iterables
+ *
+ * @param array|iterable  $collection array of values
+ * @param string          $glue       glue between key path
  *
  * @return array flatten collection
  */
-function ease(array $collection, $glue = '.')
+function ease($collection, $glue = '.')
 {
     $map = [];
     _ease($map, $collection, $glue);
@@ -40,6 +42,8 @@ function ease(array $collection, $glue = '.')
 
 /**
  * Inner function for collections::ease
+ *
+ * @internal
  *
  * @param array  $map
  * @param array  $array
