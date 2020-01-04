@@ -1,10 +1,14 @@
 <?php
 
-class UtilitiesTest extends \PHPUnit\Framework\TestCase
+namespace __\Test;
+
+use __;
+use PHPUnit\Framework\TestCase;
+
+class UtilitiesTest extends TestCase
 {
     public function testNow()
     {
-
         // Act
         $x = __::now();
 
@@ -15,7 +19,7 @@ class UtilitiesTest extends \PHPUnit\Framework\TestCase
     public function testIdentity()
     {
         // Act
-        $x = __::identity('arg 1', new DateTime());
+        $x = __::identity('arg 1', new \DateTime());
 
         // Assert
         $this->assertEquals('arg 1', $x);

@@ -1,24 +1,14 @@
 <?php
 
-class IteratorAggregateSample implements IteratorAggregate
+namespace __\Test;
+
+use __;
+use __\Test\Utilities\MockIteratorAggregate;
+use ArrayIterator;
+use PHPUnit\Framework\TestCase;
+
+class ArraysTest extends TestCase
 {
-    private $data;
-
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
-    public function getIterator()
-    {
-        return new ArrayIterator($this->data);
-    }
-}
-
-class ArraysTest extends \PHPUnit\Framework\TestCase
-{
-    // ...
-
     public function testAppend()
     {
         // Arrange
@@ -78,7 +68,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
                 ],
             ],
             [
-                'sourceArray' => new IteratorAggregateSample([1, 2, 3, 4, 5]),
+                'sourceArray' => new MockIteratorAggregate([1, 2, 3, 4, 5]),
                 'chunkSize' => 3,
                 'preserveKeys' => false,
                 'expectedChunks' => [
@@ -166,7 +156,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
                 'expected' => [1, 2, 3],
             ],
             [
-                'sourceArray' => new IteratorAggregateSample([0, 1, false, 2, '', 3]),
+                'sourceArray' => new MockIteratorAggregate([0, 1, false, 2, '', 3]),
                 'expected' => [1, 2, 3],
             ],
             [
@@ -236,7 +226,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
     public function testDropWithIteratorAggregate()
     {
         $a = [1, 2, 3, 4, 5];
-        $aItrAgg = new IteratorAggregateSample($a);
+        $aItrAgg = new MockIteratorAggregate($a);
 
         $expected = __::drop($a, 3);
         $actual = __::drop($aItrAgg, 3);
@@ -259,7 +249,7 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
             }
         });
 
-        $this->assertInstanceOf(Generator::class, $generator);
+        $this->assertInstanceOf(\Generator::class, $generator);
 
         $expected = __::drop($a, 3);
         $actual = __::drop($generator, 3);
@@ -358,6 +348,4 @@ class ArraysTest extends \PHPUnit\Framework\TestCase
         // Assert
         $this->assertEquals([$string, $string, $string], $x);
     }
-
-    // ...
 }

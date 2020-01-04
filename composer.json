@@ -18,6 +18,12 @@
         "files": ["bottomline.php"],
         "psr-4": {"__\\": "src/"}
     },
+    "autoload-dev": {
+        "psr-4": {
+            "__\\Test\\": "tests/__/",
+            "__\\Test\\Utilities\\": "tests/Utilities/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "doctrine/instantiator": "~1.0.5",
@@ -25,5 +31,11 @@
         "erusev/parsedown": "^1.7",
         "nikic/php-parser": "^2.0||^3.0",
         "friendsofphp/php-cs-fixer": "^2.14"
+    },
+    "scripts": {
+        "test": [
+            "# Silence PHP deprecation warnings before PHPUnit is run",
+            "php -d error_reporting=24575 ./vendor/bin/phpunit"
+        ]
     }
 }

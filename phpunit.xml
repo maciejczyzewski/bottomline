@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
-         bootstrap="bottomline.php"
+         bootstrap="tests/bootstrap.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -11,26 +11,21 @@
          syntaxCheck="true"
 >
     <testsuites>
-        <testsuite name="Arrays Test Suite">
-            <file>tests/arrays.php</file>
-        </testsuite>
-        <testsuite name="Collections Test Suite">
-            <file>tests/collections.php</file>
-        </testsuite>
-        <testsuite name="Functions Test Suite">
-            <file>tests/functions.php</file>
-        </testsuite>
-        <testsuite name="Objects Test Suite">
-            <file>tests/objects.php</file>
-        </testsuite>
-        <testsuite name="Utilities Test Suite">
-            <file>tests/utilities.php</file>
-        </testsuite>
-        <testsuite name="Strings Test Suite">
-            <file>tests/strings.php</file>
-        </testsuite>
-        <testsuite name="Sequences Test Suite">
-            <file>tests/sequences.php</file>
+        <testsuite name="bottomline Test Suite">
+            <directory suffix="Test.php" phpVersion="5.5.0" phpVersionOperator=">=">tests</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <ini name="display_errors" value="On" />
+        <ini name="display_startup_errors" value="On" />
+        <ini name="error_reporting" value="30719"/> <!-- E_ALL | E_STRICT -->
+    </php>
+
+    <filter>
+        <blacklist>
+            <directory suffix=".php">tests</directory>
+            <directory suffix=".php">vendor</directory>
+        </blacklist>
+    </filter>
 </phpunit>

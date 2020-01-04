@@ -1,48 +1,15 @@
 <?php
 
-class ArrayAccessible implements ArrayAccess
+namespace __\Test;
+
+use __;
+use __\Test\Utilities\Generators;
+use __\Test\Utilities\MockIteratorAggregate;
+use ArrayIterator;
+use PHPUnit\Framework\TestCase;
+
+class CollectionsTest extends TestCase
 {
-    private $content = [];
-
-    public function offsetExists($offset)
-    {
-        return array_key_exists($offset, $this->content);
-    }
-
-    public function offsetGet($offset)
-    {
-        return $this->content[$offset];
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        $this->content[$offset] = $value;
-    }
-
-    public function offsetUnset($offset)
-    {
-        unset($this->content[$offset]);
-    }
-}
-
-function integerGenerator($n = null)
-{
-    for ($i = 0; $n === null || $i < $n; $i++) {
-        yield $i;
-    }
-}
-
-function createGeneratorFromIterable($iterable)
-{
-    foreach ($iterable as $key => $value) {
-        yield $key => $value;
-    }
-}
-
-class CollectionsTest extends \PHPUnit\Framework\TestCase
-{
-    // ...
-
     public function testAssign()
     {
         // Arrange
@@ -243,7 +210,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
                 'filterFn' => function ($n) {
                     return $n > 3;
                 },
-                'expected' => createGeneratorFromIterable([4, 5]),
+                'expected' => Generators::createGeneratorFromIterable([4, 5]),
             ],
             [
                 'source' => new ArrayIterator([
@@ -253,36 +220,36 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
                 'filterFn' => function ($n) {
                     return $n['age'] == 16;
                 },
-                'expected' => createGeneratorFromIterable([['name' => 'maciej', 'age' => 16]]),
+                'expected' => Generators::createGeneratorFromIterable([['name' => 'maciej', 'age' => 16]]),
             ],
             [
                 'source' => new ArrayIterator([0, 1, false, 2, null, 3, true]),
                 'filterFn' => null,
-                'expected' => createGeneratorFromIterable([1, 2, 3, true]),
+                'expected' => Generators::createGeneratorFromIterable([1, 2, 3, true]),
             ],
             // On IteratorAggregate.
             [
-                'source' => new IteratorAggregateSample([1, 2, 3, 4, 5]),
+                'source' => new MockIteratorAggregate([1, 2, 3, 4, 5]),
                 'filterFn' => function ($n) {
                     return $n > 3;
                 },
-                'expected' => createGeneratorFromIterable([4, 5]),
+                'expected' => Generators::createGeneratorFromIterable([4, 5]),
             ],
             // Generators.
             [
-                'source' => integerGenerator(10),
+                'source' => Generators::integerGenerator(10),
                 'filterFn' => function ($n) {
                     return $n % 2 === 0;
                 },
-                'expected' => createGeneratorFromIterable([0, 2, 4, 6, 8]),
+                'expected' => Generators::createGeneratorFromIterable([0, 2, 4, 6, 8]),
             ],
             [
                 // We could theorically filter on an infinite generator.
-                'source' => integerGenerator(),
+                'source' => Generators::integerGenerator(),
                 'filterFn' => function ($n) {
                     return $n % 2 === 0;
                 },
-                'expected' => createGeneratorFromIterable([0, 2, 4, 6, 8]),
+                'expected' => Generators::createGeneratorFromIterable([0, 2, 4, 6, 8]),
                 'iterateOnlyOnExpected' => true,
             ],
         ];
@@ -483,7 +450,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testGetArrayAccess()
     {
-        $aa = new ArrayAccessible();
+        $aa = new Utilities\ArrayAccessible();
         $aa['foo'] = [
             'bar' => 'quim',
         ];
@@ -577,7 +544,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ],
             // IteratorAggregate group by string key
             [
-                'source' => new IteratorAggregateSample([
+                'source' => new MockIteratorAggregate([
                     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
                     ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
                     ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
@@ -827,7 +794,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testHasArrayAccess()
     {
-        $aa = new ArrayAccessible();
+        $aa = new Utilities\ArrayAccessible();
         $aa['qux'] = true;
         $aa['field'] = null;
 
@@ -894,7 +861,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert nominal cases.
         $this->assertTrue(__::isEmpty([]));
         $this->assertFalse(__::isEmpty(['Falcon', 'Heavy']));
-        $this->assertTrue(__::isEmpty(new stdClass()));
+        $this->assertTrue(__::isEmpty(new \stdClass()));
         $this->assertFalse(__::isEmpty((object)['Baie' => 'Goji']));
         // Assert on non-collections.
         $this->assertTrue(__::isEmpty(null));
@@ -1406,7 +1373,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testSetArrayAccess()
     {
-        $aa = new ArrayAccessible();
+        $aa = new Utilities\ArrayAccessible();
 
         __::set($aa, 'foo.ubi', [
             'bar' => 'qaz',
