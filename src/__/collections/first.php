@@ -19,8 +19,8 @@ namespace collections;
  * [1, 2]
  * ```
  *
- * @param array|iterable    $array array (or any iterable) of values
- * @param int|null $count number of values to return
+ * @param array|iterable $array array (or any iterable) of values
+ * @param int|null       $count number of values to return
  *
  * @return array|mixed
  */

@@ -19,8 +19,8 @@ namespace arrays;
  * [1, 2, 3, 4]
  * ```
  *
- * @param array $array
- * @param bool $shallow
+ * @param array|iterable $array
+ * @param bool           $shallow
  *
  * @return array
  */

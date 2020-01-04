@@ -24,6 +24,7 @@ namespace collections;
  * ```
  *
  * @param array|iterable|\Traversable $iterable
+ *
  * @return \Generator
  */
 function reverseIterable($iterable)

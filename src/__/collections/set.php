@@ -57,8 +57,8 @@ function _universal_set($collection, $key, $value)
  * ```
  *
  * @param array|iterable|object $collection Collection of values
- * @param string       $path       Key or index. Supports dot notation
- * @param mixed        $value      The value to set at position $key
+ * @param string                $path       Key or index. Supports dot notation
+ * @param mixed                 $value      The value to set at position $key
  *
  * @throws \Exception if the path consists of a non collection
  *

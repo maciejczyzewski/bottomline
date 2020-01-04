@@ -19,8 +19,8 @@ namespace collections;
  * ['x' => 'x_1']
  * ```
  *
- * @param array|iterable    $array       Array of values
- * @param \Closure $closure     Closure to map the values
+ * @param array|iterable $array       Array of values
+ * @param \Closure       $closure     Closure to map the values
  *
  * @return array
  */

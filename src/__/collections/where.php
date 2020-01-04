@@ -25,7 +25,7 @@ namespace collections;
  * @todo: implement compatibility with more than 2 dimensial arrays:
  *
  * @param array|iterable $array array of values
- * @param array $cond  condition in format of ['KEY'=>'VALUE']
+ * @param array          $cond  condition in format of ['KEY'=>'VALUE']
  *
  * @return array
  */

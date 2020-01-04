@@ -19,7 +19,7 @@ namespace collections;
  * ```
  *
  * @param array|iterable  $collection Hash map of values
- * @param string $separator  The glue used in the keys
+ * @param string          $separator  The glue used in the keys
  *
  * @return array
  */

@@ -23,7 +23,7 @@ namespace collections;
  * ```
  *
  * @param array|iterable|object $collection Array or object that can be converted to array
- * @param string       $property   property name
+ * @param string                $property   property name
  *
  * @return array
  */

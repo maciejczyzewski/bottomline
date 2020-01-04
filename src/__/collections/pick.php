@@ -29,9 +29,9 @@ namespace collections;
  * ```
  *
  * @param array|iterable|object $collection The collection to iterate over.
- * @param array        $paths      Array paths to pick
- * @param mixed        $default    The default value that will be used if the
- *                                 specified path does not exist.
+ * @param array                 $paths      Array paths to pick
+ * @param mixed                 $default    The default value that will be used
+ *                                          if the specified path does not exist.
  *
  * @return array
  */

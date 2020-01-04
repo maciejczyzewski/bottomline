@@ -21,8 +21,8 @@ namespace collections;
  * true
  * ```
  *
- * @param array|object $collection The collection to iterate over.
- * @param \Closure     $iteratee   The function to call for each value.
+ * @param array|iterable|object $collection The collection to iterate over.
+ * @param \Closure              $iteratee   The function to call for each value.
  *
  * @return bool
  */

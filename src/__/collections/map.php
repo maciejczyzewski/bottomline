@@ -20,7 +20,7 @@ namespace collections;
  * ```
  *
  * @param array|iterable|object $collection The collection of values to map over.
- * @param \Closure     $iteratee   The function to apply on each value.
+ * @param \Closure              $iteratee   The function to apply on each value.
  *
  * @return array
  */

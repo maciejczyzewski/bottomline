@@ -22,8 +22,8 @@ namespace collections;
  * ['x_1' => 1]
  * ```
  *
- * @param array|iterable    $array       Array/iterable of values
- * @param \Closure $closure     Closure to map the keys
+ * @param array|iterable $array       Array/iterable of values
+ * @param \Closure       $closure     Closure to map the keys
  *
  * @throws \Exception when closure doesn't return a valid key that can be used in PHP array
  *
