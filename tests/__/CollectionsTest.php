@@ -910,18 +910,55 @@ class CollectionsTest extends TestCase
         $this->assertEquals([3, 2, 1], $xValues);
     }
 
-    public function testLast()
+    public static function dataProvider_last()
     {
-        // Arrange
-        $a = [1, 2, 3, 4, 5];
+        return [
+            [
+                'source' => [1, 2, 3, 4, 5],
+                'take' => 2,
+                'expected' => [4, 5],
+            ],
+            [
+                'source' => [1, 2, 3, 4, 5],
+                'take' => null,
+                'expected' => 5,
+            ],
+            [
+                'source' => new MockIteratorAggregate([1, 2, 3, 4, 5]),
+                'take' => 3,
+                'expected' => [3, 4, 5],
+            ],
+            [
+                'source' => new ArrayIterator([1, 2, 3, 4, 5]),
+                'take' => 4,
+                'expected' => [2, 3, 4, 5],
+            ],
+            [
+                'source' => call_user_func(function () {
+                    yield 1;
+                    yield 2;
+                    yield 3;
+                    yield 4;
+                    yield 5;
+                }),
+                'take' => 2,
+                'expected' => [4, 5],
+            ],
+        ];
+    }
 
-        // Act
-        $x = __::last($a, 2);
-        $y = __::last($a);
+    /**
+     * @dataProvider dataProvider_last
+     *
+     * @param iterable $source
+     * @param int|null $take
+     * @param array    $expected
+     */
+    public function testLast($source, $take, $expected)
+    {
+        $actual = __::last($source, $take);
 
-        // Assert
-        $this->assertEquals([4, 5], $x);
-        $this->assertEquals(5, $y);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testMap()
