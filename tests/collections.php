@@ -27,17 +27,17 @@ class ArrayAccessible implements ArrayAccess
 
 function integerGenerator($n = null)
 {
-    for ($i=0; $n === null || $i < $n; $i++) {
+    for ($i = 0; $n === null || $i < $n; $i++) {
         yield $i;
     }
-};
+}
 
 function createGeneratorFromIterable($iterable)
 {
     foreach ($iterable as $key => $value) {
         yield $key => $value;
     }
-};
+}
 
 class CollectionsTest extends \PHPUnit\Framework\TestCase
 {
@@ -64,19 +64,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testAssignObject()
     {
         // Arrange
-        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
-        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-        $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2, 5];
-        $b3 = (object) ['c' => 3, 'd' => 4, 6];
+        $a1 = (object)['color' => (object)['favorite' => 'red', 5]];
+        $a2 = (object)[10, 'color' => (object)['favorite' => 'green', 'blue']];
+        $b1 = (object)['a' => 0];
+        $b2 = (object)['a' => 1, 'b' => 2, 5];
+        $b3 = (object)['c' => 3, 'd' => 4, 6];
 
         // Act
         $x = __::assign($a1, $a2);
         $y = __::assign($b1, $b2, $b3);
 
         // Assert
-        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
-        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
+        $this->assertEquals((object)['color' => (object)['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals((object)['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
     }
 
     public function testConcat()
@@ -104,19 +104,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testConcatObject()
     {
         // Arrange
-        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
-        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-        $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2];
-        $b3 = (object) ['c' => 3, 'd' => 4];
+        $a1 = (object)['color' => (object)['favorite' => 'red', 5]];
+        $a2 = (object)[10, 'color' => (object)['favorite' => 'green', 'blue']];
+        $b1 = (object)['a' => 0];
+        $b2 = (object)['a' => 1, 'b' => 2];
+        $b3 = (object)['c' => 3, 'd' => 4];
 
         // Act
         $x = __::concat($a1, $a2);
         $y = __::concat($b1, $b2, $b3);
 
         // Assert
-        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'blue'], 10], $x);
-        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
+        $this->assertEquals((object)['color' => (object)['favorite' => 'green', 'blue'], 10], $x);
+        $this->assertEquals((object)['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4], $y);
     }
 
     public function testConcatDeep()
@@ -140,19 +140,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testConcatDeepObject()
     {
         // Arrange
-        $a1 = (object) ['color' => (object) ['favorite' => 'red', 5]];
-        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-        $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2];
-        $b3 = (object) ['c' => 3, 'd' => 4];
+        $a1 = (object)['color' => (object)['favorite' => 'red', 5]];
+        $a2 = (object)[10, 'color' => (object)['favorite' => 'green', 'blue']];
+        $b1 = (object)['a' => 0];
+        $b2 = (object)['a' => 1, 'b' => 2];
+        $b3 = (object)['c' => 3, 'd' => 4];
 
         // Act
         $x = __::concatDeep($a1, $a2);
         $y = __::concatDeep($b1, $b2, $b3);
 
         // Assert
-        $this->assertEquals((object) ['color' => (object) ['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
-        $this->assertEquals((object) ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+        $this->assertEquals((object)['color' => (object)['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
+        $this->assertEquals((object)['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
     }
 
     public function testEase()
@@ -212,7 +212,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 'source' => [
-                    ['name' => 'fred',   'age' => 32],
+                    ['name' => 'fred', 'age' => 32],
                     ['name' => 'maciej', 'age' => 16]
                 ],
                 'filterFn' => function ($n) {
@@ -247,7 +247,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
             ],
             [
                 'source' => new ArrayIterator([
-                    ['name' => 'fred',   'age' => 32],
+                    ['name' => 'fred', 'age' => 32],
                     ['name' => 'maciej', 'age' => 16]
                 ]),
                 'filterFn' => function ($n) {
@@ -292,8 +292,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
      * @dataProvider dataProvider_filter
      *
      * @param array|\Traversable $source
-     * @param function           $filterFn
+     * @param \Closure           $filterFn
      * @param array|\Traversable $expected
+     * @param bool               $iterateOnlyOnExpected
      */
     public function testFilter($source, $filterFn, $expected, $iterateOnlyOnExpected = false)
     {
@@ -356,7 +357,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         };
         $a = [1, 2, 3];
         $b = ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
-        $c = (object) ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+        $c = (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
 
         // Act.
         $aMapped = [];
@@ -369,8 +370,8 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         // Assert
         $this->assertEquals($a, $aMapped);
         $this->assertEquals($b, $bMapped);
-        $this->assertEquals($c, (object) $cMapped);
-        $this->assertEquals((array) $c, $cMapped);
+        $this->assertEquals($c, (object)$cMapped);
+        $this->assertEquals((array)$c, $cMapped);
     }
 
     public function testDoForEachRight()
@@ -462,9 +463,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         ];
 
         // Act
-        $x  = __::get($a, 'foo.bar');
+        $x = __::get($a, 'foo.bar');
         $x2 = __::get($a, 'foo.bar', 'default');
-        $y  = __::get($a, 'foo.baz');
+        $y = __::get($a, 'foo.baz');
         $y2 = __::get($a, 'foo.baz', 'default');
         $y3 = __::get($a, 'foo.baz', function () {
             return 'default_from_callback';
@@ -509,9 +510,9 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $a->baz->foo->obj = $o;
 
         // Act
-        $x  = __::get($a, 'foo.bar');
+        $x = __::get($a, 'foo.bar');
         $x2 = __::get($a, 'foo.bar', 'default');
-        $y  = __::get($a, 'foo.baz');
+        $y = __::get($a, 'foo.baz');
         $y2 = __::get($a, 'foo.baz', 'default');
         $y3 = __::get($a, 'foo.baz', function () {
             return 'default_from_callback';
@@ -527,148 +528,283 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($o, $z);
     }
 
-    public function testGroupByString()
+    public static function dataProvider_groupBy()
     {
-        $a = [
-            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
-            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
-            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
-            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
-            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
-        ];
-
-        $grouped = __::groupBy($a, 'state');
-        $this->assertCount(2, $grouped);
-        $this->assertArrayHasKey('CA', $grouped);
-    }
-
-    public function testGroupByStringMultipleGroupings()
-    {
-        $a = [
-            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
-            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
-            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
-            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
-            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
-        ];
-
-        $grouped = __::groupBy($a, 'state', 'city');
-        $this->assertCount(2, $grouped);
-        $this->assertCount(2, $grouped['IN']);
-        $this->assertArrayHasKey('Indianapolis', $grouped['IN']);
-    }
-
-    public function testGroupByNestedValues()
-    {
-        $a = [
-            ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-            ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-            ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
-            ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
-            ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
-        ];
-
-        $grouped = __::groupBy($a, 'metadata.state');
-        $this->assertEquals([
-            'IN' => [
-                ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-                ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-                ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+        return [
+            // Group by string key
+            [
+                'source' => [
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ],
+                'expected' => [
+                    'IN' => [
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'CA' => [
+                        ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => ['state'],
             ],
-            'CA' => [
-                ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
-                ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+            // Iterator group by string key
+            [
+                'source' => new ArrayIterator([
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ]),
+                'expected' => [
+                    'IN' => [
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'CA' => [
+                        ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => ['state'],
             ],
-        ], $grouped);
-    }
-
-    public function testGroupByNestedValuesMultipleGrouping()
-    {
-        $a = [
-            ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-            ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-            ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
-            ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
-            ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
-        ];
-
-        $grouped = __::groupBy($a, 'metadata.state', 'metadata.city');
-        $this->assertEquals([
-            'IN' => [
-                'Indianapolis' => [
+            // IteratorAggregate group by string key
+            [
+                'source' => new IteratorAggregateSample([
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ]),
+                'expected' => [
+                    'IN' => [
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'CA' => [
+                        ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => ['state'],
+            ],
+            // Generator group by string key
+            [
+                'source' => call_user_func(function () {
+                    yield ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'];
+                    yield ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'];
+                    yield ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'];
+                    yield ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'];
+                    yield ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'];
+                }),
+                'expected' => [
+                    'IN' => [
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'CA' => [
+                        ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => ['state'],
+            ],
+            // Group by multiple string keys
+            [
+                'source' => [
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ],
+                'expected' => [
+                    'IN' => [
+                        'Indianapolis' => [
+                            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                            ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        ],
+                        'Plainfield' => [
+                            ['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                        ],
+                    ],
+                    'CA' => [
+                        'San Diego' => [
+                            ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        ],
+                        'Mountain View' => [
+                            ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                        ],
+                    ],
+                ],
+                'keys' => ['state', 'city'],
+            ],
+            // Group by nested values
+            [
+                'source' => [
                     ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
                     ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
-                ],
-                'Plainfield' => [
                     ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
-                ],
-            ],
-            'CA' => [
-                'San Diego' => [
                     ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
-                ],
-                'Mountain View' => [
                     ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
                 ],
+                'expected' => [
+                    'IN' => [
+                        ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                        ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                        ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+                    ],
+                    'CA' => [
+                        ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+                        ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+                    ],
+                ],
+                'keys' => ['metadata.state'],
             ],
-        ], $grouped);
+            // Group by nested values multiple grouping
+            [
+                'source' => [
+                    ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                    ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                    ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+                    ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+                    ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+                ],
+                'expected' => [
+                    'IN' => [
+                        'Indianapolis' => [
+                            ['object' => 'School bus', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                            ['object' => 'Manhole', 'metadata' => ['state' => 'IN', 'city' => 'Indianapolis']],
+                        ],
+                        'Plainfield' => [
+                            ['object' => 'Basketball', 'metadata' => ['state' => 'IN', 'city' => 'Plainfield']],
+                        ],
+                    ],
+                    'CA' => [
+                        'San Diego' => [
+                            ['object' => 'Light bulb', 'metadata' => ['state' => 'CA', 'city' => 'San Diego']],
+                        ],
+                        'Mountain View' => [
+                            ['object' => 'Space pen', 'metadata' => ['state' => 'CA', 'city' => 'Mountain View']],
+                        ],
+                    ],
+                ],
+                'keys' => ['metadata.state', 'metadata.city'],
+            ],
+            // Group by integer
+            [
+                'source' => [
+                    ['IN', 'Indianapolis', 'School bus'],
+                    ['IN', 'Indianapolis', 'Manhole'],
+                    ['IN', 'Plainfield', 'Basketball'],
+                    ['CA', 'San Diego', 'Light bulb'],
+                    ['CA', 'Mountain View', 'Space pen'],
+                ],
+                'expected' => [
+                    'Indianapolis' => [
+                        ['IN', 'Indianapolis', 'School bus'],
+                        ['IN', 'Indianapolis', 'Manhole'],
+                    ],
+                    'Plainfield' => [
+                        ['IN', 'Plainfield', 'Basketball'],
+                    ],
+                    'San Diego' => [
+                        ['CA', 'San Diego', 'Light bulb'],
+                    ],
+                    'Mountain View' => [
+                        ['CA', 'Mountain View', 'Space pen'],
+                    ],
+                ],
+                'keys' => [1],
+            ],
+            // Group by object properties
+            [
+                'source' => [
+                    (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ],
+                'expected' => [
+                    'IN' => [
+                        (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                        (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'CA' => [
+                        (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                        (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => ['state'],
+            ],
+            // Group by callable
+            [
+                'source' => [
+                    (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                    (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                ],
+                'expected' => [
+                    'Indianapolis' => [
+                        (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+                        (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+                    ],
+                    'Plainfield' => [
+                        (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
+                    ],
+                    'San Diego' => [
+                        (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+                    ],
+                    'Mountain View' => [
+                        (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
+                    ],
+                ],
+                'keys' => [
+                    function ($value) {
+                        return $value->city;
+                    },
+                ],
+            ],
+        ];
     }
 
-    public function testGroupByInteger()
+    /**
+     * @dataProvider dataProvider_groupBy
+     *
+     * @param iterable                         $source
+     * @param array                            $expected
+     * @param array<int|float|string|\Closure> $keys
+     */
+    public function testGroupBy($source, $expected, $keys)
     {
-        $a = [
-            ['IN', 'Indianapolis', 'School bus'],
-            ['IN', 'Indianapolis', 'Manhole'],
-            ['IN', 'Plainfield', 'Basketball'],
-            ['CA', 'San Diego', 'Light bulb'],
-            ['CA', 'Mountain View', 'Space pen'],
-        ];
+        $params = array_merge([$source], $keys);
+        $actual = call_user_func_array('__::groupBy', $params);
 
-        $grouped = __::groupBy($a, 1);
-        $this->assertCount(4, $grouped);
-        $this->assertArrayHasKey('Indianapolis', $grouped);
-    }
-
-    public function testGroupByObjectProperties()
-    {
-        $a = [
-            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
-            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
-            (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
-            (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
-            (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
-        ];
-
-        $grouped = __::groupBy($a, 'state');
-        $this->assertCount(2, $grouped);
-        $this->assertArrayHasKey('CA', $grouped);
-    }
-
-    public function testGroupByCallable()
-    {
-        $a = [
-            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
-            (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
-            (object)['state' => 'IN', 'city' => 'Plainfield', 'object' => 'Basketball'],
-            (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
-            (object)['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
-        ];
-
-        $grouped = __::groupBy($a, function ($value) {
-            return $value->city;
-        });
-        $this->assertCount(4, $grouped);
-        $this->assertArrayHasKey('Indianapolis', $grouped);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testHas()
     {
         // Arrange.
         $a = ['foo' => 'bar'];
-        $b = (object) ['foo' => 'bar'];
+        $b = (object)['foo' => 'bar'];
         $c = ['foo' => ['bar' => 'foie']];
         $d = [5];
-        $e = (object) [5];
+        $e = (object)[5];
 
         // Act.
         $x = __::has($a, 'foo');
@@ -742,7 +878,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testHasKeysObject()
     {
         // Arrange.
-        $a = (object) ['foo' => 'bar'];
+        $a = (object)['foo' => 'bar'];
 
         // Act
         $x = __::hasKeys($a, ['foo']);
@@ -759,14 +895,14 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue(__::isEmpty([]));
         $this->assertFalse(__::isEmpty(['Falcon', 'Heavy']));
         $this->assertTrue(__::isEmpty(new stdClass()));
-        $this->assertFalse(__::isEmpty((object) ['Baie' => 'Goji']));
+        $this->assertFalse(__::isEmpty((object)['Baie' => 'Goji']));
         // Assert on non-collections.
         $this->assertTrue(__::isEmpty(null));
         $this->assertTrue(__::isEmpty(3));
         $this->assertTrue(__::isEmpty(true));
     }
 
-    public function testReveseIterableArray()
+    public function testReverseIterableArray()
     {
         // Arrange
         $a = [1, 2, 3];
@@ -789,11 +925,11 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([3, 2, 1], iterator_to_array(__::reverseIterable($a), false));
     }
 
-    public function testReveseIterableArrayIterable()
+    public function testReverseIterableArrayIterable()
     {
         // Arrange
         $a = new ArrayIterator([1, 2, 3]);
-        
+
         // Act
         $x = __::reverseIterable($a);
 
@@ -838,7 +974,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testMapObject()
     {
         // Arrange
-        $a = (object) ['a' => 1, 'b' => 2, 'c' => 3];
+        $a = (object)['a' => 1, 'b' => 2, 'c' => 3];
 
         // Act
         $x = __::map($a, function ($n, $key) {
@@ -932,19 +1068,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testMergeObject()
     {
         // Arrange
-        $a1 = (object) ['color' => (object) ['favorite' => 'red', 'model' => 3, 5]];
-        $a2 = (object) [10, 'color' => (object) ['favorite' => 'green', 'blue']];
-        $b1 = (object) ['a' => 0];
-        $b2 = (object) ['a' => 1, 'b' => 2, 5];
-        $b3 = (object) ['c' => 3, 'd' => 4, 6];
+        $a1 = (object)['color' => (object)['favorite' => 'red', 'model' => 3, 5]];
+        $a2 = (object)[10, 'color' => (object)['favorite' => 'green', 'blue']];
+        $b1 = (object)['a' => 0];
+        $b2 = (object)['a' => 1, 'b' => 2, 5];
+        $b3 = (object)['c' => 3, 'd' => 4, 6];
 
         // Act
         $x = __::merge($a1, $a2);
         $y = __::merge($b1, $b2, $b3);
 
         // Assert
-        $this->assertEquals((object) ['color' => (object) ['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
-        $this->assertEquals((object) ['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
+        $this->assertEquals((object)['color' => (object)['favorite' => 'green', 'model' => 3, 'blue'], 10], $x);
+        $this->assertEquals((object)['a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 6], $y);
     }
 
     public function testMergeIterable()
@@ -972,7 +1108,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = [
-            ['foo' => 'bar',  'bis' => 'ter',  '' => 0],
+            ['foo' => 'bar', 'bis' => 'ter', '' => 0],
             ['foo' => 'bar2', 'bis' => 'ter2', '' => 1],
         ];
 
@@ -998,11 +1134,11 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $e->two->foo->bar->baz = 2;
 
         // Act
-        $x  = __::pluck($a, 'foo');
+        $x = __::pluck($a, 'foo');
         $x2 = __::pluck($a, '');
 
-        $y  = __::pluck($b, 'foo');
-        $y2  = __::pluck($c, 'foo');
+        $y = __::pluck($b, 'foo');
+        $y2 = __::pluck($c, 'foo');
 
         $z = __::pluck($d, 'foo.bar.baz');
         $z2 = __::pluck($e, 'foo.bar.baz');
@@ -1022,12 +1158,12 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = new ArrayIterator([
-            ['foo' => 'bar',  'bis' => 'ter',  '' => 0],
+            ['foo' => 'bar', 'bis' => 'ter', '' => 0],
             ['foo' => 'bar2', 'bis' => 'ter2', '' => 1],
         ]);
 
         // Act
-        $x  = __::pluck($a, 'foo');
+        $x = __::pluck($a, 'foo');
         $x2 = __::pluck($a, '');
 
         // Assert
@@ -1104,7 +1240,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $aReducer = function ($accumulator, $value) {
             return $accumulator + $value;
         };
-        $b = (object) [
+        $b = (object)[
             'a' => 1,
             'b' => 2,
             'c' => 1
@@ -1131,7 +1267,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
 
     public function testReduceIterable()
     {
-        
+
         // Arrange
         $a = new ArrayIterator([1, 2, 3]);
         $aReducer = function ($accumulator, $value) {
@@ -1230,7 +1366,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
         $x = __::pick($a, ['marseille', 'london']);
 
         // Assert.
-        $this->assertEquals((object) [
+        $this->assertEquals((object)[
             'marseille' => 1578484,
             'london' => null
         ], $x);
@@ -1288,19 +1424,19 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     public function testSetObject()
     {
         // Arrange.
-        $a = (object) ['foo' => (object) ['bar' => 'ter']];
+        $a = (object)['foo' => (object)['bar' => 'ter']];
 
         // Act.
         $x = __::set($a, 'foo.baz.ber', 'fer');
         $y = __::set($a, 'foo.bar', 'fer2');
 
         // Assert.
-        $this->assertEquals((object )['foo' => (object) ['bar' => 'ter']], $a);
-        $this->assertEquals((object) ['ber' => 'fer'], $x->foo->baz);
-        $this->assertEquals((object) ['foo' => (object) ['bar' => 'fer2']], $y);
+        $this->assertEquals((object )['foo' => (object)['bar' => 'ter']], $a);
+        $this->assertEquals((object)['ber' => 'fer'], $x->foo->baz);
+        $this->assertEquals((object)['foo' => (object)['bar' => 'fer2']], $y);
     }
 
-    public function testSetOveride()
+    public function testSetOverride()
     {
         // Arrange
         $a = ['foo' => ['bar' => 'ter']];
@@ -1330,7 +1466,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = [
-            ['name' => 'fred',   'age' => 32],
+            ['name' => 'fred', 'age' => 32],
             ['name' => 'maciej', 'age' => 16],
             ['a' => 'b', 'c' => 'd']
         ];
@@ -1352,7 +1488,7 @@ class CollectionsTest extends \PHPUnit\Framework\TestCase
     {
         // Arrange
         $a = new ArrayIterator([
-            ['name' => 'fred',   'age' => 32],
+            ['name' => 'fred', 'age' => 32],
             ['name' => 'maciej', 'age' => 16],
             ['a' => 'b', 'c' => 'd']
         ]);
