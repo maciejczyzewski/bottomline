@@ -1466,6 +1466,78 @@ class CollectionsTest extends TestCase
         $this->assertEquals(['ber' => 'fer'], $x['foo']['baz']);
     }
 
+    public static function dataProvider_size()
+    {
+        return [
+            [
+                'source' => [],
+                'expected' => 0,
+            ],
+            [
+                'source' => [1, 2, 3],
+                'expected' => 3,
+            ],
+            [
+                'source' => new \stdClass(),
+                'expected' => 0,
+            ],
+            [
+                'source' => (object)['hello' => 'world'],
+                'expected' => 1,
+            ],
+            [
+                'source' => false,
+                'expected' => false,
+            ],
+            [
+                'source' => null,
+                'expected' => false,
+            ],
+            [
+                'source' => 3,
+                'expected' => false,
+            ],
+            [
+                'source' => new ArrayIterator([]),
+                'expected' => 0,
+            ],
+            [
+                'source' => new ArrayIterator([1, 2, 3]),
+                'expected' => 3,
+            ],
+            [
+                'source' => new MockIteratorAggregate([]),
+                'expected' => 0,
+            ],
+            [
+                'source' => new MockIteratorAggregate([1, 2, 3]),
+                'expected' => 3,
+            ],
+            [
+                'source' => call_user_func(function () {
+                    yield 1;
+                }),
+                'expected' => 1,
+            ],
+            [
+                'source' => call_user_func(function () {
+                }),
+                'expected' => 0,
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider_size
+     *
+     * @param mixed $source
+     * @param int   $expected
+     */
+    public function testSize($source, $expected)
+    {
+        $this->assertEquals($expected, __::size($source));
+    }
+
     public function testWhere()
     {
         // Arrange
