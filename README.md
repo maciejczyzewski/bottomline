@@ -631,6 +631,7 @@ See LICENSE file in this repository.
 ## Thanks
 
 * Yoan Tournade ([@MonsieurV](https://github.com/MonsieurV))
+* Vladimir Jimenez ([@allejo](https://github.com/allejo))
 * Brandtley McMinn ([@bmcminn](https://github.com/bmcminn))
 * Ivan Ternovtsiy ([@diaborn19](https://github.com/diaborn19))
 * Tobias Seipke ([@nullpunkt](https://github.com/nullpunkt))
