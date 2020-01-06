@@ -181,40 +181,82 @@ class CollectionsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testConcatDeep()
+    public static function dataProvider_concatDeep()
     {
-        // Arrange
-        $a1 = ['color' => ['favorite' => 'red', 5], 3];
-        $a2 = [10, 'color' => ['favorite' => 'green', 'blue']];
-        $b1 = ['a' => 0];
-        $b2 = ['a' => 1, 'b' => 2];
-        $b3 = ['c' => 3, 'd' => 4];
-
-        // Act
-        $x = __::concatDeep($a1, $a2);
-        $y = __::concatDeep($b1, $b2, $b3);
-
-        // Assert
-        $this->assertEquals(['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10], $x);
-        $this->assertEquals(['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+        return [
+            [
+                'sources' => [
+                    ['color' => ['favorite' => 'red', 5], 3],
+                    [10, 'color' => ['favorite' => 'green', 'blue']],
+                ],
+                'expected' => ['color' => ['favorite' => ['red', 'green'], 5, 'blue'], 3, 10],
+            ],
+            [
+                'sources' => [
+                    ['a' => 0],
+                    ['a' => 1, 'b' => 2],
+                    ['c' => 3, 'd' => 4],
+                ],
+                'expected' => ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4],
+            ],
+            [
+                'sources' => [
+                    (object)['color' => (object)['favorite' => 'red', 5]],
+                    (object)[10, 'color' => (object)['favorite' => 'green', 'blue']],
+                ],
+                'expected' => (object)['color' => (object)['favorite' => ['red', 'green'], 5, 'blue'], 10],
+            ],
+            [
+                'sources' => [
+                    (object)['a' => 0],
+                    (object)['a' => 1, 'b' => 2],
+                    (object)['c' => 3, 'd' => 4],
+                ],
+                'expected' => (object)['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4],
+            ],
+            [
+                'sources' => [
+                    new ArrayIterator(['a' => 0]),
+                    new ArrayIterator(['a' => 1, 'b' => 2]),
+                    new ArrayIterator(['c' => 3, 'd' => 4]),
+                ],
+                'expected' => ['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4],
+            ],
+            [
+                'sources' => [
+                    new MockIteratorAggregate(['color' => (object)['favorite' => 'red', 5]]),
+                    (object)[10, 'color' => (object)['favorite' => 'green', 'blue']],
+                ],
+                'expected' => ['color' => (object)['favorite' => ['red', 'green'], 5, 'blue'], 10],
+            ],
+            [
+                'sources' => [
+                    (object)[],
+                    call_user_func(function () {
+                        yield 'a' => 0;
+                    }),
+                    call_user_func(function () {
+                        yield 'a' => 1;
+                        yield 'b' => 2;
+                    }),
+                    new ArrayIterator(['c' => 3, 'd' => 4]),
+                ],
+                'expected' => (object)['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4],
+            ],
+        ];
     }
 
-    public function testConcatDeepObject()
+    /**
+     * @dataProvider dataProvider_concatDeep
+     *
+     * @param array $sources
+     * @param array $expected
+     */
+    public function testConcatDeep($sources, $expected)
     {
-        // Arrange
-        $a1 = (object)['color' => (object)['favorite' => 'red', 5]];
-        $a2 = (object)[10, 'color' => (object)['favorite' => 'green', 'blue']];
-        $b1 = (object)['a' => 0];
-        $b2 = (object)['a' => 1, 'b' => 2];
-        $b3 = (object)['c' => 3, 'd' => 4];
+        $actual = call_user_func_array('__::concatDeep', $sources);
 
-        // Act
-        $x = __::concatDeep($a1, $a2);
-        $y = __::concatDeep($b1, $b2, $b3);
-
-        // Assert
-        $this->assertEquals((object)['color' => (object)['favorite' => ['red', 'green'], 5, 'blue'], 10], $x);
-        $this->assertEquals((object)['a' => [0, 1], 'b' => 2, 'c' => 3, 'd' => 4], $y);
+        $this->assertEquals($expected, $actual);
     }
 
     public static function dataProvider_ease()
