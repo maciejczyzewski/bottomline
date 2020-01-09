@@ -3,7 +3,32 @@
 namespace arrays;
 
 /**
- * Flattens a multidimensional array.
+ * @internal
+ *
+ * @param iterable|\Traversable $iterable
+ * @param bool                  $shallow
+ *
+ * @return \Generator
+ */
+function flattenIterable($iterable, $shallow = false)
+{
+    foreach ($iterable as $value) {
+        if (\__::isIterable($value, true)) {
+            if (!$shallow) {
+                $value = flatten($value, $shallow);
+            }
+
+            foreach ($value as $valItem) {
+                yield $valItem;
+            }
+        } else {
+            yield $value;
+        }
+    }
+}
+
+/**
+ * Flattens a multidimensional array or iterable.
  *
  * If `$shallow` is set to TRUE, the array will only be flattened a single level.
  *
@@ -19,26 +44,18 @@ namespace arrays;
  * [1, 2, 3, 4]
  * ```
  *
- * @param array|iterable $array
+ * @param array|iterable $iterable
  * @param bool           $shallow
  *
- * @return array
+ * @return array|\Generator
  */
-function flatten($array, $shallow = false)
+function flatten($iterable, $shallow = false)
 {
-    $output = [];
-    foreach ($array as $value) {
-        if (is_array($value)) {
-            if (!$shallow) {
-                $value = flatten($value, $shallow);
-            }
-            foreach ($value as $valItem) {
-                $output[] = $valItem;
-            }
-        } else {
-            $output[] = $value;
-        }
+    $generator = flattenIterable($iterable, $shallow);
+
+    if (is_array($iterable)) {
+        return iterator_to_array($generator);
     }
 
-    return $output;
+    return $generator;
 }
