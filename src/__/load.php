@@ -11,7 +11,7 @@ namespace __;
  ** Arrays                                       [10]
  ** Collections                                  [31]
  ** Functions                                    [3]
- ** Objects                                      [9]
+ ** Objects                                      [10]
  ** Utilities                                    [2]
  ** Strings                                      [13]
  ** Sequences                                    [1]
@@ -77,6 +77,7 @@ if (\version_compare(PHP_VERSION, '5.5.0', '<')) {
  * @method static bool isEmail(mixed $value) <p>Check if the value is valid email.</p>
  * @method static bool isEqual(mixed $object1, mixed $object2) <p>Check if the objects are equals.</p><br><p>Perform a deep (recursive) comparison when the parameters are arrays or objects.</p> <p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings. object objects are compared by their own enumerable properties (as returned by get_object_vars).</p> <p><strong>Usage</strong></p> <pre><code class="language-php">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);</code></pre> <p><strong>Result</strong></p> <pre><code>false</code></pre>
  * @method static bool isFunction(mixed $value) <p>Check if give value is function or not.</p>
+ * @method static bool isIterable(mixed $value, bool $strict = false) <p>Check to see if something is iterable.</p>
  * @method static bool isNull(mixed $value) <p>Check if give value is null or not.</p>
  * @method static bool isNumber(mixed $value) <p>Check if give value is number or not.</p>
  * @method static bool isObject(mixed $value) <p>Check if give value is object or not.</p>
