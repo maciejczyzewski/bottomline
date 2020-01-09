@@ -10,7 +10,7 @@ namespace objects;
  *
  * @return bool
  */
-function isIterable($value, $strict = false)
+function isIterable($value, $strict = true)
 {
     return (
         is_array($value) ||
