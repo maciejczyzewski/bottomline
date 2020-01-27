@@ -34,20 +34,20 @@ function mapValuesIterable($iterable, $closure)
  * ['x' => 'x_1']
  * ```
  *
- * @param array|iterable $array       Array of values
+ * @param array|iterable $iterable    Array of values
  * @param \Closure|null  $closure     Closure to map the values
  *
  * @return array|\Generator
  */
-function mapValues($array, \Closure $closure = null)
+function mapValues($iterable, \Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';
     }
 
-    if (is_array($array)) {
-        return iterator_to_array(mapValuesIterable($array, $closure));
+    if (is_array($iterable)) {
+        return iterator_to_array(mapValuesIterable($iterable, $closure));
     }
 
-    return mapValuesIterable($array, $closure);
+    return mapValuesIterable($iterable, $closure);
 }
