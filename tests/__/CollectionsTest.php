@@ -1190,46 +1190,77 @@ class CollectionsTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testMap()
+    public static function dataProvider_map()
     {
-        // Arrange
-        $a = [1, 2, 3];
-
-        // Act
-        $x = __::map($a, function ($n) {
-            return $n * 3;
-        });
-
-        // Assert
-        $this->assertEquals([3, 6, 9], $x);
+        return [
+            [
+                'source' => [1, 2, 3],
+                'closure' => function ($n) {
+                    return $n * 3;
+                },
+                'isGenerator' => false,
+                'expected' => [3, 6, 9],
+            ],
+            [
+                'source' => (object)['a' => 1, 'b' => 2, 'c' => 3],
+                'closure' => function ($n, $key) {
+                    return $key === 'c' ? $n : $n * 3;
+                },
+                'isGenerator' => false,
+                'expected' => [3, 6, 3],
+            ],
+            [
+                'source' => new ArrayIterator([1, 2, 3]),
+                'closure' => function ($n) {
+                    return $n * 3;
+                },
+                'isGenerator' => true,
+                'expected' => [3, 6, 9],
+            ],
+            [
+                'source' => new MockIteratorAggregate([1, 2, 3]),
+                'closure' => function ($n) {
+                    return $n * 6;
+                },
+                'isGenerator' => true,
+                'expected' => [6, 12, 18],
+            ],
+            [
+                'source' => call_user_func(function() {
+                    yield 1;
+                    yield 2;
+                    yield 3;
+                }),
+                'closure' => function ($n) {
+                    return $n * 3;
+                },
+                'isGenerator' => true,
+                'expected' => [3, 6, 9],
+            ],
+        ];
     }
 
-    public function testMapObject()
+    /**
+     * @dataProvider dataProvider_map
+     *
+     * @param iterable $source
+     * @param \Closure $closure
+     * @param bool     $isGenerator
+     * @param array    $expected
+     */
+    public function testMap($source, $closure, $isGenerator, $expected)
     {
-        // Arrange
-        $a = (object)['a' => 1, 'b' => 2, 'c' => 3];
+        $actual = __::map($source, $closure);
 
-        // Act
-        $x = __::map($a, function ($n, $key) {
-            return $key === 'c' ? $n : $n * 3;
-        });
+        if ($isGenerator) {
+            $this->assertInstanceOf(\Generator::class, $actual);
+        } else {
+            $this->assertTrue(is_array($actual));
+        }
 
-        // Assert
-        $this->assertEquals([3, 6, 3], $x);
-    }
-
-    public function testMapIterable()
-    {
-        // Arrange
-        $a = new ArrayIterator([1, 2, 3]);
-
-        // Act
-        $x = __::map($a, function ($n) {
-            return $n * 3;
-        });
-
-        // Assert
-        $this->assertEquals([3, 6, 9], $x);
+        foreach ($actual as $key => $value) {
+            $this->assertEquals($expected[$key], $value);
+        }
     }
 
     public function testMax()
