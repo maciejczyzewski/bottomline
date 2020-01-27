@@ -1226,7 +1226,7 @@ class CollectionsTest extends TestCase
                 'expected' => [6, 12, 18],
             ],
             [
-                'source' => call_user_func(function() {
+                'source' => call_user_func(function () {
                     yield 1;
                     yield 2;
                     yield 3;
