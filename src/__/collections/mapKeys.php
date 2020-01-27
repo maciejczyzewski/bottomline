@@ -3,10 +3,34 @@
 namespace collections;
 
 /**
+ * @internal
+ *
+ * @param $iterable
+ * @param $closure
+ *
+ * @throws \Exception
+ *
+ * @return \Generator
+ */
+function mapKeysIterable($iterable, $closure)
+{
+    foreach ($iterable as $key => $value) {
+        $newKey = call_user_func_array($closure, array($key, $value, $iterable));
+
+        // key must be a number or string
+        if (!is_numeric($newKey) && !is_string($newKey)) {
+            throw new \Exception('closure must returns a number or string');
+        }
+
+        yield $newKey => $value;
+    }
+}
+
+/**
  * Transforms the keys in a collection by running each key through the iterator.
  *
- * This function throws an `\Exception` when the close doesn't return a valid key
- * that can be used in a PHP array.
+ * This function throws an `\Exception` when the closure doesn't return a valid
+ * key that can be used in a PHP array.
  *
  * **Usage**
  *
@@ -22,27 +46,22 @@ namespace collections;
  * ['x_1' => 1]
  * ```
  *
- * @param array|iterable $array       Array/iterable of values
- * @param \Closure       $closure     Closure to map the keys
+ * @param array|iterable $iterable    Array/iterable of values
+ * @param \Closure|null  $closure     Closure to map the keys
  *
  * @throws \Exception when closure doesn't return a valid key that can be used in PHP array
  *
- * @return array
+ * @return array|\Generator
  */
-function mapKeys($array, \Closure $closure = null)
+function mapKeys($iterable, \Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';
     }
-    $resultArray = [];
-    foreach ($array as $key => $value) {
-        $newKey = call_user_func_array($closure, array($key, $value, $array));
-        // key must be a number or string
-        if (!is_numeric($newKey) && !is_string($newKey)) {
-            throw new \Exception('closure must returns a number or string');
-        }
 
-        $resultArray[$newKey] = $value;
+    if (is_array($iterable)) {
+        return iterator_to_array(mapKeysIterable($iterable, $closure));
     }
-    return $resultArray;
+
+    return mapKeysIterable($iterable, $closure);
 }

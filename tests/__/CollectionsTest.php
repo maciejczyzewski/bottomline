@@ -1263,6 +1263,244 @@ class CollectionsTest extends TestCase
         }
     }
 
+    public static function dataProvider_mapKeys()
+    {
+        return [
+            [
+                'source' => [
+                    'name1' => [
+                        'name' => 'Tuan',
+                        'age' => 26
+                    ],
+                    'name2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25'
+                    ],
+                ],
+                'closure' => function ($key) {
+                    return strtoupper($key);
+                },
+                'isGenerator' => false,
+                'expected' => [
+                    'NAME1' => [
+                        'name' => 'Tuan',
+                        'age' => 26,
+                    ],
+                    'NAME2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25',
+                    ],
+                ],
+            ],
+            [
+                'source' => [
+                    'name1' => [
+                        'name' => 'Tuan',
+                        'age' => 26
+                    ],
+                    'name2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25'
+                    ],
+                ],
+                'closure' => function ($key, $value, $collection) {
+                    $size = count($collection);
+
+                    return "{$key}_{$value['name']}_{$size}";
+                },
+                'isGenerator' => false,
+                'expected' => [
+                    'name1_Tuan_2' => [
+                        'name' => 'Tuan',
+                        'age' => 26,
+                    ],
+                    'name2_Nguyen_2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25',
+                    ],
+                ],
+            ],
+            [
+                'source' => [
+                    'name1' => [
+                        'name' => 'Tuan',
+                        'age' => 26
+                    ],
+                    'name2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25'
+                    ],
+                ],
+                'closure' => null,
+                'isGenerator' => false,
+                'expected' => [
+                    'name1' => [
+                        'name' => 'Tuan',
+                        'age' => 26
+                    ],
+                    'name2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25'
+                    ],
+                ],
+            ],
+            [
+                'source' => new ArrayIterator([
+                    'name1' => [
+                        'name' => 'Tuan',
+                        'age' => 26
+                    ],
+                    'name2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25'
+                    ],
+                ]),
+                'closure' => function ($key) {
+                    return strtoupper($key);
+                },
+                'isGenerator' => true,
+                'expected' => [
+                    'NAME1' => [
+                        'name' => 'Tuan',
+                        'age' => 26,
+                    ],
+                    'NAME2' => [
+                        'name' => 'Nguyen',
+                        'age' => '25',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @dataProvider dataProvider_mapKeys
+     *
+     * @param iterable      $source
+     * @param \Closure|null $closure
+     * @param bool          $isGenerator
+     * @param array         $expected
+     */
+    public function testMapKeys($source, $closure, $isGenerator, $expected)
+    {
+        $actual = __::mapKeys($source, $closure);
+
+        if ($isGenerator) {
+            $this->assertInstanceOf(\Generator::class, $actual);
+        } else {
+            $this->assertTrue(is_array($actual));
+        }
+
+        foreach ($actual as $key => $item) {
+            $this->assertEquals($expected[$key], $item);
+        }
+    }
+
+    public function testMapKeysInvalidClosure()
+    {
+        if (method_exists($this, 'expectException')) {
+            // new phpunit
+            $this->expectException(\Exception::class, 'closure must returns a number or string');
+        } else {
+            // old phpunit
+            $this->setExpectedException(\Exception::class, 'closure must returns a number or string');
+        }
+
+        // Arrange
+        $a = ['x' => ['y' => 1]];
+
+        // Act
+        __::mapKeys($a, function ($key) {
+            return ['key' => $key];
+        });
+    }
+
+    public function testMapValues()
+    {
+        // Arrange
+        $a = [
+            'name1' => [
+                'name' => 'Tuan',
+                'age' => 26
+            ],
+            'name2' => [
+                'name' => 'Nguyen',
+                'age' => '25'
+            ],
+        ];
+
+        // Act
+        $b = __::mapValues($a, function ($value) {
+            return array_flip($value);
+        });
+
+        // Assert
+        $this->assertEquals([
+            'name1' => [
+                'Tuan' => 'name',
+                26 => 'age'
+            ],
+            'name2' => [
+                'Nguyen' => 'name',
+                25 => 'age'
+            ],
+        ], $b);
+
+        // test with complicated closure
+        // Act
+        $b = __::mapValues($a, function ($value, $key, $collection) {
+            $size = count($collection);
+            return [
+                'subKey' => "{$value['age']}_{$key}_{$size}"
+            ];
+        });
+
+        // Assert
+        $this->assertEquals([
+            'name1' => ['subKey' => '26_name1_2'],
+            'name2' => ['subKey' => '25_name2_2'],
+        ], $b);
+
+        // test when closure is null, the returned array should have the same data with the original array
+        // Act
+        $b = __::mapValues($a);
+
+        // Assert
+        $this->assertEquals($a, $b);
+    }
+
+    public function testMapValuesIterable()
+    {
+        // Arrange
+        $a = new ArrayIterator([
+            'name1' => [
+                'name' => 'Tuan',
+                'age' => 26
+            ],
+            'name2' => [
+                'name' => 'Nguyen',
+                'age' => '25'
+            ],
+        ]);
+
+        // Act
+        $b = __::mapValues($a, function ($value) {
+            return array_flip($value);
+        });
+
+        // Assert
+        $this->assertEquals([
+            'name1' => [
+                'Tuan' => 'name',
+                26 => 'age'
+            ],
+            'name2' => [
+                'Nguyen' => 'name',
+                25 => 'age'
+            ],
+        ], $b);
+    }
+
     public function testMax()
     {
         // Arrange
@@ -1840,200 +2078,5 @@ class CollectionsTest extends TestCase
         $this->assertEquals([], $x2);
         $this->assertEquals([$a[1]], $x3);
         $this->assertEquals([], $x4);
-    }
-
-    public function testMapKeys()
-    {
-        // Arrange
-        $a = [
-            'name1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'name2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ];
-
-        // Act
-        $b = __::mapKeys($a, function ($key) {
-            return strtoupper($key);
-        });
-
-        // Assert
-        $this->assertEquals([
-            'NAME1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'NAME2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ], $b);
-
-        // test with complicated closure
-        // Act
-        $b = __::mapKeys($a, function ($key, $value, $collection) {
-            $size = count($collection);
-            return "{$key}_{$value['name']}_{$size}";
-        });
-
-        // Assert
-        $this->assertEquals([
-            'name1_Tuan_2' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'name2_Nguyen_2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ], $b);
-
-        // test when closure is null, the returned array should have the same data with the original array
-        // Act
-        $b = __::mapKeys($a);
-
-        // Assert
-        $this->assertEquals($a, $b);
-    }
-
-    public function testMapKeysInvalidClosure()
-    {
-        if (method_exists($this, 'expectException')) {
-            // new phpunit
-            $this->expectException('\Exception', 'closure must returns a number or string');
-        } else {
-            // old phpunit
-            $this->setExpectedException('\Exception', 'closure must returns a number or string');
-        }
-
-        // Arrange
-        $a = ['x' => ['y' => 1]];
-
-        // Act
-        __::mapKeys($a, function ($key) {
-            return ['key' => $key];
-        });
-    }
-
-    public function testMapKeysIterable()
-    {
-        // Arrange
-        $a = new ArrayIterator([
-            'name1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'name2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ]);
-
-        // Act
-        $b = __::mapKeys($a, function ($key) {
-            return strtoupper($key);
-        });
-
-        // Assert
-        $this->assertEquals([
-            'NAME1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'NAME2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ], $b);
-    }
-
-    public function testMapValues()
-    {
-        // Arrange
-        $a = [
-            'name1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'name2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ];
-
-        // Act
-        $b = __::mapValues($a, function ($value) {
-            return array_flip($value);
-        });
-
-        // Assert
-        $this->assertEquals([
-            'name1' => [
-                'Tuan' => 'name',
-                26 => 'age'
-            ],
-            'name2' => [
-                'Nguyen' => 'name',
-                25 => 'age'
-            ],
-        ], $b);
-
-        // test with complicated closure
-        // Act
-        $b = __::mapValues($a, function ($value, $key, $collection) {
-            $size = count($collection);
-            return [
-                'subKey' => "{$value['age']}_{$key}_{$size}"
-            ];
-        });
-
-        // Assert
-        $this->assertEquals([
-            'name1' => ['subKey' => '26_name1_2'],
-            'name2' => ['subKey' => '25_name2_2'],
-        ], $b);
-
-        // test when closure is null, the returned array should have the same data with the original array
-        // Act
-        $b = __::mapValues($a);
-
-        // Assert
-        $this->assertEquals($a, $b);
-    }
-
-    public function testMapValuesIterable()
-    {
-        // Arrange
-        $a = new ArrayIterator([
-            'name1' => [
-                'name' => 'Tuan',
-                'age' => 26
-            ],
-            'name2' => [
-                'name' => 'Nguyen',
-                'age' => '25'
-            ],
-        ]);
-
-        // Act
-        $b = __::mapValues($a, function ($value) {
-            return array_flip($value);
-        });
-
-        // Assert
-        $this->assertEquals([
-            'name1' => [
-                'Tuan' => 'name',
-                26 => 'age'
-            ],
-            'name2' => [
-                'Nguyen' => 'name',
-                25 => 'age'
-            ],
-        ], $b);
     }
 }
