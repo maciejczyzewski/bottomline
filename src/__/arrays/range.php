@@ -26,7 +26,7 @@ namespace arrays;
 function range($start, $stop = null, $step = 1)
 {
     if ($stop === null) {
-        $stop  = $start;
+        $stop = $start;
         $start = 1;
     }
 

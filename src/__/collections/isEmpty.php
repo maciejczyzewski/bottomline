@@ -19,12 +19,28 @@ namespace collections;
  * true
  * ```
  *
- * @param array|object $value The value to check for emptiness.
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable|\stdClass $value The value to check for emptiness.
  *
  * @return bool
  */
 function isEmpty($value)
 {
-    // TODO Create and use our own __::size(). (Manage object, etc.).
-    return (!\__::isArray($value) && !\__::isObject($value)) || count((array) $value) === 0;
+    $length = \__::size($value);
+
+    if (\__::isNumber($length)) {
+        return $length === 0;
+    }
+
+    try {
+        $ittr = \__::getIterator($value);
+
+        foreach ($ittr as $_) {
+            return false;
+        }
+    } catch (\InvalidArgumentException $exception) {
+    }
+
+    return true;
 }

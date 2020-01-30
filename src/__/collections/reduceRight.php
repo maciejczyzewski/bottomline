@@ -24,23 +24,15 @@ namespace collections;
  * 'cba'
  * ```
  *
- * @param array|object       $collection  The collection to iterate over.
- * @param \Closure           $iteratee    The function invoked per iteration.
- * @param array|object|mixed $accumulator The initial value.
+ * @since 0.2.0 added support for iterables
  *
- * @return array|object|mixed Returns the accumulated value.
+ * @param iterable|\stdClass    $collection  The collection to iterate over.
+ * @param \Closure              $iteratee    The function invoked per iteration.
+ * @param array|\stdClass|mixed $accumulator The initial value.
+ *
+ * @return array|\stdClass|mixed Returns the accumulated value.
  */
 function reduceRight($collection, \Closure $iteratee, $accumulator = null)
 {
-    // TODO Factorize using iter_reverse: make it a function. (See doForEachRight)
-    if ($accumulator === null) {
-        $accumulator = \__::first($collection);
-    }
-    \__::doForEachRight(
-        $collection,
-        function ($value, $key, $collection) use (&$accumulator, $iteratee) {
-            $accumulator = $iteratee($accumulator, $value, $key, $collection);
-        }
-    );
-    return $accumulator;
+    return \__::reduce(\__::reverseIterable($collection), $iteratee, $accumulator);
 }

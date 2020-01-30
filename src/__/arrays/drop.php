@@ -3,6 +3,39 @@
 namespace arrays;
 
 /**
+ * When a function has the `yield` keyword, the returned value becomes a
+ * \Generator. In order to bypass this behavior and allow `drop` to return either
+ * an array or a \Generator, this is code is extracted into a separate function.
+ *
+ * @internal
+ *
+ * @param \Traversable $input
+ * @param int          $number
+ *
+ * @return \Generator
+ */
+function dropIterable($input, $number)
+{
+    // We have our own counter for elements since iterators and generators can
+    // return arbitrary keys.
+    //
+    //   https://www.php.net/manual/en/iterator.key.php
+    //   https://www.php.net/manual/en/language.generators.syntax.php#control-structures.yield.associative
+    $count = 0;
+    $iterator = \__::getIterator($input);
+
+    foreach ($iterator as $item) {
+        ++$count;
+
+        if ($count <= $number) {
+            continue;
+        }
+
+        yield $item;
+    }
+}
+
+/**
  * Creates a slice of array with n elements dropped from the beginning.
  *
  * **Usage**
@@ -17,12 +50,18 @@ namespace arrays;
  * [3, 5]
  * ```
  *
- * @param array $input The array to query.
- * @param int $number The number of elements to drop.
+ * @since 0.2.0 iterable objects are now supported
  *
- * @return array
+ * @param iterable $input  The array or iterable to query.
+ * @param int      $number The number of elements to drop.
+ *
+ * @return array|\Generator
  */
-function drop(array $input, $number = 1)
+function drop($input, $number = 1)
 {
-    return array_slice($input, $number);
+    if (is_array($input)) {
+        return \array_slice($input, $number);
+    }
+
+    return dropIterable($input, $number);
 }

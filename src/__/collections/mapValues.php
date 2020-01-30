@@ -3,6 +3,21 @@
 namespace collections;
 
 /**
+ * @internal
+ *
+ * @param iterable $iterable
+ * @param \Closure $closure
+ *
+ * @return \Generator
+ */
+function mapValuesIterable($iterable, $closure)
+{
+    foreach ($iterable as $key => $value) {
+        yield $key => call_user_func_array($closure, [$value, $key, $iterable]);
+    }
+}
+
+/**
  * Transforms the values in a collection by running each value through the iterator.
  *
  * **Usage**
@@ -19,19 +34,22 @@ namespace collections;
  * ['x' => 'x_1']
  * ```
  *
- * @param array    $array       Array of values
- * @param \Closure $closure     Closure to map the values
+ * @since 0.2.0 added support for iterables
  *
- * @return array
+ * @param iterable      $iterable Array of values
+ * @param \Closure|null $closure  Closure to map the values
+ *
+ * @return array|\Generator
  */
-function mapValues(array $array, \Closure $closure = null)
+function mapValues($iterable, \Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';
     }
-    $resultArray = [];
-    foreach ($array as $key => $value) {
-        $resultArray[$key] = call_user_func_array($closure, array($value, $key, $array));
+
+    if (is_array($iterable)) {
+        return iterator_to_array(mapValuesIterable($iterable, $closure));
     }
-    return $resultArray;
+
+    return mapValuesIterable($iterable, $closure);
 }

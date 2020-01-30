@@ -1,9 +1,12 @@
 <?php
 
-class StringsTest extends \PHPUnit\Framework\TestCase
-{
-    // ...
+namespace __\Test;
 
+use __;
+use PHPUnit\Framework\TestCase;
+
+class StringsTest extends TestCase
+{
     public function testCamelCase()
     {
         // Arrange
@@ -228,6 +231,4 @@ class StringsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals([], $z);
         $this->assertEquals(['foo', 'Bar'], $u);
     }
-
-    // ...
 }

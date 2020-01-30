@@ -37,6 +37,7 @@ namespace arrays;
 function patch($array, $patches, $parent = '')
 {
     $parent .= '/';
+
     foreach ($array as $key => &$value) {
         $z = $parent . $key;
 

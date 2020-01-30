@@ -18,7 +18,7 @@ namespace collections;
  * true
  * ```
  *
- * @param array|object $collection of key values pairs
+ * @param array|\stdClass $collection of key values pairs
  * @param array        $keys       collection of keys to look for
  * @param bool         $strict     to exclusively check
  *

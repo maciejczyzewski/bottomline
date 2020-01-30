@@ -21,6 +21,7 @@ language: php
 #   - 7.1
 #   - 7.2
 #   - 7.3
+#   - 7.4
 
 # matrix:
 #   include:
@@ -46,9 +47,6 @@ jobs:
   include:
   # Anyway, here are the PHP versions specified, with the build env when necessary.
     - <<: *stagetest
-      php: 5.4
-      dist: trusty
-    - <<: *stagetest
       php: 5.5
       dist: trusty
     - <<: *stagetest
@@ -61,8 +59,8 @@ jobs:
       php: 7.2
     - <<: *stagetest
       php: 7.3
-    # - <<: *stagetest
-    #   php: 7.4
+    - <<: *stagetest
+      php: 7.4
 
     - stage: checks
       install: composer install

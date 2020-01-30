@@ -1,7 +1,45 @@
 # Changelog
 
-## <sub>unreleased</sub>
-#### [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)
+## v0.2.x
+
+**Unreleased — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)**
+
+* Added `__::isEqual`
+* The following functions now have iterable support. When given a `\Traversable` object, functions will return generators *if* the function does not need to exhaust the iterator; otherwise, it will return an array. ([#48](https://github.com/maciejczyzewski/bottomline/pull/48))
+  - `__::chunk(): array|\Generator`
+  - `__::compact(): array|\Generator`
+  - `__::concat(): array`
+  - `__::concatDeep(): array`
+  - `__::doForEach(): void`
+  - `__::doForEachRight(): void`
+  - `__::drop(): array|\Generator`
+  - `__::ease(): array`
+  - `__::every(): void`
+  - `__::filter(): array|\Generator`
+  - `__::first(): mixed`
+  - `__::flatten(): array|\Generator`
+  - `__::groupBy(): array`
+  - `__::isEmpty(): bool`
+  - `__::last(): array`
+  - `__::map(): array|\Generator`
+  - `__::mapKeys(): array|\Generator`
+  - `__::mapValues(): array|\Generator`
+  - `__::max(): mixed`
+  - `__::merge(): array`
+  - `__::min(): mixed`
+  - `__::pick(): array`
+  - `__::pluck(): array`
+  - `__::reduce(): array`
+  - `__::reduceRight(): array`
+  - `__::reverseIterable(): array|\Generator`
+  - `__::size(): int`
+  - `__::unease(): array`
+  - `__::where(): array`
+
+## v0.1.2
+
+**Aug 15, 2018 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...0.1.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.2/README.md)**
+
 * Added `__::assign`
 * Added `__::concat`
 * Added `__::concatDeep`
@@ -9,14 +47,16 @@
 * Added `__::doForEachRight`
 * Added `__::reduceRight`
 * Added `__::isEqual`
+* Added `__::reverseIterable`
 * Made `__::get` and `__::set` work as array getter and setter for objects implementing the ArrayAccess interface
 * Made `__::has` call `offsetExists()` for objects implementing the ArrayAccess interface
 * Added dot notation support to `__::groupBy()`; it now uses `__::get()` and `__::set()` internally
 * Rewrote documentation for each separate function
 * Documentation in `load.php` is now generated from the individual function docs
 
-## <sub>v0.1.1</sub>
-#### _Jan 12, 2018_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...0.1.1) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.1/README.md)
+## v0.1.1
+
+**Jan 12, 2018 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.0...0.1.1) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.1/README.md)**
 
 * Added `__::pick`
 * Added `__::groupBy`
@@ -36,8 +76,9 @@
 * Made `__::set()` to return a copy of the collection (do not mutate)
 * Removed `$strict` optional parameter of `__::set()`: it always create or override portion of path
 
-## <sub>v0.1.0</sub>
-#### _Sept 24, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)
+## v0.1.0
+
+**Sept 24, 2017 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.9...0.1.0) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.0/README.md)**
 
 * Added `__::camelCase`
 * Added `__::capitalize`
@@ -52,14 +93,16 @@
 * Added `__::upperFirst`
 * Added `__::words`
 
-## <sub>v0.0.9</sub>
-#### _Jan 5, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.8...0.0.9) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.9/README.md)
+## v0.0.9
+
+**Jan 5, 2017 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.8...0.0.9) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.9/README.md)**
 
 * Added benchmark `bench.php`
 * PHPDoc and code normalization
 
-## <sub>v0.0.8</sub>
-#### _Jan 3, 2017_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.7...0.0.8) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.8/README.md)
+## v0.0.8
+
+**Jan 3, 2017 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.7...0.0.8) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.8/README.md)**
 
 * Added `__::chunk`
 * Added `__::randomize`
@@ -70,22 +113,25 @@
 * Simplified “Array” methods
 * Enhanced PHPDoc
 
-## <sub>v0.0.7</sub>
-#### _Dec 1, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.6...0.0.7) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.7/README.md)
+## v0.0.7
+
+**Dec 1, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.6...0.0.7) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.7/README.md)**
 
 * Added `__::now`
 * Documentation improvements
 
-## <sub>v0.0.6</sub>
-#### _Aug 7, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.5...0.0.6) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.6/README.md)
+## v0.0.6
+
+**Aug 7, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.5...0.0.6) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.6/README.md)**
 
 * Added `__::patch`
 * Added benchmark with other libraries
 * Added Composer installation instructions
 * Added PHPDoc on each function
 
-## <sub>v0.0.5</sub>
-#### _Jul 27, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.4...0.0.5) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.5/README.md)
+## v0.0.5
+
+**Jul 27, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.0.4...0.0.5) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.5/README.md)**
 
 * Added `__::append`
 * Added `__::flatten`
@@ -109,8 +155,9 @@
 * Added Composer installation instructions
 * Added PHPDoc on each function
 
-## <sub>v0.0.4</sub>
-#### _Jun 23, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.3...0.0.4) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.4/README.md)
+## v0.0.4
+
+**Jun 23, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.3...0.0.4) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.0.4/README.md)**
 
 * Added `__::compact`
 * Added `__::range`
@@ -122,18 +169,21 @@
 * Added internal function autoloader `__::load`
 * Added unit tests (PHPUnit)
 
-## <sub>v0.0.3</sub>
-#### _Jan 17, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.2...v0.0.3) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.3/README.md)
+## v0.0.3
+
+**Jan 17, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.2...v0.0.3) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.3/README.md)**
 
 * Added `__::each`
 
-## <sub>v0.0.2</sub>
-#### _Jan 6, 2014_ — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.1...v0.0.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.2/README.md)
+## v0.0.2
 
- * Added branding
- * Written `README.md`
+**Jan 6, 2014 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/v0.0.1...v0.0.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.2/README.md)**
 
-## <sub>v0.0.1</sub>
-#### _Jan. 6, 2014_ — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.1/README.md)
+* Added branding
+* Written `README.md`
 
- * Initial release
+## v0.0.1
+
+**Jan. 6, 2014 — [Docs](https://github.com/maciejczyzewski/bottomline/blob/v0.0.1/README.md)**
+
+* Initial release

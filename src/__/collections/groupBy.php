@@ -28,10 +28,10 @@ namespace collections;
  * [
  *   'IN' => [
  *      ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- *      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
  *   ],
  *   'CA' => [
- *      ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen']
+ *      ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *      ['state' => 'CA', 'city' => 'Mountain View', 'object' => 'Space pen'],
  *   ]
  * ]
  * ```
@@ -82,9 +82,9 @@ namespace collections;
  *
  * ```php
  * __::groupBy([
- *         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
- *         ['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
- *         ['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
+ *         (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'School bus'],
+ *         (object)['state' => 'IN', 'city' => 'Indianapolis', 'object' => 'Manhole'],
+ *         (object)['state' => 'CA', 'city' => 'San Diego', 'object' => 'Light bulb'],
  *     ],
  *     function ($value) {
  *         return $value->city;
@@ -108,19 +108,19 @@ namespace collections;
  *
  * @author Chauncey McAskill
  *
- * @param array $array
- * @param int|float|string|\Closure $key
+ * @param iterable                  $iterable
+ * @param int|float|string|\Closure ...$key
  *
  * @return array
  */
-function groupBy(array $array, $key)
+function groupBy($iterable, $key)
 {
     if (!\is_bool($key) && !\is_scalar($key) && !\is_callable($key)) {
-        return $array;
+        return $iterable;
     }
 
     $grouped = [];
-    foreach ($array as $value) {
+    foreach ($iterable as $value) {
         $groupKey = null;
 
         if (\is_callable($key)) {

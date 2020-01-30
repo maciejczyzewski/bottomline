@@ -17,12 +17,31 @@ namespace collections;
  * [4, 5]
  * ```
  *
- * @param array    $array array of values
- * @param int|null $take  number of returned values
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $iterable array of values
+ * @param int|null $take     number of returned values
  *
  * @return array|mixed
  */
-function last($array, $take = null)
+function last($iterable, $take = null)
 {
-    return $take ? \array_slice($array, -$take) : \array_pop($array);
+    $take = (int)$take;
+
+    if (is_array($iterable)) {
+        return $take ? \array_slice($iterable, -$take) : \array_pop($iterable);
+    }
+
+    $result = [];
+    $count = 0;
+
+    \__::doForEachRight($iterable, function ($value) use (&$count, $take, &$result) {
+        if ($count++ >= $take) {
+            return false;
+        }
+
+        $result = \__::prepend($result, $value);
+    });
+
+    return $result;
 }

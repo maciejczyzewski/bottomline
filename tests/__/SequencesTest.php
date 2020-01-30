@@ -1,9 +1,12 @@
 <?php
 
-class SequencesTest extends \PHPUnit\Framework\TestCase
-{
-    // ...
+namespace __\Test;
 
+use __;
+use PHPUnit\Framework\TestCase;
+
+class SequencesTest extends TestCase
+{
     public function testChainReturnsArray()
     {
         // Arrange

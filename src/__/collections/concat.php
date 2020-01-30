@@ -29,24 +29,46 @@ namespace collections;
  * ]
  * ```
  *
- * @param array|object $collection Collection to assign to.
- * @param array|object ...$_       N other collections to assign.
+ * @since 0.2.0 added support for iterables
  *
- * @return array|object Assigned collection.
+ * @param iterable|\stdClass $collection Collection to assign to.
+ * @param iterable|\stdClass ...$_       N other collections to assign.
  *
+ * @return array|\stdClass If the first argument given to this function is an
+ *     `\stdClass`, an `\stdClass` will be returned. Otherwise, an array will be
+ *     returned.
  */
 function concat($collection, $_)
 {
-    // TODO Alternative over casting to array: implement directly assign using
-    // foreach (func_get_args() as $collectionN). (with object handling).
-    // First collection determine output type (array vs. object).
-    $isObject = \__::isObject($collection);
-    // Cast args to array.
-    $args = \__::map(func_get_args(), function ($arg) {
-        return (array) $arg;
+    $args = func_get_args();
+    $areArrayish = \__::every($args, function ($arg) {
+        return \__::isArray($arg) || $arg instanceof \stdClass;
     });
-    // PHP 5.6+ array_merge_recursive(...$args);
-    $merged = call_user_func_array('array_merge', $args);
-    ;
-    return $isObject ? (object) $merged : $merged;
+
+    if ($areArrayish) {
+        $argsAsArrays = \__::map($args, function ($arg) {
+            return (array)$arg;
+        });
+        $merged = call_user_func_array('array_merge', $argsAsArrays);
+
+        return ($collection instanceof \stdClass) ? (object)$merged : $merged;
+    }
+
+    if ($collection instanceof \Iterator || $collection instanceof \IteratorAggregate) {
+        $result = iterator_to_array(\__::getIterator($collection));
+    } else {
+        $result = (array)$collection;
+    }
+
+    foreach (\__::drop($args, 1) as $iterable) {
+        foreach ($iterable as $key => $item) {
+            if (\__::isNumber($key)) {
+                $result[] = $item;
+            } else {
+                $result[$key] = $item;
+            }
+        }
+    }
+
+    return $result;
 }

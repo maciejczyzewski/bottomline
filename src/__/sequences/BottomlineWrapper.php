@@ -21,9 +21,11 @@ class BottomlineWrapper
      * dynamically calls bottomline function, prepend the list of parameters with the current collection list
      *
      * @param string $functionName must be a valid bottomline function
-     * @param array $params
-     * @return $this
+     * @param array  $params
+     *
      * @throws \Exception
+     *
+     * @return $this
      */
     public function __call($functionName, $params)
     {

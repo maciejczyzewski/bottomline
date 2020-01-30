@@ -1,6 +1,8 @@
+#!/usr/bin/env php
 <?php
 
 const MIN_VERSION = '5.5.9';
+const PREFIX_FN_BOTTOMLINE = 'bottomline_';
 
 if (\version_compare(PHP_VERSION, MIN_VERSION, '<')) {
     die(sprintf("This script should be run with a PHP version higher than %s due to dependency constraints.\n", MIN_VERSION));
@@ -52,6 +54,11 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
     $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
     $functionArguments = $docBlock->getTagsByName('param');
     $functionArgumentDefinitions = $functionDefinition->getParameters();
+    $isInternal = count($docBlock->getTagsByName('internal')) > 0;
+
+    if ($isInternal) {
+        return;
+    }
 
     $argDefs = [];
 
@@ -104,15 +111,67 @@ function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $names
         }
     }
 
+    $sinceChangeLog = $docBlock->getTagsByName('since');
+    $exceptions = $docBlock->getTagsByName('throws');
+
+    if (count($sinceChangeLog) > 0) {
+        $functionDescription .= '<h2>Changelog</h2>';
+        $functionDescription .= '<ul>';
+
+        /** @var DocBlock\Tags\Since $item */
+        foreach ($sinceChangeLog as $item) {
+            $body = $markdown->text(vsprintf('`%s` - %s', [
+                $item->getVersion(),
+                $item->getDescription(),
+            ]));
+
+            $functionDescription .= sprintf('<li>%s</li>', $body);
+        }
+
+        $functionDescription .= '</ul>';
+    }
+
+    if (count($exceptions) > 0) {
+        $functionDescription .= '<h2>Exceptions</h2>';
+        $functionDescription .= '<ul>';
+
+        /** @var DocBlock\Tags\Throws $exception */
+        foreach ($exceptions as $exception) {
+            $body = $markdown->text(vsprintf('`%s` - %s', [
+                $exception->getType(),
+                $exception->getDescription()->render(),
+            ]));
+
+            $functionDescription .= sprintf('<li>%s</li>', $body);
+        }
+
+        $functionDescription .= '</ul>';
+    }
+    
+    $returnStatements = $docBlock->getTagsByName('return');
+    /** @var DocBlock\Tags\Return_|null $functionReturnTag */
+    $functionReturnTag = array_shift($returnStatements);
+    
+    if ($functionReturnTag !== null) {
+        $functionReturnType = $functionReturnTag->getType();
+        $body = $functionReturnTag->getDescription()->render();
+
+        if ($body) {
+            $functionDescription .= '<h2>Returns</h2>';
+            $functionDescription .= $markdown->text($body);
+        }
+    } else {
+        $functionReturnType = 'mixed';
+    }
+
     $descriptionBody = trim(preg_replace('/\n/', ' ', $functionSummary . '<br>' . $functionDescription));
     $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
     $description = new Description($descriptionBody);
-
-    $returnStatements = $docBlock->getTagsByName('return');
-    $functionReturnType = array_shift($returnStatements);
-
-    if ($functionReturnType !== null) {
-        $functionReturnType = $functionReturnType->getType();
+    
+    // Change documented names for function like max which are declared in files
+    // with a function prefix name (to avoid clash with PHP generic function max).
+    if (substr($functionName, 0, strlen(PREFIX_FN_BOTTOMLINE)) === PREFIX_FN_BOTTOMLINE) {
+        $functionName = str_replace(PREFIX_FN_BOTTOMLINE, '', $functionName);
     }
 
     $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
@@ -226,5 +285,7 @@ foreach ($bottomlineLoaderStatements as &$statement) {
 }
 
 $builtLoader = "<?php\n\n" . $phpPrinter->prettyPrint($bottomlineLoaderFile) . "\n";
+$builtLoader = preg_replace('/ +$/m', '', $builtLoader);
+$builtLoader = preg_replace('/(}\n)(\s+\w)/m', "$1\n$2", $builtLoader);
 
 file_put_contents($BOTTOMLINE_LOADER, $builtLoader);

@@ -33,14 +33,22 @@ namespace collections;
  * ]
  * ```
  *
- * @param array|object $collection First collection to concatDeep.
- * @param array|object ...$_        N other collections to concatDeep.
+ * @since 0.2.0 iterable support was added
  *
- * @return array|object Concatenated collection.
+ * @param iterable|\stdClass $collection First collection to concatDeep.
+ * @param iterable|\stdClass ...$_       N other collections to concatDeep.
+ *
+ * @return array|\stdClass A concatenated collection. When the first argument given
+ *     is an `\stdClass`, then resulting value will be an `\stdClass`. Otherwise,
+ *     an array will always be returned.
  */
-function concatDeep()
+function concatDeep($collection, $_)
 {
     return \__::reduceRight(func_get_args(), function ($source, $result) {
+        if ($result instanceof \Iterator || $result instanceof \IteratorAggregate) {
+            $result = iterator_to_array(\__::getIterator($result));
+        }
+
         \__::doForEach($source, function ($sourceValue, $key) use (&$result) {
             if (!\__::has($result, $key)) {
                 $result = \__::set($result, $key, $sourceValue);
@@ -49,8 +57,8 @@ function concatDeep()
             } else {
                 $resultValue = \__::get($result, $key);
                 $result = \__::set($result, $key, concatDeep(
-                    \__::isCollection($resultValue) ? $resultValue : (array) $resultValue,
-                    \__::isCollection($sourceValue) ? $sourceValue : (array) $sourceValue
+                    \__::isCollection($resultValue) ? $resultValue : (array)$resultValue,
+                    \__::isCollection($sourceValue) ? $sourceValue : (array)$sourceValue
                 ));
             }
         });

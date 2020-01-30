@@ -1,9 +1,12 @@
 <?php
 
-class FunctionsTest extends \PHPUnit\Framework\TestCase
-{
-    // ...
+namespace __\Test;
 
+use __;
+use PHPUnit\Framework\TestCase;
+
+class FunctionsTest extends TestCase
+{
     public function testSlug()
     {
         // Arrange
@@ -45,6 +48,4 @@ class FunctionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('I love <a href="http://google.com">google.com</a>', $y);
         $this->assertEquals('I love <a href="http://google.com">google.com</a> !', $z);
     }
-
-    // ...
 }

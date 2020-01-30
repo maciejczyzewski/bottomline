@@ -22,24 +22,22 @@ namespace collections;
  * [['name' => 'maciej', 'age' => 16]]
  * ```
  *
- * @todo: implement compatibility with more than 2 dimensial arrays:
+ * @todo: implement compatibility with more than 2 dimensional arrays:
  *
- * @param array $array array of values
- * @param array $cond  condition in format of ['KEY'=>'VALUE']
+ * @param array|iterable $array array of values
+ * @param array          $cond  condition in format of ['KEY'=>'VALUE']
  *
  * @return array
  */
-function where(array $array = [], array $cond = [])
+function where($array = [], array $cond = [])
 {
     $result = [];
-
     foreach ($array as $arrItem) {
         foreach ($cond as $condK => $condV) {
             if (!isset($arrItem[$condK]) || $arrItem[$condK] !== $condV) {
                 continue 2;
             }
         }
-
         $result[] = $arrItem;
     }
 

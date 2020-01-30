@@ -1,7 +1,10 @@
 <?php
 
+namespace collections;
+
 /**
- * Returns the maximum value from the collection. If passed an iterator, max will return max value returned by the iterator.
+ * Returns the maximum value from the collection.
+ * If passed an iterator, max will return max value returned by the iterator.
  *
  * **Usage**
  *
@@ -15,8 +18,19 @@
  * 3
  * ```
  *
- * @param array $array array
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $array array
  *
  * @return mixed maximum value
  */
-return 'max';
+function bottomline_max($array)
+{
+    $maxValue = null;
+    foreach ($array as $value) {
+        if ($maxValue === null || $value > $maxValue) {
+            $maxValue = $value;
+        }
+    }
+    return $maxValue;
+}

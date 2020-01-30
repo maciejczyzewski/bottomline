@@ -15,7 +15,20 @@ function _universal_set($collection, $key, $value)
         $array[$key] = $value;
         return $array;
     };
-    $setter = \__::isObject($collection) && !($collection instanceof \ArrayAccess) ? $set_object : $set_array;
+    $set_iterator = function ($array, $key, $value) {
+        // We ensure we do not modify an iterator original values,
+        // by making a copy to an array.
+        $array = iterator_to_array($array);
+        $array[$key] = $value;
+        return $array;
+    };
+    $setter = $set_array;
+    if (\__::isObject($collection) && !($collection instanceof \ArrayAccess)) {
+        $setter = $set_object;
+    }
+    if ($collection instanceof \Iterator) {
+        $setter = $set_iterator;
+    }
     return call_user_func_array($setter, [$collection, $key, $value]);
 }
 
@@ -43,9 +56,9 @@ function _universal_set($collection, $key, $value)
  * ['foo' => ['bar' => 'ter', 'baz' => ['ber' => 'fer']]]
  * ```
  *
- * @param array|object $collection Collection of values
- * @param string       $path       Key or index. Supports dot notation
- * @param mixed        $value      The value to set at position $key
+ * @param array|iterable|object $collection Collection of values
+ * @param string                $path       Key or index. Supports dot notation
+ * @param mixed                 $value      The value to set at position $key
  *
  * @throws \Exception if the path consists of a non collection
  *
@@ -58,7 +71,7 @@ function set($collection, $path, $value = null)
     }
 
     $portions = \__::split($path, \__::DOT_NOTATION_DELIMITER, 2);
-    $key  = $portions[0];
+    $key = $portions[0];
 
     if (\count($portions) === 1) {
         return _universal_set($collection, $key, $value);

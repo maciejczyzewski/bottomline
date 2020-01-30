@@ -18,15 +18,16 @@ namespace collections;
  * ['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']]
  * ```
  *
- * @param array  $collection Hash map of values
- * @param string $separator  The glue used in the keys
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable|\stdClass $collection Hash map of values
+ * @param string             $separator  The glue used in the keys
  *
  * @return array
  */
-function unease(array $collection, $separator = '.')
+function unease($collection, $separator = '.')
 {
     $nonDefaultSeparator = $separator !== '.';
-
     $map = [];
     foreach ($collection as $key => $value) {
         $map = \__::set(
@@ -37,4 +38,4 @@ function unease(array $collection, $separator = '.')
     }
 
     return $map;
-};
+}
