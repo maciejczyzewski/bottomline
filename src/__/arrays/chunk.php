@@ -54,21 +54,19 @@ function chunkIterable($iterable, $size, $preserveKeys)
  * [[1, 2, 3], [4, 5]]
  * ```
  *
- * @param array|\Traversable $iterable     The original array
- * @param int                $size         The chunk size
- * @param bool               $preserveKeys Whether or not to preserve index keys
- *
  * @since 0.2.0 iterable objects are now supported
  *
- * @throws \InvalidArgumentException when an non-array or non-traversable object
- *     is given for $iterable.
- * @throws \Exception when an `\IteratorAggregate` is given and `getIterator()`
- *     throws an exception.
+ * @param int      $size         The chunk size
+ * @param bool     $preserveKeys Whether or not to preserve index keys
+ * @param iterable $iterable     The original array
  *
- * @return array|\Generator When given a `\Traversable` object for `$iterable`,
- *     a generator will be returned. Otherwise, an array will be returned.
+ * @throws \InvalidArgumentException when an non-array or non-traversable object is given for $iterable.
+ * @throws \Exception                when an `\IteratorAggregate` is given and `getIterator()` throws an exception.
+ *
+ * @return array|\Generator When given a `\Traversable` object for `$iterable`, a generator will be returned.
+ *                          Otherwise, an array will be returned.
  */
-function chunk(/* iterable */ $iterable, $size = 1, $preserveKeys = false)
+function chunk($iterable, $size = 1, $preserveKeys = false)
 {
     if (is_array($iterable)) {
         return \array_chunk($iterable, $size, $preserveKeys);

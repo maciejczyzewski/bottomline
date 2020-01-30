@@ -22,7 +22,7 @@ namespace collections;
  * [['name' => 'maciej', 'age' => 16]]
  * ```
  *
- * @todo: implement compatibility with more than 2 dimensial arrays:
+ * @todo: implement compatibility with more than 2 dimensional arrays:
  *
  * @param array|iterable $array array of values
  * @param array          $cond  condition in format of ['KEY'=>'VALUE']

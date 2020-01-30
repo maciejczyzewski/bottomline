@@ -35,10 +35,10 @@ namespace collections;
  *
  * @since 0.2.0 iterable support was added
  *
- * @param array|object|iterable $collection First collection to concatDeep.
- * @param array|object|iterable ...$_       N other collections to concatDeep.
+ * @param iterable|\stdClass $collection First collection to concatDeep.
+ * @param iterable|\stdClass ...$_       N other collections to concatDeep.
  *
- * @return array|object A concatenated collection. When the first argument given
+ * @return array|\stdClass A concatenated collection. When the first argument given
  *     is an `\stdClass`, then resulting value will be an `\stdClass`. Otherwise,
  *     an array will always be returned.
  */
@@ -57,8 +57,8 @@ function concatDeep($collection, $_)
             } else {
                 $resultValue = \__::get($result, $key);
                 $result = \__::set($result, $key, concatDeep(
-                    \__::isCollection($resultValue) ? $resultValue : (array) $resultValue,
-                    \__::isCollection($sourceValue) ? $sourceValue : (array) $sourceValue
+                    \__::isCollection($resultValue) ? $resultValue : (array)$resultValue,
+                    \__::isCollection($sourceValue) ? $sourceValue : (array)$sourceValue
                 ));
             }
         });

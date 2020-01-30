@@ -9,11 +9,9 @@ namespace arrays;
  *
  * @return \Generator
  */
-function compactIterable(/* iterable */ $iterable)
+function compactIterable($iterable)
 {
-    $iterator = \__::getIterator($iterable);
-
-    foreach ($iterator as $item) {
+    foreach (\__::getIterator($iterable) as $item) {
         if ($item) {
             yield $item;
         }
@@ -44,7 +42,9 @@ function compactIterable(/* iterable */ $iterable)
  * [1, 2, 3]
  * ```
  *
- * @param array|iterable|\Traversable $iterable The array to compact
+ * @since 0.2.0 iterable objects are now supported
+ *
+ * @param iterable $iterable The array to compact
  *
  * @return array|\Generator
  */

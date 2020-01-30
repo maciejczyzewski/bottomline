@@ -18,7 +18,9 @@ namespace collections;
  * 1
  * ```
  *
- * @param array|iterable $array array of values
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $array array of values
  *
  * @return mixed
  */

@@ -22,8 +22,10 @@ namespace collections;
  * ['bar', 'bar2']
  * ```
  *
- * @param array|iterable|object $collection Array or object that can be converted to array
- * @param string                $property   property name
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable|\stdClass $collection Array or object that can be converted to array
+ * @param string             $property   property name
  *
  * @return array
  */

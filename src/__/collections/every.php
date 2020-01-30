@@ -21,14 +21,15 @@ namespace collections;
  * true
  * ```
  *
- * @param array|iterable|object $collection The collection to iterate over.
- * @param \Closure              $iteratee   The function to call for each value.
+ * @param iterable|\stdClass $collection The collection to iterate over.
+ * @param \Closure           $iteratee   The function to call for each value.
  *
  * @return bool
  */
 function every($collection, \Closure $iteratee)
 {
     $truthy = true;
+
     // We could use __::reduce(), but it won't allow us to return preliminarily.
     \__::doForEach(
         $collection,
@@ -39,5 +40,6 @@ function every($collection, \Closure $iteratee)
             }
         }
     );
+
     return $truthy;
 }

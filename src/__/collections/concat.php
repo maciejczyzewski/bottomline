@@ -31,10 +31,10 @@ namespace collections;
  *
  * @since 0.2.0 added support for iterables
  *
- * @param array|object|iterable $collection Collection to assign to.
- * @param array|object|iterable ...$_       N other collections to assign.
+ * @param iterable|\stdClass $collection Collection to assign to.
+ * @param iterable|\stdClass ...$_       N other collections to assign.
  *
- * @return array|object If the first argument given to this function is an
+ * @return array|\stdClass If the first argument given to this function is an
  *     `\stdClass`, an `\stdClass` will be returned. Otherwise, an array will be
  *     returned.
  */
@@ -47,11 +47,11 @@ function concat($collection, $_)
 
     if ($areArrayish) {
         $argsAsArrays = \__::map($args, function ($arg) {
-            return (array) $arg;
+            return (array)$arg;
         });
         $merged = call_user_func_array('array_merge', $argsAsArrays);
 
-        return ($collection instanceof \stdClass) ? (object) $merged : $merged;
+        return ($collection instanceof \stdClass) ? (object)$merged : $merged;
     }
 
     if ($collection instanceof \Iterator || $collection instanceof \IteratorAggregate) {

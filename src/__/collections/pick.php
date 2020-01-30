@@ -28,10 +28,11 @@ namespace collections;
  * ]
  * ```
  *
- * @param array|iterable|object $collection The collection to iterate over.
- * @param array                 $paths      Array paths to pick
- * @param mixed                 $default    The default value that will be used
- *                                          if the specified path does not exist.
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable|\stdClass $collection The collection to iterate over.
+ * @param array              $paths      Array paths to pick
+ * @param mixed              $default    The default value that will be used if the specified path does not exist.
  *
  * @return array
  */

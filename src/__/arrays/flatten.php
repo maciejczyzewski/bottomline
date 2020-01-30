@@ -44,8 +44,10 @@ function flattenIterable($iterable, $shallow = false)
  * [1, 2, 3, 4]
  * ```
  *
- * @param array|iterable $iterable
- * @param bool           $shallow
+ * @since 0.2.0 iterable objects are now supported
+ *
+ * @param iterable $iterable
+ * @param bool     $shallow
  *
  * @return array|\Generator
  */

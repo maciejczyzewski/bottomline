@@ -34,8 +34,10 @@ function mapValuesIterable($iterable, $closure)
  * ['x' => 'x_1']
  * ```
  *
- * @param array|iterable $iterable    Array of values
- * @param \Closure|null  $closure     Closure to map the values
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable      $iterable Array of values
+ * @param \Closure|null $closure  Closure to map the values
  *
  * @return array|\Generator
  */

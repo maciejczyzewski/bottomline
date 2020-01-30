@@ -2,8 +2,6 @@
 
 namespace collections;
 
-use __\Test\Utilities\MockIteratorAggregate;
-
 /**
  * Check if value is an empty array or object.
  *
@@ -21,7 +19,9 @@ use __\Test\Utilities\MockIteratorAggregate;
  * true
  * ```
  *
- * @param array|object|iterable $value The value to check for emptiness.
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable|\stdClass $value The value to check for emptiness.
  *
  * @return bool
  */

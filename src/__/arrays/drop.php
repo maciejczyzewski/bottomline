@@ -50,14 +50,14 @@ function dropIterable($input, $number)
  * [3, 5]
  * ```
  *
- * @param array|\Traversable|iterable $input  The array or iterable to query.
- * @param int                         $number The number of elements to drop.
+ * @since 0.2.0 iterable objects are now supported
  *
- * @throws \Exception
+ * @param iterable $input  The array or iterable to query.
+ * @param int      $number The number of elements to drop.
  *
  * @return array|\Generator
  */
-function drop(/*iterable*/ $input, $number = 1)
+function drop($input, $number = 1)
 {
     if (is_array($input)) {
         return \array_slice($input, $number);

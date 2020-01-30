@@ -108,19 +108,19 @@ namespace collections;
  *
  * @author Chauncey McAskill
  *
- * @param array|iterable            $array
+ * @param iterable                  $iterable
  * @param int|float|string|\Closure ...$key
  *
  * @return array
  */
-function groupBy($array, $key)
+function groupBy($iterable, $key)
 {
     if (!\is_bool($key) && !\is_scalar($key) && !\is_callable($key)) {
-        return $array;
+        return $iterable;
     }
 
     $grouped = [];
-    foreach ($array as $value) {
+    foreach ($iterable as $value) {
         $groupKey = null;
 
         if (\is_callable($key)) {

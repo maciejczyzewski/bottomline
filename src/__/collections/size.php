@@ -26,7 +26,7 @@ namespace collections;
 function size($value)
 {
     if (\__::isArray($value) || $value instanceof \stdClass) {
-        return count((array) $value);
+        return count((array)$value);
     }
 
     if ($value instanceof \Countable) {

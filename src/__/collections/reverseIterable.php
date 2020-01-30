@@ -23,7 +23,9 @@ namespace collections;
  * Generator([3, 2, 1])
  * ```
  *
- * @param array|iterable|\Traversable $iterable
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $iterable
  *
  * @return \Generator
  */

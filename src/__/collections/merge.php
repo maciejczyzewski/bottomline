@@ -25,7 +25,7 @@ namespace collections;
  * ['color' => ['favorite' => 'green', 'model' => 3, 'blue'], 10]
  * ```
  *
- * @param array|iterable|object ...$_ Collections to merge.
+ * @param iterable|\stdClass ...$_ Collections to merge.
  *
  * @return array|object Concatenated collection.
  */

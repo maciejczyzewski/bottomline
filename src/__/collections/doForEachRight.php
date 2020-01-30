@@ -23,8 +23,8 @@ namespace collections;
  * (Side effect: print 3, 2, 1)
  * ```
  *
- * @param array|object $collection The collection to iterate over.
- * @param \Closure     $iteratee   The function to call for each value.
+ * @param iterable|\stdClass $collection The collection to iterate over.
+ * @param \Closure           $iteratee   The function to call for each value.
  *
  * @return void
  */

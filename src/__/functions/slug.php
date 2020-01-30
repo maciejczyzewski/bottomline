@@ -37,10 +37,10 @@ function slug($str, array $options = [])
     $str = \mb_convert_encoding((string)$str, 'UTF-8', \mb_list_encodings());
 
     $defaults = [
-        'delimiter'     => '-',
-        'limit'         => null,
-        'lowercase'     => true,
-        'replacements'  => [],
+        'delimiter' => '-',
+        'limit' => null,
+        'lowercase' => true,
+        'replacements' => [],
         'transliterate' => true
     ];
 
@@ -55,7 +55,7 @@ function slug($str, array $options = [])
     // Transliterate characters to ASCII
     if ($options['transliterate']) {
         $char_map = require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'charmap.php');
-        $str      = \str_replace(\array_keys($char_map), $char_map, $str);
+        $str = \str_replace(\array_keys($char_map), $char_map, $str);
     }
 
     // Replace non-alphanumeric characters with our delimiter

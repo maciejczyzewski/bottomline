@@ -18,7 +18,9 @@ namespace collections;
  * 3
  * ```
  *
- * @param array|iterable $array array
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $array array
  *
  * @return mixed maximum value
  */

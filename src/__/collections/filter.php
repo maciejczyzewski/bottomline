@@ -5,7 +5,7 @@ namespace collections;
 /**
  * @internal
  *
- * @param \Traversable $iterable
+ * @param \Traversable  $iterable
  * @param \Closure|null $closure Closure to filter the array
  *
  * @return \Generator
@@ -49,16 +49,15 @@ function filterIterable($iterable, \Closure $closure = null)
  * [['name' => 'fred', 'age' => 32]]
  * ```
  *
- * @param array|\Traversable         $iterable   Array to filter
- * @param \Closure|null $closure Closure to filter the array
- *
  * @since 0.2.0 iterable objects are now supported
  *
- * @throws \InvalidArgumentException when an non-array or non-traversable object
- *     is given for $iterable.
+ * @param iterable      $iterable Array to filter
+ * @param \Closure|null $closure  Closure to filter the array
  *
- * @return array|\Generator When given a `\Traversable` object for `$iterable`,
- *     a generator will be returned. Otherwise, an array will be returned.
+ * @throws \InvalidArgumentException when an non-array or non-traversable object is given for $iterable.
+ *
+ * @return array|\Generator When given a `\Traversable` object for `$iterable`, a generator will be returned.
+ *                          Otherwise, an array will be returned.
  */
 function filter($iterable, \Closure $closure = null)
 {

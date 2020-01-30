@@ -17,14 +17,16 @@ namespace collections;
  * [4, 5]
  * ```
  *
- * @param array|iterable $iterable array of values
- * @param int|null       $take     number of returned values
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable $iterable array of values
+ * @param int|null $take     number of returned values
  *
  * @return array|mixed
  */
 function last($iterable, $take = null)
 {
-    $take = (int) $take;
+    $take = (int)$take;
 
     if (is_array($iterable)) {
         return $take ? \array_slice($iterable, -$take) : \array_pop($iterable);

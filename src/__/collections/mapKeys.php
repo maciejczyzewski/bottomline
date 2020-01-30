@@ -46,8 +46,10 @@ function mapKeysIterable($iterable, $closure)
  * ['x_1' => 1]
  * ```
  *
- * @param array|iterable $iterable    Array/iterable of values
- * @param \Closure|null  $closure     Closure to map the keys
+ * @since 0.2.0 added support for iterables
+ *
+ * @param iterable      $iterable Array/iterable of values
+ * @param \Closure|null $closure  Closure to map the keys
  *
  * @throws \Exception when closure doesn't return a valid key that can be used in PHP array
  *
