@@ -2,7 +2,7 @@
 
 ## v0.2.x
 
-**Unreleased - [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)**
+**Unreleased — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)**
 
 * Added `__::isEqual`
 * The following functions now have iterable support. When given a `\Traversable` object, functions will return generators *if* the function does not need to exhaust the iterator; otherwise, it will return an array. ([#48](https://github.com/maciejczyzewski/bottomline/pull/48))
@@ -38,7 +38,7 @@
 
 ## v0.1.2
 
-**Aug 15, 2018 - [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...0.1.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.2/README.md)**
+**Aug 15, 2018 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.1...0.1.2) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/0.1.2/README.md)**
 
 * Added `__::assign`
 * Added `__::concat`
