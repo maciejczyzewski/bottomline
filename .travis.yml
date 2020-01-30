@@ -67,9 +67,9 @@ jobs:
       php:
         - 7.2
       script:
-        - make cs-check
+        - composer cs-check
         # Ensure documentation has been generated:
         # * generate it locally (make doc) ;
         # * ensure git status gives no changes: if it does the doc wasn't properly
         # updated (this must make the CI build fail).
-        - make doc || ./tools/hasGitChanges.sh
+        - composer doc || ./tools/hasGitChanges.sh

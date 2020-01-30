@@ -1,19 +1,27 @@
 {
     "name": "maciejczyzewski/bottomline",
-    "description": "A full-on PHP manipulation utility-belt that provides support for the usual functional.",
-    "keywords": ["__", "bottomline", "library", "utility", "functions"],
-    "type": "library",
-    "require": {
-        "php": ">=5.5.0",
-        "ext-mbstring": "*"
-    },
+    "description": "A full-on PHP manipulation utility belt that provides support for working with arrays, objects, and iterables; a lodash or underscore equivalent for PHP.",
+    "keywords": ["__", "bottomline", "library", "utility", "functions", "underscore", "lodash"],
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Maciej A. Czyzewski",
             "email": "maciejanthonyczyzewski@gmail.com"
         }
     ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "doctrine/instantiator": "~1.0.5",
+        "erusev/parsedown": "^1.7",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "nikic/php-parser": "^2.0||^3.0",
+        "phpdocumentor/reflection-docblock": "^2.0||^3.1",
+        "phpunit/phpunit": "^4.8"
+    },
     "autoload": {
         "files": ["bottomline.php"],
         "psr-4": {"__\\": "src/"}
@@ -24,18 +32,20 @@
             "__\\Test\\Utilities\\": "tests/Utilities/"
         }
     },
-    "require-dev": {
-        "phpunit/phpunit": "^4.8",
-        "doctrine/instantiator": "~1.0.5",
-        "phpdocumentor/reflection-docblock": "^2.0||^3.1",
-        "erusev/parsedown": "^1.7",
-        "nikic/php-parser": "^2.0||^3.0",
-        "friendsofphp/php-cs-fixer": "^2.14"
-    },
     "scripts": {
+        "bench": "php tools/bench.php",
+        "cs-fix": "php-cs-fixer fix",
+        "cs-check": "php-cs-fixer fix --dry-run -v --diff",
+        "doc": [
+            "php tools/phpDocGen.php",
+            "@cs-fix"
+        ],
         "test": [
             "# Silence PHP deprecation warnings before PHPUnit is run",
             "php -d error_reporting=24575 ./vendor/bin/phpunit"
         ]
+    },
+    "config": {
+        "sort-packages": true
     }
 }
