@@ -5,6 +5,7 @@
 **Unreleased — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)**
 
 * Added `__::isEqual`
+* Bumped minimum PHP version to 5.5
 * The following functions now have iterable support. When given a `\Traversable` object, functions will return generators *if* the function does not need to exhaust the iterator; otherwise, it will return an array. ([#48](https://github.com/maciejczyzewski/bottomline/pull/48))
   - `__::chunk(): array|\Generator`
   - `__::compact(): array|\Generator`
