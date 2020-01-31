@@ -36,12 +36,12 @@ language: php
 stagetest: &stagetest
   stage: test
   install:
-  # We do not use it in unit tests.
-  - composer remove --dev friendsofphp/php-cs-fixer
-  - composer install
+    # We do not use it in unit tests.
+    - composer remove --dev friendsofphp/php-cs-fixer
+    - composer install
   script:
-    - make test
-    - make bench
+    - composer test
+    - composer bench
 
 jobs:
   include:
