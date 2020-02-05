@@ -12,7 +12,9 @@ namespace collections;
  */
 function filterIterable($iterable, \Closure $closure = null)
 {
-    foreach (\__::getIterator($iterable) as $key => $value) {
+    $ittr = is_array($iterable) ? $iterable : \__::getIterator($iterable);
+
+    foreach ($ittr as $key => $value) {
         if ($closure) {
             if ($closure($value)) {
                 yield $value;
@@ -62,17 +64,7 @@ function filterIterable($iterable, \Closure $closure = null)
 function filter($iterable, \Closure $closure = null)
 {
     if (is_array($iterable)) {
-        $values = [];
-        foreach ($iterable as $value) {
-            if ($closure) {
-                if ($closure($value)) {
-                    $values[] = $value;
-                }
-            } elseif ($value) {
-                $values[] = $value;
-            }
-        }
-        return $values;
+        return iterator_to_array(filterIterable($iterable, $closure));
     }
 
     return filterIterable($iterable, $closure);
