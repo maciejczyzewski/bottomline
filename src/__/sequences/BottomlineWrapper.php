@@ -1,6 +1,8 @@
 <?php
 
-class BottomlineWrapper
+include_once 'BottomlineWrapperBase.php';
+
+class BottomlineWrapper extends BottomLineWrapperBase
 {
     /**
      * @var mixed $value

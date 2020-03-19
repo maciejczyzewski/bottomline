@@ -26,7 +26,7 @@ include_once 'BottomlineWrapper.php';
  *
  * @param mixed $initialValue
  *
- * @return \__|\BottomlineWrapper|mixed
+ * @return \BottomlineWrapper
  */
 function chain($initialValue)
 {
