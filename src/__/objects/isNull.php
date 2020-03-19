@@ -3,7 +3,7 @@
 /**
  * Check if give value is null or not.
  *
- * @param mixed $value
+ * @param mixed $var
  *
  * @return bool
  */

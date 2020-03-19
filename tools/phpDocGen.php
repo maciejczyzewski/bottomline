@@ -86,7 +86,7 @@ class DocumentationRegistry implements JsonSerializable
             return false;
         }
 
-        if (!isset($bottomlineNamespaces[$namespace])) {
+        if (!isset($this->namespaceCount[$namespace])) {
             $this->namespaceCount[$namespace] = 1;
         } else {
             $this->namespaceCount[$namespace]++;
@@ -181,7 +181,7 @@ class DocumentationRegistry implements JsonSerializable
             }
 
             $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
-            $this->methods[] = new FunctionDocumentation($functionDefinition, $docBlock);
+            $this->methods[] = new FunctionDocumentation($functionDefinition, $docBlock, $functionName);
         } catch (\Exception $e) {
             printf("Exception message: %s\n", $e->getMessage());
             printf("  %s\n\n", $functionName);
@@ -224,13 +224,13 @@ class FunctionDocumentation implements JsonSerializable
     /** @var string */
     public $returnDescription;
 
-    public function __construct(ReflectionFunction $reflectedFunction, DocBlock $docBlock)
+    public function __construct(ReflectionFunction $reflectedFunction, DocBlock $docBlock, $functionName)
     {
         $this->reflectedFunction = $reflectedFunction;
         $this->docBlock = $docBlock;
 
         $this->namespace = $reflectedFunction->getNamespaceName();
-        $this->name = str_replace("{$this->namespace}\\", '', $reflectedFunction->getName());
+        $this->name = $functionName;
         $this->arguments = [];
         $this->changelog = [];
         $this->exceptions = [];
@@ -249,8 +249,8 @@ class FunctionDocumentation implements JsonSerializable
             $description .= '<h2>Changelog</h2>';
             $description .= '<ul>';
 
-            foreach ($this->changelog as $version => $description) {
-                $body = Parsers::$markdown->text("`{$version}` - {$description}");
+            foreach ($this->changelog as $version => $desc) {
+                $body = Parsers::$markdown->text("`{$version}` - {$desc}");
                 $description .= "<li>{$body}</li>";
             }
 
@@ -261,8 +261,8 @@ class FunctionDocumentation implements JsonSerializable
             $description .= '<h2>Exceptions</h2>';
             $description .= '<ul>';
 
-            foreach ($this->exceptions as $name => $description) {
-                $body = Parsers::$markdown->text("`{$name}` - {$description}");
+            foreach ($this->exceptions as $name => $desc) {
+                $body = Parsers::$markdown->text("`{$name}` - {$desc}");
                 $description .= "<li>{$body}</li>";
             }
 
@@ -278,16 +278,15 @@ class FunctionDocumentation implements JsonSerializable
         $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
         $description = new Description($descriptionBody);
 
-        $argDefs = [];
-        /** @var ArgumentDocumentation $argument */
-        foreach ($this->arguments as $argument) {
-            $argDefs[] = [
-                'name' => $argument->getSignature(),
-                'type' => $argument->type,
-            ];
-        }
-
-        return new Method($this->name, $argDefs, $this->returnType, true, $description);
+        return new Method(
+            $this->name,
+            \collections\map($this->arguments, function (ArgumentDocumentation $argument) {
+                return $argument->getMethodArgumentDefinition();
+            }),
+            $this->returnType,
+            true,
+            $description
+        );
     }
 
     public function jsonSerialize()
@@ -310,10 +309,14 @@ class FunctionDocumentation implements JsonSerializable
             $varName = $documentedArg->getVariableName();
 
             if (!isset($actualArgs[$varName])) {
+                if ($documentedArg->isVariadic()) {
+                    $this->arguments[] = new ArgumentDocumentation($documentedArg, null);
+                }
+
                 continue;
             }
 
-            $this->arguments[] = new ArgumentDocumentation($actualArgs[$varName], $documentedArg);
+            $this->arguments[] = new ArgumentDocumentation($documentedArg, $actualArgs[$varName]);
         }
 
         $this->summary = Parsers::$markdown->text($this->docBlock->getSummary());
@@ -394,6 +397,9 @@ class ArgumentDocumentation implements JsonSerializable
     /** @var string */
     public $name;
 
+    /** @var bool */
+    public $isVariadic;
+
     /** @var string */
     public $description;
 
@@ -406,13 +412,14 @@ class ArgumentDocumentation implements JsonSerializable
     /** @var Type */
     public $type;
 
-    public function __construct(ReflectionParameter $reflectedParam, Param $documentedParam)
+    public function __construct(Param $documentedParam, ReflectionParameter $reflectedParam = null)
     {
-        $this->name = $reflectedParam->getName();
+        $this->name = $documentedParam->getVariableName();
         $this->description = $documentedParam->getDescription();
+        $this->isVariadic = $documentedParam->isVariadic();
         $this->type = $documentedParam->getType();
 
-        if ($reflectedParam->isOptional()) {
+        if ($reflectedParam !== null && $reflectedParam->isOptional()) {
             try {
                 $defaultValue = $reflectedParam->getDefaultValue();
                 $this->defaultValue = $defaultValue;
@@ -433,10 +440,27 @@ class ArgumentDocumentation implements JsonSerializable
         }
     }
 
+    /**
+     * @see Method
+     *
+     * @return array
+     */
+    public function getMethodArgumentDefinition()
+    {
+        return [
+            'name' => $this->getSignature(),
+            'type' => $this->type,
+        ];
+    }
+
     public function getSignature()
     {
         if ($this->defaultValueAsString) {
             return "{$this->name} = {$this->defaultValueAsString}";
+        }
+
+        if ($this->isVariadic) {
+            return "{$this->name},...";
         }
 
         return $this->name;
