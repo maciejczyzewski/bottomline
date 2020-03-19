@@ -36,6 +36,7 @@
   - `__::size(): int`
   - `__::unease(): array`
   - `__::where(): array`
+* Significantly improve type hint documentation for our sequences functionality via `chain()`
 
 ## v0.1.2
 

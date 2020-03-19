@@ -10,7 +10,7 @@
 
 ## Environment requirements
 
-`PHP >= 5.4` with `mbstring` extension
+`PHP >= 5.5` with `mbstring` extension
 ```bash
 ; php.ini
 extension=php_mbstring.dll
