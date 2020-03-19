@@ -8,253 +8,470 @@ if (\version_compare(PHP_VERSION, MIN_VERSION, '<')) {
     die(sprintf("This script should be run with a PHP version higher than %s due to dependency constraints.\n", MIN_VERSION));
 }
 
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
 use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\Serializer;
 use phpDocumentor\Reflection\DocBlock\Tags\Generic;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
+use phpDocumentor\Reflection\DocBlock\Tags\Since;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\Fqsen;
+use phpDocumentor\Reflection\Type;
+use phpDocumentor\Reflection\Types\Mixed_;
 use phpDocumentor\Reflection\Types\Object_;
 use phpDocumentor\Reflection\Types\Void_;
 use PhpParser\Comment;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Stmt;
+use PhpParser\Parser;
 use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
-
-//
-// Factories and other setup
-//
-
-$phpParser = (new ParserFactory())->create(ParserFactory::PREFER_PHP5);
-$phpPrinter = new Standard();
-$markdown = new Parsedown();
-$docBlockFactory = DocBlockFactory::createInstance();
-/** @var Method[] $bottomlineMethods */
-$bottomlineMethods = [];
-
-function _registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace, $fqfn)
+abstract class Parsers
 {
-    global $docBlockFactory, $bottomlineMethods, $markdown;
+    /** @var DocBlockFactory */
+    public static $docBlockParser;
 
-    // If function name starts with an underscore, it's a helper function not part of the API
-    if (substr($functionName, 0, 1) === '_') {
-        return;
+    /** @var Parser */
+    public static $phpParser;
+
+    /** @var Parsedown */
+    public static $markdown;
+
+    public static function setup()
+    {
+        if (!isset(self::$docBlockParser)) {
+            self::$docBlockParser = DocBlockFactory::createInstance();
+        }
+
+        if (!isset(self::$phpParser)) {
+            self::$phpParser = (new ParserFactory())->create(ParserFactory::PREFER_PHP5);
+        }
+
+        if (!isset(self::$markdown)) {
+            self::$markdown = new Parsedown();
+        }
+    }
+}
+
+class DocumentationRegistry implements JsonSerializable
+{
+    /** @var array<string, int> */
+    public $namespaceCount;
+
+    /** @var array<int, FunctionDocumentation> */
+    public $methods;
+
+    public function __construct()
+    {
+        $this->namespaceCount = [];
+        $this->methods = [];
     }
 
-    $docBlock = $docBlockFactory->create($docBlockRaw->getText());
+    /**
+     * @param string $filePath
+     *
+     * @return bool
+     */
+    public function registerDocumentationFromFile($filePath)
+    {
+        $fileName = basename($filePath);
+        $namespace = basename(dirname($filePath));
 
-    if ($namespace !== null) {
-        $fullyQualifiedFunctionName = sprintf("%s\\%s", $namespace, $functionName);
-    } elseif ($fqfn !== null) {
-        $fullyQualifiedFunctionName = $fqfn;
-    } else {
-        $fullyQualifiedFunctionName = $functionName;
+        // If the file starts with an uppercase letter, then it's a class so let's not count it
+        if (preg_match('/[A-Z]/', substr($fileName, 0, 1)) === 1) {
+            return false;
+        }
+
+        if (!isset($bottomlineNamespaces[$namespace])) {
+            $this->namespaceCount[$namespace] = 1;
+        } else {
+            $this->namespaceCount[$namespace]++;
+        }
+
+        include $filePath;
+
+        $this->parsePhpSource($filePath, $fileName, $namespace);
+
+        return true;
     }
 
-    $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
-    $functionArguments = $docBlock->getTagsByName('param');
-    $functionArgumentDefinitions = $functionDefinition->getParameters();
-    $isInternal = count($docBlock->getTagsByName('internal')) > 0;
-
-    if ($isInternal) {
-        return;
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
     }
 
-    $argDefs = [];
+    /**
+     * @param string $filePath
+     * @param string $fileName
+     * @param string $namespace
+     */
+    private function parsePhpSource($filePath, $fileName, $namespace)
+    {
+        $parsedPhp = Parsers::$phpParser->parse(file_get_contents($filePath));
+        /** @var Stmt\Namespace_|Stmt\Return_ $rootElement */
+        $rootElement = array_shift($parsedPhp);
 
-    /** @var Param $argument */
-    foreach ($functionArguments as $argument) {
-        $varName = $argument->getVariableName();
+        switch ($rootElement->getType()) {
+            case 'Stmt_Namespace':
+                $nodes = $rootElement->stmts;
 
-        $hasDefaultValue = false;
-        $defaultVal = null;
+                foreach ($nodes as $node) {
+                    if ($node->getType() !== 'Stmt_Function') {
+                        continue;
+                    }
 
-        foreach ($functionArgumentDefinitions as $argumentDefinition) {
-            if ($varName === $argumentDefinition->getName() && $argumentDefinition->isOptional()) {
-                $hasDefaultValue = true;
-                $defaultVal = $argumentDefinition->getDefaultValue();
+                    $fxnName = $node->name;
+                    $comments = $node->getAttribute('comments');
+
+                    /** @var Comment $docBlock */
+                    $docBlock = array_pop($comments);
+
+                    $this->registerBottomlineFunction($fxnName, $docBlock, $namespace);
+                }
+
                 break;
-            }
-        }
 
-        if ($hasDefaultValue) {
-            if ($defaultVal === null) {
-                $varName .= ' = null';
-            } elseif (is_bool($defaultVal)) {
-                $varName .= ' = ' . ($defaultVal ? 'true' : 'false');
-            } elseif (is_string($defaultVal)) {
-                $varName .= " = '" . $defaultVal . "'";
-            } elseif (is_array($defaultVal)) {
-                $varName .= ' = []';
+            case 'Stmt_Return':
+                $fxnName = pathinfo($fileName, PATHINFO_FILENAME);
+                $comments = $rootElement->getAttribute('comments');
+
+                /** @var Comment $docBlock */
+                $docBlock = array_pop($comments);
+
+                $this->registerBottomlineFunction($fxnName, $docBlock, null, $rootElement->expr->value);
+
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    /**
+     * @param string      $functionName
+     * @param Comment     $docBlock
+     * @param string|null $namespace
+     * @param string|null $fqfn
+     */
+    private function registerBottomlineFunction($functionName, Comment $docBlock, $namespace = null, $fqfn = null)
+    {
+        try {
+            // If function name starts with an underscore, it's a helper function not part of the API
+            if (substr($functionName, 0, 1) === '_') {
+                return;
+            }
+
+            if ($namespace !== null) {
+                $fullyQualifiedFunctionName = sprintf("%s\\%s", $namespace, $functionName);
+            } elseif ($fqfn !== null) {
+                $fullyQualifiedFunctionName = $fqfn;
             } else {
-                $varName .= ' = ' . $defaultVal;
+                $fullyQualifiedFunctionName = $functionName;
+            }
+
+            $docBlock = Parsers::$docBlockParser->create($docBlock->getText());
+            $isInternal = count($docBlock->getTagsByName('internal')) > 0;
+
+            if ($isInternal) {
+                return;
+            }
+
+            $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
+            $this->methods[] = new FunctionDocumentation($functionDefinition, $docBlock);
+        } catch (\Exception $e) {
+            printf("Exception message: %s\n", $e->getMessage());
+            printf("  %s\n\n", $functionName);
+        }
+    }
+}
+
+class FunctionDocumentation implements JsonSerializable
+{
+    /** @var ReflectionFunction */
+    private $reflectedFunction;
+
+    /** @var DocBlock */
+    private $docBlock;
+
+    /** @var string */
+    public $name;
+
+    /** @var string */
+    public $namespace;
+
+    /** @var string */
+    public $summary;
+
+    /** @var string */
+    public $description;
+
+    /** @var array<int, ArgumentDocumentation> */
+    public $arguments;
+
+    /** @var array<string, string> */
+    public $changelog;
+
+    /** @var array<string, string> */
+    public $exceptions;
+
+    /** @var Type */
+    public $returnType;
+
+    /** @var string */
+    public $returnDescription;
+
+    public function __construct(ReflectionFunction $reflectedFunction, DocBlock $docBlock)
+    {
+        $this->reflectedFunction = $reflectedFunction;
+        $this->docBlock = $docBlock;
+
+        $this->namespace = $reflectedFunction->getNamespaceName();
+        $this->name = str_replace("{$this->namespace}\\", '', $reflectedFunction->getName());
+        $this->arguments = [];
+        $this->changelog = [];
+        $this->exceptions = [];
+
+        $this->parse();
+    }
+
+    /**
+     * @return Method
+     */
+    public function asMethodTag()
+    {
+        $description = $this->description;
+
+        if (count($this->changelog) > 0) {
+            $description .= '<h2>Changelog</h2>';
+            $description .= '<ul>';
+
+            foreach ($this->changelog as $version => $description) {
+                $body = Parsers::$markdown->text("`{$version}` - {$description}");
+                $description .= "<li>{$body}</li>";
+            }
+
+            $description .= '</ul>';
+        }
+
+        if (count($this->exceptions) > 0) {
+            $description .= '<h2>Exceptions</h2>';
+            $description .= '<ul>';
+
+            foreach ($this->exceptions as $name => $description) {
+                $body = Parsers::$markdown->text("`{$name}` - {$description}");
+                $description .= "<li>{$body}</li>";
+            }
+
+            $description .= '</ul>';
+        }
+
+        if ($this->returnDescription) {
+            $description .= '<h2>Returns</h2>';
+            $description .= Parsers::$markdown->text($this->returnDescription);
+        }
+
+        $descriptionBody = trim(preg_replace('/\n/', ' ', $this->summary . '<br>' . $description));
+        $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
+        $description = new Description($descriptionBody);
+
+        $argDefs = [];
+        /** @var ArgumentDocumentation $argument */
+        foreach ($this->arguments as $argument) {
+            $argDefs[] = [
+                'name' => $argument->getSignature(),
+                'type' => $argument->type,
+            ];
+        }
+
+        return new Method($this->name, $argDefs, $this->returnType, true, $description);
+    }
+
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
+    }
+
+    private function parse()
+    {
+        /** @var Param[] $documentedArgs */
+        $documentedArgs = $this->docBlock->getTagsByName('param');
+        /** @var ReflectionParameter[] $actualArgs */
+        $actualArgs = [];
+
+        foreach ($this->reflectedFunction->getParameters() as $parameter) {
+            $actualArgs[$parameter->getName()] = $parameter;
+        }
+
+        foreach ($documentedArgs as $documentedArg) {
+            $varName = $documentedArg->getVariableName();
+
+            if (!isset($actualArgs[$varName])) {
+                continue;
+            }
+
+            $this->arguments[] = new ArgumentDocumentation($actualArgs[$varName], $documentedArg);
+        }
+
+        $this->summary = Parsers::$markdown->text($this->docBlock->getSummary());
+        $this->description = Parsers::$markdown->text($this->docBlock->getDescription()->render());
+
+        $this->parseCodeBlocks();
+        $this->parseChangelog();
+        $this->parseExceptions();
+        $this->parseReturnType();
+
+        // Change documented names for function like max which are declared in files
+        // with a function prefix name (to avoid clash with PHP generic function max).
+        if (substr($this->name, 0, strlen(PREFIX_FN_BOTTOMLINE)) === PREFIX_FN_BOTTOMLINE) {
+            $this->name = str_replace(PREFIX_FN_BOTTOMLINE, '', $this->name);
+        }
+    }
+
+    private function parseCodeBlocks()
+    {
+        // Extract <pre> blocks and replace their new lines with `<br>` so they can be formatted nicely by IDEs
+        $codeBlocks = [];
+        preg_match_all("/(<pre>(?:\s|.)*?<\/pre>)/", $this->description, $codeBlocks);
+
+        // This means there were a few code blocks
+        if (count($codeBlocks) == 2) {
+            foreach ($codeBlocks[1] as $codeBlock) {
+                $this->description = str_replace($codeBlock, nl2br($codeBlock), $this->description);
             }
         }
-
-        $argDefs[] = [
-            'name' => $varName,
-            'type' => $argument->getType(),
-        ];
     }
 
-    $functionSummary = $markdown->text($docBlock->getSummary());
-    $functionDescription = $markdown->text($docBlock->getDescription()->render());
+    private function parseChangelog()
+    {
+        $sinceChangeLog = $this->docBlock->getTagsByName('since');
 
-    // Extract <pre> blocks and replace their new lines with `<br>` so they can be formatted nicely by IDEs
-    $codeBlocks = [];
-    preg_match_all("/(<pre>(?:\s|.)*?<\/pre>)/", $functionDescription, $codeBlocks);
-
-    // This means there were a few code blocks
-    if (count($codeBlocks) == 2) {
-        foreach ($codeBlocks[1] as $codeBlock) {
-            $functionDescription = str_replace($codeBlock, nl2br($codeBlock), $functionDescription);
+        if (count($sinceChangeLog) === 0) {
+            return;
         }
-    }
 
-    $sinceChangeLog = $docBlock->getTagsByName('since');
-    $exceptions = $docBlock->getTagsByName('throws');
-
-    if (count($sinceChangeLog) > 0) {
-        $functionDescription .= '<h2>Changelog</h2>';
-        $functionDescription .= '<ul>';
-
-        /** @var DocBlock\Tags\Since $item */
+        /** @var Since $item */
         foreach ($sinceChangeLog as $item) {
-            $body = $markdown->text(vsprintf('`%s` - %s', [
-                $item->getVersion(),
-                $item->getDescription(),
-            ]));
-
-            $functionDescription .= sprintf('<li>%s</li>', $body);
+            $this->changelog[$item->getVersion()] = $item->getDescription();
         }
-
-        $functionDescription .= '</ul>';
     }
 
-    if (count($exceptions) > 0) {
-        $functionDescription .= '<h2>Exceptions</h2>';
-        $functionDescription .= '<ul>';
+    private function parseExceptions()
+    {
+        $exceptions = $this->docBlock->getTagsByName('throws');
+
+        if (count($exceptions) === 0) {
+            return;
+        }
 
         /** @var DocBlock\Tags\Throws $exception */
         foreach ($exceptions as $exception) {
-            $body = $markdown->text(vsprintf('`%s` - %s', [
-                $exception->getType(),
-                $exception->getDescription()->render(),
-            ]));
-
-            $functionDescription .= sprintf('<li>%s</li>', $body);
+            $this->exceptions[(string)$exception->getType()] = $exception->getDescription()->render();
         }
-
-        $functionDescription .= '</ul>';
     }
-    
-    $returnStatements = $docBlock->getTagsByName('return');
-    /** @var DocBlock\Tags\Return_|null $functionReturnTag */
-    $functionReturnTag = array_shift($returnStatements);
-    
-    if ($functionReturnTag !== null) {
-        $functionReturnType = $functionReturnTag->getType();
-        $body = $functionReturnTag->getDescription()->render();
 
-        if ($body) {
-            $functionDescription .= '<h2>Returns</h2>';
-            $functionDescription .= $markdown->text($body);
+    private function parseReturnType()
+    {
+        $returns = $this->docBlock->getTagsByName('return');
+        /** @var DocBlock\Tags\Return_|null $tag */
+        $tag = array_shift($returns);
+
+        if ($tag !== null) {
+            $this->returnType = $tag->getType();
+            $this->returnDescription = Parsers::$markdown->text($tag->getDescription()->render());
+        } else {
+            $this->returnType = new Mixed_();
+            $this->returnDescription = '';
         }
-    } else {
-        $functionReturnType = 'mixed';
     }
-
-    $descriptionBody = trim(preg_replace('/\n/', ' ', $functionSummary . '<br>' . $functionDescription));
-    $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
-    $description = new Description($descriptionBody);
-    
-    // Change documented names for function like max which are declared in files
-    // with a function prefix name (to avoid clash with PHP generic function max).
-    if (substr($functionName, 0, strlen(PREFIX_FN_BOTTOMLINE)) === PREFIX_FN_BOTTOMLINE) {
-        $functionName = str_replace(PREFIX_FN_BOTTOMLINE, '', $functionName);
-    }
-
-    $bottomlineMethods[] = new Method($functionName, $argDefs, $functionReturnType, true, $description);
 }
 
-function registerBottomlineFunction($functionName, Comment $docBlockRaw, $namespace = null, $fqfn = null)
+class ArgumentDocumentation implements JsonSerializable
 {
-    try {
-        _registerBottomlineFunction($functionName, $docBlockRaw, $namespace, $fqfn);
-    } catch (\Exception $e) {
-        printf("Exception message: %s\n", $e->getMessage());
-        printf("  %s\n\n", $functionName);
-    }
-}
+    /** @var string */
+    public $name;
 
-//
-// Find all registered bottomline functions
-//
+    /** @var string */
+    public $description;
 
-$bottomlineNamespaces = [];
+    /** @var mixed */
+    public $defaultValue;
 
-foreach (glob(dirname(__DIR__) . '/src/__/**/*.php') as $file) {
-    $filename = basename($file);
-    $namespace = basename(dirname($file));
+    /** @var string|null */
+    public $defaultValueAsString;
 
-    // If the file starts with an uppercase letter, then it's a class so let's not count it
-    if (preg_match('/[A-Z]/', substr($filename, 0, 1)) === 1) {
-        continue;
-    }
+    /** @var Type */
+    public $type;
 
-    if (!isset($bottomlineNamespaces[$namespace])) {
-        $bottomlineNamespaces[$namespace] = 1;
-    } else {
-        $bottomlineNamespaces[$namespace]++;
-    }
+    public function __construct(ReflectionParameter $reflectedParam, Param $documentedParam)
+    {
+        $this->name = $reflectedParam->getName();
+        $this->description = $documentedParam->getDescription();
+        $this->type = $documentedParam->getType();
 
-    include $file;
+        if ($reflectedParam->isOptional()) {
+            try {
+                $defaultValue = $reflectedParam->getDefaultValue();
+                $this->defaultValue = $defaultValue;
 
-    $parsedPhp = $phpParser->parse(file_get_contents($file));
-
-    /** @var Stmt\Namespace_|Stmt\Return_ $rootElement */
-    $rootElement = array_shift($parsedPhp);
-
-    switch ($rootElement->getType()) {
-        case 'Stmt_Namespace':
-        {
-            $nodes = $rootElement->stmts;
-
-            foreach ($nodes as $node) {
-                if ($node->getType() !== 'Stmt_Function') {
-                    continue;
+                if ($defaultValue === null) {
+                    $this->defaultValueAsString = 'null';
+                } elseif (is_bool($defaultValue)) {
+                    $this->defaultValueAsString = $defaultValue ? 'true' : 'false';
+                } elseif (is_string($defaultValue)) {
+                    $this->defaultValueAsString = sprintf("'%s'", $defaultValue);
+                } elseif (is_array($defaultValue)) {
+                    $this->defaultValueAsString = '[]';
+                } else {
+                    $this->defaultValueAsString = $defaultValue;
                 }
-
-                $functionName = $node->name;
-                $comments = $node->getAttribute('comments');
-                $docBlock = array_pop($comments);
-
-                registerBottomlineFunction($functionName, $docBlock, $namespace);
+            } catch (Exception $e) {
             }
         }
-        break;
+    }
 
-        case 'Stmt_Return':
-        {
-            $functionName = pathinfo($filename, PATHINFO_FILENAME);
-            $comments = $rootElement->getAttribute('comments');
-            $docBlock = array_pop($comments);
-
-            registerBottomlineFunction($functionName, $docBlock, null, $rootElement->expr->value);
+    public function getSignature()
+    {
+        if ($this->defaultValueAsString) {
+            return "{$this->name} = {$this->defaultValueAsString}";
         }
-        break;
 
-        default:
-            break;
+        return $this->name;
+    }
+
+    public function jsonSerialize()
+    {
+        // TODO: Implement jsonSerialize() method.
     }
 }
 
-$loaderDocBlock = new DocBlock('', null, $bottomlineMethods);
+Parsers::setup();
+$registry = new DocumentationRegistry();
+
+/**
+ * @param DocBlock $docBlock
+ *
+ * @return string
+ */
+function writeDocBlock(DocBlock $docBlock)
+{
+    return (new Serializer())->getDocComment($docBlock);
+}
+
+// Find all registered bottomline functions
+foreach (glob(dirname(__DIR__) . '/src/__/**/*.php') as $file) {
+    $registry->registerDocumentationFromFile($file);
+}
+
+$methods = [];
+foreach ($registry->methods as $method) {
+    $methods[] = $method->asMethodTag();
+}
+
+$loaderDocBlock = new DocBlock('', null, $methods);
 $docBlockSerializer = new Serializer();
 $docBlockLiteral = $docBlockSerializer->getDocComment($loaderDocBlock);
 
@@ -263,22 +480,32 @@ $docBlockLiteral = $docBlockSerializer->getDocComment($loaderDocBlock);
 //
 
 $chainableMethods = [];
-foreach ($bottomlineMethods as $bottomlineMethod) {
-    if ($bottomlineMethod->getReturnType() instanceof Void_) {
+/** @var FunctionDocumentation $method */
+foreach ($registry->methods as $method) {
+    if ($method->returnType instanceof Void_) {
         continue;
     }
 
-    $arguments = $bottomlineMethod->getArguments();
+    $arguments = $method->arguments;
     array_shift($arguments);
+
+    $argDefs = [];
+    /** @var ArgumentDocumentation $argument */
+    foreach ($arguments as $argument) {
+        $argDefs[] = [
+            'name' => $argument->getSignature(),
+            'type' => $argument->type,
+        ];
+    }
 
     $returnType = new Object_(new Fqsen('\BottomlineWrapper'));
 
     $chainableMethods[] = new Method(
-        $bottomlineMethod->getMethodName(),
-        $arguments,
+        $method->name,
+        $argDefs,
         $returnType,
         true,
-        $bottomlineMethod->getDescription()
+        new Description($method->description)
     );
 }
 
@@ -318,7 +545,7 @@ file_put_contents($BOTTOMLINE_SEQ_WRAPPER, $baseSequenceWrapper . "\n");
 
 $BOTTOMLINE_LOADER = dirname(__DIR__) . '/src/__/load.php';
 
-$bottomlineLoaderFile = $phpParser->parse(file_get_contents($BOTTOMLINE_LOADER));
+$bottomlineLoaderFile = Parsers::$phpParser->parse(file_get_contents($BOTTOMLINE_LOADER));
 $bottomlineLoaderStatements = &$bottomlineLoaderFile[0]->stmts;
 
 $commentRegex = '/\*\*\s([a-zA-Z]+)\s+\[(\d+)\]/m';
@@ -332,10 +559,10 @@ foreach ($bottomlineLoaderStatements as &$statement) {
 
         /** @var Comment $comments */
         $comments = collections\first($statement->getAttribute('comments'));
-        $commentLiteral = preg_replace_callback($commentRegex, function ($matches) use ($bottomlineNamespaces) {
+        $commentLiteral = preg_replace_callback($commentRegex, function ($matches) use ($registry) {
             $namespace = strtolower($matches[1]);
 
-            return str_replace($matches[2], $bottomlineNamespaces[$namespace], $matches[0]);
+            return str_replace($matches[2], $registry->namespaceCount[$namespace], $matches[0]);
         }, $comments->getText());
 
         $commentBlock = new Comment($commentLiteral);
@@ -343,6 +570,7 @@ foreach ($bottomlineLoaderStatements as &$statement) {
     }
 }
 
+$phpPrinter = new Standard();
 $builtLoader = "<?php\n\n" . $phpPrinter->prettyPrint($bottomlineLoaderFile) . "\n";
 $builtLoader = preg_replace('/ +$/m', '', $builtLoader);
 $builtLoader = preg_replace('/(}\n)(\s+\w)/m', "$1\n$2", $builtLoader);
