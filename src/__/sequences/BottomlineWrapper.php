@@ -25,7 +25,7 @@ class BottomlineWrapper extends BottomLineWrapperBase
      * @param string $functionName must be a valid bottomline function
      * @param array  $params
      *
-     * @throws \Exception
+     * @throws \BadFunctionCallException
      *
      * @return $this
      */
@@ -35,10 +35,11 @@ class BottomlineWrapper extends BottomLineWrapperBase
             $params = $params == null ? [] : $params;
             $params = __::prepend($params, $this->value);
             $this->value = call_user_func_array(array('__', $functionName), $params);
+
             return $this;
-        } else {
-            throw new \Exception("Invalid function {$functionName}");
         }
+
+        throw new \BadFunctionCallException("Invalid function {$functionName}");
     }
 
     /**
