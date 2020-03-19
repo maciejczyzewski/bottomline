@@ -56,9 +56,9 @@ function chunkIterable($iterable, $size, $preserveKeys)
  *
  * @since 0.2.0 iterable objects are now supported
  *
+ * @param iterable $iterable     The original array
  * @param int      $size         The chunk size
  * @param bool     $preserveKeys Whether or not to preserve index keys
- * @param iterable $iterable     The original array
  *
  * @throws \InvalidArgumentException when an non-array or non-traversable object is given for $iterable.
  * @throws \Exception                when an `\IteratorAggregate` is given and `getIterator()` throws an exception.
