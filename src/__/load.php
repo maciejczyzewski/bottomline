@@ -123,15 +123,23 @@ class __
         foreach (self::$modules as $moduleName) {
             $file = __DIR__ . DIRECTORY_SEPARATOR . $moduleName . DIRECTORY_SEPARATOR . $name . '.php';
             if (\file_exists($file)) {
-                $func = (require $file);
-                $functionNameInFile = $name;
-                // Trick as be can't redefine some names (eg. max).
-                // In this case we preprend bottomline_ to the funcion name to load.
-                if (\in_array($name, ['max', 'min'])) {
-                    $functionNameInFile = 'bottomline_' . $name;
+                $fqfn = $moduleName . '\\' . $name;
+                $fxnExists = function_exists($fqfn);
+                // Don't try requiring a file that's already been required
+                if (!$fxnExists) {
+                    $func = (require $file);
+                    $functionNameInFile = $name;
+                    // Trick as be can't redefine some names (eg. max).
+                    // In this case we preprend bottomline_ to the funcion name to load.
+                    if (\in_array($name, ['max', 'min'])) {
+                        $functionNameInFile = 'bottomline_' . $name;
+                    }
+
+                    self::$functions[$name] = $func !== 1 ? $func : $moduleName . '\\' . $functionNameInFile;
+                } else {
+                    self::$functions[$name] = $fqfn;
                 }
 
-                self::$functions[$name] = $func !== 1 ? $func : $moduleName . '\\' . $functionNameInFile;
                 break;
             }
         }
