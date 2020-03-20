@@ -8,7 +8,6 @@ const PREFIX_FN_BOTTOMLINE = 'bottomline_';
 use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\Serializer;
-use phpDocumentor\Reflection\DocBlock\Tags\Generic;
 use phpDocumentor\Reflection\DocBlock\Tags\Method;
 use phpDocumentor\Reflection\DocBlock\Tags\Param;
 use phpDocumentor\Reflection\DocBlock\Tags\Since;
@@ -108,7 +107,9 @@ class DocumentationRegistry implements JsonSerializable
 
     public function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        return [
+            'methods' => $this->methods,
+        ];
     }
 
     /**
@@ -298,7 +299,29 @@ class FunctionDocumentation implements JsonSerializable
 
     public function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        return [
+            'name' => $this->name,
+            'namespace' => $this->namespace,
+            'summary' => $this->summary,
+            'description' => $this->description,
+            'arguments' => $this->arguments,
+            'changelog' => __::map($this->changelog, function ($message, $version) {
+                return [
+                    'version' => $version,
+                    'message' => $message,
+                ];
+            }),
+            'exceptions' => __::map($this->exceptions, function ($message, $exception) {
+                return [
+                    'exception' => $exception,
+                    'message' => $message,
+                ];
+            }),
+            'return' => [
+                'type' => (string)$this->returnType,
+                'description' => $this->description,
+            ],
+        ];
     }
 
     private function parse()
@@ -365,7 +388,7 @@ class FunctionDocumentation implements JsonSerializable
 
         /** @var Since $item */
         foreach ($sinceChangeLog as $item) {
-            $this->changelog[$item->getVersion()] = $item->getDescription();
+            $this->changelog[$item->getVersion()] = $item->getDescription()->render();
         }
     }
 
@@ -475,7 +498,14 @@ class ArgumentDocumentation implements JsonSerializable
 
     public function jsonSerialize()
     {
-        // TODO: Implement jsonSerialize() method.
+        return [
+            'name' => $this->name,
+            'isVariadic' => $this->isVariadic,
+            'description' => $this->description,
+            'defaultValue' => $this->defaultValue,
+            'defaultValueAsString' => $this->defaultValueAsString,
+            'type' => (string)$this->type,
+        ];
     }
 }
 
@@ -597,3 +627,18 @@ function buildCoreFunctionLoader()
 }
 
 buildCoreFunctionLoader();
+
+//
+// Build our registry for our documentation website
+//
+
+function buildWebsiteFunctionRegistry()
+{
+    global $registry;
+
+    $filePath = dirname(__DIR__) . '/docs/_data/fxn_registry.json';
+
+    file_put_contents($filePath, json_encode($registry, JSON_PRETTY_PRINT));
+}
+
+buildWebsiteFunctionRegistry();
