@@ -531,6 +531,7 @@ function buildSequenceWrapper()
 
     /** @var Stmt\Class_ $classAST */
     $classAST = $fileAST[0];
+    $classAST->setAttribute('comments', []); // Strip all comments, We'll take care of them
     $classAST->setDocComment(new Doc($docBlockLiteral));
 
     $phpPrinter = new Standard();
