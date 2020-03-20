@@ -2,7 +2,7 @@
 
 namespace sequences;
 
-include_once 'BottomlineWrapper.php';
+require_once 'BottomlineWrapper.php';
 
 /**
  * Returns a wrapper instance, allows the value to be passed through multiple
