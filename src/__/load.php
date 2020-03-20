@@ -2,29 +2,32 @@
 
 namespace __;
 
-/*                                                 *\
- *                   bottomline                    *
- *                                                 *
- ___________________________________________________
- ***************************************************
+/*                                                               *\
+ *                        bottomline                             *
+ *                                                               *
+ * 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond *
+ _________________________________________________________________
+ *****************************************************************
 
- ** Arrays                                       [10]
- ** Collections                                  [31]
- ** Functions                                    [3]
- ** Objects                                      [10]
- ** Utilities                                    [2]
- ** Strings                                      [13]
- ** Sequences                                    [1]
+ ** Arrays                                                    [10]
+ ** Collections                                               [31]
+ ** Functions                                                 [3]
+ ** Objects                                                   [10]
+ ** Utilities                                                 [2]
+ ** Strings                                                   [13]
+ ** Sequences                                                 [1]
 
- ***************************************************
- * bottomline v0.1.1                               *
- * bottomline is licensed under the MIT license    *
- * Copyright (c) 2014 Maciej A. Czyzewski          *
-\***************************************************/
+ *****************************************************************
+ * bottomline v0.2.0-dev                                         *
+ * bottomline is licensed under the MIT license                  *
+ * Copyright (c) 2014 Maciej A. Czyzewski                        *
+\*****************************************************************/
 if (\version_compare(PHP_VERSION, '5.5.0', '<')) {
     throw new \Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.5.0', 1);
 }
-/* 'Given enough eyeballs, all bugs are shallow' -- Eric Raymond */
+// Do NOT modify this doc block, it is automatically generated. If you would
+// like update the documentation, please update it in the respective function
+// files.
 /**
  *
  *
@@ -125,8 +128,8 @@ class __
             if (\file_exists($file)) {
                 $fqfn = $moduleName . '\\' . $name;
                 $fxnExists = function_exists($fqfn);
-                // Don't try requiring a file that's already been required
                 if (!$fxnExists) {
+                    // Don't try requiring a function definition that's already in memory
                     $func = (require $file);
                     $functionNameInFile = $name;
                     // Trick as be can't redefine some names (eg. max).
