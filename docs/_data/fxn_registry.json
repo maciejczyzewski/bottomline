@@ -8,8 +8,8 @@
         {
             "name": "append",
             "namespace": "arrays",
-            "summary": "<p>Append an item to array.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::append([1, 2, 3], 4);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3, 4]<\/code><\/pre>",
+            "summary": "<p>Append an item to array.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::append([1, 2, 3], 4);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3, 4]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -32,14 +32,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::append([1, 2, 3], 4);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3, 4]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::append([1, 2, 3], 4);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3, 4]</code></pre>"
             }
         },
         {
             "name": "chunk",
             "namespace": "arrays",
-            "summary": "<p>Creates an array of elements split into groups the length of <code>$size<\/code>.<\/p>",
-            "description": "<p>If array can't be split evenly, the final chunk will be the remaining\nelements. When <code>$preserveKeys<\/code> is set to TRUE, keys will be preserved.\nDefault is FALSE, which will reindex the chunk numerically.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::chunk([1, 2, 3, 4, 5], 3);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[[1, 2, 3], [4, 5]]<\/code><\/pre>",
+            "summary": "<p>Creates an array of elements split into groups the length of <code>$size</code>.</p>",
+            "description": "<p>If array can't be split evenly, the final chunk will be the remaining\nelements. When <code>$preserveKeys</code> is set to TRUE, keys will be preserved.\nDefault is FALSE, which will reindex the chunk numerically.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::chunk([1, 2, 3, 4, 5], 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[[1, 2, 3], [4, 5]]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -84,14 +84,14 @@
             ],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p>If array can't be split evenly, the final chunk will be the remaining\nelements. When <code>$preserveKeys<\/code> is set to TRUE, keys will be preserved.\nDefault is FALSE, which will reindex the chunk numerically.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::chunk([1, 2, 3, 4, 5], 3);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[[1, 2, 3], [4, 5]]<\/code><\/pre>"
+                "description": "<p>If array can't be split evenly, the final chunk will be the remaining\nelements. When <code>$preserveKeys</code> is set to TRUE, keys will be preserved.\nDefault is FALSE, which will reindex the chunk numerically.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::chunk([1, 2, 3, 4, 5], 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[[1, 2, 3], [4, 5]]</code></pre>"
             }
         },
         {
             "name": "compact",
             "namespace": "arrays",
-            "summary": "<p>Creates an array with all falsey values removed.<\/p>",
-            "description": "<p>The following values are considered falsey:<\/p>\n<ul>\n<li><code>false<\/code><\/li>\n<li><code>null<\/code><\/li>\n<li><code>0<\/code><\/li>\n<li><code>\"\"<\/code><\/li>\n<li><code>undefined<\/code><\/li>\n<li><code>NaN<\/code><\/li>\n<\/ul>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::compact([0, 1, false, 2, '', 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3]<\/code><\/pre>",
+            "summary": "<p>Creates an array with all falsey values removed.</p>",
+            "description": "<p>The following values are considered falsey:</p>\n<ul>\n<li><code>false</code></li>\n<li><code>null</code></li>\n<li><code>0</code></li>\n<li><code>\"\"</code></li>\n<li><code>undefined</code></li>\n<li><code>NaN</code></li>\n</ul>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::compact([0, 1, false, 2, '', 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -111,14 +111,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p>The following values are considered falsey:<\/p>\n<ul>\n<li><code>false<\/code><\/li>\n<li><code>null<\/code><\/li>\n<li><code>0<\/code><\/li>\n<li><code>\"\"<\/code><\/li>\n<li><code>undefined<\/code><\/li>\n<li><code>NaN<\/code><\/li>\n<\/ul>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::compact([0, 1, false, 2, '', 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3]<\/code><\/pre>"
+                "description": "<p>The following values are considered falsey:</p>\n<ul>\n<li><code>false</code></li>\n<li><code>null</code></li>\n<li><code>0</code></li>\n<li><code>\"\"</code></li>\n<li><code>undefined</code></li>\n<li><code>NaN</code></li>\n</ul>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::compact([0, 1, false, 2, '', 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3]</code></pre>"
             }
         },
         {
             "name": "drop",
             "namespace": "arrays",
-            "summary": "<p>Creates a slice of array with n elements dropped from the beginning.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::drop([0, 1, 3, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[3, 5]<\/code><\/pre>",
+            "summary": "<p>Creates a slice of array with n elements dropped from the beginning.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::drop([0, 1, 3, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[3, 5]</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -146,14 +146,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::drop([0, 1, 3, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[3, 5]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::drop([0, 1, 3, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[3, 5]</code></pre>"
             }
         },
         {
             "name": "flatten",
             "namespace": "arrays",
-            "summary": "<p>Flattens a multidimensional array or iterable.<\/p>",
-            "description": "<p>If <code>$shallow<\/code> is set to TRUE, the array will only be flattened a single level.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::flatten([1, 2, [3, [4]]], false);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3, 4]<\/code><\/pre>",
+            "summary": "<p>Flattens a multidimensional array or iterable.</p>",
+            "description": "<p>If <code>$shallow</code> is set to TRUE, the array will only be flattened a single level.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::flatten([1, 2, [3, [4]]], false);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3, 4]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -181,14 +181,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p>If <code>$shallow<\/code> is set to TRUE, the array will only be flattened a single level.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::flatten([1, 2, [3, [4]]], false);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2, 3, 4]<\/code><\/pre>"
+                "description": "<p>If <code>$shallow</code> is set to TRUE, the array will only be flattened a single level.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::flatten([1, 2, [3, [4]]], false);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2, 3, 4]</code></pre>"
             }
         },
         {
             "name": "patch",
             "namespace": "arrays",
-            "summary": "<p>Patches array by xpath.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::patch(<br \/>\n    [<br \/>\n        'addr' =&gt; [<br \/>\n            'country' =&gt; 'US',<br \/>\n            'zip' =&gt; 12345<br \/>\n        ]<br \/>\n    ],<br \/>\n    [<br \/>\n        '\/addr\/country' =&gt; 'CA',<br \/>\n        '\/addr\/zip' =&gt; 54321<br \/>\n    ]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['addr' =&gt; ['country' =&gt; 'CA', 'zip' =&gt; 54321]]<\/code><\/pre>",
+            "summary": "<p>Patches array by xpath.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::patch(<br />\n    [<br />\n        'addr' =&gt; [<br />\n            'country' =&gt; 'US',<br />\n            'zip' =&gt; 12345<br />\n        ]<br />\n    ],<br />\n    [<br />\n        '/addr/country' =&gt; 'CA',<br />\n        '/addr/zip' =&gt; 54321<br />\n    ]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['addr' =&gt; ['country' =&gt; 'CA', 'zip' =&gt; 54321]]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -219,14 +219,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::patch(<br \/>\n    [<br \/>\n        'addr' =&gt; [<br \/>\n            'country' =&gt; 'US',<br \/>\n            'zip' =&gt; 12345<br \/>\n        ]<br \/>\n    ],<br \/>\n    [<br \/>\n        '\/addr\/country' =&gt; 'CA',<br \/>\n        '\/addr\/zip' =&gt; 54321<br \/>\n    ]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['addr' =&gt; ['country' =&gt; 'CA', 'zip' =&gt; 54321]]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::patch(<br />\n    [<br />\n        'addr' =&gt; [<br />\n            'country' =&gt; 'US',<br />\n            'zip' =&gt; 12345<br />\n        ]<br />\n    ],<br />\n    [<br />\n        '/addr/country' =&gt; 'CA',<br />\n        '/addr/zip' =&gt; 54321<br />\n    ]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['addr' =&gt; ['country' =&gt; 'CA', 'zip' =&gt; 54321]]</code></pre>"
             }
         },
         {
             "name": "prepend",
             "namespace": "arrays",
-            "summary": "<p>Prepend item or value to an array.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::prepend([1, 2, 3], 4);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 1, 2, 3]<\/code><\/pre>",
+            "summary": "<p>Prepend item or value to an array.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::prepend([1, 2, 3], 4);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 1, 2, 3]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -249,14 +249,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::prepend([1, 2, 3], 4);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 1, 2, 3]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::prepend([1, 2, 3], 4);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 1, 2, 3]</code></pre>"
             }
         },
         {
             "name": "randomize",
             "namespace": "arrays",
-            "summary": "<p>Shuffle an array ensuring no item remains in the same position.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::randomize([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[2, 3, 1]<\/code><\/pre>",
+            "summary": "<p>Shuffle an array ensuring no item remains in the same position.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::randomize([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[2, 3, 1]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -271,14 +271,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::randomize([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[2, 3, 1]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::randomize([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[2, 3, 1]</code></pre>"
             }
         },
         {
             "name": "range",
             "namespace": "arrays",
-            "summary": "<p>Generate range of values based on start, end, and step.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::range(1, 10, 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 3, 5, 7, 9]<\/code><\/pre>",
+            "summary": "<p>Generate range of values based on start, end, and step.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::range(1, 10, 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 3, 5, 7, 9]</code></pre>",
             "arguments": [
                 {
                     "name": "start",
@@ -309,14 +309,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::range(1, 10, 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 3, 5, 7, 9]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::range(1, 10, 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 3, 5, 7, 9]</code></pre>"
             }
         },
         {
             "name": "repeat",
             "namespace": "arrays",
-            "summary": "<p>Generate array of repeated values.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::repeat('foo', 3);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo', 'foo', 'foo']<\/code><\/pre>",
+            "summary": "<p>Generate array of repeated values.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::repeat('foo', 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo', 'foo', 'foo']</code></pre>",
             "arguments": [
                 {
                     "name": "object",
@@ -339,14 +339,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::repeat('foo', 3);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo', 'foo', 'foo']<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::repeat('foo', 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo', 'foo', 'foo']</code></pre>"
             }
         },
         {
             "name": "assign",
             "namespace": "collections",
-            "summary": "<p>Combines and merge collections provided with each others.<\/p>",
-            "description": "<p>If the collections have common keys, then the last passed keys override the\nprevious. If numerical indexes are passed, then last passed indexes override\nthe previous.<\/p>\n<p>For a recursive merge, see <code>__::merge()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::assign(<br \/>\n    [<br \/>\n        'color' =&gt; [<br \/>\n            'favorite' =&gt; 'red',<br \/>\n            5<br \/>\n        ],<br \/>\n        3<br \/>\n    ],<br \/>\n    [<br \/>\n        10,<br \/>\n        'color' =&gt; [<br \/>\n            'favorite' =&gt; 'green',<br \/>\n            'blue'<br \/>\n        ]<br \/>\n    ]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; ['favorite' =&gt; 'green', 'blue'],<br \/>\n    10<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Combines and merge collections provided with each others.</p>",
+            "description": "<p>If the collections have common keys, then the last passed keys override the\nprevious. If numerical indexes are passed, then last passed indexes override\nthe previous.</p>\n<p>For a recursive merge, see <code>__::merge()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::assign(<br />\n    [<br />\n        'color' =&gt; [<br />\n            'favorite' =&gt; 'red',<br />\n            5<br />\n        ],<br />\n        3<br />\n    ],<br />\n    [<br />\n        10,<br />\n        'color' =&gt; [<br />\n            'favorite' =&gt; 'green',<br />\n            'blue'<br />\n        ]<br />\n    ]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; ['favorite' =&gt; 'green', 'blue'],<br />\n    10<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "_",
@@ -361,14 +361,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|object",
-                "description": "<p>If the collections have common keys, then the last passed keys override the\nprevious. If numerical indexes are passed, then last passed indexes override\nthe previous.<\/p>\n<p>For a recursive merge, see <code>__::merge()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::assign(<br \/>\n    [<br \/>\n        'color' =&gt; [<br \/>\n            'favorite' =&gt; 'red',<br \/>\n            5<br \/>\n        ],<br \/>\n        3<br \/>\n    ],<br \/>\n    [<br \/>\n        10,<br \/>\n        'color' =&gt; [<br \/>\n            'favorite' =&gt; 'green',<br \/>\n            'blue'<br \/>\n        ]<br \/>\n    ]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; ['favorite' =&gt; 'green', 'blue'],<br \/>\n    10<br \/>\n]<\/code><\/pre>"
+                "description": "<p>If the collections have common keys, then the last passed keys override the\nprevious. If numerical indexes are passed, then last passed indexes override\nthe previous.</p>\n<p>For a recursive merge, see <code>__::merge()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::assign(<br />\n    [<br />\n        'color' =&gt; [<br />\n            'favorite' =&gt; 'red',<br />\n            5<br />\n        ],<br />\n        3<br />\n    ],<br />\n    [<br />\n        10,<br />\n        'color' =&gt; [<br />\n            'favorite' =&gt; 'green',<br />\n            'blue'<br />\n        ]<br />\n    ]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; ['favorite' =&gt; 'green', 'blue'],<br />\n    10<br />\n]</code></pre>"
             }
         },
         {
             "name": "concat",
             "namespace": "collections",
-            "summary": "<p>Combines and concat collections provided with each others.<\/p>",
-            "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.<\/p>\n<p>For a recursive merge, see <code>__::merge()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::concat(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; ['favorite' =&gt; ['green'], 5, 'blue'],<br \/>\n    3,<br \/>\n    10<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Combines and concat collections provided with each others.</p>",
+            "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.</p>\n<p>For a recursive merge, see <code>__::merge()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::concat(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; ['favorite' =&gt; ['green'], 5, 'blue'],<br />\n    3,<br />\n    10<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -396,14 +396,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\stdClass",
-                "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.<\/p>\n<p>For a recursive merge, see <code>__::merge()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::concat(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; ['favorite' =&gt; ['green'], 5, 'blue'],<br \/>\n    3,<br \/>\n    10<br \/>\n]<\/code><\/pre>"
+                "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.</p>\n<p>For a recursive merge, see <code>__::merge()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::concat(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; ['favorite' =&gt; ['green'], 5, 'blue'],<br />\n    3,<br />\n    10<br />\n]</code></pre>"
             }
         },
         {
             "name": "concatDeep",
             "namespace": "collections",
-            "summary": "<p>Recursively combines and concat collections provided with each others.<\/p>",
-            "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.<\/p>\n<p>For a non-recursive concat, see <code>__::concat()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::concatDeep(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; [<br \/>\n        'favorite' =&gt; ['red', 'green'],<br \/>\n        5,<br \/>\n        'blue'<br \/>\n    ],<br \/>\n    3,<br \/>\n    10<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Recursively combines and concat collections provided with each others.</p>",
+            "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.</p>\n<p>For a non-recursive concat, see <code>__::concat()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::concatDeep(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; [<br />\n        'favorite' =&gt; ['red', 'green'],<br />\n        5,<br />\n        'blue'<br />\n    ],<br />\n    3,<br />\n    10<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -431,14 +431,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\stdClass",
-                "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.<\/p>\n<p>For a non-recursive concat, see <code>__::concat()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::concatDeep(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'color' =&gt; [<br \/>\n        'favorite' =&gt; ['red', 'green'],<br \/>\n        5,<br \/>\n        'blue'<br \/>\n    ],<br \/>\n    3,<br \/>\n    10<br \/>\n]<\/code><\/pre>"
+                "description": "<p>If the collections have common keys, then the values are appended in an array.\nIf numerical indexes are passed, then values are appended.</p>\n<p>For a non-recursive concat, see <code>__::concat()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::concatDeep(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'color' =&gt; [<br />\n        'favorite' =&gt; ['red', 'green'],<br />\n        5,<br />\n        'blue'<br />\n    ],<br />\n    3,<br />\n    10<br />\n]</code></pre>"
             }
         },
         {
             "name": "doForEach",
             "namespace": "collections",
-            "summary": "<p>Iterate over elements of the collection and invokes iteratee for each element.<\/p>",
-            "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::doForEach([1, 2, 3], function ($value, $key, $collection) {<br \/>\n    print_r($value)<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>(Side effect: print 1, 2, 3)<\/code><\/pre>",
+            "summary": "<p>Iterate over elements of the collection and invokes iteratee for each element.</p>",
+            "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::doForEach([1, 2, 3], function ($value, $key, $collection) {<br />\n    print_r($value)<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>(Side effect: print 1, 2, 3)</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -461,14 +461,14 @@
             "exceptions": [],
             "return": {
                 "type": "void",
-                "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::doForEach([1, 2, 3], function ($value, $key, $collection) {<br \/>\n    print_r($value)<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>(Side effect: print 1, 2, 3)<\/code><\/pre>"
+                "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::doForEach([1, 2, 3], function ($value, $key, $collection) {<br />\n    print_r($value)<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>(Side effect: print 1, 2, 3)</code></pre>"
             }
         },
         {
             "name": "doForEachRight",
             "namespace": "collections",
-            "summary": "<p>Iterate over elements of the collection, from right to left, and invokes iteratee\nfor each element.<\/p>",
-            "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::doForEachRight([1, 2, 3], function ($value, $key, $collection) {<br \/>\n    print_r($value);<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>(Side effect: print 3, 2, 1)<\/code><\/pre>",
+            "summary": "<p>Iterate over elements of the collection, from right to left, and invokes iteratee\nfor each element.</p>",
+            "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::doForEachRight([1, 2, 3], function ($value, $key, $collection) {<br />\n    print_r($value);<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>(Side effect: print 3, 2, 1)</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -491,14 +491,14 @@
             "exceptions": [],
             "return": {
                 "type": "void",
-                "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::doForEachRight([1, 2, 3], function ($value, $key, $collection) {<br \/>\n    print_r($value);<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>(Side effect: print 3, 2, 1)<\/code><\/pre>"
+                "description": "<p>The iteratee is invoked with three arguments: (value, index|key, collection).\nIteratee functions may exit iteration early by explicitly returning false.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::doForEachRight([1, 2, 3], function ($value, $key, $collection) {<br />\n    print_r($value);<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>(Side effect: print 3, 2, 1)</code></pre>"
             }
         },
         {
             "name": "ease",
             "namespace": "collections",
-            "summary": "<p>Flattens a complex collection by mapping each ending leafs value to a key\nconsisting of all previous indexes.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::ease([<br \/>\n    'foo' =&gt; ['bar' =&gt; 'ter'],<br \/>\n    'baz' =&gt; ['b', 'z']<br \/>\n]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'foo.bar' =&gt; 'ter',<br \/>\n    'baz.0' =&gt; 'b',<br \/>\n    'baz.1' =&gt; 'z'<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Flattens a complex collection by mapping each ending leafs value to a key\nconsisting of all previous indexes.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::ease([<br />\n    'foo' =&gt; ['bar' =&gt; 'ter'],<br />\n    'baz' =&gt; ['b', 'z']<br />\n]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'foo.bar' =&gt; 'ter',<br />\n    'baz.0' =&gt; 'b',<br />\n    'baz.1' =&gt; 'z'<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -526,14 +526,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::ease([<br \/>\n    'foo' =&gt; ['bar' =&gt; 'ter'],<br \/>\n    'baz' =&gt; ['b', 'z']<br \/>\n]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'foo.bar' =&gt; 'ter',<br \/>\n    'baz.0' =&gt; 'b',<br \/>\n    'baz.1' =&gt; 'z'<br \/>\n]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::ease([<br />\n    'foo' =&gt; ['bar' =&gt; 'ter'],<br />\n    'baz' =&gt; ['b', 'z']<br />\n]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'foo.bar' =&gt; 'ter',<br />\n    'baz.0' =&gt; 'b',<br />\n    'baz.1' =&gt; 'z'<br />\n]</code></pre>"
             }
         },
         {
             "name": "every",
             "namespace": "collections",
-            "summary": "<p>Checks if predicate returns truthy for all elements of collection.<\/p>",
-            "description": "<p>Iteration is stopped once predicate returns falsey.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::every([1, 3, 4], function ($value, $key, $collection) {<br \/>\n    return is_int($v);<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>",
+            "summary": "<p>Checks if predicate returns truthy for all elements of collection.</p>",
+            "description": "<p>Iteration is stopped once predicate returns falsey.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::every([1, 3, 4], function ($value, $key, $collection) {<br />\n    return is_int($v);<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -556,14 +556,14 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p>Iteration is stopped once predicate returns falsey.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::every([1, 3, 4], function ($value, $key, $collection) {<br \/>\n    return is_int($v);<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>"
+                "description": "<p>Iteration is stopped once predicate returns falsey.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::every([1, 3, 4], function ($value, $key, $collection) {<br />\n    return is_int($v);<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>"
             }
         },
         {
             "name": "filter",
             "namespace": "collections",
-            "summary": "<p>Returns the values in the collection that pass the truth test.<\/p>",
-            "description": "<p>When <code>$closure<\/code> is set to null, this function will automatically remove falsey\nvalues. When <code>$closure<\/code> is given, then values where the closure returns false\nwill be removed.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br \/>\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br \/>\n];<br \/>\n<br \/>\n__::filter($a, function($n) {<br \/>\n    return $n['age'] &gt; 24;<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[['name' =&gt; 'fred', 'age' =&gt; 32]]<\/code><\/pre>",
+            "summary": "<p>Returns the values in the collection that pass the truth test.</p>",
+            "description": "<p>When <code>$closure</code> is set to null, this function will automatically remove falsey\nvalues. When <code>$closure</code> is given, then values where the closure returns false\nwill be removed.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br />\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br />\n];<br />\n<br />\n__::filter($a, function($n) {<br />\n    return $n['age'] &gt; 24;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[['name' =&gt; 'fred', 'age' =&gt; 32]]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -596,14 +596,14 @@
             ],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p>When <code>$closure<\/code> is set to null, this function will automatically remove falsey\nvalues. When <code>$closure<\/code> is given, then values where the closure returns false\nwill be removed.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br \/>\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br \/>\n];<br \/>\n<br \/>\n__::filter($a, function($n) {<br \/>\n    return $n['age'] &gt; 24;<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[['name' =&gt; 'fred', 'age' =&gt; 32]]<\/code><\/pre>"
+                "description": "<p>When <code>$closure</code> is set to null, this function will automatically remove falsey\nvalues. When <code>$closure</code> is given, then values where the closure returns false\nwill be removed.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br />\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br />\n];<br />\n<br />\n__::filter($a, function($n) {<br />\n    return $n['age'] &gt; 24;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[['name' =&gt; 'fred', 'age' =&gt; 32]]</code></pre>"
             }
         },
         {
             "name": "first",
             "namespace": "collections",
-            "summary": "<p>Gets the first element of an array\/iterable. Passing n returns the first n elements.<\/p>",
-            "description": "<p>When <code>$count<\/code> is <code>null<\/code>, only the first element will be returned.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::first([1, 2, 3, 4, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2]<\/code><\/pre>",
+            "summary": "<p>Gets the first element of an array/iterable. Passing n returns the first n elements.</p>",
+            "description": "<p>When <code>$count</code> is <code>null</code>, only the first element will be returned.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::first([1, 2, 3, 4, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -631,14 +631,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|mixed",
-                "description": "<p>When <code>$count<\/code> is <code>null<\/code>, only the first element will be returned.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::first([1, 2, 3, 4, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[1, 2]<\/code><\/pre>"
+                "description": "<p>When <code>$count</code> is <code>null</code>, only the first element will be returned.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::first([1, 2, 3, 4, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[1, 2]</code></pre>"
             }
         },
         {
             "name": "get",
             "namespace": "collections",
-            "summary": "<p>Get item of an array or object by index, accepting path (nested index).<\/p>",
-            "description": "<p>If <code>$collection<\/code> is an object that implements the ArrayAccess interface, this\nfunction will treat it as an array instead of accessing class properties.<\/p>\n<p>Use a period (<code>.<\/code>) in <code>$path<\/code> to go down a level in a multidimensional array.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::get(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'ter'<\/code><\/pre>",
+            "summary": "<p>Get item of an array or object by index, accepting path (nested index).</p>",
+            "description": "<p>If <code>$collection</code> is an object that implements the ArrayAccess interface, this\nfunction will treat it as an array instead of accessing class properties.</p>\n<p>Use a period (<code>.</code>) in <code>$path</code> to go down a level in a multidimensional array.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::get(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'ter'</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -669,13 +669,13 @@
             "exceptions": [],
             "return": {
                 "type": "array|mixed|null",
-                "description": "<p>If <code>$collection<\/code> is an object that implements the ArrayAccess interface, this\nfunction will treat it as an array instead of accessing class properties.<\/p>\n<p>Use a period (<code>.<\/code>) in <code>$path<\/code> to go down a level in a multidimensional array.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::get(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'ter'<\/code><\/pre>"
+                "description": "<p>If <code>$collection</code> is an object that implements the ArrayAccess interface, this\nfunction will treat it as an array instead of accessing class properties.</p>\n<p>Use a period (<code>.</code>) in <code>$path</code> to go down a level in a multidimensional array.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::get(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'ter'</code></pre>"
             }
         },
         {
             "name": "getIterator",
             "namespace": "collections",
-            "summary": "<p>Get an iterator from an object that supports iterators; including generators.<\/p>",
+            "summary": "<p>Get an iterator from an object that supports iterators; including generators.</p>",
             "description": "",
             "arguments": [
                 {
@@ -706,8 +706,8 @@
         {
             "name": "groupBy",
             "namespace": "collections",
-            "summary": "<p>Returns an associative array where the keys are values of $key.<\/p>",
-            "description": "<p>Based on Chauncey McAskill's <a href=\"https:\/\/gist.github.com\/mcaskill\/baaee44487653e1afc0d\">array_group_by()<\/a>\nfunction.<\/p>\n<h2>Group by Key<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n        ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n        ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n    ],<br \/>\n    'state'<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'IN' =&gt; [<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n  ],<br \/>\n  'CA' =&gt; [<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n  ]<br \/>\n]<\/code><\/pre>\n<h2>Group by nested key (dot notation)<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n        ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n        ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br \/>\n        ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br \/>\n        ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br \/>\n    ],<br \/>\n    'metadata.state'<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'IN' =&gt; [<br \/>\n    'Indianapolis' =&gt; [<br \/>\n      ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n      ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n    ],<br \/>\n    'Plainfield' =&gt; [<br \/>\n      ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br \/>\n    ],<br \/>\n  ],<br \/>\n  'CA' =&gt; [<br \/>\n    'San Diego' =&gt; [<br \/>\n      ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br \/>\n    ],<br \/>\n    'Mountain View' =&gt; [<br \/>\n      ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br \/>\n    ],<br \/>\n  ],<br \/>\n]<\/code><\/pre>\n<h2>Group by Closure<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n        (object)['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n    ],<br \/>\n    function ($value) {<br \/>\n        return $value-&gt;city;<br \/>\n    }<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'Indianapolis' =&gt; [<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n  ],<br \/>\n  'San Diego' =&gt; [<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n  ]<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Returns an associative array where the keys are values of $key.</p>",
+            "description": "<p>Based on Chauncey McAskill's <a href=\"https://gist.github.com/mcaskill/baaee44487653e1afc0d\">array_group_by()</a>\nfunction.</p>\n<h2>Group by Key</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n        ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n        ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n    ],<br />\n    'state'<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'IN' =&gt; [<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n  ],<br />\n  'CA' =&gt; [<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n  ]<br />\n]</code></pre>\n<h2>Group by nested key (dot notation)</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n        ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n        ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br />\n        ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br />\n        ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br />\n    ],<br />\n    'metadata.state'<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'IN' =&gt; [<br />\n    'Indianapolis' =&gt; [<br />\n      ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n      ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n    ],<br />\n    'Plainfield' =&gt; [<br />\n      ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br />\n    ],<br />\n  ],<br />\n  'CA' =&gt; [<br />\n    'San Diego' =&gt; [<br />\n      ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br />\n    ],<br />\n    'Mountain View' =&gt; [<br />\n      ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br />\n    ],<br />\n  ],<br />\n]</code></pre>\n<h2>Group by Closure</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n        (object)['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n    ],<br />\n    function ($value) {<br />\n        return $value-&gt;city;<br />\n    }<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'Indianapolis' =&gt; [<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n  ],<br />\n  'San Diego' =&gt; [<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n  ]<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -730,14 +730,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p>Based on Chauncey McAskill's <a href=\"https:\/\/gist.github.com\/mcaskill\/baaee44487653e1afc0d\">array_group_by()<\/a>\nfunction.<\/p>\n<h2>Group by Key<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n        ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n        ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n    ],<br \/>\n    'state'<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'IN' =&gt; [<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n  ],<br \/>\n  'CA' =&gt; [<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n  ]<br \/>\n]<\/code><\/pre>\n<h2>Group by nested key (dot notation)<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n        ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n        ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br \/>\n        ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br \/>\n        ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br \/>\n    ],<br \/>\n    'metadata.state'<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'IN' =&gt; [<br \/>\n    'Indianapolis' =&gt; [<br \/>\n      ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n      ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br \/>\n    ],<br \/>\n    'Plainfield' =&gt; [<br \/>\n      ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br \/>\n    ],<br \/>\n  ],<br \/>\n  'CA' =&gt; [<br \/>\n    'San Diego' =&gt; [<br \/>\n      ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br \/>\n    ],<br \/>\n    'Mountain View' =&gt; [<br \/>\n      ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br \/>\n    ],<br \/>\n  ],<br \/>\n]<\/code><\/pre>\n<h2>Group by Closure<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::groupBy([<br \/>\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n        (object)['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n    ],<br \/>\n    function ($value) {<br \/>\n        return $value-&gt;city;<br \/>\n    }<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n  'Indianapolis' =&gt; [<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n  ],<br \/>\n  'San Diego' =&gt; [<br \/>\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n  ]<br \/>\n]<\/code><\/pre>"
+                "description": "<p>Based on Chauncey McAskill's <a href=\"https://gist.github.com/mcaskill/baaee44487653e1afc0d\">array_group_by()</a>\nfunction.</p>\n<h2>Group by Key</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n        ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n        ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n    ],<br />\n    'state'<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'IN' =&gt; [<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n  ],<br />\n  'CA' =&gt; [<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n  ]<br />\n]</code></pre>\n<h2>Group by nested key (dot notation)</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n        ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n        ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br />\n        ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br />\n        ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br />\n    ],<br />\n    'metadata.state'<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'IN' =&gt; [<br />\n    'Indianapolis' =&gt; [<br />\n      ['object' =&gt; 'School bus', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n      ['object' =&gt; 'Manhole', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis']],<br />\n    ],<br />\n    'Plainfield' =&gt; [<br />\n      ['object' =&gt; 'Basketball', 'metadata' =&gt; ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield']],<br />\n    ],<br />\n  ],<br />\n  'CA' =&gt; [<br />\n    'San Diego' =&gt; [<br />\n      ['object' =&gt; 'Light bulb', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'San Diego']],<br />\n    ],<br />\n    'Mountain View' =&gt; [<br />\n      ['object' =&gt; 'Space pen', 'metadata' =&gt; ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View']],<br />\n    ],<br />\n  ],<br />\n]</code></pre>\n<h2>Group by Closure</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::groupBy([<br />\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n        (object)['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n        (object)['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n    ],<br />\n    function ($value) {<br />\n        return $value-&gt;city;<br />\n    }<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n  'Indianapolis' =&gt; [<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n     ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n  ],<br />\n  'San Diego' =&gt; [<br />\n     ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n  ]<br />\n]</code></pre>"
             }
         },
         {
             "name": "has",
             "namespace": "collections",
-            "summary": "<p>Return true if <code>$collection<\/code> contains the requested <code>$key<\/code>.<\/p>",
-            "description": "<p>In contrast to <code>isset()<\/code>, <code>__::has()<\/code> returns true if the key exists but is null.<\/p>\n<h2>Arrays<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\"> __::has(['foo' =&gt; ['bar' =&gt; 'num'], 'foz' =&gt; 'baz'], 'foo.bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>\n<h2>Objects<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\"> __::hasKeys((object) ['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], 'bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>false<\/code><\/pre>",
+            "summary": "<p>Return true if <code>$collection</code> contains the requested <code>$key</code>.</p>",
+            "description": "<p>In contrast to <code>isset()</code>, <code>__::has()</code> returns true if the key exists but is null.</p>\n<h2>Arrays</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\"> __::has(['foo' =&gt; ['bar' =&gt; 'num'], 'foz' =&gt; 'baz'], 'foo.bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>\n<h2>Objects</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\"> __::hasKeys((object) ['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], 'bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>false</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -760,14 +760,14 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p>In contrast to <code>isset()<\/code>, <code>__::has()<\/code> returns true if the key exists but is null.<\/p>\n<h2>Arrays<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\"> __::has(['foo' =&gt; ['bar' =&gt; 'num'], 'foz' =&gt; 'baz'], 'foo.bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>\n<h2>Objects<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\"> __::hasKeys((object) ['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], 'bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>false<\/code><\/pre>"
+                "description": "<p>In contrast to <code>isset()</code>, <code>__::has()</code> returns true if the key exists but is null.</p>\n<h2>Arrays</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\"> __::has(['foo' =&gt; ['bar' =&gt; 'num'], 'foz' =&gt; 'baz'], 'foo.bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>\n<h2>Objects</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\"> __::hasKeys((object) ['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], 'bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>false</code></pre>"
             }
         },
         {
             "name": "hasKeys",
             "namespace": "collections",
-            "summary": "<p>Returns true if <code>$input<\/code> contains all requested $keys. If <code>$strict<\/code> is <code>true<\/code>\nit also checks if <code>$input<\/code> exclusively contains the given <code>$keys<\/code>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::hasKeys(['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], ['foo', 'foz']);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>",
+            "summary": "<p>Returns true if <code>$input</code> contains all requested $keys. If <code>$strict</code> is <code>true</code>\nit also checks if <code>$input</code> exclusively contains the given <code>$keys</code>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::hasKeys(['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], ['foo', 'foz']);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -798,14 +798,14 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::hasKeys(['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], ['foo', 'foz']);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::hasKeys(['foo' =&gt; 'bar', 'foz' =&gt; 'baz'], ['foo', 'foz']);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>"
             }
         },
         {
             "name": "isEmpty",
             "namespace": "collections",
-            "summary": "<p>Check if value is an empty array or object.<\/p>",
-            "description": "<p>We consider any non enumerable as empty.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::isEmpty([]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>",
+            "summary": "<p>Check if value is an empty array or object.</p>",
+            "description": "<p>We consider any non enumerable as empty.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::isEmpty([]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>",
             "arguments": [
                 {
                     "name": "value",
@@ -825,14 +825,14 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p>We consider any non enumerable as empty.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::isEmpty([]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>true<\/code><\/pre>"
+                "description": "<p>We consider any non enumerable as empty.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::isEmpty([]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>"
             }
         },
         {
             "name": "last",
             "namespace": "collections",
-            "summary": "<p>Get last item(s) of an array.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::last([1, 2, 3, 4, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 5]<\/code><\/pre>",
+            "summary": "<p>Get last item(s) of an array.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::last([1, 2, 3, 4, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 5]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -860,14 +860,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|mixed",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::last([1, 2, 3, 4, 5], 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 5]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::last([1, 2, 3, 4, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 5]</code></pre>"
             }
         },
         {
             "name": "map",
             "namespace": "collections",
-            "summary": "<p>Returns an array of values by mapping each in collection through the iteratee.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::map([1, 2, 3], function($value, $key, $collection) {<br \/>\n    return $value * 3;<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[3, 6, 9]<\/code><\/pre>",
+            "summary": "<p>Returns an array of values by mapping each in collection through the iteratee.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::map([1, 2, 3], function($value, $key, $collection) {<br />\n    return $value * 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[3, 6, 9]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -895,14 +895,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::map([1, 2, 3], function($value, $key, $collection) {<br \/>\n    return $value * 3;<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[3, 6, 9]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::map([1, 2, 3], function($value, $key, $collection) {<br />\n    return $value * 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[3, 6, 9]</code></pre>"
             }
         },
         {
             "name": "mapKeys",
             "namespace": "collections",
-            "summary": "<p>Transforms the keys in a collection by running each key through the iterator.<\/p>",
-            "description": "<p>This function throws an <code>\\Exception<\/code> when the closure doesn't return a valid\nkey that can be used in a PHP array.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::mapKeys(['x' =&gt; 1], function($key, $value, $collection) {<br \/>\n    return \"{$key}_{$value}\";<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['x_1' =&gt; 1]<\/code><\/pre>",
+            "summary": "<p>Transforms the keys in a collection by running each key through the iterator.</p>",
+            "description": "<p>This function throws an <code>\\Exception</code> when the closure doesn't return a valid\nkey that can be used in a PHP array.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::mapKeys(['x' =&gt; 1], function($key, $value, $collection) {<br />\n    return \"{$key}_{$value}\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['x_1' =&gt; 1]</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -935,14 +935,14 @@
             ],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p>This function throws an <code>\\Exception<\/code> when the closure doesn't return a valid\nkey that can be used in a PHP array.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::mapKeys(['x' =&gt; 1], function($key, $value, $collection) {<br \/>\n    return \"{$key}_{$value}\";<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['x_1' =&gt; 1]<\/code><\/pre>"
+                "description": "<p>This function throws an <code>\\Exception</code> when the closure doesn't return a valid\nkey that can be used in a PHP array.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::mapKeys(['x' =&gt; 1], function($key, $value, $collection) {<br />\n    return \"{$key}_{$value}\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['x_1' =&gt; 1]</code></pre>"
             }
         },
         {
             "name": "mapValues",
             "namespace": "collections",
-            "summary": "<p>Transforms the values in a collection by running each value through the iterator.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::mapValues(['x' =&gt; 1], function($value, $key, $collection) {<br \/>\n    return \"{$key}_{$value}\";<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['x' =&gt; 'x_1']<\/code><\/pre>",
+            "summary": "<p>Transforms the values in a collection by running each value through the iterator.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::mapValues(['x' =&gt; 1], function($value, $key, $collection) {<br />\n    return \"{$key}_{$value}\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['x' =&gt; 'x_1']</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -970,14 +970,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::mapValues(['x' =&gt; 1], function($value, $key, $collection) {<br \/>\n    return \"{$key}_{$value}\";<br \/>\n});<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['x' =&gt; 'x_1']<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::mapValues(['x' =&gt; 1], function($value, $key, $collection) {<br />\n    return \"{$key}_{$value}\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['x' =&gt; 'x_1']</code></pre>"
             }
         },
         {
             "name": "max",
             "namespace": "collections",
-            "summary": "<p>Returns the maximum value from the collection.<\/p>",
-            "description": "<p>If passed an iterator, max will return max value returned by the iterator.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::max([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>3<\/code><\/pre>",
+            "summary": "<p>Returns the maximum value from the collection.</p>",
+            "description": "<p>If passed an iterator, max will return max value returned by the iterator.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::max([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>3</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -997,14 +997,14 @@
             "exceptions": [],
             "return": {
                 "type": "mixed",
-                "description": "<p>If passed an iterator, max will return max value returned by the iterator.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::max([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>3<\/code><\/pre>"
+                "description": "<p>If passed an iterator, max will return max value returned by the iterator.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::max([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>3</code></pre>"
             }
         },
         {
             "name": "merge",
             "namespace": "collections",
-            "summary": "<p>Recursively combines and merge collections provided with each others.<\/p>",
-            "description": "<ul>\n<li>If the collections have common keys, then the last passed keys override the previous.<\/li>\n<li>If numerical indexes are passed, then last passed indexes override the previous.<\/li>\n<\/ul>\n<p>For a non-recursive merge, see <code>__::assign()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::merge(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 'model' =&gt; 3, 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['color' =&gt; ['favorite' =&gt; 'green', 'model' =&gt; 3, 'blue'], 10]<\/code><\/pre>",
+            "summary": "<p>Recursively combines and merge collections provided with each others.</p>",
+            "description": "<ul>\n<li>If the collections have common keys, then the last passed keys override the previous.</li>\n<li>If numerical indexes are passed, then last passed indexes override the previous.</li>\n</ul>\n<p>For a non-recursive merge, see <code>__::assign()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::merge(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 'model' =&gt; 3, 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['color' =&gt; ['favorite' =&gt; 'green', 'model' =&gt; 3, 'blue'], 10]</code></pre>",
             "arguments": [
                 {
                     "name": "_",
@@ -1019,14 +1019,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|object",
-                "description": "<ul>\n<li>If the collections have common keys, then the last passed keys override the previous.<\/li>\n<li>If numerical indexes are passed, then last passed indexes override the previous.<\/li>\n<\/ul>\n<p>For a non-recursive merge, see <code>__::assign()<\/code>.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::merge(<br \/>\n    ['color' =&gt; ['favorite' =&gt; 'red', 'model' =&gt; 3, 5], 3],<br \/>\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['color' =&gt; ['favorite' =&gt; 'green', 'model' =&gt; 3, 'blue'], 10]<\/code><\/pre>"
+                "description": "<ul>\n<li>If the collections have common keys, then the last passed keys override the previous.</li>\n<li>If numerical indexes are passed, then last passed indexes override the previous.</li>\n</ul>\n<p>For a non-recursive merge, see <code>__::assign()</code>.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::merge(<br />\n    ['color' =&gt; ['favorite' =&gt; 'red', 'model' =&gt; 3, 5], 3],<br />\n    [10, 'color' =&gt; ['favorite' =&gt; 'green', 'blue']]<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['color' =&gt; ['favorite' =&gt; 'green', 'model' =&gt; 3, 'blue'], 10]</code></pre>"
             }
         },
         {
             "name": "min",
             "namespace": "collections",
-            "summary": "<p>Returns the minimum value from the collection. If passed an iterator, min will\nreturn min value returned by the iterator.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::min([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>1<\/code><\/pre>",
+            "summary": "<p>Returns the minimum value from the collection. If passed an iterator, min will\nreturn min value returned by the iterator.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::min([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>1</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -1046,14 +1046,14 @@
             "exceptions": [],
             "return": {
                 "type": "mixed",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::min([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>1<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::min([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>1</code></pre>"
             }
         },
         {
             "name": "pick",
             "namespace": "collections",
-            "summary": "<p>Returns an array having only keys present in the given path list.<\/p>",
-            "description": "<p>Values for missing keys values will be filled with provided default value.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::pick(<br \/>\n    [<br \/>\n        'a' =&gt; 1,<br \/>\n        'b' =&gt; ['c' =&gt; 3, 'd' =&gt; 4]<br \/>\n    ],<br \/>\n    ['a', 'b.d']<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'a' =&gt; 1,<br \/>\n    'b' =&gt; ['d' =&gt; 4]<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Returns an array having only keys present in the given path list.</p>",
+            "description": "<p>Values for missing keys values will be filled with provided default value.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::pick(<br />\n    [<br />\n        'a' =&gt; 1,<br />\n        'b' =&gt; ['c' =&gt; 3, 'd' =&gt; 4]<br />\n    ],<br />\n    ['a', 'b.d']<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'a' =&gt; 1,<br />\n    'b' =&gt; ['d' =&gt; 4]<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1089,14 +1089,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p>Values for missing keys values will be filled with provided default value.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::pick(<br \/>\n    [<br \/>\n        'a' =&gt; 1,<br \/>\n        'b' =&gt; ['c' =&gt; 3, 'd' =&gt; 4]<br \/>\n    ],<br \/>\n    ['a', 'b.d']<br \/>\n);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    'a' =&gt; 1,<br \/>\n    'b' =&gt; ['d' =&gt; 4]<br \/>\n]<\/code><\/pre>"
+                "description": "<p>Values for missing keys values will be filled with provided default value.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::pick(<br />\n    [<br />\n        'a' =&gt; 1,<br />\n        'b' =&gt; ['c' =&gt; 3, 'd' =&gt; 4]<br />\n    ],<br />\n    ['a', 'b.d']<br />\n);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    'a' =&gt; 1,<br />\n    'b' =&gt; ['d' =&gt; 4]<br />\n]</code></pre>"
             }
         },
         {
             "name": "pluck",
             "namespace": "collections",
-            "summary": "<p>Returns an array of values belonging to a given property of each item in a collection.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['foo' =&gt; 'bar',  'bis' =&gt; 'ter' ],<br \/>\n    ['foo' =&gt; 'bar2', 'bis' =&gt; 'ter2'],<br \/>\n];<br \/>\n<br \/>\n__::pluck($a, 'foo');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['bar', 'bar2']<\/code><\/pre>",
+            "summary": "<p>Returns an array of values belonging to a given property of each item in a collection.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['foo' =&gt; 'bar',  'bis' =&gt; 'ter' ],<br />\n    ['foo' =&gt; 'bar2', 'bis' =&gt; 'ter2'],<br />\n];<br />\n<br />\n__::pluck($a, 'foo');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['bar', 'bar2']</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1124,14 +1124,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['foo' =&gt; 'bar',  'bis' =&gt; 'ter' ],<br \/>\n    ['foo' =&gt; 'bar2', 'bis' =&gt; 'ter2'],<br \/>\n];<br \/>\n<br \/>\n__::pluck($a, 'foo');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['bar', 'bar2']<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['foo' =&gt; 'bar',  'bis' =&gt; 'ter' ],<br />\n    ['foo' =&gt; 'bar2', 'bis' =&gt; 'ter2'],<br />\n];<br />\n<br />\n__::pluck($a, 'foo');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['bar', 'bar2']</code></pre>"
             }
         },
         {
             "name": "reduce",
             "namespace": "collections",
-            "summary": "<p>Reduces <code>$collection<\/code> to a value which is the $accumulator result of running\neach element in <code>$collection<\/code> thru <code>$iteratee<\/code>, where each successive invocation\nis supplied the return value of the previous.<\/p>",
-            "description": "<p>If <code>$accumulator<\/code> is not given, the first element of <code>$collection<\/code> is used as\nthe initial value.<\/p>\n<h2>Sum Example<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reduce([1, 2], function ($accumulator, $value, $key, $collection) {<br \/>\n    return $accumulator + $value;<br \/>\n}, 0);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>3<\/code><\/pre>\n<h2>Array Counter<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield', 'object' =&gt; 'Basketball'],<br \/>\n    ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n    ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n];<br \/>\n<br \/>\n$iteratee = function ($accumulator, $value) {<br \/>\n    if (isset($accumulator[$value['city']]))<br \/>\n        $accumulator[$value['city']]++;<br \/>\n    else<br \/>\n        $accumulator[$value['city']] = 1;<br \/>\n    return $accumulator;<br \/>\n};<br \/>\n<br \/>\n__::reduce($c, $iteratee, []);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n   'Indianapolis' =&gt; 2,<br \/>\n   'Plainfield' =&gt; 1,<br \/>\n   'San Diego' =&gt; 1,<br \/>\n   'Mountain View' =&gt; 1,<br \/>\n]<\/code><\/pre>\n<h2>Object Usage<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$object = new \\stdClass();<br \/>\n$object-&gt;a = 1;<br \/>\n$object-&gt;b = 2;<br \/>\n$object-&gt;c = 1;<br \/>\n<br \/>\n__::reduce($object, function ($result, $value, $key) {<br \/>\n    if (!isset($result[$value]))<br \/>\n        $result[$value] = [];<br \/>\n<br \/>\n    $result[$value][] = $key;<br \/>\n<br \/>\n    return $result;<br \/>\n}, [])<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    '1' =&gt; ['a', 'c'],<br \/>\n    '2' =&gt; ['b']<br \/>\n]<\/code><\/pre>",
+            "summary": "<p>Reduces <code>$collection</code> to a value which is the $accumulator result of running\neach element in <code>$collection</code> thru <code>$iteratee</code>, where each successive invocation\nis supplied the return value of the previous.</p>",
+            "description": "<p>If <code>$accumulator</code> is not given, the first element of <code>$collection</code> is used as\nthe initial value.</p>\n<h2>Sum Example</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reduce([1, 2], function ($accumulator, $value, $key, $collection) {<br />\n    return $accumulator + $value;<br />\n}, 0);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>3</code></pre>\n<h2>Array Counter</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield', 'object' =&gt; 'Basketball'],<br />\n    ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n    ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n];<br />\n<br />\n$iteratee = function ($accumulator, $value) {<br />\n    if (isset($accumulator[$value['city']]))<br />\n        $accumulator[$value['city']]++;<br />\n    else<br />\n        $accumulator[$value['city']] = 1;<br />\n    return $accumulator;<br />\n};<br />\n<br />\n__::reduce($c, $iteratee, []);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n   'Indianapolis' =&gt; 2,<br />\n   'Plainfield' =&gt; 1,<br />\n   'San Diego' =&gt; 1,<br />\n   'Mountain View' =&gt; 1,<br />\n]</code></pre>\n<h2>Object Usage</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$object = new \\stdClass();<br />\n$object-&gt;a = 1;<br />\n$object-&gt;b = 2;<br />\n$object-&gt;c = 1;<br />\n<br />\n__::reduce($object, function ($result, $value, $key) {<br />\n    if (!isset($result[$value]))<br />\n        $result[$value] = [];<br />\n<br />\n    $result[$value][] = $key;<br />\n<br />\n    return $result;<br />\n}, [])</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    '1' =&gt; ['a', 'c'],<br />\n    '2' =&gt; ['b']<br />\n]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1167,14 +1167,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\stdClass|mixed",
-                "description": "<p>If <code>$accumulator<\/code> is not given, the first element of <code>$collection<\/code> is used as\nthe initial value.<\/p>\n<h2>Sum Example<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reduce([1, 2], function ($accumulator, $value, $key, $collection) {<br \/>\n    return $accumulator + $value;<br \/>\n}, 0);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>3<\/code><\/pre>\n<h2>Array Counter<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br \/>\n    ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield', 'object' =&gt; 'Basketball'],<br \/>\n    ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br \/>\n    ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br \/>\n];<br \/>\n<br \/>\n$iteratee = function ($accumulator, $value) {<br \/>\n    if (isset($accumulator[$value['city']]))<br \/>\n        $accumulator[$value['city']]++;<br \/>\n    else<br \/>\n        $accumulator[$value['city']] = 1;<br \/>\n    return $accumulator;<br \/>\n};<br \/>\n<br \/>\n__::reduce($c, $iteratee, []);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n   'Indianapolis' =&gt; 2,<br \/>\n   'Plainfield' =&gt; 1,<br \/>\n   'San Diego' =&gt; 1,<br \/>\n   'Mountain View' =&gt; 1,<br \/>\n]<\/code><\/pre>\n<h2>Object Usage<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$object = new \\stdClass();<br \/>\n$object-&gt;a = 1;<br \/>\n$object-&gt;b = 2;<br \/>\n$object-&gt;c = 1;<br \/>\n<br \/>\n__::reduce($object, function ($result, $value, $key) {<br \/>\n    if (!isset($result[$value]))<br \/>\n        $result[$value] = [];<br \/>\n<br \/>\n    $result[$value][] = $key;<br \/>\n<br \/>\n    return $result;<br \/>\n}, [])<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[<br \/>\n    '1' =&gt; ['a', 'c'],<br \/>\n    '2' =&gt; ['b']<br \/>\n]<\/code><\/pre>"
+                "description": "<p>If <code>$accumulator</code> is not given, the first element of <code>$collection</code> is used as\nthe initial value.</p>\n<h2>Sum Example</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reduce([1, 2], function ($accumulator, $value, $key, $collection) {<br />\n    return $accumulator + $value;<br />\n}, 0);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>3</code></pre>\n<h2>Array Counter</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'School bus'],<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Indianapolis', 'object' =&gt; 'Manhole'],<br />\n    ['state' =&gt; 'IN', 'city' =&gt; 'Plainfield', 'object' =&gt; 'Basketball'],<br />\n    ['state' =&gt; 'CA', 'city' =&gt; 'San Diego', 'object' =&gt; 'Light bulb'],<br />\n    ['state' =&gt; 'CA', 'city' =&gt; 'Mountain View', 'object' =&gt; 'Space pen'],<br />\n];<br />\n<br />\n$iteratee = function ($accumulator, $value) {<br />\n    if (isset($accumulator[$value['city']]))<br />\n        $accumulator[$value['city']]++;<br />\n    else<br />\n        $accumulator[$value['city']] = 1;<br />\n    return $accumulator;<br />\n};<br />\n<br />\n__::reduce($c, $iteratee, []);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n   'Indianapolis' =&gt; 2,<br />\n   'Plainfield' =&gt; 1,<br />\n   'San Diego' =&gt; 1,<br />\n   'Mountain View' =&gt; 1,<br />\n]</code></pre>\n<h2>Object Usage</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$object = new \\stdClass();<br />\n$object-&gt;a = 1;<br />\n$object-&gt;b = 2;<br />\n$object-&gt;c = 1;<br />\n<br />\n__::reduce($object, function ($result, $value, $key) {<br />\n    if (!isset($result[$value]))<br />\n        $result[$value] = [];<br />\n<br />\n    $result[$value][] = $key;<br />\n<br />\n    return $result;<br />\n}, [])</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[<br />\n    '1' =&gt; ['a', 'c'],<br />\n    '2' =&gt; ['b']<br />\n]</code></pre>"
             }
         },
         {
             "name": "reduceRight",
             "namespace": "collections",
-            "summary": "<p>Reduces <code>$collection<\/code> to a value which is the <code>$accumulator<\/code> result of running\neach element in <code>$collection<\/code> - from right to left - thru <code>$iteratee<\/code>, where\neach successive invocation is supplied the return value of the previous.<\/p>",
-            "description": "<p>If <code>$accumulator<\/code> is not given, the first element of $collection is used as\nthe initial value.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reduceRight(['a', 'b', 'c'], function ($accumulator, $value, $key, $collection) {<br \/>\n    return $accumulator . $value;<br \/>\n}, '');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'cba'<\/code><\/pre>",
+            "summary": "<p>Reduces <code>$collection</code> to a value which is the <code>$accumulator</code> result of running\neach element in <code>$collection</code> - from right to left - thru <code>$iteratee</code>, where\neach successive invocation is supplied the return value of the previous.</p>",
+            "description": "<p>If <code>$accumulator</code> is not given, the first element of $collection is used as\nthe initial value.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reduceRight(['a', 'b', 'c'], function ($accumulator, $value, $key, $collection) {<br />\n    return $accumulator . $value;<br />\n}, '');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'cba'</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1210,14 +1210,14 @@
             "exceptions": [],
             "return": {
                 "type": "array|\\stdClass|mixed",
-                "description": "<p>If <code>$accumulator<\/code> is not given, the first element of $collection is used as\nthe initial value.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reduceRight(['a', 'b', 'c'], function ($accumulator, $value, $key, $collection) {<br \/>\n    return $accumulator . $value;<br \/>\n}, '');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'cba'<\/code><\/pre>"
+                "description": "<p>If <code>$accumulator</code> is not given, the first element of $collection is used as\nthe initial value.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reduceRight(['a', 'b', 'c'], function ($accumulator, $value, $key, $collection) {<br />\n    return $accumulator . $value;<br />\n}, '');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'cba'</code></pre>"
             }
         },
         {
             "name": "reverseIterable",
             "namespace": "collections",
-            "summary": "<p>Return the reverse of an array or other foreach-able (Iterable).<\/p>",
-            "description": "<p>For array it does not make a copy of it; but does make a copy to memory for other\ntraversables.<\/p>\n<p>Code (using <code>yield<\/code>) is from mpen and linepogl\nSee <a href=\"https:\/\/stackoverflow.com\/a\/36605605\/1956471\">https:\/\/stackoverflow.com\/a\/36605605\/1956471<\/a><\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reverseIterable([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>Generator([3, 2, 1])<\/code><\/pre>",
+            "summary": "<p>Return the reverse of an array or other foreach-able (Iterable).</p>",
+            "description": "<p>For array it does not make a copy of it; but does make a copy to memory for other\ntraversables.</p>\n<p>Code (using <code>yield</code>) is from mpen and linepogl\nSee <a href=\"https://stackoverflow.com/a/36605605/1956471\">https://stackoverflow.com/a/36605605/1956471</a></p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reverseIterable([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>Generator([3, 2, 1])</code></pre>",
             "arguments": [
                 {
                     "name": "iterable",
@@ -1237,14 +1237,14 @@
             "exceptions": [],
             "return": {
                 "type": "\\Generator",
-                "description": "<p>For array it does not make a copy of it; but does make a copy to memory for other\ntraversables.<\/p>\n<p>Code (using <code>yield<\/code>) is from mpen and linepogl\nSee <a href=\"https:\/\/stackoverflow.com\/a\/36605605\/1956471\">https:\/\/stackoverflow.com\/a\/36605605\/1956471<\/a><\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::reverseIterable([1, 2, 3]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>Generator([3, 2, 1])<\/code><\/pre>"
+                "description": "<p>For array it does not make a copy of it; but does make a copy to memory for other\ntraversables.</p>\n<p>Code (using <code>yield</code>) is from mpen and linepogl\nSee <a href=\"https://stackoverflow.com/a/36605605/1956471\">https://stackoverflow.com/a/36605605/1956471</a></p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::reverseIterable([1, 2, 3]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>Generator([3, 2, 1])</code></pre>"
             }
         },
         {
             "name": "set",
             "namespace": "collections",
-            "summary": "<p>Return a new collection with the item set at index to given value. Index can\nbe a path of nested indexes.<\/p>",
-            "description": "<ul>\n<li>If <code>$collection<\/code> is an object that implements the ArrayAccess interface,\nthis function will treat it as an array.<\/li>\n<li>If a portion of path doesn't exist, it's created. Arrays are created for\nmissing index in an array; objects are created for missing property in an\nobject.<\/li>\n<\/ul>\n<p>This function throws an <code>\\Exception<\/code> if the path consists of a non-collection.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::set(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.baz.ber', 'fer');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter', 'baz' =&gt; ['ber' =&gt; 'fer']]]<\/code><\/pre>",
+            "summary": "<p>Return a new collection with the item set at index to given value. Index can\nbe a path of nested indexes.</p>",
+            "description": "<ul>\n<li>If <code>$collection</code> is an object that implements the ArrayAccess interface,\nthis function will treat it as an array.</li>\n<li>If a portion of path doesn't exist, it's created. Arrays are created for\nmissing index in an array; objects are created for missing property in an\nobject.</li>\n</ul>\n<p>This function throws an <code>\\Exception</code> if the path consists of a non-collection.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::set(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.baz.ber', 'fer');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter', 'baz' =&gt; ['ber' =&gt; 'fer']]]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1280,14 +1280,14 @@
             ],
             "return": {
                 "type": "array|object",
-                "description": "<ul>\n<li>If <code>$collection<\/code> is an object that implements the ArrayAccess interface,\nthis function will treat it as an array.<\/li>\n<li>If a portion of path doesn't exist, it's created. Arrays are created for\nmissing index in an array; objects are created for missing property in an\nobject.<\/li>\n<\/ul>\n<p>This function throws an <code>\\Exception<\/code> if the path consists of a non-collection.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::set(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.baz.ber', 'fer');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter', 'baz' =&gt; ['ber' =&gt; 'fer']]]<\/code><\/pre>"
+                "description": "<ul>\n<li>If <code>$collection</code> is an object that implements the ArrayAccess interface,\nthis function will treat it as an array.</li>\n<li>If a portion of path doesn't exist, it's created. Arrays are created for\nmissing index in an array; objects are created for missing property in an\nobject.</li>\n</ul>\n<p>This function throws an <code>\\Exception</code> if the path consists of a non-collection.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::set(['foo' =&gt; ['bar' =&gt; 'ter']], 'foo.baz.ber', 'fer');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter', 'baz' =&gt; ['ber' =&gt; 'fer']]]</code></pre>"
             }
         },
         {
             "name": "size",
             "namespace": "collections",
-            "summary": "<p>Get the size of an array or \\Countable object. Or get the number of properties\nan object has.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::size(null)                    \/\/ false<br \/>\n__::size(\"true\")                  \/\/ false; a string is not a collection<br \/>\n__::size([1, 2, 3])               \/\/ 3<br \/>\n__::size((object)[1, 2])          \/\/ 2<br \/>\n__::size(new ArrayIterator(5, 4)) \/\/ 2<\/code><\/pre>",
+            "summary": "<p>Get the size of an array or \\Countable object. Or get the number of properties\nan object has.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::size(null)                    // false<br />\n__::size(\"true\")                  // false; a string is not a collection<br />\n__::size([1, 2, 3])               // 3<br />\n__::size((object)[1, 2])          // 2<br />\n__::size(new ArrayIterator(5, 4)) // 2</code></pre>",
             "arguments": [
                 {
                     "name": "value",
@@ -1307,14 +1307,14 @@
             "exceptions": [],
             "return": {
                 "type": "int|bool",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::size(null)                    \/\/ false<br \/>\n__::size(\"true\")                  \/\/ false; a string is not a collection<br \/>\n__::size([1, 2, 3])               \/\/ 3<br \/>\n__::size((object)[1, 2])          \/\/ 2<br \/>\n__::size(new ArrayIterator(5, 4)) \/\/ 2<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::size(null)                    // false<br />\n__::size(\"true\")                  // false; a string is not a collection<br />\n__::size([1, 2, 3])               // 3<br />\n__::size((object)[1, 2])          // 2<br />\n__::size(new ArrayIterator(5, 4)) // 2</code></pre>"
             }
         },
         {
             "name": "unease",
             "namespace": "collections",
-            "summary": "<p>Builds a multidimensional collection out of a hash map using the key as\nindicator where to put the value.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::unease(['foo.bar' =&gt; 'ter', 'baz.0' =&gt; 'b', , 'baz.1' =&gt; 'z']);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter'], 'baz' =&gt; ['b', 'z']]<\/code><\/pre>",
+            "summary": "<p>Builds a multidimensional collection out of a hash map using the key as\nindicator where to put the value.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::unease(['foo.bar' =&gt; 'ter', 'baz.0' =&gt; 'b', , 'baz.1' =&gt; 'z']);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter'], 'baz' =&gt; ['b', 'z']]</code></pre>",
             "arguments": [
                 {
                     "name": "collection",
@@ -1342,14 +1342,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::unease(['foo.bar' =&gt; 'ter', 'baz.0' =&gt; 'b', , 'baz.1' =&gt; 'z']);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter'], 'baz' =&gt; ['b', 'z']]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::unease(['foo.bar' =&gt; 'ter', 'baz.0' =&gt; 'b', , 'baz.1' =&gt; 'z']);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['foo' =&gt; ['bar' =&gt; 'ter'], 'baz' =&gt; ['b', 'z']]</code></pre>"
             }
         },
         {
             "name": "where",
             "namespace": "collections",
-            "summary": "<p>Return data matching specific key value condition.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br \/>\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br \/>\n];<br \/>\n<br \/>\n__::where($a, ['age' =&gt; 16]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[['name' =&gt; 'maciej', 'age' =&gt; 16]]<\/code><\/pre>",
+            "summary": "<p>Return data matching specific key value condition.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br />\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br />\n];<br />\n<br />\n__::where($a, ['age' =&gt; 16]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[['name' =&gt; 'maciej', 'age' =&gt; 16]]</code></pre>",
             "arguments": [
                 {
                     "name": "array",
@@ -1372,14 +1372,14 @@
             "exceptions": [],
             "return": {
                 "type": "array",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$a = [<br \/>\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br \/>\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br \/>\n];<br \/>\n<br \/>\n__::where($a, ['age' =&gt; 16]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[['name' =&gt; 'maciej', 'age' =&gt; 16]]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$a = [<br />\n    ['name' =&gt; 'fred',   'age' =&gt; 32],<br />\n    ['name' =&gt; 'maciej', 'age' =&gt; 16]<br />\n];<br />\n<br />\n__::where($a, ['age' =&gt; 16]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[['name' =&gt; 'maciej', 'age' =&gt; 16]]</code></pre>"
             }
         },
         {
             "name": "slug",
             "namespace": "functions",
-            "summary": "<p>Create a web friendly URL slug from a string.<\/p>",
-            "description": "<p>Although supported, transliteration is discouraged because:<\/p>\n<ol>\n<li>most web browsers support UTF-8 characters in URLs<\/li>\n<li>transliteration causes a loss of information<\/li>\n<\/ol>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::slug('Jakie\u015b zdanie z du\u017c\u0105 ilo\u015bci\u0105 obcych znak\u00f3w!');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'jakies-zdanie-z-duza-iloscia-obcych-znakow'<\/code><\/pre>",
+            "summary": "<p>Create a web friendly URL slug from a string.</p>",
+            "description": "<p>Although supported, transliteration is discouraged because:</p>\n<ol>\n<li>most web browsers support UTF-8 characters in URLs</li>\n<li>transliteration causes a loss of information</li>\n</ol>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::slug('Jakieś zdanie z dużą ilością obcych znaków!');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'jakies-zdanie-z-duza-iloscia-obcych-znakow'</code></pre>",
             "arguments": [
                 {
                     "name": "str",
@@ -1402,14 +1402,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p>Although supported, transliteration is discouraged because:<\/p>\n<ol>\n<li>most web browsers support UTF-8 characters in URLs<\/li>\n<li>transliteration causes a loss of information<\/li>\n<\/ol>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::slug('Jakie\u015b zdanie z du\u017c\u0105 ilo\u015bci\u0105 obcych znak\u00f3w!');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'jakies-zdanie-z-duza-iloscia-obcych-znakow'<\/code><\/pre>"
+                "description": "<p>Although supported, transliteration is discouraged because:</p>\n<ol>\n<li>most web browsers support UTF-8 characters in URLs</li>\n<li>transliteration causes a loss of information</li>\n</ol>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::slug('Jakieś zdanie z dużą ilością obcych znaków!');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'jakies-zdanie-z-duza-iloscia-obcych-znakow'</code></pre>"
             }
         },
         {
             "name": "truncate",
             "namespace": "functions",
-            "summary": "<p>Truncate string based on count of words<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';<br \/>\n<br \/>\n__::truncate($string);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Lorem ipsum dolor sit amet, ...'<\/code><\/pre>",
+            "summary": "<p>Truncate string based on count of words</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';<br />\n<br />\n__::truncate($string);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Lorem ipsum dolor sit amet, ...'</code></pre>",
             "arguments": [
                 {
                     "name": "text",
@@ -1432,14 +1432,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">$string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';<br \/>\n<br \/>\n__::truncate($string);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Lorem ipsum dolor sit amet, ...'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">$string = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et mi orci.';<br />\n<br />\n__::truncate($string);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Lorem ipsum dolor sit amet, ...'</code></pre>"
             }
         },
         {
             "name": "urlify",
             "namespace": "functions",
-            "summary": "<p>Convert any URLs into HTML anchor tags in a string.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::urlify(\"I love https:\/\/google.com\");<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'I love &lt;a href=\"https:\/\/google.com\"&gt;google.com&lt;\/a&gt;'<\/code><\/pre>",
+            "summary": "<p>Convert any URLs into HTML anchor tags in a string.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::urlify(\"I love https://google.com\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'I love &lt;a href=\"https://google.com\"&gt;google.com&lt;/a&gt;'</code></pre>",
             "arguments": [
                 {
                     "name": "string",
@@ -1454,13 +1454,13 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::urlify(\"I love https:\/\/google.com\");<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'I love &lt;a href=\"https:\/\/google.com\"&gt;google.com&lt;\/a&gt;'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::urlify(\"I love https://google.com\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'I love &lt;a href=\"https://google.com\"&gt;google.com&lt;/a&gt;'</code></pre>"
             }
         },
         {
             "name": "isArray",
             "namespace": "",
-            "summary": "<p>Check if give value is array or not.<\/p>",
+            "summary": "<p>Check if give value is array or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1482,8 +1482,8 @@
         {
             "name": "isCollection",
             "namespace": "objects",
-            "summary": "<p>Check if the object is a collection.<\/p>",
-            "description": "<p>A collection is either an array or an object.<\/p>",
+            "summary": "<p>Check if the object is a collection.</p>",
+            "description": "<p>A collection is either an array or an object.</p>",
             "arguments": [
                 {
                     "name": "object",
@@ -1498,13 +1498,13 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p>A collection is either an array or an object.<\/p>"
+                "description": "<p>A collection is either an array or an object.</p>"
             }
         },
         {
             "name": "isEmail",
             "namespace": "objects",
-            "summary": "<p>Check if the value is valid email.<\/p>",
+            "summary": "<p>Check if the value is valid email.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1526,8 +1526,8 @@
         {
             "name": "isEqual",
             "namespace": "objects",
-            "summary": "<p>Check if the objects are equals.<\/p>",
-            "description": "<p>Perform a deep (recursive) comparison when the parameters are arrays or objects.<\/p>\n<p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings.\nobject objects are compared by their own enumerable properties (as returned by get_object_vars).<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>false<\/code><\/pre>",
+            "summary": "<p>Check if the objects are equals.</p>",
+            "description": "<p>Perform a deep (recursive) comparison when the parameters are arrays or objects.</p>\n<p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings.\nobject objects are compared by their own enumerable properties (as returned by get_object_vars).</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>false</code></pre>",
             "arguments": [
                 {
                     "name": "object1",
@@ -1550,13 +1550,13 @@
             "exceptions": [],
             "return": {
                 "type": "bool",
-                "description": "<p>Perform a deep (recursive) comparison when the parameters are arrays or objects.<\/p>\n<p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings.\nobject objects are compared by their own enumerable properties (as returned by get_object_vars).<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>false<\/code><\/pre>"
+                "description": "<p>Perform a deep (recursive) comparison when the parameters are arrays or objects.</p>\n<p>Note: This method supports comparing arrays, object objects, booleans, numbers, strings.\nobject objects are compared by their own enumerable properties (as returned by get_object_vars).</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::isEqual(['honfleur' =&gt; 1, 'rungis' =&gt; [2, 3]], ['honfleur' =&gt; 1, 'rungis' =&gt; [1, 2]]);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>false</code></pre>"
             }
         },
         {
             "name": "isFunction",
             "namespace": "",
-            "summary": "<p>Check if give value is function or not.<\/p>",
+            "summary": "<p>Check if give value is function or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1578,7 +1578,7 @@
         {
             "name": "isIterable",
             "namespace": "objects",
-            "summary": "<p>Check to see if something is iterable.<\/p>",
+            "summary": "<p>Check to see if something is iterable.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1608,7 +1608,7 @@
         {
             "name": "isNull",
             "namespace": "",
-            "summary": "<p>Check if give value is null or not.<\/p>",
+            "summary": "<p>Check if give value is null or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1630,7 +1630,7 @@
         {
             "name": "isNumber",
             "namespace": "",
-            "summary": "<p>Check if give value is number or not.<\/p>",
+            "summary": "<p>Check if give value is number or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1652,7 +1652,7 @@
         {
             "name": "isObject",
             "namespace": "",
-            "summary": "<p>Check if give value is object or not.<\/p>",
+            "summary": "<p>Check if give value is object or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1674,7 +1674,7 @@
         {
             "name": "isString",
             "namespace": "",
-            "summary": "<p>Check if give value is string or not.<\/p>",
+            "summary": "<p>Check if give value is string or not.</p>",
             "description": "",
             "arguments": [
                 {
@@ -1696,8 +1696,8 @@
         {
             "name": "chain",
             "namespace": "sequences",
-            "summary": "<p>Returns a wrapper instance, allows the value to be passed through multiple\nbottomline functions.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::chain([0, 1, 2, 3, null])<br \/>\n    -&gt;compact()<br \/>\n    -&gt;prepend(4)<br \/>\n    -&gt;value()<br \/>\n;<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 1, 2, 3]<\/code><\/pre>",
+            "summary": "<p>Returns a wrapper instance, allows the value to be passed through multiple\nbottomline functions.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::chain([0, 1, 2, 3, null])<br />\n    -&gt;compact()<br />\n    -&gt;prepend(4)<br />\n    -&gt;value()<br />\n;</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 1, 2, 3]</code></pre>",
             "arguments": [
                 {
                     "name": "initialValue",
@@ -1712,14 +1712,14 @@
             "exceptions": [],
             "return": {
                 "type": "\\BottomlineWrapper",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::chain([0, 1, 2, 3, null])<br \/>\n    -&gt;compact()<br \/>\n    -&gt;prepend(4)<br \/>\n    -&gt;value()<br \/>\n;<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>[4, 1, 2, 3]<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::chain([0, 1, 2, 3, null])<br />\n    -&gt;compact()<br />\n    -&gt;prepend(4)<br />\n    -&gt;value()<br />\n;</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[4, 1, 2, 3]</code></pre>"
             }
         },
         {
             "name": "camelCase",
             "namespace": "strings",
-            "summary": "<p>Converts string to <a href=\"https:\/\/en.wikipedia.org\/wiki\/CamelCase\">camel case<\/a>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::camelCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'fooBar'<\/code><\/pre>",
+            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/CamelCase\">camel case</a>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::camelCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'fooBar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1734,14 +1734,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::camelCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'fooBar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::camelCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'fooBar'</code></pre>"
             }
         },
         {
             "name": "capitalize",
             "namespace": "strings",
-            "summary": "<p>Converts the first character of string to upper case and the remaining\nto lower case.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::capitalize('FRED');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Fred'<\/code><\/pre>",
+            "summary": "<p>Converts the first character of string to upper case and the remaining\nto lower case.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::capitalize('FRED');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Fred'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1756,14 +1756,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::capitalize('FRED');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Fred'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::capitalize('FRED');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Fred'</code></pre>"
             }
         },
         {
             "name": "kebabCase",
             "namespace": "strings",
-            "summary": "<p>Converts string to <a href=\"https:\/\/en.wikipedia.org\/wiki\/Letter_case#Special_case_styles\">kebab case<\/a>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::kebabCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo-bar'<\/code><\/pre>",
+            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/Letter_case#Special_case_styles\">kebab case</a>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::kebabCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo-bar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1778,14 +1778,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::kebabCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo-bar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::kebabCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo-bar'</code></pre>"
             }
         },
         {
             "name": "lowerCase",
             "namespace": "strings",
-            "summary": "<p>Converts string, as space separated words, to lower case.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::lowerCase('--Foo-Bar--');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo bar'<\/code><\/pre>",
+            "summary": "<p>Converts string, as space separated words, to lower case.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::lowerCase('--Foo-Bar--');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo bar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1800,14 +1800,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::lowerCase('--Foo-Bar--');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo bar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::lowerCase('--Foo-Bar--');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo bar'</code></pre>"
             }
         },
         {
             "name": "lowerFirst",
             "namespace": "strings",
-            "summary": "<p>Converts the first character of string to lower case, like lcfirst.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::lowerFirst('Fred');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'fred'<\/code><\/pre>",
+            "summary": "<p>Converts the first character of string to lower case, like lcfirst.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::lowerFirst('Fred');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'fred'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1822,14 +1822,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::lowerFirst('Fred');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'fred'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::lowerFirst('Fred');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'fred'</code></pre>"
             }
         },
         {
             "name": "snakeCase",
             "namespace": "strings",
-            "summary": "<p>Converts string to <a href=\"https:\/\/en.wikipedia.org\/wiki\/Snake_case\">snake case<\/a>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::snakeCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo_bar'<\/code><\/pre>",
+            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/Snake_case\">snake case</a>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::snakeCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo_bar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1844,14 +1844,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::snakeCase('Foo Bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foo_bar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::snakeCase('Foo Bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foo_bar'</code></pre>"
             }
         },
         {
             "name": "split",
             "namespace": "strings",
-            "summary": "<p>Split a string by string.<\/p>",
-            "description": "<ul>\n<li>If limit is set and positive, the returned array will contain a\nmaximum of limit elements with the last element containing the rest\nof string.<\/li>\n<li>If the limit parameter is negative, all components except the last\n<code>-limit<\/code> are returned.<\/li>\n<li>If the limit parameter is zero, then this is treated as 1.<\/li>\n<\/ul>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::split('a-b-c', '-', 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['a', 'b-c']<\/code><\/pre>",
+            "summary": "<p>Split a string by string.</p>",
+            "description": "<ul>\n<li>If limit is set and positive, the returned array will contain a\nmaximum of limit elements with the last element containing the rest\nof string.</li>\n<li>If the limit parameter is negative, all components except the last\n<code>-limit</code> are returned.</li>\n<li>If the limit parameter is zero, then this is treated as 1.</li>\n</ul>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::split('a-b-c', '-', 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['a', 'b-c']</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1882,14 +1882,14 @@
             "exceptions": [],
             "return": {
                 "type": "string[]",
-                "description": "<ul>\n<li>If limit is set and positive, the returned array will contain a\nmaximum of limit elements with the last element containing the rest\nof string.<\/li>\n<li>If the limit parameter is negative, all components except the last\n<code>-limit<\/code> are returned.<\/li>\n<li>If the limit parameter is zero, then this is treated as 1.<\/li>\n<\/ul>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::split('a-b-c', '-', 2);<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['a', 'b-c']<\/code><\/pre>"
+                "description": "<ul>\n<li>If limit is set and positive, the returned array will contain a\nmaximum of limit elements with the last element containing the rest\nof string.</li>\n<li>If the limit parameter is negative, all components except the last\n<code>-limit</code> are returned.</li>\n<li>If the limit parameter is zero, then this is treated as 1.</li>\n</ul>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::split('a-b-c', '-', 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['a', 'b-c']</code></pre>"
             }
         },
         {
             "name": "startCase",
             "namespace": "strings",
-            "summary": "<p>Converts string to <a href=\"https:\/\/en.wikipedia.org\/wiki\/Letter_case#Stylistic_or_specialised_usage\">start case<\/a>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::startCase('--foo-bar--');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Foo Bar'<\/code><\/pre>",
+            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage\">start case</a>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::startCase('--foo-bar--');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Foo Bar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1904,14 +1904,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::startCase('--foo-bar--');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Foo Bar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::startCase('--foo-bar--');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Foo Bar'</code></pre>"
             }
         },
         {
             "name": "toLower",
             "namespace": "strings",
-            "summary": "<p>Converts string, as a whole, to lower case just like <code>strtolower()<\/code>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::toLower('fooBar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foobar'<\/code><\/pre>",
+            "summary": "<p>Converts string, as a whole, to lower case just like <code>strtolower()</code>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::toLower('fooBar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foobar'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1926,14 +1926,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::toLower('fooBar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'foobar'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::toLower('fooBar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'foobar'</code></pre>"
             }
         },
         {
             "name": "toUpper",
             "namespace": "strings",
-            "summary": "<p>Converts string, as a whole, to lower case just like <code>strtoupper()<\/code>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code>__::toUpper('fooBar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'FOOBAR'<\/code><\/pre>",
+            "summary": "<p>Converts string, as a whole, to lower case just like <code>strtoupper()</code>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code>__::toUpper('fooBar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'FOOBAR'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1948,14 +1948,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code>__::toUpper('fooBar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'FOOBAR'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code>__::toUpper('fooBar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'FOOBAR'</code></pre>"
             }
         },
         {
             "name": "upperCase",
             "namespace": "strings",
-            "summary": "<p>Converts string, as space separated words, to upper case.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::upperCase('--foo-bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'FOO BAR'<\/code><\/pre>",
+            "summary": "<p>Converts string, as space separated words, to upper case.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::upperCase('--foo-bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'FOO BAR'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1970,14 +1970,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::upperCase('--foo-bar');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'FOO BAR'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::upperCase('--foo-bar');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'FOO BAR'</code></pre>"
             }
         },
         {
             "name": "upperFirst",
             "namespace": "strings",
-            "summary": "<p>Converts the first character of string to upper case, like <code>ucfirst()<\/code>.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::upperFirst('fred');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Fred'<\/code><\/pre>",
+            "summary": "<p>Converts the first character of string to upper case, like <code>ucfirst()</code>.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::upperFirst('fred');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Fred'</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -1992,14 +1992,14 @@
             "exceptions": [],
             "return": {
                 "type": "string",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::upperFirst('fred');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'Fred'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::upperFirst('fred');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Fred'</code></pre>"
             }
         },
         {
             "name": "words",
             "namespace": "strings",
-            "summary": "<p>Splits string into an array of its words.<\/p>",
-            "description": "<h2>Default Behavior<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['fred', 'barney', 'pebbles']<\/code><\/pre>\n<h2>Custom Pattern<\/h2>\n<p>Use a custom regex to define how words are split.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles', '\/[^, ]+\/');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['fred', 'barney', '&amp;', 'pebbles']<\/code><\/pre>",
+            "summary": "<p>Splits string into an array of its words.</p>",
+            "description": "<h2>Default Behavior</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['fred', 'barney', 'pebbles']</code></pre>\n<h2>Custom Pattern</h2>\n<p>Use a custom regex to define how words are split.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles', '/[^, ]+/');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['fred', 'barney', '&amp;', 'pebbles']</code></pre>",
             "arguments": [
                 {
                     "name": "input",
@@ -2022,14 +2022,14 @@
             "exceptions": [],
             "return": {
                 "type": "string[]",
-                "description": "<h2>Default Behavior<\/h2>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['fred', 'barney', 'pebbles']<\/code><\/pre>\n<h2>Custom Pattern<\/h2>\n<p>Use a custom regex to define how words are split.<\/p>\n<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles', '\/[^, ]+\/');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>['fred', 'barney', '&amp;', 'pebbles']<\/code><\/pre>"
+                "description": "<h2>Default Behavior</h2>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['fred', 'barney', 'pebbles']</code></pre>\n<h2>Custom Pattern</h2>\n<p>Use a custom regex to define how words are split.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::words('fred, barney, &amp; pebbles', '/[^, ]+/');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>['fred', 'barney', '&amp;', 'pebbles']</code></pre>"
             }
         },
         {
             "name": "identity",
             "namespace": "utilities",
-            "summary": "<p>Returns the first argument it receives.<\/p>",
-            "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::identity('arg1', 'arg2');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'arg1'<\/code><\/pre>",
+            "summary": "<p>Returns the first argument it receives.</p>",
+            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::identity('arg1', 'arg2');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'arg1'</code></pre>",
             "arguments": [
                 {
                     "name": "_",
@@ -2044,13 +2044,13 @@
             "exceptions": [],
             "return": {
                 "type": "mixed",
-                "description": "<p><strong>Usage<\/strong><\/p>\n<pre><code class=\"language-php\">__::identity('arg1', 'arg2');<\/code><\/pre>\n<p><strong>Result<\/strong><\/p>\n<pre><code>'arg1'<\/code><\/pre>"
+                "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::identity('arg1', 'arg2');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'arg1'</code></pre>"
             }
         },
         {
             "name": "now",
             "namespace": "",
-            "summary": "<p>Alias to original time() function which returns current time.<\/p>",
+            "summary": "<p>Alias to original time() function which returns current time.</p>",
             "description": "",
             "arguments": [],
             "changelog": [],

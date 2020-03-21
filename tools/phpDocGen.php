@@ -643,7 +643,10 @@ function buildWebsiteFunctionRegistry()
 
     $filePath = dirname(__DIR__) . '/docs/_data/fxn_registry.json';
 
-    file_put_contents($filePath, json_encode($registry, JSON_PRETTY_PRINT));
+    file_put_contents(
+        $filePath,
+        json_encode($registry, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)
+    );
 }
 
 buildWebsiteFunctionRegistry();
