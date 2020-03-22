@@ -155,7 +155,7 @@ class DocumentationRegistry implements JsonSerializable
                 /** @var Comment $docBlock */
                 $docBlock = array_pop($comments);
 
-                $this->registerBottomlineFunction($fxnName, $docBlock, null, $rootElement->expr->value);
+                $this->registerBottomlineFunction($fxnName, $docBlock, null, $rootElement->expr->value, $namespace);
 
                 break;
 
@@ -167,10 +167,11 @@ class DocumentationRegistry implements JsonSerializable
     /**
      * @param string      $functionName
      * @param Comment     $docBlock
-     * @param string|null $namespace
-     * @param string|null $fqfn
+     * @param string|null $actualNamespace The actual namespace declared via the PHP `namespace` keyword
+     * @param string|null $fqfn            Fully-qualified function name
+     * @param string|null $blNamespace     The fake namespace; i.e. the folder name this function is defined in
      */
-    private function registerBottomlineFunction($functionName, Comment $docBlock, $namespace = null, $fqfn = null)
+    private function registerBottomlineFunction($functionName, Comment $docBlock, $actualNamespace = null, $fqfn = null, $blNamespace = null)
     {
         try {
             // If function name starts with an underscore, it's a helper function not part of the API
@@ -178,8 +179,8 @@ class DocumentationRegistry implements JsonSerializable
                 return;
             }
 
-            if ($namespace !== null) {
-                $fullyQualifiedFunctionName = sprintf("%s\\%s", $namespace, $functionName);
+            if ($actualNamespace !== null) {
+                $fullyQualifiedFunctionName = sprintf("%s\\%s", $actualNamespace, $functionName);
             } elseif ($fqfn !== null) {
                 $fullyQualifiedFunctionName = $fqfn;
             } else {
@@ -194,7 +195,7 @@ class DocumentationRegistry implements JsonSerializable
             }
 
             $functionDefinition = new ReflectionFunction($fullyQualifiedFunctionName);
-            $this->methods[] = new FunctionDocumentation($functionDefinition, $docBlock, $functionName);
+            $this->methods[] = new FunctionDocumentation($functionDefinition, $docBlock, $functionName, $blNamespace);
         } catch (Exception $e) {
             printf("Exception message: %s\n", $e->getMessage());
             printf("  %s\n\n", $functionName);
@@ -237,12 +238,12 @@ class FunctionDocumentation implements JsonSerializable
     /** @var string */
     public $returnDescription;
 
-    public function __construct(ReflectionFunction $reflectedFunction, DocBlock $docBlock, $functionName)
+    public function __construct(ReflectionFunction $reflectedFunction, DocBlock $docBlock, $functionName, $namespace)
     {
         $this->reflectedFunction = $reflectedFunction;
         $this->docBlock = $docBlock;
 
-        $this->namespace = $reflectedFunction->getNamespaceName();
+        $this->namespace = $namespace === null ? $reflectedFunction->getNamespaceName() : $namespace;
         $this->name = $functionName;
         $this->arguments = [];
         $this->changelog = [];

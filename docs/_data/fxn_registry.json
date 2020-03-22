@@ -1459,7 +1459,7 @@
         },
         {
             "name": "isArray",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is array or not.</p>",
             "description": "",
             "arguments": [
@@ -1555,7 +1555,7 @@
         },
         {
             "name": "isFunction",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is function or not.</p>",
             "description": "",
             "arguments": [
@@ -1607,7 +1607,7 @@
         },
         {
             "name": "isNull",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is null or not.</p>",
             "description": "",
             "arguments": [
@@ -1629,7 +1629,7 @@
         },
         {
             "name": "isNumber",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is number or not.</p>",
             "description": "",
             "arguments": [
@@ -1651,7 +1651,7 @@
         },
         {
             "name": "isObject",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is object or not.</p>",
             "description": "",
             "arguments": [
@@ -1673,7 +1673,7 @@
         },
         {
             "name": "isString",
-            "namespace": "",
+            "namespace": "objects",
             "summary": "<p>Check if give value is string or not.</p>",
             "description": "",
             "arguments": [
@@ -2049,7 +2049,7 @@
         },
         {
             "name": "now",
-            "namespace": "",
+            "namespace": "utilities",
             "summary": "<p>Alias to original time() function which returns current time.</p>",
             "description": "",
             "arguments": [],
