@@ -1,0 +1,24 @@
+name: bottomline
+
+remote_theme: allejo/jekyll-docs-theme
+
+license:
+  software: MIT License
+  software_url: https://opensource.org/licenses/MIT
+
+  docs: CC BY 3.0
+  docs_url: https://creativecommons.org/licenses/by/3.0/
+
+links:
+  homepage:
+    - title: Download
+      icon: download
+      url: https://packagist.org/packages/maciejczyzewski/bottomline
+    - title: View on GitHub
+      icon: github
+      brand: true
+      url: https://github.com/maciejczyzewski/bottomline
+
+markdown: kramdown
+exclude:
+  - Gemfile
