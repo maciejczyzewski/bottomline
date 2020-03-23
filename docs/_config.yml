@@ -18,6 +18,11 @@ links:
       icon: github
       brand: true
       url: https://github.com/maciejczyzewski/bottomline
+  header:
+    - title: GitHub
+      icon: github
+      brand: true
+      url: https://github.com/maciejczyzewski/bottomline
 
 markdown: kramdown
 exclude:
