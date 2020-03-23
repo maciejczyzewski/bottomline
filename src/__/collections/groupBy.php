@@ -8,9 +8,7 @@ namespace collections;
  * Based on Chauncey McAskill's [array_group_by()](https://gist.github.com/mcaskill/baaee44487653e1afc0d)
  * function.
  *
- * ## Group by Key
- *
- * **Usage**
+ * **Group by Key Usage**
  *
  * ```php
  * __::groupBy([
@@ -36,9 +34,7 @@ namespace collections;
  * ]
  * ```
  *
- * ## Group by nested key (dot notation)
- *
- * **Usage**
+ * **Group by Nested Key (Dot Notation)**
  *
  * ```php
  * __::groupBy([
@@ -76,9 +72,7 @@ namespace collections;
  * ]
  * ```
  *
- * ## Group by Closure
- *
- * **Usage**
+ * **Group by Closure Usage**
  *
  * ```php
  * __::groupBy([

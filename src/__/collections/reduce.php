@@ -10,9 +10,7 @@ namespace collections;
  * If `$accumulator` is not given, the first element of `$collection` is used as
  * the initial value.
  *
- * ## Sum Example
- *
- * **Usage**
+ * **Usage: Sum Example**
  *
  * ```php
  * __::reduce([1, 2], function ($accumulator, $value, $key, $collection) {
@@ -26,9 +24,7 @@ namespace collections;
  * 3
  * ```
  *
- * ## Array Counter
- *
- * **Usage**
+ * **Usage: Array Counter**
  *
  * ```php
  * $a = [
@@ -61,9 +57,7 @@ namespace collections;
  * ]
  * ```
  *
- * ## Object Usage
- *
- * **Usage**
+ * **Usage: Objects**
  *
  * ```php
  * $object = new \stdClass();
