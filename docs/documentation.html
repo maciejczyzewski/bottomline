@@ -14,7 +14,7 @@ permalink: /documentation/
                 <h3 id="{{ function.name | slug }}">{{- function.name | strip -}}</h3>
 
                 {{ function.summary }}
-                {{ function.description }}
+                {{ function.description | replace: '<br />', '' }}
 
                 {% if function.arguments.size > 0 %}
                     <h4
