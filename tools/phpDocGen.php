@@ -325,7 +325,7 @@ class FunctionDocumentation implements JsonSerializable
             }),
             'return' => [
                 'type' => (string)$this->returnType,
-                'description' => $this->description,
+                'description' => $this->returnDescription,
             ],
         ];
     }
@@ -451,7 +451,7 @@ class ArgumentDocumentation implements JsonSerializable
     public function __construct(Param $documentedParam, ReflectionParameter $reflectedParam = null)
     {
         $this->name = $documentedParam->getVariableName();
-        $this->description = $documentedParam->getDescription();
+        $this->description = $documentedParam->getDescription()->render();
         $this->isVariadic = $documentedParam->isVariadic();
         $this->type = $documentedParam->getType();
 
