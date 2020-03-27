@@ -16,12 +16,20 @@
 extension=php_mbstring.dll
 ```
 
+For generating the documentation website, you'll also need Ruby with [`bundle`](https://bundler.io/).
+
 ## Development setup
 
 1. Fork our repository
 2. Clone your forked repository `git clone git@github.com:<your namespace>/bottomline.git`
-2. Install development dependencies `make install-dev`
-3. Run tests `make test`
+2. Install development dependencies `php composer.phar install --dev`
+3. Run tests `php composer.phar run test`
+
+Also useful:
+* Run benchmarks: `php composer.phar run bench`
+* Format the code: `php composer.phar run cs-fix`
+* Generate the doc: `php composer.phar run doc`
+* Generate the doc website: `php composer.phar run site`
 
 ## Development checklist
 
@@ -29,7 +37,7 @@ extension=php_mbstring.dll
 - Always add tests for the code that you write, including edge cases ;
 - Place the new functions where they belong (collections, arrays, utilities, etc.) ;
 - Add `README.md` doc entry for the functions ;
-- Execute `make doc` script to automatically build an updated `load.php` ;
+- Execute `php composer.phar run doc` script to automatically build an updated `load.php` ;
 - Update the benchmark `bench.php`, this helps us to validate the performance of the library ;
 - Update `CHANGELOG.md` with your changes.
 
