@@ -40,6 +40,10 @@
             "php tools/phpDocGen.php",
             "@cs-fix"
         ],
+        "site": [
+            "cd docs; bundle info github-pages > /dev/null 2>&1 || bundle install",
+            "cd docs; bundle exec jekyll serve"
+        ],
         "test": [
             "# Silence PHP deprecation warnings before PHPUnit is run",
             "php -d error_reporting=24575 ./vendor/bin/phpunit"
