@@ -23,7 +23,21 @@ links:
       icon: github
       brand: true
       url: https://github.com/maciejczyzewski/bottomline
+  footer:
+    - title: GitHub
+      icon: github
+      brand: true
+      url: https://github.com/maciejczyzewski/bottomline
+    - title: Issues
+      icon: bug
+      url: https://github.com/maciejczyzewski/bottomline/issues?state=open
+
+social:
+  github:
+    user: maciejczyzewski
+    repo: bottomline
 
 markdown: kramdown
 exclude:
   - Gemfile
+  - Gemfile.lock
