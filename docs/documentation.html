@@ -13,8 +13,8 @@ permalink: /documentation/
             <article class="border-bottom mb-5 pb-5">
                 <h3 id="{{ function.name | slug }}">{{- function.name | strip -}}</h3>
 
-                {{ function.summary }}
-                {{ function.description | replace: '<br />', '' }}
+                {{ function.summaryRaw | markdownify }}
+                {{ function.descriptionRaw | markdownify }}
 
                 {% if function.arguments.size > 0 %}
                     <h4
