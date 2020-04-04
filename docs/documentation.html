@@ -11,7 +11,7 @@ permalink: /documentation/
 
         {% for function in namespace.items %}
             <article class="border-bottom mb-5 pb-5">
-                <h3 id="{{ function.name | slug }}">{{- function.name | strip -}}</h3>
+                <h3 id="{{ function.name | slug }}"><code>{{- function.name | strip -}}</code></h3>
 
                 {{ function.summaryRaw | markdownify }}
                 {{ function.descriptionRaw | markdownify }}

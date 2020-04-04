@@ -30,7 +30,7 @@ This library organizes functions into several namespaces based on their own func
 
 {% assign namespaces = site.data.fxn_registry.methods | map: "namespace" | uniq %}
 {% for method in namespaces -%}
-- {{ method | capitalize }}
+- [{{ method | capitalize }}](/documentation/#{{ method }})
 {% endfor %}
 
 </div>
