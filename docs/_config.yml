@@ -1,6 +1,6 @@
 name: bottomline
 
-remote_theme: allejo/jekyll-docs-theme@v1.0.0-beta.2
+remote_theme: allejo/jekyll-docs-theme@v1.0.0-beta.4
 
 license:
   software: MIT License
