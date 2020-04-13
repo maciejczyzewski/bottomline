@@ -9,9 +9,7 @@ namespace strings;
 /**
  * Splits string into an array of its words.
  *
- * ## Default Behavior
- *
- * **Usage**
+ * **Usage: Default Behavior**
  *
  * ```php
  * __::words('fred, barney, & pebbles');
@@ -23,11 +21,9 @@ namespace strings;
  * ['fred', 'barney', 'pebbles']
  * ```
  *
- * ## Custom Pattern
- *
  * Use a custom regex to define how words are split.
  *
- * **Usage**
+ * **Usage: Custom Pattern**
  *
  * ```php
  * __::words('fred, barney, & pebbles', '/[^, ]+/');

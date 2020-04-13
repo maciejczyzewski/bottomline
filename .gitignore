@@ -1,6 +1,7 @@
-vendor/
-__testing/
-/.idea
+.idea
+.php_cs.cache
+_site/
 composer.phar
 composer.lock
-.php_cs.cache
+Gemfile.lock
+vendor/

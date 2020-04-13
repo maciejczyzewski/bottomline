@@ -1,0 +1,114 @@
+---
+layout: page
+title: Functions
+permalink: /documentation/
+scrollSpyOffset: 200
+---
+
+{% assign registry = site.data.fxn_registry.methods | group_by: "namespace" %}
+{% for namespace in registry %}
+    <section>
+        <h2 id="{{ namespace.name | slug }}">{{- namespace.name | capitalize -}}</h2>
+
+        {% for function in namespace.items %}
+            <article class="border-bottom mb-5 pb-5">
+                <h3 id="{{ function.name | slug }}"><code>{{- function.name | strip -}}</code></h3>
+
+                {{ function.summaryRaw | markdownify }}
+                {{ function.descriptionRaw | markdownify }}
+
+                {% if function.arguments.size > 0 %}
+                    <h4
+                        id="{{ function.name }}-arguments"
+                        class="mb-3 mt-4"
+                    >
+                        Arguments
+                    </h4>
+
+                    {% capture fxn_sig %}{% endcapture %}
+                    {% for argument in function.arguments %}
+                        {% capture fxn_sig -%}
+                            {{ fxn_sig }}{% if forloop.first == false %}, {% endif %}
+                            {{- argument.type }} ${{ argument.name -}}
+                            {%- if argument.defaultValueAsString %} = {{ argument.defaultValueAsString }}{%- endif -%}
+                        {%- endcapture %}
+                    {% endfor %}
+
+                    {% highlight php -%}
+                        __::{{- function.name }}({{ fxn_sig }}): {{ function.return.type -}}
+                    {% endhighlight %}
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for argument in function.arguments %}
+                                <tr>
+                                    <td>
+                                        <code>
+                                            {{ argument.name }}
+                                        </code>
+                                    </td>
+                                    <td>{{ argument.description }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+
+                {% if function.return.type != "void" %}
+                    <h4
+                        id="{{ function.name }}-return"
+                        class="mb-3 mt-4"
+                    >
+                        Returns
+                    </h4>
+
+                    <p><code>{{ function.return.type }}</code></p>
+                    {{ function.return.description }}
+                {% endif %}
+
+                {% if function.changelog.size > 0 %}
+                    <h4
+                        id="{{ function.name }}-changelog"
+                        class="mb-3 mt-4"
+                    >
+                        Changelog
+                    </h4>
+
+                    <ul>
+                        {% for change in function.changelog %}
+                            <li>
+                                <strong>{{ change.version }}</strong> -
+                                {{ change.message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% if function.exceptions.size > 0 %}
+                    <h4
+                        id="{{ function.name }}-exceptions"
+                        class="mb-3 mt-4"
+                    >
+                        Exceptions
+                    </h4>
+
+                    <ul>
+                        {% for exception in function.exceptions %}
+                            <li>
+                                <strong><code>{{ exception.exception }}</code></strong> -
+                                {{ exception.message | markdownify | replace: '<p>' | replace: '</p>' }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </article>
+        {% endfor %}
+    </section>
+{% endfor %}

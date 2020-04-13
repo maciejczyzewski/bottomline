@@ -7,9 +7,7 @@ namespace collections;
  *
  * In contrast to `isset()`, `__::has()` returns true if the key exists but is null.
  *
- * ## Arrays
- *
- * **Usage**
+ * **Array Usage**
  *
  * ```php
  *  __::has(['foo' => ['bar' => 'num'], 'foz' => 'baz'], 'foo.bar');
@@ -21,9 +19,7 @@ namespace collections;
  * true
  * ```
  *
- * ## Objects
- *
- * **Usage**
+ * **Object Usage**
  *
  * ```php
  *  __::hasKeys((object) ['foo' => 'bar', 'foz' => 'baz'], 'bar');

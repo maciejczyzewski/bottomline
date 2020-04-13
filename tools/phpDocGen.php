@@ -221,7 +221,13 @@ class FunctionDocumentation implements JsonSerializable
     public $summary;
 
     /** @var string */
+    public $summaryRaw;
+
+    /** @var string */
     public $description;
+
+    /** @var string */
+    public $descriptionRaw;
 
     /** @var array<int, ArgumentDocumentation> */
     public $arguments;
@@ -309,7 +315,9 @@ class FunctionDocumentation implements JsonSerializable
             'name' => $this->name,
             'namespace' => $this->namespace,
             'summary' => $this->summary,
+            'summaryRaw' => $this->summaryRaw,
             'description' => $this->description,
+            'descriptionRaw' => $this->descriptionRaw,
             'arguments' => $this->arguments,
             'changelog' => __::map($this->changelog, function ($message, $version) {
                 return [
@@ -325,7 +333,7 @@ class FunctionDocumentation implements JsonSerializable
             }),
             'return' => [
                 'type' => (string)$this->returnType,
-                'description' => $this->description,
+                'description' => $this->returnDescription,
             ],
         ];
     }
@@ -356,7 +364,9 @@ class FunctionDocumentation implements JsonSerializable
         }
 
         $this->summary = Parsers::$markdown->text($this->docBlock->getSummary());
+        $this->summaryRaw = $this->docBlock->getSummary();
         $this->description = Parsers::$markdown->text($this->docBlock->getDescription()->render());
+        $this->descriptionRaw = $this->docBlock->getDescription()->render();
 
         $this->parseCodeBlocks();
         $this->parseChangelog();
@@ -451,7 +461,7 @@ class ArgumentDocumentation implements JsonSerializable
     public function __construct(Param $documentedParam, ReflectionParameter $reflectedParam = null)
     {
         $this->name = $documentedParam->getVariableName();
-        $this->description = $documentedParam->getDescription();
+        $this->description = $documentedParam->getDescription()->render();
         $this->isVariadic = $documentedParam->isVariadic();
         $this->type = $documentedParam->getType();
 
