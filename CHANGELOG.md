@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.2.x
+## v0.2.0
 
-**Unreleased — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...master) — [Docs](https://github.com/maciejczyzewski/bottomline/blob/master/README.md)**
+**2020-04-22 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...0.2.0) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
 
 * Added `__::isEqual`
 * Bumped minimum PHP version to 5.5
