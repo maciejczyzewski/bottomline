@@ -17,8 +17,10 @@ namespace arrays;
  * ['foo', 'foo', 'foo']
  * ```
  *
- * @param string $object The object to repeat.
+ * @param mixed  $object The object to repeat.
  * @param int    $times  How many times has to be repeated.
+ *
+ * @since 0.2.1 $object typehint was changed from `string` to `mixed`
  *
  * @return array Returns a new array of filled values.
  */

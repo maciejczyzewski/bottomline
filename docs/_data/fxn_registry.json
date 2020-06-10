@@ -344,7 +344,7 @@
                     "description": "The object to repeat.",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "string"
+                    "type": "mixed"
                 },
                 {
                     "name": "times",
@@ -355,7 +355,12 @@
                     "type": "int"
                 }
             ],
-            "changelog": [],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "$object typehint was changed from `string` to `mixed`"
+                }
+            ],
             "exceptions": [],
             "return": {
                 "type": "array",
