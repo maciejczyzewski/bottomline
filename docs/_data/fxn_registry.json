@@ -641,6 +641,154 @@
             }
         },
         {
+            "name": "find",
+            "namespace": "collections",
+            "summary": "<p>Return the first element that matches the given condition.</p>",
+            "summaryRaw": "Return the first element that matches the given condition.",
+            "description": "",
+            "descriptionRaw": "",
+            "arguments": [
+                {
+                    "name": "array",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": ""
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "mixed|null",
+                "description": ""
+            }
+        },
+        {
+            "name": "findIndex",
+            "namespace": "collections",
+            "summary": "<p>Return the first element that matches the given condition.</p>",
+            "summaryRaw": "Return the first element that matches the given condition.",
+            "description": "",
+            "descriptionRaw": "",
+            "arguments": [
+                {
+                    "name": "array",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": ""
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "int",
+                "description": ""
+            }
+        },
+        {
+            "name": "findLast",
+            "namespace": "collections",
+            "summary": "",
+            "summaryRaw": "",
+            "description": "",
+            "descriptionRaw": "",
+            "arguments": [
+                {
+                    "name": "array",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": ""
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "mixed|null",
+                "description": ""
+            }
+        },
+        {
+            "name": "findLastIndex",
+            "namespace": "collections",
+            "summary": "",
+            "summaryRaw": "",
+            "description": "",
+            "descriptionRaw": "",
+            "arguments": [
+                {
+                    "name": "array",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": ""
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "mixed|null",
+                "description": ""
+            }
+        },
+        {
             "name": "first",
             "namespace": "collections",
             "summary": "<p>Gets the first element of an array/iterable. Passing n returns the first n elements.</p>",
