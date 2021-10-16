@@ -5,3 +5,4 @@ composer.phar
 composer.lock
 Gemfile.lock
 vendor/
+.phpunit.result.cache

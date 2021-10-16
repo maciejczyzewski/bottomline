@@ -15,12 +15,12 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "doctrine/instantiator": "~1.0.5",
+        "doctrine/instantiator": "^1.1||^1.4",
         "erusev/parsedown": "^1.7",
-        "friendsofphp/php-cs-fixer": "^2.14",
-        "nikic/php-parser": "^2.0||^3.0",
-        "phpdocumentor/reflection-docblock": "^2.0||^3.1",
-        "phpunit/phpunit": "^4.8"
+        "friendsofphp/php-cs-fixer": "^2.19||^3.2",
+        "nikic/php-parser": "^4.13",
+        "phpdocumentor/reflection-docblock": "^4.3||^5.2",
+        "phpunit/phpunit": "^6.5||^9.5"
     },
     "autoload": {
         "files": ["bottomline.php"],
