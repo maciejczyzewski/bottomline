@@ -5,11 +5,13 @@ $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
 ;
 
-return PhpCsFixer\Config::create()
-    // We use @PSR1 and @PSR2 rules, which are the defaults.
+$config = new PhpCsFixer\Config();
+$config
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
     ])
     ->setFinder($finder)
 ;
+
+return $config;

@@ -1,8 +1,9 @@
 .idea
 .php_cs.cache
+.php-cs-fixer.cache
+.phpunit.result.cache
 _site/
 composer.phar
 composer.lock
 Gemfile.lock
 vendor/
-.phpunit.result.cache

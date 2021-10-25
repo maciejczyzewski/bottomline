@@ -17,7 +17,7 @@
     "require-dev": {
         "doctrine/instantiator": "^1.1||^1.4",
         "erusev/parsedown": "^1.7",
-        "friendsofphp/php-cs-fixer": "^2.19||^3.2",
+        "friendsofphp/php-cs-fixer": "^3.2",
         "nikic/php-parser": "^4.13",
         "phpdocumentor/reflection-docblock": "^4.3||^5.2",
         "phpunit/phpunit": "^6.5||^9.5"
