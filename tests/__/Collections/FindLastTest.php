@@ -4,14 +4,14 @@ namespace __\Test\Collections;
 
 use __;
 
-class FindTest extends \PHPUnit\Framework\TestCase
+class FindLastTest extends \PHPUnit_Framework_TestCase
 {
     public function testWithNumericalKeyArray()
     {
         $data = ["native", "pale", "explain", "persuade", "elastic"];
 
-        $this->assertEquals("explain", __::find($data, "explain"));
-        $this->assertNull(__::find($data, "nonexistent"));
+        $this->assertEquals("explain", __::findLast($data, "explain"));
+        $this->assertNull(__::findLast($data, "nonexistent"));
     }
 
     public function testWithAssociativeArray()
@@ -25,8 +25,8 @@ class FindTest extends \PHPUnit\Framework\TestCase
             "sword"    => "defend",
         ];
 
-        $this->assertEquals("defend", __::find($data, "defend"));
-        $this->assertNull(__::find($data, "nonexistent"));
+        $this->assertEquals("defend", __::findLast($data, "defend"));
+        $this->assertNull(__::findLast($data, "nonexistent"));
     }
 
     public function testWithCallback()
@@ -40,10 +40,10 @@ class FindTest extends \PHPUnit\Framework\TestCase
             "sword"    => (object)["name" => "defend"],
         ];
 
-        $this->assertEquals($data["pen"], __::find($data, static function ($object) {
+        $this->assertEquals($data["sword"], __::findLast($data, static function ($object) {
             return $object->name === "defend";
         }));
-        $this->assertNull(__::find($data, static function ($value) {
+        $this->assertNull(__::findLast($data, static function ($value) {
             return $value === "potato";
         }));
     }

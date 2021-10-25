@@ -17,12 +17,12 @@ class FindIndexTest extends \PHPUnit\Framework\TestCase
     public function testWithAssociativeArray()
     {
         $data = [
-            "table" => "trick",
-            "pen" => "defend",
+            "table"    => "trick",
+            "pen"      => "defend",
             "motherly" => "wide",
-            "may" => "needle",
-            "sweat" => "cake",
-            "sword" => "defend",
+            "may"      => "needle",
+            "sweat"    => "cake",
+            "sword"    => "defend",
         ];
 
         $this->assertEquals("pen", __::findIndex($data, "defend"));
