@@ -29,6 +29,26 @@ class FindIndexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(-1, __::findIndex($data, "nonexistent"));
     }
 
+    public function testWithAssociativeArrayMinusOne()
+    {
+        $data = [
+            -1         => "minusOne",
+            "-1"       => "minusOneStr",
+            "table"    => "trick",
+            "pen"      => "defend",
+            "motherly" => "wide",
+            "may"      => "needle",
+            "sweat"    => "cake",
+            "sword"    => "defend",
+        ];
+
+        $this->assertEquals("pen", __::findIndex($data, "defend"));
+        $this->assertEquals(-1, __::findIndex($data, "nonexistent"));
+        $this->assertEquals(-1, __::findIndex($data, "minusOne"));
+        $this->assertEquals("-1", __::findIndex($data, "minusOneStr"));
+        $this->assertEquals(null, __::findIndex($data, "minusOne", null));
+    }
+
     public function testWithCallback()
     {
         $data = [

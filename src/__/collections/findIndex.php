@@ -84,9 +84,10 @@ namespace collections;
  * @see findLastIndex
  * @see where
  *
- * @return int|string The index where the respective value is found. If no value is found, `$returnValue` is returned,
- *     which defaults to `-1`. When given a numerically indexed array, an int will be returned but when an associative
- *     array is given, a string will be returned.
+ * @return int|string The index where the respective value is found. When given a numerically
+ *     indexed array, an int will be returned but when an associative array is given, a string will
+ *     be returned.
+ *     If no value is found, `$returnValue` is returned, which defaults to `-1`.
  */
 function findIndex($collection, $condition, $returnValue = -1)
 {

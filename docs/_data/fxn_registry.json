@@ -764,7 +764,7 @@
             "exceptions": [],
             "return": {
                 "type": "int|string",
-                "description": "<p>The index where the respective value is found. If no value is found, <code>$returnValue</code> is returned,\nwhich defaults to <code>-1</code>. When given a numerically indexed array, an int will be returned but when an associative\narray is given, a string will be returned.</p>"
+                "description": "<p>The index where the respective value is found. When given a numerically\nindexed array, an int will be returned but when an associative array is given, a string will\nbe returned.\nIf no value is found, <code>$returnValue</code> is returned, which defaults to <code>-1</code>.</p>"
             }
         },
         {
@@ -1811,16 +1811,7 @@
             "summaryRaw": "Check if give value is array or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [
-                {
-                    "name": "var",
-                    "isVariadic": false,
-                    "description": "",
-                    "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "mixed"
-                }
-            ],
+            "arguments": [],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -1915,16 +1906,7 @@
             "summaryRaw": "Check if give value is function or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [
-                {
-                    "name": "var",
-                    "isVariadic": false,
-                    "description": "",
-                    "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "mixed"
-                }
-            ],
+            "arguments": [],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -1971,16 +1953,7 @@
             "summaryRaw": "Check if give value is null or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [
-                {
-                    "name": "var",
-                    "isVariadic": false,
-                    "description": "",
-                    "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "mixed"
-                }
-            ],
+            "arguments": [],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2019,16 +1992,7 @@
             "summaryRaw": "Check if give value is object or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [
-                {
-                    "name": "var",
-                    "isVariadic": false,
-                    "description": "",
-                    "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "mixed"
-                }
-            ],
+            "arguments": [],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2043,16 +2007,7 @@
             "summaryRaw": "Check if give value is string or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [
-                {
-                    "name": "var",
-                    "isVariadic": false,
-                    "description": "",
-                    "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "mixed"
-                }
-            ],
+            "arguments": [],
             "changelog": [],
             "exceptions": [],
             "return": {

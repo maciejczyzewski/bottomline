@@ -4,7 +4,7 @@ namespace __\Test\Collections;
 
 use __;
 
-class FindLastIndexTest extends \PHPUnit_Framework_TestCase
+class FindLastIndexTest extends \PHPUnit\Framework\TestCase
 {
     public function testWithNumericalKeyArray()
     {
