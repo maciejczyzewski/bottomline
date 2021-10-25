@@ -49,6 +49,25 @@ class FindIndexTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(null, __::findIndex($data, "minusOne", null));
     }
 
+    public function testWithAssociativeArrayNull()
+    {
+        $data = [
+            null       => "nullValue",
+            "table"    => "trick",
+            "pen"      => "defend",
+            "motherly" => "wide",
+            "may"      => "needle",
+            "sweat"    => "cake",
+            "sword"    => "defend",
+        ];
+
+        $this->assertEquals("pen", __::findIndex($data, "defend"));
+        $this->assertEquals(-1, __::findIndex($data, "nonexistent"));
+        $this->assertEquals(null, __::findIndex($data, "nullValue"));
+        $this->assertEquals(null, __::findIndex($data, "nullValue", null));
+        $this->assertEquals(null, __::findIndex($data, "nullValueNop", null));
+    }
+
     public function testWithCallback()
     {
         $data = [
