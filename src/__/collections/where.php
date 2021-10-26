@@ -27,6 +27,12 @@ namespace collections;
  * @param array|iterable $array array of values
  * @param array          $cond  condition in format of ['KEY'=>'VALUE']
  *
+ * @see find
+ * @see findIndex
+ * @see findLast
+ * @see findLastIndex
+ * @see where
+ *
  * @return array
  */
 function where($array = [], array $cond = [])

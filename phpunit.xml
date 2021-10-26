@@ -8,7 +8,6 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="true"
 >
     <testsuites>
         <testsuite name="bottomline Test Suite">
@@ -22,10 +21,10 @@
         <ini name="error_reporting" value="30719"/> <!-- E_ALL | E_STRICT -->
     </php>
 
-    <filter>
-        <blacklist>
+    <coverage>
+        <exclude>
             <directory suffix=".php">tests</directory>
             <directory suffix=".php">vendor</directory>
-        </blacklist>
-    </filter>
+        </exclude>
+    </coverage>
 </phpunit>

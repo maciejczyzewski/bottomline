@@ -10,11 +10,13 @@
 
 ## Environment requirements
 
-`PHP >= 5.5` with `mbstring` extension
+`PHP >= 7.0` with `mbstring` extension
 ```bash
 ; php.ini
 extension=php_mbstring.dll
 ```
+
+[Composer](https://getcomposer.org/download/) is also required (version v2 suggested).
 
 For generating the documentation website, you'll also need Ruby with [`bundle`](https://bundler.io/).
 
@@ -22,14 +24,14 @@ For generating the documentation website, you'll also need Ruby with [`bundle`](
 
 1. Fork our repository
 2. Clone your forked repository `git clone git@github.com:<your namespace>/bottomline.git`
-2. Install development dependencies `php composer.phar install --dev`
-3. Run tests `php composer.phar run test`
+2. Install development dependencies `composer install`
+3. Run tests `composer run test`
 
 Also useful:
-* Run benchmarks: `php composer.phar run bench`
-* Format the code: `php composer.phar run cs-fix`
-* Generate the doc: `php composer.phar run doc`
-* Generate the doc website: `php composer.phar run site`
+* Run benchmarks: `composer run bench`
+* Format the code: `composer run cs-fix`
+* Generate the doc: `composer run doc`
+* Generate the doc website: `composer run site`
 
 ## Development checklist
 

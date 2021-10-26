@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.2.1
+
+**2021-??-?? — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.0...0.2.1) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+
+* Added new functions to find entities inside of arrays and collections
+  - `__::find(): mixed|null`
+  - `__::findEntry(): array|null`
+  - `__::findIndex(): int|string`
+  - `__::findLast(): mixed|null`
+  - `__::findLastEntry(): array|null`
+  - `__::findLastIndex(): int|string`
+
 ## v0.2.0
 
 **2020-04-22 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.1.2...0.2.0) — [Docs](https://maciejczyzewski.github.io/bottomline/)**

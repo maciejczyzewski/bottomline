@@ -641,6 +641,260 @@
             }
         },
         {
+            "name": "find",
+            "namespace": "collections",
+            "summary": "<p>Return the first element that matches the given condition or <code>$returnValue</code> if no value is found (defaults to null).</p>",
+            "summaryRaw": "Return the first element that matches the given condition or `$returnValue` if no value is found (defaults to null).",
+            "description": "<p><strong>Find by Primitive Condition in Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::find($data, \"defend\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"defend\"</code></pre>\n<p><strong>Find by Callback in an Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::find($data, static function ($object, $key, $collection) {<br />\n   return $object-&gt;name === \"defend\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>$data[\"pen\"]</code></pre>",
+            "descriptionRaw": "**Find by Primitive Condition in Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::find($data, \"defend\");\n```\n\n**Result**\n\n```\n\"defend\"\n```\n\n**Find by Callback in an Array**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::find($data, static function ($object, $key, $collection) {\n   return $object->name === \"defend\";\n});\n```\n\n**Result**\n\n```\n$data[\"pen\"]\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                },
+                {
+                    "name": "returnValue",
+                    "isVariadic": false,
+                    "description": "the value to return if nothing matches",
+                    "defaultValue": null,
+                    "defaultValueAsString": "null",
+                    "type": "mixed|null"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "mixed|null",
+                "description": "<p>The entity from the iterable. If no value is found, <code>$returnValue</code> is returned, which defaults to\n<code>null</code>.</p>"
+            }
+        },
+        {
+            "name": "findEntry",
+            "namespace": "collections",
+            "summary": "<p>Find the first key/value pair of a given element that matches the given condition or null if no match is found.</p>",
+            "summaryRaw": "Find the first key/value pair of a given element that matches the given condition or null if no match is found.",
+            "description": "<p><strong>Find by Primitive Condition in Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::findEntry($data, \"defend\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[\"pen\", \"defend\"]</code></pre>\n<p><strong>Find by Callback in an Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::findEntry($data, static function ($object, $key, $collection) {<br />\n   return $object-&gt;name === \"defend\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[\"pen\", $data[\"pen\"]]</code></pre>",
+            "descriptionRaw": "**Find by Primitive Condition in Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::findEntry($data, \"defend\");\n```\n\n**Result**\n\n```\n[\"pen\", \"defend\"]\n```\n\n**Find by Callback in an Array**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::findEntry($data, static function ($object, $key, $collection) {\n   return $object->name === \"defend\";\n});\n```\n\n**Result**\n\n```\n[\"pen\", $data[\"pen\"]]\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "array|null",
+                "description": "<p>An array with two values, the 0th index is the key and the 1st index is the value. Null is\nreturned if no entries can be found in the given collection.</p>"
+            }
+        },
+        {
+            "name": "findIndex",
+            "namespace": "collections",
+            "summary": "<p>Return the index or key of the <em>first</em> element that matches the given condition or <code>$returnValue</code> if no value is\nfound (defaults to <code>-1</code>).</p>",
+            "summaryRaw": "Return the index or key of the _first_ element that matches the given condition or `$returnValue` if no value is\nfound (defaults to `-1`).",
+            "description": "<p><strong>Find Index by Primitive Condition in a Numerically Indexed Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"native\",<br />\n    \"pale\",<br />\n    \"explain\",<br />\n    \"persuade\",<br />\n    \"elastic\",<br />\n    \"explain\",<br />\n];<br />\n<br />\n__::findIndex($data, \"explain\")</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>2</code></pre>\n<p><strong>Find Index by Primitive Condition in an Associative Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::findIndex($data, \"defend\")</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"pen\"</code></pre>\n<p><strong>Find by Callback Usage</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::findIndex($data, static function ($object, $key, $collection) {<br />\n    return $object-&gt;name === \"defend\";<br />\n})</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"pen\"</code></pre>",
+            "descriptionRaw": "**Find Index by Primitive Condition in a Numerically Indexed Array**\n\n```php\n$data = [\n    \"native\",\n    \"pale\",\n    \"explain\",\n    \"persuade\",\n    \"elastic\",\n    \"explain\",\n];\n\n__::findIndex($data, \"explain\")\n```\n\n**Result**\n\n```\n2\n```\n\n**Find Index by Primitive Condition in an Associative Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::findIndex($data, \"defend\")\n```\n\n**Result**\n\n```\n\"pen\"\n```\n\n**Find by Callback Usage**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::findIndex($data, static function ($object, $key, $collection) {\n    return $object->name === \"defend\";\n})\n```\n\n**Result**\n\n```\n\"pen\"\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                },
+                {
+                    "name": "returnValue",
+                    "isVariadic": false,
+                    "description": "the value to return if nothing matches",
+                    "defaultValue": -1,
+                    "defaultValueAsString": -1,
+                    "type": "int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "int|string",
+                "description": "<p>The index where the respective value is found. When given a numerically\nindexed array, an int will be returned but when an associative array is given, a string will\nbe returned.\nIf no value is found, <code>$returnValue</code> is returned, which defaults to <code>-1</code>.</p>"
+            }
+        },
+        {
+            "name": "findLast",
+            "namespace": "collections",
+            "summary": "<p>Return the last element that matches the given condition or <code>$returnValue</code> if no value is found (defaults to null).</p>",
+            "summaryRaw": "Return the last element that matches the given condition or `$returnValue` if no value is found (defaults to null).",
+            "description": "<p><strong>Warning</strong>: If you give this function an iterator, it will convert the iterator into an array and <em>then</em> use that\narray to find the last element; this will incur a performance hit.</p>\n<p><strong>Find by Primitive Condition in Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::findLast($data, \"defend\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"defend\"</code></pre>\n<p><strong>Find by Callback in an Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::findLast($data, static function ($object, $key, $collection) {<br />\n   return $object-&gt;name === \"defend\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>$data[\"sword\"]</code></pre>",
+            "descriptionRaw": "**Warning**: If you give this function an iterator, it will convert the iterator into an array and _then_ use that\narray to find the last element; this will incur a performance hit.\n\n**Find by Primitive Condition in Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::findLast($data, \"defend\");\n```\n\n**Result**\n\n```\n\"defend\"\n```\n\n**Find by Callback in an Array**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::findLast($data, static function ($object, $key, $collection) {\n   return $object->name === \"defend\";\n});\n```\n\n**Result**\n\n```\n$data[\"sword\"]\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                },
+                {
+                    "name": "returnValue",
+                    "isVariadic": false,
+                    "description": "the value to return if nothing matches",
+                    "defaultValue": null,
+                    "defaultValueAsString": "null",
+                    "type": "mixed|null"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "mixed|null",
+                "description": "<p>The entity from the iterable. If no value is found, <code>$returnValue</code> is returned, which defaults to\n<code>null</code>.</p>"
+            }
+        },
+        {
+            "name": "findLastEntry",
+            "namespace": "collections",
+            "summary": "<p>Find the last key/value pair of a given element that matches the given condition or null if no match is found.</p>",
+            "summaryRaw": "Find the last key/value pair of a given element that matches the given condition or null if no match is found.",
+            "description": "<p><strong>Find by Primitive Condition in Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::findLastEntry($data, \"defend\");</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[\"sword\", \"defend\"]</code></pre>\n<p><strong>Find by Callback in an Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::findLastEntry($data, static function ($object, $key, $collection) {<br />\n   return $object-&gt;name === \"defend\";<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>[\"sword\", $data[\"sword\"]]</code></pre>",
+            "descriptionRaw": "**Find by Primitive Condition in Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::findLastEntry($data, \"defend\");\n```\n\n**Result**\n\n```\n[\"sword\", \"defend\"]\n```\n\n**Find by Callback in an Array**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::findLastEntry($data, static function ($object, $key, $collection) {\n   return $object->name === \"defend\";\n});\n```\n\n**Result**\n\n```\n[\"sword\", $data[\"sword\"]]\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "array|null",
+                "description": "<p>An array with two values, the 0th index is the key and the 1st index is the value. Null is\nreturned if no entries can be found in the given collection.</p>"
+            }
+        },
+        {
+            "name": "findLastIndex",
+            "namespace": "collections",
+            "summary": "<p>Return the index or key of the <em>last</em> element that matches the given condition or <code>$returnValue</code> if no value is found\n(defaults to <code>-1</code>).</p>",
+            "summaryRaw": "Return the index or key of the _last_ element that matches the given condition or `$returnValue` if no value is found\n(defaults to `-1`).",
+            "description": "<p><strong>Warning</strong>: If you give this function an iterator, it will convert the iterator into an array and <em>then</em> use that\narray to find the last element; this will incur a performance hit.</p>\n<p><strong>Find Index by Primitive Condition in a Numerically Indexed Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"native\",<br />\n    \"pale\",<br />\n    \"explain\",<br />\n    \"persuade\",<br />\n    \"elastic\",<br />\n    \"explain\",<br />\n];<br />\n<br />\n__::findIndex($data, \"explain\")</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>5</code></pre>\n<p><strong>Find Index by Primitive Condition in an Associative Array</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; \"trick\",<br />\n    \"pen\"      =&gt; \"defend\",<br />\n    \"motherly\" =&gt; \"wide\",<br />\n    \"may\"      =&gt; \"needle\",<br />\n    \"sweat\"    =&gt; \"cake\",<br />\n    \"sword\"    =&gt; \"defend\",<br />\n];<br />\n<br />\n__::findLastIndex($data, \"defend\")</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"sword\"</code></pre>\n<p><strong>Find by Callback Usage</strong></p>\n<pre><code class=\"language-php\">$data = [<br />\n    \"table\"    =&gt; (object)[\"name\" =&gt; \"trick\"],<br />\n    \"pen\"      =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n    \"motherly\" =&gt; (object)[\"name\" =&gt; \"wide\"],<br />\n    \"may\"      =&gt; (object)[\"name\" =&gt; \"needle\"],<br />\n    \"sweat\"    =&gt; (object)[\"name\" =&gt; \"cake\"],<br />\n    \"sword\"    =&gt; (object)[\"name\" =&gt; \"defend\"],<br />\n];<br />\n<br />\n__::findLastIndex($data, static function ($object, $key, $collection) {<br />\n    return $object-&gt;name === \"defend\";<br />\n})</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>\"sword\"</code></pre>",
+            "descriptionRaw": "**Warning**: If you give this function an iterator, it will convert the iterator into an array and _then_ use that\narray to find the last element; this will incur a performance hit.\n\n**Find Index by Primitive Condition in a Numerically Indexed Array**\n\n```php\n$data = [\n    \"native\",\n    \"pale\",\n    \"explain\",\n    \"persuade\",\n    \"elastic\",\n    \"explain\",\n];\n\n__::findIndex($data, \"explain\")\n```\n\n**Result**\n\n```\n5\n```\n\n**Find Index by Primitive Condition in an Associative Array**\n\n```php\n$data = [\n    \"table\"    => \"trick\",\n    \"pen\"      => \"defend\",\n    \"motherly\" => \"wide\",\n    \"may\"      => \"needle\",\n    \"sweat\"    => \"cake\",\n    \"sword\"    => \"defend\",\n];\n\n__::findLastIndex($data, \"defend\")\n```\n\n**Result**\n\n```\n\"sword\"\n```\n\n**Find by Callback Usage**\n\n```php\n$data = [\n    \"table\"    => (object)[\"name\" => \"trick\"],\n    \"pen\"      => (object)[\"name\" => \"defend\"],\n    \"motherly\" => (object)[\"name\" => \"wide\"],\n    \"may\"      => (object)[\"name\" => \"needle\"],\n    \"sweat\"    => (object)[\"name\" => \"cake\"],\n    \"sword\"    => (object)[\"name\" => \"defend\"],\n];\n\n__::findLastIndex($data, static function ($object, $key, $collection) {\n    return $object->name === \"defend\";\n})\n```\n\n**Result**\n\n```\n\"sword\"\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "an array or iterable of values to look through",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "condition to match using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "bool|\\Closure|float|int|string"
+                },
+                {
+                    "name": "returnValue",
+                    "isVariadic": false,
+                    "description": "the value to return if nothing matches",
+                    "defaultValue": -1,
+                    "defaultValueAsString": -1,
+                    "type": "int|string"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.1",
+                    "message": "added to bottomline"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "int|string",
+                "description": "<p>The index where the respective value is found. When given a numerically\nindexed array, an int will be returned but when an associative array is given, a string will\nbe returned.\nIf no value is found, <code>$returnValue</code> is returned, which defaults to <code>-1</code>.</p>"
+            }
+        },
+        {
             "name": "first",
             "namespace": "collections",
             "summary": "<p>Gets the first element of an array/iterable. Passing n returns the first n elements.</p>",
@@ -1389,7 +1643,7 @@
             ],
             "exceptions": [],
             "return": {
-                "type": "int|bool",
+                "type": "int|false",
                 "description": "<p>False when the given object does not support getting its\nsize.</p>"
             }
         },

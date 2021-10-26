@@ -137,7 +137,7 @@ class DocumentationRegistry implements JsonSerializable
                         continue;
                     }
 
-                    $fxnName = $node->name;
+                    $fxnName = $node->name->name;
                     $comments = $node->getAttribute('comments');
 
                     /** @var Comment $docBlock */
