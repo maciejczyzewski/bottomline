@@ -18,7 +18,7 @@ namespace __;
  ** Sequences                                                 [1]
 
  *****************************************************************
- * bottomline v0.2.0-dev                                         *
+ * bottomline v0.2.1                                             *
  * bottomline is licensed under the MIT license                  *
  * Copyright (c) 2014 Maciej A. Czyzewski                        *
 \*****************************************************************/

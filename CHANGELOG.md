@@ -2,7 +2,7 @@
 
 ## v0.2.1
 
-**2021-??-?? — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.0...0.2.1) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+**2021-10-29 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.0...0.2.1) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
 
 * Added new functions to find entities inside of arrays and collections
   - `__::find(): mixed|null`
