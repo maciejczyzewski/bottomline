@@ -22,8 +22,8 @@ namespace __;
  * bottomline is licensed under the MIT license                  *
  * Copyright (c) 2014 Maciej A. Czyzewski                        *
 \*****************************************************************/
-if (\version_compare(PHP_VERSION, '5.5.0', '<')) {
-    throw new \Exception('Your PHP installation is too old. Bottomline requires at least PHP 5.5.0', 1);
+if (PHP_VERSION_ID < 50500) {
+    throw new \RuntimeException('Your PHP installation is too old. Bottomline requires at least PHP 5.5.0', 1);
 }
 // Do NOT modify this doc block, it is automatically generated. If you would
 // like update the documentation, please update it in the respective function
