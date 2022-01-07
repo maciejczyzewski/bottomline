@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/src/__/load.php';
+require __DIR__ . '/src/__/__.php';
 
 /**
  * Globally namespaced version of the class.
