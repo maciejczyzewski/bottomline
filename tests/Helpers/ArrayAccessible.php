@@ -1,6 +1,6 @@
 <?php
 
-namespace __\Test\Utilities;
+namespace __\TestHelpers;
 
 class ArrayAccessible implements \ArrayAccess
 {

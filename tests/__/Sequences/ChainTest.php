@@ -1,11 +1,13 @@
 <?php
 
-namespace __\Test;
+namespace __\Test\Sequences;
 
 use __;
+use __\TestHelpers\MockIteratorAggregate;
+use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
-class SequencesTest extends TestCase
+class ChainTest extends TestCase
 {
     public function testChainReturnsArray()
     {
@@ -58,4 +60,5 @@ class SequencesTest extends TestCase
             ->randomFunc()
             ->value();
     }
+
 }
