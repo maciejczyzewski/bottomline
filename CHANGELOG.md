@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.2.2
+
+**2022-01-07 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.1...0.2.2) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+
+* Fix PSR-4 compliance to remove warning when Composer would build Bottomline in an optimized autoloader
+
 ## v0.2.1
 
 **2021-10-29 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.0...0.2.1) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
