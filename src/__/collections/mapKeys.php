@@ -5,21 +5,21 @@ namespace collections;
 /**
  * @internal
  *
- * @param $iterable
- * @param $closure
+ * @param iterable $iterable
+ * @param \Closure $closure
  *
- * @throws \Exception
+ * @throws \InvalidArgumentException
  *
  * @return \Generator
  */
 function mapKeysIterable($iterable, $closure)
 {
     foreach ($iterable as $key => $value) {
-        $newKey = call_user_func_array($closure, array($key, $value, $iterable));
+        $newKey = $closure($key, $value, $iterable);
 
         // key must be a number or string
         if (!is_numeric($newKey) && !is_string($newKey)) {
-            throw new \Exception('closure must returns a number or string');
+            throw new \InvalidArgumentException('closure must returns a number or string');
         }
 
         yield $newKey => $value;
@@ -51,7 +51,7 @@ function mapKeysIterable($iterable, $closure)
  * @param iterable      $iterable Array/iterable of values
  * @param \Closure|null $closure  Closure to map the keys
  *
- * @throws \Exception when closure doesn't return a valid key that can be used in PHP array
+ * @throws \InvalidArgumentException when closure doesn't return a valid key that can be used in PHP array
  *
  * @return array|\Generator
  */

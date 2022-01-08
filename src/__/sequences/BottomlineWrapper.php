@@ -81,9 +81,7 @@
  */
 class BottomlineWrapper
 {
-    /**
-     * @var mixed $value
-     */
+    /** @var mixed $value */
     private $value;
     /**
      * BottomlineWrapper constructor.

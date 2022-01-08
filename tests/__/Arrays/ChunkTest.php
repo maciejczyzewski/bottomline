@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ChunkTest extends TestCase
 {
-    public static function dataProvider_chunk()
+    public static function provideChunkCases()
     {
         return [
             [
@@ -114,7 +114,7 @@ class ChunkTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_chunk
+     * @dataProvider provideChunkCases
      *
      * @param array|\Traversable $sourceArray
      * @param int                $chunkSize

@@ -9,7 +9,7 @@ use ArrayIterator;
 
 class ConcatTest extends TestCase
 {
-    public static function dataProvider_concat()
+    public static function provideConcatCases()
     {
         return [
             // Test with multiple arrays should return an array
@@ -132,7 +132,7 @@ class ConcatTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_concat
+     * @dataProvider provideConcatCases
      *
      * @param array $sources
      * @param array $expected

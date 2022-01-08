@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class CompactTest extends TestCase
 {
-    public static function dataProvider_compact()
+    public static function provideCompactCases()
     {
         return [
             [
@@ -39,7 +39,7 @@ class CompactTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_compact
+     * @dataProvider provideCompactCases
      *
      * @param array|iterable $sourceArray
      * @param array          $expected

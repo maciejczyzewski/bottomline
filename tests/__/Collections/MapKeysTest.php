@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class MapKeysTest extends TestCase
 {
-    public static function dataProvider_mapKeys()
+    public static function provideMapKeysCases()
     {
         return [
             [
@@ -119,7 +119,7 @@ class MapKeysTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_mapKeys
+     * @dataProvider provideMapKeysCases
      *
      * @param iterable      $source
      * @param \Closure|null $closure

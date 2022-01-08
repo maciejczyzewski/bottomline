@@ -134,7 +134,7 @@ class __
                 $fxnExists = function_exists($fqfn);
                 if (!$fxnExists) {
                     // Don't try requiring a function definition that's already in memory
-                    $func = (require $file);
+                    $func = require $file;
                     $functionNameInFile = $name;
                     // Trick as be can't redefine some names (eg. max).
                     // In this case we preprend bottomline_ to the funcion name to load.

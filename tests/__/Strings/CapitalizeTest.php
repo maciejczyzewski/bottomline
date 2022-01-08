@@ -8,16 +8,16 @@ use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
 class CapitalizeTest extends TestCase
-{    public function testCapitalize()
 {
-    // Arrange
-    $a = 'FRED';
+    public function testCapitalize()
+    {
+        // Arrange
+        $a = 'FRED';
 
-    // Act
-    $x = __::capitalize($a);
+        // Act
+        $x = __::capitalize($a);
 
-    // Assert
-    $this->assertEquals('Fred', $x);
-}
-
+        // Assert
+        $this->assertEquals('Fred', $x);
+    }
 }

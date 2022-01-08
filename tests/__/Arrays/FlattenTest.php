@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class FlattenTest extends TestCase
 {
-    public static function dataProvider_flatten()
+    public static function provideFlattenCases()
     {
         $object = (object)[10, 11, 12];
 
@@ -90,7 +90,7 @@ class FlattenTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_flatten
+     * @dataProvider provideFlattenCases
      *
      * @param array $source
      * @param bool  $shallow

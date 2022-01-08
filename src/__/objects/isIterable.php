@@ -12,9 +12,7 @@ namespace objects;
  */
 function isIterable($value, $strict = true)
 {
-    return (
-        is_array($value) ||
+    return is_array($value) ||
         (!$strict && $value instanceof \stdClass) ||
-        $value instanceof \Traversable
-    );
+        $value instanceof \Traversable;
 }

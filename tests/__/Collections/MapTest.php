@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class MapTest extends TestCase
 {
-    public static function dataProvider_map()
+    public static function provideMapCases()
     {
         return [
             [
@@ -60,7 +60,7 @@ class MapTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_map
+     * @dataProvider provideMapCases
      *
      * @param iterable $source
      * @param \Closure $closure

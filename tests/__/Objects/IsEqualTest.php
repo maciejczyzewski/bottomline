@@ -133,5 +133,4 @@ class IsEqualTest extends TestCase
         $this->assertEquals(false, $y);
         $this->assertEquals(false, $z);
     }
-
 }

@@ -8,13 +8,13 @@ use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
 class NowTest extends TestCase
-{    public function testNow()
 {
-    // Act
-    $x = __::now();
+    public function testNow()
+    {
+        // Act
+        $x = __::now();
 
-    // Assert
-    $this->assertEquals(true, is_numeric($x));
-}
-
+        // Assert
+        $this->assertEquals(true, is_numeric($x));
+    }
 }

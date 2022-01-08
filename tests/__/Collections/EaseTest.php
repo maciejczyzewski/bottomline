@@ -8,7 +8,7 @@ use ArrayIterator;
 
 class EaseTest extends \PHPUnit\Framework\TestCase
 {
-    public static function dataProvider_ease()
+    public static function provideEaseCases()
     {
         $object = new \stdClass();
 
@@ -45,7 +45,7 @@ class EaseTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider dataProvider_ease
+     * @dataProvider provideEaseCases
      *
      * @param mixed  $source
      * @param string $glue

@@ -17,7 +17,7 @@ class UneaseTest extends TestCase
         $x = __::unease($a);
 
         // Assert
-        $this->assertEquals(2, count($x));
+        $this->assertCount(2, $x);
         $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 
@@ -30,7 +30,7 @@ class UneaseTest extends TestCase
         $x = __::unease($a);
 
         // Assert
-        $this->assertEquals(2, count($x));
+        $this->assertCount(2, $x);
         $this->assertEquals(['foo' => ['bar' => 'ter'], 'baz' => ['b', 'z']], $x);
     }
 }

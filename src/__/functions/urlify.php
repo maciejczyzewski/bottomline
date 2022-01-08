@@ -23,7 +23,8 @@ namespace functions;
  */
 function urlify($string)
 {
-    /* Proposed by:
+    /*
+     * Proposed by:
      * Søren Løvborg
      * http://stackoverflow.com/users/136796/soren-lovborg
      * http://stackoverflow.com/questions/17900004/turn-plain-text-urls-into-active-links-using-php/17900021#17900021

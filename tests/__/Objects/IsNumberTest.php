@@ -8,16 +8,16 @@ use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
 class IsNumberTest extends TestCase
-{    public function testIsNumber()
 {
-    // Arrange
-    $a = 123;
+    public function testIsNumber()
+    {
+        // Arrange
+        $a = 123;
 
-    // Act
-    $x = __::isNumber($a);
+        // Act
+        $x = __::isNumber($a);
 
-    // Assert
-    $this->assertEquals(true, $x);
-}
-
+        // Assert
+        $this->assertEquals(true, $x);
+    }
 }

@@ -8,16 +8,16 @@ use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
 class IsObjectTest extends TestCase
-{    public function testIsObject()
 {
-    // Arrange
-    $a = 'fred';
+    public function testIsObject()
+    {
+        // Arrange
+        $a = 'fred';
 
-    // Act
-    $x = __::isObject($a);
+        // Act
+        $x = __::isObject($a);
 
-    // Assert
-    $this->assertEquals(false, $x);
-}
-
+        // Assert
+        $this->assertEquals(false, $x);
+    }
 }

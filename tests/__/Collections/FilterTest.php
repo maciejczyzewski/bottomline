@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class FilterTest extends TestCase
 {
-    public static function dataProvider_filter()
+    public static function provideFilterCases()
     {
         return [
             // On arrays.
@@ -100,7 +100,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_filter
+     * @dataProvider provideFilterCases
      *
      * @param array|\Traversable $source
      * @param \Closure           $filterFn

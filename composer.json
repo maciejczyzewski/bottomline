@@ -18,6 +18,7 @@
         "doctrine/instantiator": "^1.1||^1.4",
         "erusev/parsedown": "^1.7",
         "friendsofphp/php-cs-fixer": "^3.2",
+        "kubawerlos/php-cs-fixer-custom-fixers": "^3.6",
         "nikic/php-parser": "^4.13",
         "phpdocumentor/reflection-docblock": "^4.3||^5.2",
         "phpunit/phpunit": "^6.5||^9.5"

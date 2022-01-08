@@ -60,5 +60,4 @@ class ChainTest extends TestCase
             ->randomFunc()
             ->value();
     }
-
 }

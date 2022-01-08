@@ -8,19 +8,19 @@ use ArrayIterator;
 use PHPUnit\Framework\TestCase;
 
 class IdentityTest extends TestCase
-{    public function testIdentity()
 {
-    // Act
-    $x = __::identity('arg 1', new \DateTime());
+    public function testIdentity()
+    {
+        // Act
+        $x = __::identity('arg 1', new \DateTime());
 
-    // Assert
-    $this->assertEquals('arg 1', $x);
+        // Assert
+        $this->assertEquals('arg 1', $x);
 
-    // Act
-    $x = __::identity();
+        // Act
+        $x = __::identity();
 
-    // Assert
-    $this->assertEquals(null, $x);
-}
-
+        // Assert
+        $this->assertEquals(null, $x);
+    }
 }

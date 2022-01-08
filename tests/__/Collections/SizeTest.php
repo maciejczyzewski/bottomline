@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SizeTest extends TestCase
 {
-    public static function dataProvider_size()
+    public static function provideSizeCases()
     {
         return [
             [
@@ -71,7 +71,7 @@ class SizeTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_size
+     * @dataProvider provideSizeCases
      *
      * @param mixed $source
      * @param int   $expected

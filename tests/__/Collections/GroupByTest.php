@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class GroupByTest extends TestCase
 {
-    public static function dataProvider_groupBy()
+    public static function provideGroupByCases()
     {
         return [
             // Group by string key
@@ -264,7 +264,7 @@ class GroupByTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_groupBy
+     * @dataProvider provideGroupByCases
      *
      * @param iterable                         $source
      * @param array                            $expected

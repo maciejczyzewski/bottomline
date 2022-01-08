@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ConcatDeepTest extends TestCase
 {
-    public static function dataProvider_concatDeep()
+    public static function provideConcatDeepCases()
     {
         return [
             [
@@ -75,7 +75,7 @@ class ConcatDeepTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_concatDeep
+     * @dataProvider provideConcatDeepCases
      *
      * @param array $sources
      * @param array $expected

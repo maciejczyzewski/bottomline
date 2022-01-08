@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class LastTest extends TestCase
 {
-    public static function dataProvider_last()
+    public static function provideLastCases()
     {
         return [
             [
@@ -47,7 +47,7 @@ class LastTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_last
+     * @dataProvider provideLastCases
      *
      * @param iterable $source
      * @param int|null $take

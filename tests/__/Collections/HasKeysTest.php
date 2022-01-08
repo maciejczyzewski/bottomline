@@ -23,10 +23,10 @@ class HasKeysTest extends TestCase
         $this->assertFalse($y);
         $this->assertTrue($z);
 
-        //Rearrange
+        // Rearrange
         $a['foz'] = 'baz';
 
-        //React
+        // React
         $x = __::hasKeys($a, ['foo', 'foz'], false);
         $y = __::hasKeys($a, ['foo', 'foz'], true);
 
@@ -34,10 +34,10 @@ class HasKeysTest extends TestCase
         $this->assertTrue($x);
         $this->assertTrue($y);
 
-        //Rearrange
+        // Rearrange
         $a['xxx'] = 'bay';
 
-        //React
+        // React
         $x = __::hasKeys($a, ['foo', 'foz'], false);
         $y = __::hasKeys($a, ['foo', 'foz'], true);
 

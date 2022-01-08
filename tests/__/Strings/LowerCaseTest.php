@@ -26,5 +26,4 @@ class LowerCaseTest extends TestCase
         $this->assertEquals('foo bar', $y);
         $this->assertEquals('foo bar', $z);
     }
-
 }

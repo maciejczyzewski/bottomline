@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class IsEmptyTest extends TestCase
 {
-    public function dataProvider_isEmpty()
+    public static function provideIsEmptyCases()
     {
         return [
             // Assert nominal cases
@@ -73,7 +73,7 @@ class IsEmptyTest extends TestCase
     }
 
     /**
-     * @dataProvider dataProvider_isEmpty
+     * @dataProvider provideIsEmptyCases
      *
      * @param mixed $source
      * @param bool  $expected
