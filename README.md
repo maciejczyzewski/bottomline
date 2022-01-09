@@ -1,10 +1,11 @@
 <div align="center">
-  <img alt="Bottomline logo" src="./.github/logo.png">
+  <img alt="Bottomline logo" width="256" src="./.github/logo-black.png#gh-light-mode-only">
+  <img alt="Bottomline logo" width="256" src="./.github/logo-white.png#gh-dark-mode-only">
 </div>
 
 # bottomline
 
-[![Build Status](https://travis-ci.org/maciejczyzewski/bottomline.svg)](https://travis-ci.org/maciejczyzewski/bottomline)
+[![Tests](https://github.com/maciejczyzewski/bottomline/actions/workflows/ci.yml/badge.svg)](https://github.com/maciejczyzewski/bottomline/actions/workflows/ci.yml)
 ![GitHub](https://img.shields.io/github/license/maciejczyzewski/bottomline)
 [![Packagist Version](https://img.shields.io/packagist/v/maciejczyzewski/bottomline)](https://packagist.org/packages/maciejczyzewski/bottomline)
 [![Packagist Version](https://img.shields.io/packagist/v/maciejczyzewski/bottomline?include_prereleases)](https://packagist.org/packages/maciejczyzewski/bottomline)
