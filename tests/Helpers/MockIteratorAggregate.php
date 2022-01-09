@@ -11,6 +11,7 @@ class MockIteratorAggregate implements \IteratorAggregate
         $this->data = $data;
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->data);

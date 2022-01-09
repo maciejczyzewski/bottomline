@@ -15,7 +15,8 @@ namespace collections;
 function mapKeysIterable($iterable, $closure)
 {
     foreach ($iterable as $key => $value) {
-        $newKey = $closure($key, $value, $iterable);
+        // For PHP 5.5 support, this can't be replaced with `$closure($key, ...)`
+        $newKey = call_user_func_array($closure, array($key, $value, $iterable));
 
         // key must be a number or string
         if (!is_numeric($newKey) && !is_string($newKey)) {
