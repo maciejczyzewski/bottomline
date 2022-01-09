@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.3-dev
+
+**2022-??-?? — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.2...0.2.3) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+
+* Updates to the `__::slug()` function,
+  - Optimized to be more performant when given plain, old ASCII text
+  - Has a workaround for [a bug in PHP 8.1](https://github.com/php/php-src/issues/7898) that would return an empty string
+
 ## v0.2.2
 
 **2022-01-07 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.1...0.2.2) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
