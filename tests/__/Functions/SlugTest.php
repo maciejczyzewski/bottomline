@@ -9,15 +9,19 @@ use PHPUnit\Framework\TestCase;
 
 class SlugTest extends TestCase
 {
-    public function testSlug()
+    public function testSlugWithUtf8()
     {
-        // Arrange
-        $a = 'Jakieś zdanie z dużą ilością obcych znaków!';
+        $input = 'Jakieś zdanie z dużą ilością obcych znaków!';
+        $actual = __::slug($input);
 
-        // Act
-        $x = __::slug($a);
+        $this->assertEquals('jakies-zdanie-z-duza-iloscia-obcych-znakow', $actual);
+    }
 
-        // Assert
-        $this->assertEquals('jakies-zdanie-z-duza-iloscia-obcych-znakow', $x);
+    public function testSlugWithAscii()
+    {
+        $input = 'Hello World!';
+        $actual = __::slug($input);
+
+        $this->assertEquals('hello-world', $actual);
     }
 }
