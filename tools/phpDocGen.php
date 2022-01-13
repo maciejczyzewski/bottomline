@@ -601,7 +601,7 @@ function buildCoreFunctionLoader()
 {
     global $registry;
 
-    $loaderFilePath = dirname(__DIR__) . '/src/__/load.php';
+    $loaderFilePath = dirname(__DIR__) . '/src/__/__.php';
     $loaderAST = Parsers::$phpParser->parse(file_get_contents($loaderFilePath));
     $astNodes = &$loaderAST[0]->stmts;
 
