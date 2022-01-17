@@ -7,6 +7,7 @@
 * Updates to the `__::slug()` function,
   - Optimized to be more performant when given plain, old ASCII text
   - Has a workaround for [a bug in PHP 8.1](https://github.com/php/php-src/issues/7898) that would return an empty string
+* Added `__::dropWhile`, `__::dropRight`, and `dropRightWhile`
 
 ## v0.2.2
 
