@@ -4,7 +4,7 @@ require dirname(__DIR__) . '/bottomline.php';
 
 $methods    = [
     // arrays
-    'append', 'chunk', 'compact', 'flatten', 'patch', 'prepend', 'randomize', 'range', 'repeat',
+    'append', 'chunk', 'compact', 'drop', 'dropWhile', 'dropRight', 'dropRightWhile', 'flatten', 'patch', 'prepend', 'randomize', 'range', 'repeat',
     // collections
     'ease', 'filter', 'filterIterables', 'first', 'firstIterables', 'get', 'hasKeys', 'last', 'map', 'max', 'min', 'pluck', 'set', 'unease', 'where',
     // functions
@@ -59,6 +59,25 @@ function bench_compact($i)
     __::compact([0, 1, false, 2, '', 3, $i]);
 }
 
+function bench_drop($i)
+{
+    __::drop([$i, 1, 2, 3], 2);
+}
+
+function bench_dropWhile($i)
+{
+    __::dropWhile([$i, 1, 2, 3], $i);
+}
+
+function bench_dropRight($i)
+{
+    __::dropRight([1, 2, 3, $i], 2);
+}
+
+function bench_dropRightWhile($i)
+{
+    __::dropRightWhile([1, 2, 3, $i], $i);
+}
 function bench_flatten($i)
 {
     __::flatten([1, 2, [3, [[4], $i]]]);
