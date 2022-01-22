@@ -9,8 +9,8 @@ namespace arrays;
  *
  * @internal
  *
- * @param iterable $input
- * @param int $number
+ * @param \Traversable $input
+ * @param callable     $comparison
  *
  * @return \Generator
  */
@@ -24,10 +24,11 @@ function dropIteratorRightWhile($input, $comparison)
     }
 }
 
-/** @internal
+/**
+ * @internal
  *
- * @param array $input
- * @param int $number
+ * @param array    $input
+ * @param callable $comparison
  *
  * @return array
  */

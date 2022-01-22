@@ -162,8 +162,8 @@
             "namespace": "arrays",
             "summary": "<p>Creates a slice of an array with n elements dropped from the end.</p>",
             "summaryRaw": "Creates a slice of an array with n elements dropped from the end.",
-            "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::dropRight([0, 1, 3, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[0, 1]</code></pre>",
-            "descriptionRaw": "**Usage**\n\n```php\n__::dropRight([0, 1, 3, 5], 2);\n```\n\n**Result**\n\n```php\n[0, 1]\n```",
+            "description": "<p>If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::dropRight([0, 1, 3, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[0, 1]</code></pre>",
+            "descriptionRaw": "If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.\n\n**Usage**\n\n```php\n__::dropRight([0, 1, 3, 5], 2);\n```\n\n**Result**\n\n```php\n[0, 1]\n```",
             "arguments": [
                 {
                     "name": "input",
@@ -171,7 +171,7 @@
                     "description": "The array to query.",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array"
+                    "type": "iterable"
                 },
                 {
                     "name": "number",
@@ -185,8 +185,8 @@
             "changelog": [],
             "exceptions": [],
             "return": {
-                "type": "array",
-                "description": ""
+                "type": "array|\\Generator",
+                "description": "<p>An array containing a subset of the input array with front items matching the condition\nremoved. If the provided iterable is not an array, then a Generator will be returned.</p>"
             }
         },
         {
@@ -194,8 +194,8 @@
             "namespace": "arrays",
             "summary": "<p>Creates a slice of the provided array with all elements matching the condition\nremoved from the end.</p>",
             "summaryRaw": "Creates a slice of the provided array with all elements matching the condition\nremoved from the end.",
-            "description": "<p><strong>Drop by Primitive Condition</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 3], 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2]</code></pre>\n<p><strong>Drop by Callback</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {<br />\n    return $item &gt; 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2, 3]</code></pre>",
-            "descriptionRaw": "**Drop by Primitive Condition**\n\n```php\n__::dropRightWhile([1, 2, 3, 3], 3);\n```\n\n**Result**\n\n```php\n[1, 2]\n```\n\n**Drop by Callback**\n\n```php\n__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {\n    return $item > 3;\n});\n```\n\n**Result**\n\n```php\n[1, 2, 3]\n```",
+            "description": "<p>If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.</p>\n<p><strong>Drop by Primitive Condition</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 3], 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2]</code></pre>\n<p><strong>Drop by Callback</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {<br />\n    return $item &gt; 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2, 3]</code></pre>",
+            "descriptionRaw": "If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.\n\n**Drop by Primitive Condition**\n\n```php\n__::dropRightWhile([1, 2, 3, 3], 3);\n```\n\n**Result**\n\n```php\n[1, 2]\n```\n\n**Drop by Callback**\n\n```php\n__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {\n    return $item > 3;\n});\n```\n\n**Result**\n\n```php\n[1, 2, 3]\n```",
             "arguments": [
                 {
                     "name": "input",
@@ -203,7 +203,7 @@
                     "description": "An array of values.",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",
@@ -217,8 +217,8 @@
             "changelog": [],
             "exceptions": [],
             "return": {
-                "type": "array",
-                "description": "<p>An array containing a subset of the input array with front items matching the condition removed.</p>"
+                "type": "array|\\Generator",
+                "description": "<p>An array containing a subset of the input array with front items matching the condition\nremoved. If the provided iterable is not an array, then a Generator will be returned.</p>"
             }
         },
         {
@@ -1907,7 +1907,16 @@
             "summaryRaw": "Check if give value is array or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [],
+            "arguments": [
+                {
+                    "name": "var",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "mixed"
+                }
+            ],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2002,7 +2011,16 @@
             "summaryRaw": "Check if give value is function or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [],
+            "arguments": [
+                {
+                    "name": "var",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "mixed"
+                }
+            ],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2049,7 +2067,16 @@
             "summaryRaw": "Check if give value is null or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [],
+            "arguments": [
+                {
+                    "name": "var",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "mixed"
+                }
+            ],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2088,7 +2115,16 @@
             "summaryRaw": "Check if give value is object or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [],
+            "arguments": [
+                {
+                    "name": "var",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "mixed"
+                }
+            ],
             "changelog": [],
             "exceptions": [],
             "return": {
@@ -2103,7 +2139,16 @@
             "summaryRaw": "Check if give value is string or not.",
             "description": "",
             "descriptionRaw": "",
-            "arguments": [],
+            "arguments": [
+                {
+                    "name": "var",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "mixed"
+                }
+            ],
             "changelog": [],
             "exceptions": [],
             "return": {

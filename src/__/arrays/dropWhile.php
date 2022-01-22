@@ -4,7 +4,7 @@ namespace arrays;
 
 /**
  * In order to return either an array or \Generator from dropWhile, we split out
- * the logic or handling arrays and other other traversables.
+ * the logic or handling arrays and other traversables.
  *
  * @internal
  *
@@ -29,7 +29,7 @@ function dropIterableWhile($input, $comparison)
 
 /**
  * In order to return either an array or \Generator from dropWhile, we split out
- * the logic or handling arrays and other other traversables.
+ * the logic or handling arrays and other traversables.
  *
  * @internal
  *
