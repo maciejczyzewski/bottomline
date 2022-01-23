@@ -15,13 +15,14 @@ namespace arrays;
  */
 function dropIterableWhile($input, $comparison)
 {
-    $dropping = true;
+    $stillDropping = true;
     $iterator = \__::getIterator($input);
 
     foreach ($iterator as $item) {
-        if ($dropping && $comparison($item)) {
+        if ($stillDropping && $comparison($item)) {
             continue;
         }
+        $stillDropping = false;
 
         yield $item;
     }

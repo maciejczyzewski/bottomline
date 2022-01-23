@@ -102,4 +102,21 @@ class DropWhileTest extends TestCase
 
         $this->assertEquals(count($expected), $itrSize);
     }
+
+    public function testDropWhileWithMatchAfterDroppingEnds()
+    {
+        $arr = [1, 1, 2, 1, 1];
+        $arrItr = new ArrayIterator($arr);
+
+        $expected = __::dropWhile($arr, 1);
+        $actual = __::dropWhile($arrItr, 1);
+        $itrSize = 0;
+
+        foreach ($actual as $i => $item) {
+            ++$itrSize;
+            $this->assertEquals($item, $expected[$i]);
+        }
+
+        $this->assertEquals(count($expected), $itrSize);
+    }
 }
