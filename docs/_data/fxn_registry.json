@@ -1244,7 +1244,7 @@
             ],
             "exceptions": [
                 {
-                    "exception": "\\Exception",
+                    "exception": "\\InvalidArgumentException",
                     "message": "when closure doesn't return a valid key that can be used in PHP array"
                 }
             ],
@@ -2433,7 +2433,7 @@
                     "isVariadic": true,
                     "description": "",
                     "defaultValue": null,
-                    "defaultValueAsString": "null",
+                    "defaultValueAsString": null,
                     "type": "mixed"
                 }
             ],

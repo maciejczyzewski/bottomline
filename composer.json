@@ -35,7 +35,7 @@
     },
     "scripts": {
         "bench": "php tools/bench.php",
-        "cs-fix": "php-cs-fixer fix",
+        "cs-fix": "php-cs-fixer fix -v",
         "cs-check": "php-cs-fixer fix --dry-run -v --diff",
         "doc": [
             "php tools/phpDocGen.php",

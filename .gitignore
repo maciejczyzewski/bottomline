@@ -4,6 +4,5 @@
 .phpunit.result.cache
 _site/
 composer.phar
-composer.lock
 Gemfile.lock
 vendor/

@@ -351,16 +351,11 @@ class FunctionDocumentation implements JsonSerializable
 
         foreach ($documentedArgs as $documentedArg) {
             $varName = $documentedArg->getVariableName();
+            $isBuiltin = !$this->reflectedFunction->isUserDefined();
+            $isVariadic = $documentedArg->isVariadic();
+            $reflectedArg = ($isBuiltin || $isVariadic) ? null : $actualArgs[$varName];
 
-            if (!isset($actualArgs[$varName])) {
-                if ($documentedArg->isVariadic()) {
-                    $this->arguments[] = new ArgumentDocumentation($documentedArg, null);
-                }
-
-                continue;
-            }
-
-            $this->arguments[] = new ArgumentDocumentation($documentedArg, $actualArgs[$varName]);
+            $this->arguments[] = new ArgumentDocumentation($documentedArg, $reflectedArg);
         }
 
         $this->summary = Parsers::$markdown->text($this->docBlock->getSummary());

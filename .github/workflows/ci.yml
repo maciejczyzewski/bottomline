@@ -56,10 +56,14 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Don't use our lock file for unit tests
+          rm composer.lock
+
           # We do not use it in unit tests
           composer remove --dev \
             friendsofphp/php-cs-fixer \
             kubawerlos/php-cs-fixer-custom-fixers
+
           composer install
 
       - name: Run test suite
