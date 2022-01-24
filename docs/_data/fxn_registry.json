@@ -158,6 +158,102 @@
             }
         },
         {
+            "name": "dropRight",
+            "namespace": "arrays",
+            "summary": "<p>Creates a slice of an array with n elements dropped from the end.</p>",
+            "summaryRaw": "Creates a slice of an array with n elements dropped from the end.",
+            "description": "<p>If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::dropRight([0, 1, 3, 5], 2);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[0, 1]</code></pre>",
+            "descriptionRaw": "If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.\n\n**Usage**\n\n```php\n__::dropRight([0, 1, 3, 5], 2);\n```\n\n**Result**\n\n```php\n[0, 1]\n```",
+            "arguments": [
+                {
+                    "name": "input",
+                    "isVariadic": false,
+                    "description": "The array to query.",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "iterable"
+                },
+                {
+                    "name": "number",
+                    "isVariadic": false,
+                    "description": "The number of elements to drop.",
+                    "defaultValue": 1,
+                    "defaultValueAsString": 1,
+                    "type": "int"
+                }
+            ],
+            "changelog": [],
+            "exceptions": [],
+            "return": {
+                "type": "array|\\Generator",
+                "description": "<p>An array containing a subset of the input array with front items matching the condition\nremoved. If the provided iterable is not an array, then a Generator will be returned.</p>"
+            }
+        },
+        {
+            "name": "dropRightWhile",
+            "namespace": "arrays",
+            "summary": "<p>Creates a slice of the provided array with all elements matching the condition\nremoved from the end.</p>",
+            "summaryRaw": "Creates a slice of the provided array with all elements matching the condition\nremoved from the end.",
+            "description": "<p>If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.</p>\n<p><strong>Drop by Primitive Condition</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 3], 3);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2]</code></pre>\n<p><strong>Drop by Callback</strong></p>\n<pre><code class=\"language-php\">__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {<br />\n    return $item &gt; 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[1, 2, 3]</code></pre>",
+            "descriptionRaw": "If the provided iterator is an array, then an array will be returned.\nOtherwise, a Generator will be returned. In this latter case, the entire\niterable will be buffered in memory. If the iterable contains many\nelements, then this could cause memory issues.\n\n**Drop by Primitive Condition**\n\n```php\n__::dropRightWhile([1, 2, 3, 3], 3);\n```\n\n**Result**\n\n```php\n[1, 2]\n```\n\n**Drop by Callback**\n\n```php\n__::dropRightWhile([1, 2, 3, 4, 5], static function ($item) {\n    return $item > 3;\n});\n```\n\n**Result**\n\n```php\n[1, 2, 3]\n```",
+            "arguments": [
+                {
+                    "name": "input",
+                    "isVariadic": false,
+                    "description": "An array of values.",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "Condition to drop by using either a primitive value or a callback",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "\\Closure|float|int|string|bool"
+                }
+            ],
+            "changelog": [],
+            "exceptions": [],
+            "return": {
+                "type": "array|\\Generator",
+                "description": "<p>An array containing a subset of the input array with front items matching the condition\nremoved. If the provided iterable is not an array, then a Generator will be returned.</p>"
+            }
+        },
+        {
+            "name": "dropWhile",
+            "namespace": "arrays",
+            "summary": "<p>Creates a slice of the provided array with all elements matching the condition\nremoved from the front.</p>",
+            "summaryRaw": "Creates a slice of the provided array with all elements matching the condition\nremoved from the front.",
+            "description": "<p><strong>Drop by Primitive Condition</strong></p>\n<pre><code class=\"language-php\">__::dropWhile([1, 1, 2, 3, 4], 1);</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[2, 3, 4]</code></pre>\n<p><strong>Drop by Callback</strong></p>\n<pre><code class=\"language-php\">__::dropWhile([1, 2, 3, 4, 5], static function ($item) {<br />\n    return $item &lt; 3;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code class=\"language-php\">[3, 4, 5]</code></pre>",
+            "descriptionRaw": "**Drop by Primitive Condition**\n\n```php\n__::dropWhile([1, 1, 2, 3, 4], 1);\n```\n\n**Result**\n\n```php\n[2, 3, 4]\n```\n\n**Drop by Callback**\n\n```php\n__::dropWhile([1, 2, 3, 4, 5], static function ($item) {\n    return $item < 3;\n});\n```\n\n**Result**\n\n```php\n[3, 4, 5]\n```",
+            "arguments": [
+                {
+                    "name": "input",
+                    "isVariadic": false,
+                    "description": "An array or iterable of values to look through.",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "array|iterable"
+                },
+                {
+                    "name": "condition",
+                    "isVariadic": false,
+                    "description": "Condition to drop by using either a primitive value or a callback.",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "\\Closure|float|int|string|bool"
+                }
+            ],
+            "changelog": [],
+            "exceptions": [],
+            "return": {
+                "type": "array|\\Generator",
+                "description": "<p>An array containing a subset of the input array with front\nitems matching the condition removed. If the input was not an array, then a \\Generator\nwill be returned.</p>"
+            }
+        },
+        {
             "name": "flatten",
             "namespace": "arrays",
             "summary": "<p>Flattens a multidimensional array or iterable.</p>",
