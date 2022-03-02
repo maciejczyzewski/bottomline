@@ -1,13 +1,14 @@
 # Changelog
 
-## v0.2.3-dev
+## v0.2.3
 
-**2022-??-?? — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.2...0.2.3) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+**2022-03-01 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.2...0.2.3) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
 
 * Updates to the `__::slug()` function,
   - Optimized to be more performant when given plain, old ASCII text
   - Has a workaround for [a bug in PHP 8.1](https://github.com/php/php-src/issues/7898) that would return an empty string
-* Added `__::dropWhile`, `__::dropRight`, and `dropRightWhile`
+* Added `__::dropWhile`, `__::dropRight`, and `__::dropRightWhile`
+* Fix error in `__::mapKeys` that affected PHP 5.5
 
 ## v0.2.2
 

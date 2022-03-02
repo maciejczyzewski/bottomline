@@ -182,7 +182,12 @@
                     "type": "int"
                 }
             ],
-            "changelog": [],
+            "changelog": [
+                {
+                    "version": "0.2.3",
+                    "message": "added to Bottomline"
+                }
+            ],
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
@@ -214,7 +219,12 @@
                     "type": "\\Closure|float|int|string|bool"
                 }
             ],
-            "changelog": [],
+            "changelog": [
+                {
+                    "version": "0.2.3",
+                    "message": "added to Bottomline"
+                }
+            ],
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",
@@ -246,7 +256,12 @@
                     "type": "\\Closure|float|int|string|bool"
                 }
             ],
-            "changelog": [],
+            "changelog": [
+                {
+                    "version": "0.2.3",
+                    "message": "added to Bottomline"
+                }
+            ],
             "exceptions": [],
             "return": {
                 "type": "array|\\Generator",

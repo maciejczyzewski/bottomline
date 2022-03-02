@@ -91,6 +91,8 @@ function dropArrayWhile($input, $comparison)
  * @see dropRight
  * @see dropRightWhile
  *
+ * @since 0.2.3 added to Bottomline
+ *
  * @return array|\Generator An array containing a subset of the input array with front
  * items matching the condition removed. If the input was not an array, then a \Generator
  * will be returned.
