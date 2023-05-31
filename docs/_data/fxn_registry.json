@@ -58,7 +58,7 @@
                     "isVariadic": false,
                     "description": "The chunk size",
                     "defaultValue": 1,
-                    "defaultValueAsString": 1,
+                    "defaultValueAsString": "1",
                     "type": "int"
                 },
                 {
@@ -141,7 +141,7 @@
                     "isVariadic": false,
                     "description": "The number of elements to drop.",
                     "defaultValue": 1,
-                    "defaultValueAsString": 1,
+                    "defaultValueAsString": "1",
                     "type": "int"
                 }
             ],
@@ -178,7 +178,7 @@
                     "isVariadic": false,
                     "description": "The number of elements to drop.",
                     "defaultValue": 1,
-                    "defaultValueAsString": 1,
+                    "defaultValueAsString": "1",
                     "type": "int"
                 }
             ],
@@ -430,7 +430,7 @@
                     "isVariadic": false,
                     "description": "range step value",
                     "defaultValue": 1,
-                    "defaultValueAsString": 1,
+                    "defaultValueAsString": "1",
                     "type": "int"
                 }
             ],
@@ -862,7 +862,7 @@
                     "isVariadic": false,
                     "description": "the value to return if nothing matches",
                     "defaultValue": -1,
-                    "defaultValueAsString": -1,
+                    "defaultValueAsString": "-1",
                     "type": "int|string"
                 }
             ],
@@ -989,7 +989,7 @@
                     "isVariadic": false,
                     "description": "the value to return if nothing matches",
                     "defaultValue": -1,
-                    "defaultValueAsString": -1,
+                    "defaultValueAsString": "-1",
                     "type": "int|string"
                 }
             ],
@@ -2368,7 +2368,7 @@
                     "isVariadic": false,
                     "description": "",
                     "defaultValue": 9223372036854775807,
-                    "defaultValueAsString": 9223372036854775807,
+                    "defaultValueAsString": "9223372036854775807",
                     "type": "int"
                 }
             ],

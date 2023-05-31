@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "php": ">=8.1",
+        "ext-json": "*",
         "bamarni/composer-bin-plugin": "^1.8",
         "doctrine/instantiator": "^1.4",
         "erusev/parsedown": "^1.7",
@@ -29,6 +30,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "__\\DocGen\\": "docgen/",
             "__\\Test\\": "tests/__/",
             "__\\TestHelpers\\": "tests/Helpers/"
         }
