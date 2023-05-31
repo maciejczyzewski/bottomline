@@ -15,13 +15,13 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "doctrine/instantiator": "^1.0||^1.1||^1.4",
+        "php": ">=8.1",
+        "bamarni/composer-bin-plugin": "^1.8",
+        "doctrine/instantiator": "^1.4",
         "erusev/parsedown": "^1.7",
-        "friendsofphp/php-cs-fixer": "^3.2",
-        "kubawerlos/php-cs-fixer-custom-fixers": "^3.6",
-        "nikic/php-parser": "^3.1||^4.13",
-        "phpdocumentor/reflection-docblock": "^3.0||^4.3||^5.2",
-        "phpunit/phpunit": "^4.8||^6.5||^9.5"
+        "nikic/php-parser": "^4.13",
+        "phpdocumentor/reflection-docblock": "^5.2",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "files": ["bottomline.php"],
@@ -34,7 +34,11 @@
         }
     },
     "scripts": {
+        "post-install-cmd": [
+            "@composer bin php-cs-fixer install --ansi"
+        ],
         "bench": "php tools/bench.php",
+        "bin": "echo 'bin not installed'",
         "cs-fix": "php-cs-fixer fix -v",
         "cs-check": "php-cs-fixer fix --dry-run -v --diff",
         "doc": [
@@ -51,11 +55,18 @@
         ]
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        }
     },
     "extra": {
         "branch-alias": {
             "dev-master": "0.2-dev"
+        },
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true
         }
     }
 }
