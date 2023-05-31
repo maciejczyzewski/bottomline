@@ -100,7 +100,7 @@ if (PHP_VERSION_ID < 50500) {
  * @method static string lowerFirst(string $input) <p>Converts the first character of string to lower case, like lcfirst.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::lowerFirst('Fred');</code></pre> <p><strong>Result</strong></p> <pre><code>'fred'</code></pre>
  * @method static string snakeCase(string $input) <p>Converts string to <a href="https://en.wikipedia.org/wiki/Snake_case">snake case</a>.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::snakeCase('Foo Bar');</code></pre> <p><strong>Result</strong></p> <pre><code>'foo_bar'</code></pre>
  * @method static string[] split(string $input, string $delimiter, int $limit = 9223372036854775807) <p>Split a string by string.</p><br><ul> <li>If limit is set and positive, the returned array will contain a maximum of limit elements with the last element containing the rest of string.</li> <li>If the limit parameter is negative, all components except the last <code>-limit</code> are returned.</li> <li>If the limit parameter is zero, then this is treated as 1.</li> </ul> <p><strong>Usage</strong></p> <pre><code class="language-php">__::split('a-b-c', '-', 2);</code></pre> <p><strong>Result</strong></p> <pre><code>['a', 'b-c']</code></pre>
- * @method static string startCase(string $input) <p>Converts string to <a href="https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage">start case</a>.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::startCase('--foo-bar--');</code></pre> <p><strong>Result</strong></p> <pre><code>'Foo Bar'</code></pre>
+ * @method static string startCase(string $input) <p>Converts string to <a href="https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage">start case</a>, aka Title Case.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::startCase('--foo-bar--');</code></pre> <p><strong>Result</strong></p> <pre><code>'Foo Bar'</code></pre>
  * @method static string toLower(string $input) <p>Converts string, as a whole, to lower case just like <code>strtolower()</code>.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::toLower('fooBar');</code></pre> <p><strong>Result</strong></p> <pre><code>'foobar'</code></pre>
  * @method static string toUpper(string $input) <p>Converts string, as a whole, to lower case just like <code>strtoupper()</code>.</p><br><p><strong>Usage</strong></p> <pre><code>__::toUpper('fooBar');</code></pre> <p><strong>Result</strong></p> <pre><code>'FOOBAR'</code></pre>
  * @method static string upperCase(string $input) <p>Converts string, as space separated words, to upper case.</p><br><p><strong>Usage</strong></p> <pre><code class="language-php">__::upperCase('--foo-bar');</code></pre> <p><strong>Result</strong></p> <pre><code>'FOO BAR'</code></pre>
@@ -137,7 +137,7 @@ class __
                 $fxnExists = function_exists($fqfn);
                 if (!$fxnExists) {
                     // Don't try requiring a function definition that's already in memory
-                    $func = require $file;
+                    $func = (require $file);
                     $functionNameInFile = $name;
                     // Trick as be can't redefine some names (eg. max).
                     // In this case we preprend bottomline_ to the funcion name to load.

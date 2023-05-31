@@ -2382,8 +2382,8 @@
         {
             "name": "startCase",
             "namespace": "strings",
-            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage\">start case</a>.</p>",
-            "summaryRaw": "Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).",
+            "summary": "<p>Converts string to <a href=\"https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage\">start case</a>, aka Title Case.</p>",
+            "summaryRaw": "Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage), aka Title Case.",
             "description": "<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::startCase('--foo-bar--');</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>'Foo Bar'</code></pre>",
             "descriptionRaw": "**Usage**\n\n```php\n__::startCase('--foo-bar--');\n```\n\n**Result**\n\n```\n'Foo Bar'\n```",
             "arguments": [

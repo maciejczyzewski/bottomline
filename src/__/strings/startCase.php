@@ -3,7 +3,7 @@
 namespace strings;
 
 /**
- * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage).
+ * Converts string to [start case](https://en.wikipedia.org/wiki/Letter_case#Stylistic_or_specialised_usage), aka Title Case.
  *
  * **Usage**
  *
