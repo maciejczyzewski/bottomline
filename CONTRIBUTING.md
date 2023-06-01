@@ -8,15 +8,9 @@
 
 :ok_hand: We use [PSR standard](http://www.php-fig.org/psr/) to keep our code sanitized and easy to follow.
 
-## Environment requirements
+## Development Environment
 
-`PHP >= 7.0` with `mbstring` extension
-```bash
-; php.ini
-extension=php_mbstring.dll
-```
-
-[Composer](https://getcomposer.org/download/) is also required (version v2 suggested).
+The library itself requires PHP >= 5.5 but for development purposes, we require PHP >= 8.1. The library itself only needs `ext-mbstring` to handle special characters but for development, we also need `ext-json` available. Use [Composer v2](https://getcomposer.org/download/) for handling dependencies.
 
 For generating the documentation website, you'll also need Ruby with [`bundle`](https://bundler.io/).
 
@@ -24,10 +18,11 @@ For generating the documentation website, you'll also need Ruby with [`bundle`](
 
 1. Fork our repository
 2. Clone your forked repository `git clone git@github.com:<your namespace>/bottomline.git`
-2. Install development dependencies `composer install`
-3. Run tests `composer run test`
+3. Install development dependencies `composer install`
+4. Run tests `composer run test`
 
 Also useful:
+
 * Run benchmarks: `composer run bench`
 * Format the code: `composer run cs-fix`
 * Generate the doc: `composer run doc`
@@ -49,7 +44,7 @@ Also useful:
 - Create a PR in [bottomline](https://github.com/maciejczyzewski/bottomline) that points to your forked branch ;
 - Add description of the PR (issue links, etc.).
 
-## Recommendation
+### PR Title Recommendations
 
 - Squash commits into 1 commit before the PR is merged into master, this help reduces git tree and makes it easier to revert to a certain state. (can be multiple commits, but they have to be meaningful commits) ;
 - Open PR title starting with one of the following words:
@@ -59,3 +54,9 @@ Also useful:
     + `Breaking` - for a backwards-incompatible enhancement or feature ;
     + `Docs` - changes to documentation only ;
 - Use `LF` line endings.
+
+## Release Checklist
+
+- [ ] Update `CHANGELOG.md` with the new version and date of release
+- [ ] Update the `bottomline v0.x.x` comment located in `src/__/__.php`
+- [ ] Ensure that any new functions added during this release have an `@since` tag in their phpDocs
