@@ -114,9 +114,7 @@ function buildCoreFunctionLoader()
     $docBlockLiteral = writeDocBlock(new DocBlock(
         '',
         null,
-        __::map($registry->methods, function (FunctionDocumentation $fxnDoc) {
-            return $fxnDoc->asMethodTag();
-        })
+        __::map($registry->methods, static fn (FunctionDocumentation $fxnDoc) => $fxnDoc->asMethodTag())
     ));
 
     /** @var Stmt $astNode */

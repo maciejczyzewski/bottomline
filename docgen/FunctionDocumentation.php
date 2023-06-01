@@ -83,9 +83,19 @@ class FunctionDocumentation implements JsonSerializable
             $description .= '<h2>Returns</h2>';
             $description .= Parsers::$markdown->text($this->returnDescription);
         }
+
+        //
+        // Perform some cleanup on the description we just built
+        //
+
+        // Replace newlines with `<br>` tags since IDEs parse docblocks as HTML
         $descriptionBody = trim(preg_replace('/\n/', ' ', $this->summary . '<br>' . $description));
+
+        // Don't allow trailing `<br>` tags
         $descriptionBody = preg_replace('/<br>$/', '', $descriptionBody);
-        $description = new Description($descriptionBody);
+
+        // Escape percent signs because this string will go through a `sprintf()` call so having a single `%` will cause an error
+        $descriptionBody = preg_replace('/([^%])%([^%])/m', '\1%%\2', $descriptionBody);
 
         return new Method(
             $this->name,
@@ -94,7 +104,7 @@ class FunctionDocumentation implements JsonSerializable
             }),
             $this->returnType,
             true,
-            $description
+            new Description($descriptionBody)
         );
     }
 
