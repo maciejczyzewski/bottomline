@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up PHP ${{ matrix.php-versions }}
         uses: shivammathur/setup-php@v2
@@ -45,10 +45,10 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -58,11 +58,13 @@ jobs:
         run: |
           # Don't use our lock file for unit tests
           rm composer.lock
-
-          # We do not use it in unit tests
+          
+          # Remove PHP 8.1 requirement
+          sed -i '/"php": ">=8\.1",/d' composer.json
+          
+          # Remove dependencies we don't need for unit tests that break platform requirements
           composer remove --dev \
-            friendsofphp/php-cs-fixer \
-            kubawerlos/php-cs-fixer-custom-fixers
+            bamarni/composer-bin-plugin
 
           composer install
 
