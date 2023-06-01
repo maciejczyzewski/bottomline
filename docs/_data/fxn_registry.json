@@ -1759,6 +1759,43 @@
             }
         },
         {
+            "name": "some",
+            "namespace": "collections",
+            "summary": "<p>Equivalent to JavaScript's <code>Array.prototype.some()</code> function, this method will\nreturn true if any one item in the collection passes the callback truth test.</p>",
+            "summaryRaw": "Equivalent to JavaScript's `Array.prototype.some()` function, this method will\nreturn true if any one item in the collection passes the callback truth test.",
+            "description": "<p>This method will short-circuit on the first truthy callback result.</p>\n<p><strong>Usage</strong></p>\n<pre><code class=\"language-php\">__::some([1, 3, 5, 10, 7, 9], static function ($item, $key, $collection) {<br />\n  return $item % 2 === 0;<br />\n});</code></pre>\n<p><strong>Result</strong></p>\n<pre><code>true</code></pre>",
+            "descriptionRaw": "This method will short-circuit on the first truthy callback result.\n\n**Usage**\n\n```php\n__::some([1, 3, 5, 10, 7, 9], static function ($item, $key, $collection) {\n  return $item % 2 === 0;\n});\n```\n\n**Result**\n\n```\ntrue\n```",
+            "arguments": [
+                {
+                    "name": "collection",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "iterable|\\stdClass"
+                },
+                {
+                    "name": "callback",
+                    "isVariadic": false,
+                    "description": "",
+                    "defaultValue": null,
+                    "defaultValueAsString": null,
+                    "type": "\\Closure"
+                }
+            ],
+            "changelog": [
+                {
+                    "version": "0.2.4",
+                    "message": "added to library"
+                }
+            ],
+            "exceptions": [],
+            "return": {
+                "type": "bool",
+                "description": ""
+            }
+        },
+        {
             "name": "unease",
             "namespace": "collections",
             "summary": "<p>Builds a multidimensional collection out of a hash map using the key as\nindicator where to put the value.</p>",
