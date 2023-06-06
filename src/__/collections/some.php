@@ -24,16 +24,17 @@ namespace collections;
  *
  * @since 0.2.4 added to library
  *
- * @template V
- * @template K
- *
  * @param iterable|\stdClass $collection
- * @param \Closure           $callback
+ * @param \Closure|null      $callback
  *
  * @return bool
  */
-function some($collection, \Closure $callback)
+function some($collection, \Closure $callback = null)
 {
+    if (is_null($callback)) {
+        $callback = '\\__::identity';
+    }
+
     $result = false; // By default, we will assume no items pass the truth test.
 
     \__::doForEach($collection, static function ($value, $key, $collection) use ($callback, &$result) {

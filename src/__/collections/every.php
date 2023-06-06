@@ -21,20 +21,27 @@ namespace collections;
  * true
  * ```
  *
+ * @since 0.2.4 $iteratee is now optional and defaults to `__::identity`
+ *
  * @param iterable|\stdClass $collection The collection to iterate over.
- * @param \Closure           $iteratee   The function to call for each value.
+ * @param \Closure|null      $iteratee   The function to call for each value.
  *
  * @return bool
  */
-function every($collection, \Closure $iteratee)
+function every($collection, \Closure $iteratee = null)
 {
+    if (is_null($iteratee)) {
+        $iteratee = '\\__::identity';
+    }
+
     $truthy = true;
 
     // We could use __::reduce(), but it won't allow us to return preliminarily.
     \__::doForEach(
         $collection,
-        function ($value, $key, $collection) use (&$truthy, $iteratee) {
+        static function ($value, $key, $collection) use (&$truthy, $iteratee) {
             $truthy = $truthy && $iteratee($value, $key, $collection);
+
             if (!$truthy) {
                 return false;
             }

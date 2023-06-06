@@ -26,6 +26,18 @@ class SomeTest extends TestCase
                 },
                 'expected' => false
             ],
+            [
+                'description' => "Having at least one truthy value should return true",
+                'actual' => [false, [], 1],
+                'callback' => null,
+                'expected' => true
+            ],
+            [
+                'description' => "Having all falsey values should return false",
+                'actual' => [false, [], 0],
+                'callback' => null,
+                'expected' => false
+            ],
         ];
     }
 

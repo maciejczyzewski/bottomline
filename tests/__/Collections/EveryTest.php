@@ -7,27 +7,49 @@ use PHPUnit\Framework\TestCase;
 
 class EveryTest extends TestCase
 {
-    public function testEvery()
+    public static function provideEveryCases()
     {
-        // Arrange.
-        $a = [true, 1, null, 'yes'];
-        $b = [true, false];
-        $c = [1, 3, 4];
+        return [
+            [
+                'description' => "Passing an array with one or more non-bool values should return false when given a callback to check for booleans",
+                'actual' => [true, 1, null, 'yes'],
+                'callback' => static function ($v) {
+                    return is_bool($v);
+                },
+                'expected' => false,
+            ],
+            [
+                'description' => "Passing an array with only booleans should return true when given a callback to check for booleans",
+                'actual' => [true, false],
+                'callback' => static function ($v) {
+                    return is_bool($v);
+                },
+                'expected' => true,
+            ],
+            [
+                'description' => "Passing an array with only integers should return true when given a callback to check for integers",
+                'actual' => [1, 3, 4],
+                'callback' => static function ($v) {
+                    return is_int($v);
+                },
+                'expected' => true,
+            ],
+            [
+                'description' => "Passing an array with truthy values should return true when given null as the callback",
+                'actual' => [1, "hello", true],
+                'callback' => null,
+                'expected' => true,
+            ],
+        ];
+    }
 
-        // Act.
-        $x = __::every($a, function ($v) {
-            return is_bool($v);
-        });
-        $y = __::every($b, function ($v) {
-            return is_bool($v);
-        });
-        $z = __::every($c, function ($v) {
-            return is_int($v);
-        });
+    /**
+     * @dataProvider provideEveryCases
+     */
+    public function testEvery($message, $actual, $callback, $expected)
+    {
+        $actual = __::every($actual, $callback);
 
-        // Assert
-        $this->assertFalse($x);
-        $this->assertTrue($y);
-        $this->assertTrue($z);
+        $this->assertSame($expected, $actual, $message);
     }
 }
