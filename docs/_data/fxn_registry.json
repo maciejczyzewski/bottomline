@@ -698,11 +698,16 @@
                     "isVariadic": false,
                     "description": "The function to call for each value.",
                     "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "\\Closure"
+                    "defaultValueAsString": "null",
+                    "type": "\\Closure|null"
                 }
             ],
-            "changelog": [],
+            "changelog": [
+                {
+                    "version": "0.2.4",
+                    "message": "$iteratee is now optional and defaults to `__::identity`"
+                }
+            ],
             "exceptions": [],
             "return": {
                 "type": "bool",
@@ -1779,8 +1784,8 @@
                     "isVariadic": false,
                     "description": "",
                     "defaultValue": null,
-                    "defaultValueAsString": null,
-                    "type": "\\Closure"
+                    "defaultValueAsString": "null",
+                    "type": "\\Closure|null"
                 }
             ],
             "changelog": [
