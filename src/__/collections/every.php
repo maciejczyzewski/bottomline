@@ -31,7 +31,7 @@ namespace collections;
 function every($collection, \Closure $iteratee = null)
 {
     if (is_null($iteratee)) {
-        $iteratee = '\\__::identity';
+        $iteratee = '__::identity';
     }
 
     $truthy = true;
@@ -40,7 +40,7 @@ function every($collection, \Closure $iteratee = null)
     \__::doForEach(
         $collection,
         static function ($value, $key, $collection) use (&$truthy, $iteratee) {
-            $truthy = $truthy && $iteratee($value, $key, $collection);
+            $truthy = $truthy && call_user_func($iteratee, $value, $key, $collection);
 
             if (!$truthy) {
                 return false;

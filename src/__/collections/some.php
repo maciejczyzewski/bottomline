@@ -32,13 +32,13 @@ namespace collections;
 function some($collection, \Closure $callback = null)
 {
     if (is_null($callback)) {
-        $callback = '\\__::identity';
+        $callback = '__::identity';
     }
 
     $result = false; // By default, we will assume no items pass the truth test.
 
     \__::doForEach($collection, static function ($value, $key, $collection) use ($callback, &$result) {
-        if ($callback($value, $key, $collection)) {
+        if (call_user_func($callback, $value, $key, $collection)) {
             $result = true; // A truthy result was found, so we can set the result to true.
 
             // Return false here so that we can exit the `doForEach()` loop.
