@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.4 (dev-master)
+
+**TBD — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.3...0.2.4) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+
+* Added `__::some` as a counterpart to `__::every`
+* Made the callable in `__::every` nullable. It will default to using `__::identity` so that using `__::every` with an array will automatically remove all falsey values
+
 ## v0.2.3
 
 **2022-03-01 — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.2...0.2.3) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
