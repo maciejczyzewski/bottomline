@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Return the reverse of an array or other foreach-able (Iterable).

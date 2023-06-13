@@ -134,19 +134,19 @@ class __
         foreach (self::$modules as $moduleName) {
             $file = __DIR__ . DIRECTORY_SEPARATOR . $moduleName . DIRECTORY_SEPARATOR . $name . '.php';
             if (file_exists($file)) {
-                $fqfn = $moduleName . '\\' . $name;
+                $fqfn = '\\__\\' . $moduleName . '\\' . $name;
                 $fxnExists = function_exists($fqfn);
                 if (!$fxnExists) {
                     // Don't try requiring a function definition that's already in memory
                     $func = require $file;
                     $functionNameInFile = $name;
                     // Trick as be can't redefine some names (eg. max).
-                    // In this case we preprend bottomline_ to the funcion name to load.
+                    // In this case we prepend bottomline_ to the function name to load.
                     if (in_array($name, ['max', 'min'])) {
                         $functionNameInFile = 'bottomline_' . $name;
                     }
 
-                    self::$functions[$name] = $func !== 1 ? $func : $moduleName . '\\' . $functionNameInFile;
+                    self::$functions[$name] = $func !== 1 ? $func : '\\__\\' . $moduleName . '\\' . $functionNameInFile;
                 } else {
                     self::$functions[$name] = $fqfn;
                 }

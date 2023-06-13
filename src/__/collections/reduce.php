@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Reduces `$collection` to a value which is the $accumulator result of running

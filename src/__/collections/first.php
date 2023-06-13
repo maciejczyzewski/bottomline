@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Gets the first element of an array/iterable. Passing n returns the first n elements.

@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Return the index or key of the _first_ element that matches the given condition or `$returnValue` if no value is

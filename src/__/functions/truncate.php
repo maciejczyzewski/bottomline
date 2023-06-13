@@ -1,6 +1,6 @@
 <?php
 
-namespace functions;
+namespace __\functions;
 
 /**
  * Truncate string based on count of words

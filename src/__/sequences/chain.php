@@ -1,6 +1,6 @@
 <?php
 
-namespace sequences;
+namespace __\sequences;
 
 require_once 'BottomlineWrapper.php';
 

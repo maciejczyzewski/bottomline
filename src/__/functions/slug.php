@@ -1,6 +1,6 @@
 <?php
 
-namespace functions;
+namespace __\functions;
 
 class _StringOps
 {

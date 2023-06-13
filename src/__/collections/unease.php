@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Builds a multidimensional collection out of a hash map using the key as

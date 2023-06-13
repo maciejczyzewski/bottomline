@@ -1,6 +1,6 @@
 <?php
 
-namespace utilities;
+namespace __\utilities;
 
 /**
  * Returns the first argument it receives.

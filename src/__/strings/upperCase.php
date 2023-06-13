@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts string, as space separated words, to upper case.

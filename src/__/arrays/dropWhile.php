@@ -1,6 +1,6 @@
 <?php
 
-namespace arrays;
+namespace __\arrays;
 
 /**
  * In order to return either an array or \Generator from dropWhile, we split out

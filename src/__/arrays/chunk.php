@@ -1,6 +1,6 @@
 <?php
 
-namespace arrays;
+namespace __\arrays;
 
 /**
  * @internal

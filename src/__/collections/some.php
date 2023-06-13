@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Equivalent to JavaScript's `Array.prototype.some()` function, this method will

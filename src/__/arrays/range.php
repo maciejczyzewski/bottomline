@@ -1,6 +1,6 @@
 <?php
 
-namespace arrays;
+namespace __\arrays;
 
 /**
  * Generate range of values based on start, end, and step.

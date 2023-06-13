@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts string to [camel case](https://en.wikipedia.org/wiki/CamelCase).

@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Find the first key/value pair of a given element that matches the given condition or null if no match is found.

@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Return the last element that matches the given condition or `$returnValue` if no value is found (defaults to null).

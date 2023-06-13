@@ -1,6 +1,6 @@
 <?php
 
-namespace arrays;
+namespace __\arrays;
 
 /**
  * Patches array by xpath.

@@ -99,7 +99,7 @@ class DocumentationRegistry implements JsonSerializable
                 return;
             }
             if ($actualNamespace !== null) {
-                $fullyQualifiedFunctionName = sprintf("%s\\%s", $actualNamespace, $functionName);
+                $fullyQualifiedFunctionName = sprintf("__\\%s\\%s", $actualNamespace, $functionName);
             } elseif ($fqfn !== null) {
                 $fullyQualifiedFunctionName = $fqfn;
             } else {

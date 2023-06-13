@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 // TODO Place in .internal folder. (Something or somewhere not intended to be used
 // externally: these are internal helpers).

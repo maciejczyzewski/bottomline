@@ -1,6 +1,6 @@
 <?php
 
-namespace objects;
+namespace __\objects;
 
 /**
  * Check if the objects are equals.

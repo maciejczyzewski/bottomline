@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts string to [snake case](https://en.wikipedia.org/wiki/Snake_case).

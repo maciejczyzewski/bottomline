@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Returns true if `$input` contains all requested $keys. If `$strict` is `true`

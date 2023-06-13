@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 // From https://github.com/lodash/lodash/blob/master/words.js
 // With a port of https://github.com/lodash/lodash/blob/master/.internal/unicodeWords.js

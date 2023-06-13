@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts string to [kebab case](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles).

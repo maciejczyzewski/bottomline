@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Get the size of an array or \Countable object. Or get the number of properties

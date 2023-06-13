@@ -1,6 +1,6 @@
 <?php
 
-namespace functions;
+namespace __\functions;
 
 /**
  * Convert any URLs into HTML anchor tags in a string.

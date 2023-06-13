@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Iterate over elements of the collection and invokes iteratee for each element.

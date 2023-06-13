@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts the first character of string to upper case, like `ucfirst()`.

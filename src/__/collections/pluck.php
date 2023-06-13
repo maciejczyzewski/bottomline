@@ -1,6 +1,6 @@
 <?php
 
-namespace collections;
+namespace __\collections;
 
 /**
  * Returns an array of values belonging to a given property of each item in a collection.

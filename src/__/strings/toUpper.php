@@ -1,6 +1,6 @@
 <?php
 
-namespace strings;
+namespace __\strings;
 
 /**
  * Converts string, as a whole, to lower case just like `strtoupper()`.

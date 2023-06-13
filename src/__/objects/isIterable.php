@@ -1,6 +1,6 @@
 <?php
 
-namespace objects;
+namespace __\objects;
 
 /**
  * Check to see if something is iterable.
