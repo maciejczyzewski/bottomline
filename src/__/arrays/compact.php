@@ -51,7 +51,7 @@ function compactIterable($iterable)
 function compact($iterable)
 {
     if (is_array($iterable)) {
-        return \array_values(\array_filter($iterable));
+        return array_values(array_filter($iterable));
     }
 
     return compactIterable($iterable);

@@ -24,7 +24,7 @@ namespace arrays;
 function randomize(array $array)
 {
     for ($i = 0, $c = \count($array); $i < $c - 1; $i++) {
-        $j = \rand($i + 1, $c - 1);
+        $j = rand($i + 1, $c - 1);
         list($array[$i], $array[$j]) = [$array[$j], $array[$i]];
     }
 

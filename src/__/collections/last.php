@@ -29,7 +29,7 @@ function last($iterable, $take = null)
     $take = (int)$take;
 
     if (is_array($iterable)) {
-        return $take ? \array_slice($iterable, -$take) : \array_pop($iterable);
+        return $take ? array_slice($iterable, -$take) : array_pop($iterable);
     }
 
     $result = [];

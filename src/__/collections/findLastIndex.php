@@ -76,7 +76,7 @@ namespace collections;
  *
  * @since 0.2.1 added to bottomline
  *
- * @param array|iterable                  $collection  an array or iterable of values to look through
+ * @param iterable                        $collection  an array or iterable of values to look through
  * @param bool|\Closure|double|int|string $condition   condition to match using either a primitive value or a callback
  * @param int|string                      $returnValue the value to return if nothing matches
  *

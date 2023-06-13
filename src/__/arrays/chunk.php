@@ -69,7 +69,7 @@ function chunkIterable($iterable, $size, $preserveKeys)
 function chunk($iterable, $size = 1, $preserveKeys = false)
 {
     if (is_array($iterable)) {
-        return \array_chunk($iterable, $size, $preserveKeys);
+        return array_chunk($iterable, $size, $preserveKeys);
     }
 
     return chunkIterable($iterable, $size, $preserveKeys);

@@ -7,15 +7,15 @@ namespace collections;
  *
  * @internal
  *
- * @param array  $map
- * @param array  $array
- * @param string $glue
- * @param string $prefix
+ * @param array    $map
+ * @param iterable $array
+ * @param string   $glue
+ * @param string   $prefix
  */
 function _ease(&$map, $array, $glue, $prefix = '')
 {
     foreach ($array as $index => $value) {
-        if (\is_array($value)) {
+        if (is_array($value)) {
             _ease($map, $value, $glue, $prefix . $index . $glue);
         } else {
             $map[$prefix . $index] = $value;

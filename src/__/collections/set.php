@@ -73,7 +73,7 @@ function set($collection, $path, $value = null)
     $portions = \__::split($path, \__::DOT_NOTATION_DELIMITER, 2);
     $key = $portions[0];
 
-    if (\count($portions) === 1) {
+    if (count($portions) === 1) {
         return _universal_set($collection, $key, $value);
     }
     // Here we manage the case where the portion of the path points to nothing,

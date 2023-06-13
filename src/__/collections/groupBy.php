@@ -109,7 +109,7 @@ namespace collections;
  */
 function groupBy($iterable, $key)
 {
-    if (!\is_bool($key) && !\is_scalar($key) && !\is_callable($key)) {
+    if (!is_bool($key) && !is_scalar($key) && !is_callable($key)) {
         return $iterable;
     }
 
@@ -117,7 +117,7 @@ function groupBy($iterable, $key)
     foreach ($iterable as $value) {
         $groupKey = null;
 
-        if (\is_callable($key)) {
+        if (is_callable($key)) {
             $groupKey = call_user_func($key, $value);
         } else {
             $groupKey = \__::get($value, $key);

@@ -23,5 +23,5 @@ namespace strings;
  */
 function upperFirst($input)
 {
-    return \ucfirst($input);
+    return ucfirst($input);
 }

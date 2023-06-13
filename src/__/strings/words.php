@@ -88,9 +88,9 @@ function words($input, $pattern = null)
 
     $hasUnicodeWordRegex = '/[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/';
 
-    $rsOptJoin = '(?:' . $rsZWJ . '(?:' . join('|', [$rsNonAstral, $rsRegional, $rsSurrPair]) . ')' . $rsOptVar . $reOptMod . ')*';
+    $rsOptJoin = '(?:' . $rsZWJ . '(?:' . implode('|', [$rsNonAstral, $rsRegional, $rsSurrPair]) . ')' . $rsOptVar . $reOptMod . ')*';
     $rsSeq = $rsOptVar . $reOptMod . $rsOptJoin;
-    $rsEmoji = '(?:' . join('|', [$rsDingbat, $rsRegional, $rsSurrPair]) . ')' . $rsSeq;
+    $rsEmoji = '(?:' . implode('|', [$rsDingbat, $rsRegional, $rsSurrPair]) . ')' . $rsSeq;
 
     /**
      * Splits a Unicode `string` into an array of its words.
@@ -99,11 +99,11 @@ function words($input, $pattern = null)
      * @param {string} The string to inspect.
      * @returns {Array} Returns the words of `string`.
      */
-    $unicodeWords = '/' . join(
+    $unicodeWords = '/' . implode(
         '|',
         [
-          $rsUpper . '?' . $rsLower . '+' . $rsOptContrLower . '(?=' . join('|', [$rsBreak, $rsUpper, '$']) . ')',
-          $rsMiscUpper . '+' . $rsOptContrUpper . '(?=' . join('|', [$rsBreak, $rsUpper . $rsMiscLower, '$']) . ')',
+          $rsUpper . '?' . $rsLower . '+' . $rsOptContrLower . '(?=' . implode('|', [$rsBreak, $rsUpper, '$']) . ')',
+          $rsMiscUpper . '+' . $rsOptContrUpper . '(?=' . implode('|', [$rsBreak, $rsUpper . $rsMiscLower, '$']) . ')',
           $rsUpper . '?' . $rsMiscLower . '+' . $rsOptContrLower,
           $rsUpper . '+' . $rsOptContrUpper,
           $rsOrdUpper,
@@ -113,13 +113,13 @@ function words($input, $pattern = null)
         ]
     ) . '/u';
     if ($pattern === null) {
-        $hasUnicodeWord = \preg_match($hasUnicodeWordRegex, $input);
+        $hasUnicodeWord = preg_match($hasUnicodeWordRegex, $input);
         $pattern = $hasUnicodeWord ? $unicodeWords : $asciiWords;
     }
-    $r = \preg_match_all($pattern, $input, $matches, PREG_PATTERN_ORDER);
+    $r = preg_match_all($pattern, $input, $matches, PREG_PATTERN_ORDER);
     if ($r === false) {
         throw new \RuntimeException('Regex exception');
     }
 
-    return \count($matches[0]) > 0 ? $matches[0] : [];
+    return count($matches[0]) > 0 ? $matches[0] : [];
 }

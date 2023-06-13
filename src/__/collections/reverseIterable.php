@@ -31,7 +31,7 @@ namespace collections;
  */
 function reverseIterable($iterable)
 {
-    $iterable_values = is_array($iterable) ? $iterable : \iterator_to_array($iterable, true);
+    $iterable_values = is_array($iterable) ? $iterable : iterator_to_array($iterable, true);
     for (end($iterable_values); ($key = key($iterable_values)) !== null; prev($iterable_values)) {
         yield $key => current($iterable_values);
     }

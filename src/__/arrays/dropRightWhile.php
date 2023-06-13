@@ -16,7 +16,7 @@ namespace arrays;
  */
 function dropIteratorRightWhile($input, $comparison)
 {
-    $arr = \iterator_to_array($input, true);
+    $arr = iterator_to_array($input, true);
     $items = dropArrayRightWhile($arr, $comparison);
 
     foreach ($items as $item) {
@@ -39,7 +39,7 @@ function dropArrayRightWhile($input, $comparison)
             continue;
         }
 
-        return \array_slice($input, 0, $i + 1);
+        return array_slice($input, 0, $i + 1);
     }
 
     return [];

@@ -26,5 +26,5 @@ namespace arrays;
  */
 function repeat($object, $times)
 {
-    return \array_fill(0, (int)$times, $object);
+    return array_fill(0, (int)$times, $object);
 }

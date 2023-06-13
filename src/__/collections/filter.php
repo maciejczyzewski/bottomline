@@ -5,7 +5,7 @@ namespace collections;
 /**
  * @internal
  *
- * @param \Traversable  $iterable
+ * @param iterable  $iterable
  * @param \Closure|null $closure Closure to filter the array
  *
  * @return \Generator

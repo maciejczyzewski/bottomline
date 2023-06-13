@@ -144,24 +144,24 @@ function slug($str, array $options = [])
     ];
 
     // Merge options
-    $options = \array_merge($defaults, $options);
+    $options = array_merge($defaults, $options);
 
     // Make custom replacements
     if ($options['replacements']) {
-        $str = \preg_replace(\array_keys($options['replacements']), $options['replacements'], $str);
+        $str = preg_replace(array_keys($options['replacements']), $options['replacements'], $str);
     }
 
     // Transliterate characters to ASCII
     if ($options['transliterate']) {
         $char_map = require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'charmap.php');
-        $str = \str_replace(\array_keys($char_map), $char_map, $str);
+        $str = str_replace(array_keys($char_map), $char_map, $str);
     }
 
     // Replace non-alphanumeric characters with our delimiter
-    $str = \preg_replace('/[^\p{L}\p{Nd}]+/u', $options['delimiter'], $str);
+    $str = preg_replace('/[^\p{L}\p{Nd}]+/u', $options['delimiter'], $str);
 
     // Remove duplicate delimiters
-    $str = \preg_replace('/(' . \preg_quote($options['delimiter'], '/') . '){2,}/', $options['delimiter'], $str);
+    $str = preg_replace('/(' . preg_quote($options['delimiter'], '/') . '){2,}/', $options['delimiter'], $str);
 
     // Truncate slug to max. characters
     if ($options['limit']) {
@@ -169,7 +169,7 @@ function slug($str, array $options = [])
     }
 
     // Remove delimiter from ends
-    $str = \trim($str, $options['delimiter']);
+    $str = trim($str, $options['delimiter']);
 
     return $options['lowercase'] ? $ops->smart_strtolower($str, 'UTF-8') : $str;
 }

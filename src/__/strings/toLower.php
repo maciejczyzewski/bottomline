@@ -23,5 +23,5 @@ namespace strings;
  */
 function toLower($input)
 {
-    return \strtolower($input);
+    return strtolower($input);
 }

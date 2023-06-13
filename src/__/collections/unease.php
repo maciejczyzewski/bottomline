@@ -32,7 +32,7 @@ function unease($collection, $separator = '.')
     foreach ($collection as $key => $value) {
         $map = \__::set(
             $map,
-            $nonDefaultSeparator ? \str_replace($separator, '.', $key) : $key,
+            $nonDefaultSeparator ? str_replace($separator, '.', $key) : $key,
             $value
         );
     }

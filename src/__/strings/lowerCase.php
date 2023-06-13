@@ -23,7 +23,7 @@ namespace strings;
  */
 function lowerCase($input)
 {
-    $words = \__::words(\preg_replace("/['\x{2019}]/u", '', $input));
+    $words = \__::words(preg_replace("/['\x{2019}]/u", '', $input));
 
     return array_reduce(
         $words,

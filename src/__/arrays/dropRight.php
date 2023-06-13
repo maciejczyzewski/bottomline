@@ -16,7 +16,7 @@ namespace arrays;
  */
 function dropRightIterable($input, $number)
 {
-    $arr = \iterator_to_array($input, true);
+    $arr = iterator_to_array($input, true);
     $items = dropRightArray($arr, $number);
 
     foreach ($items as $item) {
@@ -34,7 +34,7 @@ function dropRightIterable($input, $number)
  */
 function dropRightArray($input, $number)
 {
-    return \array_slice($input, 0, max(count($input) - $number, 0));
+    return array_slice($input, 0, max(count($input) - $number, 0));
 }
 
 /**

@@ -109,7 +109,7 @@ class BottomlineWrapper
     public function __call($functionName, $params)
     {
         if (is_callable('__', $functionName)) {
-            $params = $params == null ? [] : $params;
+            $params = $params === null ? [] : $params;
             $params = __::prepend($params, $this->value);
             $this->value = call_user_func_array(array('__', $functionName), $params);
             return $this;

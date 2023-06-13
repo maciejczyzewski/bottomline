@@ -31,15 +31,15 @@ namespace collections;
  */
 function pluck($collection, $property)
 {
-    $result = \array_map(function ($value) use ($property) {
+    $result = array_map(function ($value) use ($property) {
         if (is_array($value) && isset($value[$property])) {
             return $value[$property];
-        } elseif (\is_object($value) && isset($value->{$property})) {
+        } elseif (is_object($value) && isset($value->{$property})) {
             return $value->{$property};
         }
 
         foreach (\__::split($property, \__::DOT_NOTATION_DELIMITER) as $segment) {
-            if (\is_object($value)) {
+            if (is_object($value)) {
                 if (isset($value->{$segment})) {
                     $value = $value->{$segment};
                 } else {
@@ -57,5 +57,5 @@ function pluck($collection, $property)
         return $value;
     }, (array)$collection);
 
-    return \array_values($result);
+    return array_values($result);
 }

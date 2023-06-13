@@ -23,5 +23,5 @@ namespace strings;
  */
 function lowerFirst($input)
 {
-    return \lcfirst($input);
+    return lcfirst($input);
 }

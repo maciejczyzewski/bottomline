@@ -815,7 +815,7 @@
                     "description": "an array or iterable of values to look through",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array|iterable"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",
@@ -852,7 +852,7 @@
                     "description": "an array or iterable of values to look through",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array|iterable"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",
@@ -897,7 +897,7 @@
                     "description": "an array or iterable of values to look through",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array|iterable"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",
@@ -942,7 +942,7 @@
                     "description": "an array or iterable of values to look through",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array|iterable"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",
@@ -979,7 +979,7 @@
                     "description": "an array or iterable of values to look through",
                     "defaultValue": null,
                     "defaultValueAsString": null,
-                    "type": "array|iterable"
+                    "type": "iterable"
                 },
                 {
                     "name": "condition",

@@ -24,7 +24,7 @@ namespace arrays;
  */
 function prepend(array $array, $value = null)
 {
-    \array_unshift($array, $value);
+    array_unshift($array, $value);
 
     return $array;
 }

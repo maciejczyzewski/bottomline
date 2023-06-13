@@ -60,7 +60,7 @@ function dropIterable($input, $number)
 function drop($input, $number = 1)
 {
     if (is_array($input)) {
-        return \array_slice($input, $number);
+        return array_slice($input, $number);
     }
 
     return dropIterable($input, $number);

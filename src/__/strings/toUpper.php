@@ -23,5 +23,5 @@ namespace strings;
  */
 function toUpper($input)
 {
-    return \strtoupper($input);
+    return strtoupper($input);
 }

@@ -26,8 +26,8 @@ namespace collections;
  */
 function hasKeys($collection = [], array $keys = [], $strict = false)
 {
-    $keyCount = \count($keys);
-    if ($strict && \count($collection) !== $keyCount) {
+    $keyCount = count($keys);
+    if ($strict && count($collection) !== $keyCount) {
         return false;
     }
     return \__::every(

@@ -51,7 +51,7 @@ function dropArrayWhile($input, $comparison)
         $count++;
     }
 
-    return \array_slice($input, $count);
+    return array_slice($input, $count);
 }
 
 /**
