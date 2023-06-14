@@ -4,6 +4,7 @@
 
 **TBD — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.3...0.2.4) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
 
+* Fix `Class "__" not found` autoload error when calling `__::*` inside of a Composer script
 * Added `__::some` as a counterpart to `__::every`
 * Made the callable in `__::every` nullable. It will default to using `__::identity` so that using `__::every` with an array will automatically remove all falsey values
 

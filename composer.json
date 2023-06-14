@@ -25,7 +25,7 @@
         "phpunit/phpunit": "^4.8||^6.5||^9.5"
     },
     "autoload": {
-        "files": ["bottomline.php"],
+        "classmap": ["bottomline.php"],
         "psr-4": {"__\\": "src/__/"}
     },
     "autoload-dev": {
