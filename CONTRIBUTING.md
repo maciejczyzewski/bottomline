@@ -34,7 +34,7 @@ Also useful:
 - Always add tests for the code that you write, including edge cases ;
 - Place the new functions where they belong (collections, arrays, utilities, etc.) ;
 - Add `README.md` doc entry for the functions ;
-- Execute `php composer.phar run doc` script to automatically build an updated `load.php` ;
+- Execute `composer run doc` script to automatically build an updated `load.php` ;
 - Update the benchmark `bench.php`, this helps us to validate the performance of the library ;
 - Update `CHANGELOG.md` with your changes.
 

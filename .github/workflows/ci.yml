@@ -64,7 +64,8 @@ jobs:
           
           # Remove dependencies we don't need for unit tests that break platform requirements
           composer remove --dev \
-            bamarni/composer-bin-plugin
+            friendsofphp/php-cs-fixer \
+            kubawerlos/php-cs-fixer-custom-fixers
 
           composer install
 
