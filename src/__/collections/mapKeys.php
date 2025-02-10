@@ -56,7 +56,7 @@ function mapKeysIterable($iterable, $closure)
  *
  * @return array|\Generator
  */
-function mapKeys($iterable, \Closure $closure = null)
+function mapKeys($iterable, ?\Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';

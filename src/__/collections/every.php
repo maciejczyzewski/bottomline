@@ -28,7 +28,7 @@ namespace collections;
  *
  * @return bool
  */
-function every($collection, \Closure $iteratee = null)
+function every($collection, ?\Closure $iteratee = null)
 {
     if (is_null($iteratee)) {
         $iteratee = '__::identity';

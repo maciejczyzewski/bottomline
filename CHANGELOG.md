@@ -1,6 +1,12 @@
 # Changelog
 
-## v0.2.4 (dev-master)
+## v0.2.5 (dev-master)
+
+**TBD — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.4...0.2.5) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
+
+* Support for PHP8.4 (fix annotation deprecations), changes which makes PHP7.1+ required
+
+## v0.2.4
 
 **TBD — [Diff](https://github.com/maciejczyzewski/bottomline/compare/0.2.3...0.2.4) — [Docs](https://maciejczyzewski.github.io/bottomline/)**
 

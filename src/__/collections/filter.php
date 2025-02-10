@@ -10,7 +10,7 @@ namespace collections;
  *
  * @return \Generator
  */
-function filterIterable($iterable, \Closure $closure = null)
+function filterIterable($iterable, ?\Closure $closure = null)
 {
     $ittr = is_array($iterable) ? $iterable : \__::getIterator($iterable);
 
@@ -61,7 +61,7 @@ function filterIterable($iterable, \Closure $closure = null)
  * @return array|\Generator When given a `\Traversable` object for `$iterable`, a generator will be returned.
  *                          Otherwise, an array will be returned.
  */
-function filter($iterable, \Closure $closure = null)
+function filter($iterable, ?\Closure $closure = null)
 {
     if (is_array($iterable)) {
         return iterator_to_array(filterIterable($iterable, $closure));
