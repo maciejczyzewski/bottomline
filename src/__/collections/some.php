@@ -29,7 +29,7 @@ namespace collections;
  *
  * @return bool
  */
-function some($collection, \Closure $callback = null)
+function some($collection, ?\Closure $callback = null)
 {
     if (is_null($callback)) {
         $callback = '__::identity';

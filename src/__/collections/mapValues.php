@@ -41,7 +41,7 @@ function mapValuesIterable($iterable, $closure)
  *
  * @return array|\Generator
  */
-function mapValues($iterable, \Closure $closure = null)
+function mapValues($iterable, ?\Closure $closure = null)
 {
     if (is_null($closure)) {
         $closure = '__::identity';

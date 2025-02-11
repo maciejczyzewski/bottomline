@@ -12,10 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up PHP 8.2
+      - name: Set up PHP 8.3
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           extensions: mbstring
 
       - name: Get Composer Cache Directory
@@ -26,8 +26,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
+          key: ${{ runner.os }}-composer-lint-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-lint-
 
       - name: Install dependencies
         run: composer install
@@ -45,10 +45,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up PHP 8.2
+      - name: Set up PHP 8.3
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           extensions: mbstring
 
       - name: Get Composer Cache Directory
@@ -59,8 +59,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
+          key: ${{ runner.os }}-composer-lint-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-lint-
 
       - name: Install dependencies
         run: composer install

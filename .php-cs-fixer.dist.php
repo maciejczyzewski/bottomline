@@ -12,9 +12,8 @@ $config
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
+        'php_unit_data_provider_name' => true,
         PhpCsFixerCustomFixers\Fixer\CommentSurroundedBySpacesFixer::name() => true,
-        PhpCsFixerCustomFixers\Fixer\DataProviderNameFixer::name() => true,
-        PhpCsFixerCustomFixers\Fixer\DataProviderStaticFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoDuplicatedImportsFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoPhpStormGeneratedCommentFixer::name() => true,
         PhpCsFixerCustomFixers\Fixer\NoUselessParenthesisFixer::name() => true,

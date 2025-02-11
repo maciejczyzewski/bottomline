@@ -22,7 +22,7 @@ class ArgumentDocumentation implements JsonSerializable
 
     public ?string $defaultValueAsString;
 
-    public function __construct(Param $documentedParam, ReflectionParameter $reflectedParam = null)
+    public function __construct(Param $documentedParam, ?ReflectionParameter $reflectedParam = null)
     {
         $this->name = $documentedParam->getVariableName();
         $this->description = $documentedParam->getDescription()->render();
